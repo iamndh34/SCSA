@@ -1,0 +1,16 @@
+<!doctype html><html><body><script>
+const DIR = new URLSearchParams(location.search).get("dir");
+(async () => {
+  const i = new Image(); i.src = DIR + "/fig_2.png"; await i.decode();
+  const W = i.width, H = i.height, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d"); x.drawImage(i, 0, 0); const d = x.getImageData(0, 0, W, H).data;
+  const white = (xx, yy) => { const k = (yy*W+xx)*4; return d[k] > 240 && d[k+1] > 240 && d[k+2] > 240; };
+  // rows: find the image band (rows where many pixels are non-white) below the header
+  const rowFrac = []; for (let y = 0; y < H; y++) { let n = 0; for (let xx = 0; xx < W; xx++) if (!white(xx, y)) n++; rowFrac.push(n / W); }
+  let y0 = rowFrac.findIndex((f, y) => y > 20 && f > 0.6), y1 = y0; while (y1 < H && rowFrac[y1] > 0.6) y1++;
+  const colNW = []; for (let xx = 0; xx < W; xx++) { let n = 0; for (let y = y0; y < y1; y++) if (!white(xx, y)) n++; colNW.push(n / (y1 - y0)); }
+  const panels = []; let inP = false, s = 0; for (let xx = 0; xx <= W; xx++) { const on = xx < W && colNW[xx] > 0.5; if (on && !inP) { inP = true; s = xx; } if (!on && inP) { inP = false; if (xx - s > 60) panels.push([s, xx]); } }
+  panels[8] = [1608, 1798];
+  const out = panels.map(([a, b]) => { const cc = document.createElement("canvas"); cc.width = b - a; cc.height = y1 - y0; cc.getContext("2d").drawImage(i, a, y0, b - a, y1 - y0, 0, 0, b - a, y1 - y0); return cc.toDataURL("image/png"); });
+  window.__out = { y0, y1, panels, out }; document.title = "done";
+})().catch(e => document.title = "err " + e);
+</script></body></html>

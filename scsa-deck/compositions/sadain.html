@@ -1,0 +1,32 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="sadain" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="sadain-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="sadain-tw">S-AdaIN:</span> <span class="sadain-tw">đổi</span> <span class="sadain-tw">tông</span> <span class="sadain-tw" style="color:#C2185B">riêng</span> <span class="sadain-tw">từng</span> <span class="sadain-tw">vùng</span></h1><div id="sd-a" class="print" style="left:192px;top:270px;width:432px;height:432px;padding:12px;"><img src="assets/img/29.jpg" alt="" style="width:408px;height:408px;object-fit:cover;display:block"></div><div id="sd-b" class="print" style="left:756px;top:270px;width:432px;height:432px;padding:12px;"><img src="assets/img/29_adain.png" alt="" style="width:408px;height:408px;object-fit:cover;display:block"></div><div id="sd-c" class="print" style="left:1320px;top:270px;width:432px;height:432px;padding:12px;"><img src="assets/img/29_sadain.png" alt="" style="width:408px;height:408px;object-fit:cover;display:block"></div><div id="sd-la" class="lb" style="left:192px;top:712px;width:432px;font-size:30px;color:#16181C;text-align:center;font-weight:700">ảnh gốc</div><div id="sd-lb" class="lb" style="left:756px;top:712px;width:432px;font-size:30px;color:#16181C;text-align:center;font-weight:700">AdaIN cả ảnh: 1 tông</div><div id="sd-lc" class="lb" style="left:1320px;top:712px;width:432px;font-size:30px;color:#16181C;text-align:center;font-weight:700">S-AdaIN: <span style="color:#C2185B">mỗi</span> vùng 1 tông</div><div id="sd-nc" class="lb" style="left:1320px;top:762px;width:432px;font-size:30px;color:#4B5260;text-align:center;font-weight:500">vách núi xanh, dãy xa hồng: như trong tranh</div><p id="sd-end" class="ln" style="left:192px;top:880px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:left">Để làm gì? Để SSA so “giống” trên cùng một thang màu với tranh.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".sadain-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#sd-a",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.3);
+tl.fromTo("#sd-la",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.6);
+tl.fromTo("#sd-b",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.2);
+tl.fromTo("#sd-b",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.9,ease:"power2.inOut"},1.3);
+tl.fromTo("#sd-lb",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.9);
+tl.fromTo("#sd-c",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},2.4);
+tl.fromTo("#sd-c",{clipPath:"inset(0% 0% 100% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:1.1,ease:"power2.inOut"},2.5);
+tl.fromTo("#sd-lc",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.2);
+tl.fromTo("#sd-nc",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},3.4);
+tl.fromTo("#sd-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},4.1);
+window.__timelines["sadain"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

@@ -1,0 +1,32 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="st" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="st-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="st-tw">Style</span> <span class="st-tw">transfer:</span> <span class="st-tw">giữ</span> <span class="st-tw">bố</span> <span class="st-tw">cục,</span> <span class="st-tw">thay</span> <span class="st-tw" style="color:#C2185B">lớp</span> <span class="st-tw" style="color:#C2185B">áo</span></h1><div id="st-a" class="print" style="left:192px;top:290px;width:424px;height:424px;padding:12px;"><img src="assets/img/29.jpg" alt="" style="width:400px;height:400px;object-fit:cover;display:block"></div><div id="st-plus" class="lb" style="left:616px;top:440px;width:104px;font-size:80px;color:#4B5260;text-align:center;font-weight:800">+</div><div id="st-b" class="print" style="left:720px;top:290px;width:424px;height:424px;padding:12px;"><img src="assets/img/29_paint.jpg" alt="" style="width:400px;height:400px;object-fit:cover;display:block"></div><div id="st-eq" class="lb" style="left:1144px;top:440px;width:108px;font-size:80px;color:#4B5260;text-align:center;font-weight:800">=</div><div id="st-c" class="print" style="left:1252px;top:290px;width:424px;height:424px;padding:12px;"><img src="assets/img/29.jpg" alt="" style="width:400px;height:400px;object-fit:cover;display:block"></div><div id="st-c2" style="position:absolute;left:1264px;top:302px;width:400px;height:400px"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:400px;height:400px;object-fit:cover;display:block"></div><div id="st-la" class="lb" style="left:192px;top:738px;width:424px;font-size:32px;color:#16181C;text-align:center;font-weight:500">ảnh chụp cho <b>bố cục</b>: trời, vách núi, rừng</div><div id="st-lb" class="lb" style="left:720px;top:738px;width:424px;font-size:32px;color:#16181C;text-align:center;font-weight:500">tranh cho <b>lớp áo</b>: màu, nét cọ</div><div id="st-lc" class="lb" style="left:1252px;top:738px;width:424px;font-size:32px;color:#16181C;text-align:center;font-weight:500">kết quả: bố cục cũ, áo mới</div><p id="st-end" class="ln" style="left:192px;top:860px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:left"><b>Arbitrary</b>: một mô hình dùng cho <span style="color:#C2185B">mọi</span> bức tranh, không train lại.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".st-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#st-a",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.3);
+tl.fromTo("#st-la",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.6);
+tl.fromTo("#st-plus",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.1);
+tl.fromTo("#st-b",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.15);
+tl.fromTo("#st-lb",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.45);
+tl.fromTo("#st-eq",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.0);
+tl.fromTo("#st-c",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},2.05);
+tl.fromTo("#st-c2",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:1.0,ease:"power2.inOut"},2.5);
+tl.fromTo("#st-lc",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.3);
+tl.fromTo("#st-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},3.8);
+window.__timelines["st"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

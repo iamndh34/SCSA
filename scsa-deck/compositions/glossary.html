@@ -1,0 +1,23 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="glossary" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="glossary-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="glossary-tw">Từ</span> <span class="glossary-tw">điển</span> <span class="glossary-tw">nhanh</span></h1><div class="gl-r" style="position:absolute;left:192px;top:240px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">Điểm</div><div style="font-size:34px;font-weight:500;color:#4B5260">một ô trên lưới mà encoder tạo ra, mang một vector</div></div><div class="gl-r" style="position:absolute;left:192px;top:314px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">Query · Key · Value</div><div style="font-size:34px;font-weight:500;color:#4B5260">câu hỏi · thẻ để so · nội dung lấy về</div></div><div class="gl-r" style="position:absolute;left:192px;top:388px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">Softmax</div><div style="font-size:34px;font-weight:500;color:#4B5260">biến điểm số thành phần trăm, cộng lại 100%</div></div><div class="gl-r" style="position:absolute;left:192px;top:462px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">Cấm (mask −∞)</div><div style="font-size:34px;font-weight:500;color:#4B5260">ô bị cấm nhận đúng 0% trọng số</div></div><div class="gl-r" style="position:absolute;left:192px;top:536px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">Semantic map</div><div style="font-size:34px;font-weight:500;color:#4B5260">ảnh tô màu theo nhãn: cùng màu là cùng nghĩa</div></div><div class="gl-r" style="position:absolute;left:192px;top:610px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">AdaIN · S-AdaIN</div><div style="font-size:34px;font-weight:500;color:#4B5260">khớp tông: cả ảnh · từng vùng</div></div><div class="gl-r" style="position:absolute;left:192px;top:684px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">SCA · SSA</div><div style="font-size:34px;font-weight:500;color:#4B5260">nhìn cả vùng · nhìn một điểm</div></div><div class="gl-r" style="position:absolute;left:192px;top:758px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">G1 · G2</div><div style="font-size:34px;font-weight:500;color:#4B5260">luật cấm của SCA · của SSA</div></div><div class="gl-r" style="position:absolute;left:192px;top:832px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center"><div style="width:480px;font-size:34px;font-weight:800">Plug-and-play</div><div style="font-size:34px;font-weight:500;color:#4B5260">cắm vào mô hình có sẵn, không train lại</div></div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".glossary-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo(".gl-r",{opacity:0},{opacity:1,duration:0.25,stagger:0.05},0.3);
+window.__timelines["glossary"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

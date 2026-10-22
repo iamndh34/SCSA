@@ -1,0 +1,40 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="roadmap" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="roadmap-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="roadmap-tw">Năm</span> <span class="roadmap-tw">chặng,</span> <span class="roadmap-tw">từ</span> <span class="roadmap-tw">tổng</span> <span class="roadmap-tw">quát</span> <span class="roadmap-tw">tới</span> <span class="roadmap-tw">chi</span> <span class="roadmap-tw">tiết</span></h1><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="roadmap-rl" d="M300 440 L1620 440" stroke="#C9CDD3" stroke-width="6" stroke-linecap="round" fill="none"/></svg><div id="roadmap-d0" style="position:absolute;left:278px;top:418px;width:44px;height:44px;border-radius:50%;background:#EDEFF1;border:5px solid #16181C"></div><div id="roadmap-n0" class="lb" style="left:140px;top:340px;width:320px;font-size:40px;color:#16181C;text-align:center;font-weight:800">Bối cảnh</div><div id="roadmap-q0" class="lb" style="left:150px;top:488px;width:300px;font-size:30px;color:#4B5260;text-align:center;font-weight:500">Style transfer là gì?</div><div id="roadmap-d1" style="position:absolute;left:608px;top:418px;width:44px;height:44px;border-radius:50%;background:#EDEFF1;border:5px solid #16181C"></div><div id="roadmap-n1" class="lb" style="left:470px;top:340px;width:320px;font-size:40px;color:#16181C;text-align:center;font-weight:800">Nền tảng</div><div id="roadmap-q1" class="lb" style="left:480px;top:488px;width:300px;font-size:30px;color:#4B5260;text-align:center;font-weight:500">Attention chọn style thế nào?</div><div id="roadmap-d2" style="position:absolute;left:938px;top:418px;width:44px;height:44px;border-radius:50%;background:#EDEFF1;border:5px solid #16181C"></div><div id="roadmap-n2" class="lb" style="left:800px;top:340px;width:320px;font-size:40px;color:#16181C;text-align:center;font-weight:800">Vấn đề</div><div id="roadmap-q2" class="lb" style="left:810px;top:488px;width:300px;font-size:30px;color:#4B5260;text-align:center;font-weight:500">Vì sao tô nhầm vùng?</div><div id="roadmap-d3" style="position:absolute;left:1268px;top:418px;width:44px;height:44px;border-radius:50%;background:#EDEFF1;border:5px solid #16181C"></div><div id="roadmap-n3" class="lb" style="left:1130px;top:340px;width:320px;font-size:40px;color:#16181C;text-align:center;font-weight:800">SCSA</div><div id="roadmap-q3" class="lb" style="left:1140px;top:488px;width:300px;font-size:30px;color:#4B5260;text-align:center;font-weight:500">Sửa bằng cách nào?</div><div id="roadmap-d4" style="position:absolute;left:1598px;top:418px;width:44px;height:44px;border-radius:50%;background:#EDEFF1;border:5px solid #16181C"></div><div id="roadmap-n4" class="lb" style="left:1460px;top:340px;width:320px;font-size:40px;color:#16181C;text-align:center;font-weight:800">Kết quả</div><div id="roadmap-q4" class="lb" style="left:1470px;top:488px;width:300px;font-size:30px;color:#4B5260;text-align:center;font-weight:500">Tốt tới đâu?</div><div id="roadmap-ring" style="position:absolute;left:1250px;top:400px;width:80px;height:80px;border-radius:50%;border:6px solid #C2185B"></div><p id="roadmap-end" class="ln" style="left:192px;top:760px;width:1536px;font-size:40px;font-weight:600;color:#16181C;text-align:left">Mỗi chặng mở bằng một câu hỏi, rồi mới đi vào chi tiết. <span style="color:#C2185B">Chặng 4</span> là trọng tâm.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".roadmap-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#roadmap-rl",{strokeDasharray:1400,strokeDashoffset:1400},{strokeDashoffset:0,duration:0.8,ease:"power2.inOut"},0.3);
+tl.fromTo("#roadmap-d0",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.5,ease:"back.out(1.4)"},0.5);
+tl.fromTo("#roadmap-n0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.55);
+tl.fromTo("#roadmap-q0",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.7);
+tl.fromTo("#roadmap-d1",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.5,ease:"back.out(1.4)"},0.65);
+tl.fromTo("#roadmap-n1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.7000000000000001);
+tl.fromTo("#roadmap-q1",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.85);
+tl.fromTo("#roadmap-d2",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.5,ease:"back.out(1.4)"},0.8);
+tl.fromTo("#roadmap-n2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.8500000000000001);
+tl.fromTo("#roadmap-q2",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},1.0);
+tl.fromTo("#roadmap-d3",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.5,ease:"back.out(1.4)"},0.95);
+tl.fromTo("#roadmap-n3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.0);
+tl.fromTo("#roadmap-q3",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},1.15);
+tl.fromTo("#roadmap-d4",{opacity:0,scale:0.4},{opacity:1,scale:1,duration:0.5,ease:"back.out(1.4)"},1.1);
+tl.fromTo("#roadmap-n4",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.15);
+tl.fromTo("#roadmap-q4",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},1.2999999999999998);
+tl.fromTo("#roadmap-ring",{opacity:0,scale:1.6},{opacity:1,scale:1,duration:0.5,ease:"expo.out"},2.0);
+tl.fromTo("#roadmap-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},2.3);
+window.__timelines["roadmap"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

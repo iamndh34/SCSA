@@ -1,0 +1,12 @@
+import { createRequire } from "module"; import fs from "fs";
+const require = createRequire("/Users/bibeo/.npm/_npx/702923228c2ce1e6/node_modules/hyperframes/package.json");
+const puppeteer = require("puppeteer-core");
+const exe = "/Users/bibeo/.cache/hyperframes/chrome/chrome-headless-shell/mac_arm-152.0.7977.30/chrome-headless-shell-mac-arm64/chrome-headless-shell";
+const [html, dir, outDir] = process.argv.slice(2);
+const b = await puppeteer.launch({ executablePath: exe, headless: true, args: ["--allow-file-access-from-files"] });
+const p = await b.newPage(); await p.goto(`file://${html}?dir=file://${dir}`);
+await p.waitForFunction(() => document.title !== "", { timeout: 60000 });
+const o = await p.evaluate(() => window.__out);
+const names = ["ex1_content","ex1_style","ex1_sanet","ex1_sanet_scsa","ex2_content","ex2_style","ex2_stytr2","ex2_stytr2_scsa","ex3_content","ex3_style","ex3_styleid","ex3_styleid_scsa"];
+o.out.forEach((u, k) => fs.writeFileSync(`${outDir}/${names[k] || "p"+k}.png`, Buffer.from(u.split(",")[1], "base64")));
+console.log(o.y0, o.y1, JSON.stringify(o.panels), o.out.length); await b.close();

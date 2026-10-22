@@ -1,0 +1,49 @@
+<!doctype html><html><body><script>
+const DIR = new URLSearchParams(location.search).get("dir");
+const G = 12, N = 512, CS = N / G;
+function load(src) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = DIR + "/" + src; }); }
+function px(img) { const c = document.createElement("canvas"); c.width = N; c.height = N; const x = c.getContext("2d"); x.drawImage(img, 0, 0, N, N); return x.getImageData(0, 0, N, N).data; }
+const LBL = [[255,0,0],[255,255,0],[0,255,0],[0,0,255]];
+function labels(d) { const L = new Uint8Array(N*N); for (let i = 0; i < N*N; i++) { let b = 0, bd = 1e9; for (let k = 0; k < 4; k++) { const e = (d[i*4]-LBL[k][0])**2 + (d[i*4+1]-LBL[k][1])**2 + (d[i*4+2]-LBL[k][2])**2; if (e < bd) { bd = e; b = k; } } L[i] = b; } return L; }
+function stats(d, mask, lab) { const m = [0,0,0], s = [0,0,0]; let n = 0; for (let i = 0; i < N*N; i++) { if (mask && mask[i] !== lab) continue; n++; for (let c = 0; c < 3; c++) m[c] += d[i*4+c]; } for (let c = 0; c < 3; c++) m[c] /= Math.max(n,1); for (let i = 0; i < N*N; i++) { if (mask && mask[i] !== lab) continue; for (let c = 0; c < 3; c++) s[c] += (d[i*4+c]-m[c])**2; } for (let c = 0; c < 3; c++) s[c] = Math.sqrt(s[c]/Math.max(n,1)) || 1; return { m, s, n }; }
+function transfer(d, cm, sm, regional) { const o = new Uint8ClampedArray(d.length); const cs = {}, ss = {};
+  if (regional) for (let k = 0; k < 4; k++) { cs[k] = stats(d, cm, k); ss[k] = stats(window._S, sm, k); }
+  else { cs.g = stats(d, null); ss.g = stats(window._S, null); }
+  for (let i = 0; i < N*N; i++) { const key = regional ? cm[i] : "g"; const a = cs[key], b = (regional && ss[key].n === 0) ? stats(window._S, null) : ss[key];
+    for (let c = 0; c < 3; c++) o[i*4+c] = (d[i*4+c]-a.m[c])/a.s[c]*b.s[c] + b.m[c]; o[i*4+3] = 255; }
+  return o; }
+function toPNG(arr) { const c = document.createElement("canvas"); c.width = N; c.height = N; c.getContext("2d").putImageData(new ImageData(arr, N, N), 0, 0); return c.toDataURL("image/png"); }
+function lab(r, g, b) { const f = v => { v /= 255; return v > 0.04045 ? ((v+0.055)/1.055)**2.4 : v/12.92; }; const R = f(r), Gg = f(g), B = f(b);
+  let X = (R*0.4124+Gg*0.3576+B*0.1805)/0.95047, Y = R*0.2126+Gg*0.7152+B*0.0722, Z = (R*0.0193+Gg*0.1192+B*0.9505)/1.08883;
+  const h = t => t > 0.008856 ? Math.cbrt(t) : 7.787*t + 16/116; X = h(X); Y = h(Y); Z = h(Z); return [116*Y-16, 500*(X-Y), 200*(Y-Z)]; }
+function cells(d, L) { const out = []; for (let r = 0; r < G; r++) for (let c = 0; c < G; c++) { const m = [0,0,0], cnt = [0,0,0,0]; let n = 0, l2 = 0, l1 = 0;
+  for (let y = Math.round(r*CS); y < Math.round((r+1)*CS); y++) for (let x = Math.round(c*CS); x < Math.round((c+1)*CS); x++) { const i = y*N+x; n++; for (let k = 0; k < 3; k++) m[k] += d[i*4+k]; const lum = 0.299*d[i*4]+0.587*d[i*4+1]+0.114*d[i*4+2]; l1 += lum; l2 += lum*lum; cnt[L[i]]++; }
+  for (let k = 0; k < 3; k++) m[k] /= n; const sd = Math.sqrt(Math.max(0, l2/n - (l1/n)**2)); const Lb = lab(m[0], m[1], m[2]);
+  out.push({ rgb: m.map(Math.round), f: [Lb[0], Lb[1], Lb[2], 0.6*sd], label: cnt.indexOf(Math.max(...cnt)) }); } return out; }
+const d2 = (a, b) => a.reduce((s, v, i) => s + (v - b[i])**2, 0);
+(async () => {
+  const [C, S, CM, SM] = await Promise.all(["29.jpg","29_paint.jpg","29_sem.png","29_paint_sem.png"].map(load));
+  const c = px(C), s = px(S); window._S = s; const cl = labels(px(CM)), sl = labels(px(SM));
+  const ad = transfer(c, cl, sl, false), sad = transfer(c, cl, sl, true);
+  const cc = cells(c, cl), sc = cells(s, sl), adc = cells(ad, cl), sadc = cells(sad, cl);
+  const NC = G*G;
+  // UA: queries from globally normalised content (AdaIN), keys from style; softmax with per-row temperature
+  const ua = cc.map((q, i) => { const ds = sc.map(k => d2(adc[i].f, k.f)); const sorted = [...ds].sort((a,b)=>a-b); const T = Math.max(sorted[7], 1);
+    let w = ds.map(v => Math.exp(-(v - sorted[0]) / T)); const z = w.reduce((a,b)=>a+b,0); w = w.map(v => v/z);
+    const col = [0,0,0]; let wrong = 0; w.forEach((v,k) => { for (let j = 0; j < 3; j++) col[j] += v*sc[k].rgb[j]; if (sc[k].label !== q.label) wrong += v; });
+    const top = w.map((v,k)=>[v,k]).sort((a,b)=>b[0]-a[0]).slice(0, 10).map(([v,k]) => [k, +v.toFixed(3)]);
+    return { rgb: col.map(Math.round), wrong: +wrong.toFixed(3), top }; });
+  // SCA: mean colour of same-label style cells (uniform weights)
+  const regMean = [0,1,2,3].map(l => { const ks = sc.filter(k => k.label === l); if (!ks.length) return null; return [0,1,2].map(j => Math.round(ks.reduce((a,k)=>a+k.rgb[j],0)/ks.length)); });
+  const sca = cc.map(q => regMean[q.label]);
+  // SSA: queries from S-AdaIN content, top-1 key within the same label
+  const ssa = cc.map((q, i) => { let best = -1, bd = 1e18; sc.forEach((k, j) => { if (k.label !== q.label) return; const v = d2(sadc[i].f, k.f); if (v < bd) { bd = v; best = j; } }); return best; });
+  const pickCount = {}; ssa.forEach(j => pickCount[j] = (pickCount[j]||0)+1);
+  const out = { G, labelsC: cc.map(x=>x.label), labelsS: sc.map(x=>x.label), rgbC: cc.map(x=>x.rgb), rgbS: sc.map(x=>x.rgb), rgbAd: adc.map(x=>x.rgb), rgbSad: sadc.map(x=>x.rgb),
+    ua, sca, ssa, regMean, maxRepeat: Math.max(...Object.values(pickCount)), uniqueSSA: Object.keys(pickCount).length,
+    uaWrongMean: +(ua.reduce((a,x)=>a+x.wrong,0)/NC).toFixed(3), uaWrongCells: ua.filter(x=>x.wrong>0.5).length,
+    regCount: { C: [0,1,2,3].map(l=>cc.filter(x=>x.label===l).length), S: [0,1,2,3].map(l=>sc.filter(x=>x.label===l).length) },
+    pngAdain: toPNG(ad), pngSadain: toPNG(sad) };
+  window.__out = out; document.title = "done";
+})().catch(e => { document.title = "err " + e; });
+</script></body></html>

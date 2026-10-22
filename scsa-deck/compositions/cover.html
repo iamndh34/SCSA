@@ -1,0 +1,28 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="cover" data-width="1920" data-height="1080">
+<div class="sc">
+<div id="cover-h" class="big" style="left:192px;top:300px;font-size:220px"><span class="cover-l">S</span><span class="cover-l">C</span><span class="cover-l">S</span><span class="cover-l">A</span></div><p id="cover-sub" class="ln" style="left:192px;top:520px;width:840px;font-size:52px;font-weight:700"><span class="cover-w">Dạy</span> <span class="cover-w">attention</span> <span class="cover-w">nhìn</span> <span class="cover-w" style="color:#C2185B">đúng</span> <span class="cover-w" style="color:#C2185B">vùng</span> <span class="cover-w">khi</span> <span class="cover-w">chuyển</span> <span class="cover-w">phong</span> <span class="cover-w">cách</span> <span class="cover-w">cho</span> <span class="cover-w">ảnh</span></p><p id="cover-paper" class="ln" style="left:192px;top:760px;width:780px;font-size:30px;font-weight:500;color:#4B5260;text-align:left">Semantic Continuous-Sparse Attention for Arbitrary Semantic Style Transfer · CVPR 2025</p><p id="cover-au" class="ln" style="left:192px;top:850px;width:780px;font-size:30px;font-weight:500;color:#4B5260;text-align:left">Chunnan Shang, Hongwei Wang, Zhizhong Wang, Xiangming Meng · Zhejiang University</p><div id="cover-p1" class="print" style="left:1010px;top:150px;width:354px;height:354px;padding:12px;rotate:-2deg;"><img src="assets/img/29.jpg" alt="" style="width:330px;height:330px;object-fit:cover;display:block"></div><div id="cover-p2" class="print" style="left:1384px;top:196px;width:344px;height:344px;padding:12px;rotate:2deg;"><img src="assets/img/29_paint.jpg" alt="" style="width:320px;height:320px;object-fit:cover;display:block"></div><div id="cover-p3" class="print" style="left:1170px;top:560px;width:384px;height:384px;padding:12px;rotate:-1deg;"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:360px;height:360px;object-fit:cover;display:block"></div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".cover-l",{opacity:0.3,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out",stagger:0.1},0.2);
+tl.fromTo(".cover-w",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.7);
+tl.fromTo("#cover-paper",{opacity:0},{opacity:1,duration:0.4,ease:"power2.out"},1.2);
+tl.fromTo("#cover-au",{opacity:0},{opacity:1,duration:0.4,ease:"power2.out"},1.35);
+tl.fromTo("#cover-p1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.4);
+tl.fromTo("#cover-p2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.7);
+tl.fromTo("#cover-p3",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.5);
+window.__timelines["cover"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

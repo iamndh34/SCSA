@@ -1,0 +1,48 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="minute" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="minute-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="minute-tw">SCSA</span> <span class="minute-tw">trong</span> <span class="minute-tw">một</span> <span class="minute-tw">phút</span></h1><div id="min-p1" class="print" style="left:192px;top:250px;width:284px;height:284px;padding:12px;"><img src="assets/img/29.jpg" alt="" style="width:260px;height:260px;object-fit:cover;display:block"></div><div id="min-p2" class="print" style="left:192px;top:600px;width:284px;height:284px;padding:12px;"><img src="assets/img/29_paint.jpg" alt="" style="width:260px;height:260px;object-fit:cover;display:block"></div><div id="min-m1" class="print" style="left:420px;top:380px;width:136px;height:136px;padding:8px;"><img src="assets/img/29_sem.png" alt="" style="width:120px;height:120px;object-fit:cover;display:block"></div><div id="min-m2" class="print" style="left:420px;top:730px;width:136px;height:136px;padding:8px;"><img src="assets/img/29_paint_sem.png" alt="" style="width:120px;height:120px;object-fit:cover;display:block"></div><div id="min-box" style="position:absolute;left:720px;top:470px;width:420px;height:170px;border:4px solid #16181C;border-radius:20px;background:#F7F8F9"></div><div id="min-bt1" class="lb" style="left:720px;top:528px;width:420px;font-size:44px;color:#16181C;text-align:center;font-weight:800">Attention</div><div id="min-bt2" class="lb" style="left:720px;top:528px;width:420px;font-size:40px;color:#16181C;text-align:center;font-weight:800">Attention + <span style="color:#C2185B">nhãn vùng</span></div><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="min-a1" d="M488 380 L600 380 L716 520" stroke="#16181C" stroke-width="3" fill="none" stroke-linecap="round"/><path id="min-a2" d="M488 730 L600 730 L716 590" stroke="#16181C" stroke-width="3" fill="none" stroke-linecap="round"/><path id="min-a3" d="M548 440 L640 440 L716 540" stroke="#C2185B" stroke-width="3" fill="none" stroke-linecap="round"/><path id="min-a4" d="M548 790 L640 790 L716 610" stroke="#C2185B" stroke-width="3" fill="none" stroke-linecap="round"/><path id="min-a5" d="M1144 555 L1262 555" stroke="#16181C" stroke-width="3" fill="none" stroke-linecap="round"/><path id="min-ah" d="M1250 543 L1270 555 L1250 567Z" fill="#16181C"/></svg><div id="min-r" class="print" style="left:1274px;top:330px;width:444px;height:444px;padding:12px;"><img src="assets/img/ex1_sanet.png" alt="" style="width:420px;height:420px;object-fit:cover;display:block"></div><div id="min-r2" class="print" style="left:1274px;top:330px;width:444px;height:444px;padding:12px;background:transparent;box-shadow:none"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:420px;height:420px;object-fit:cover;display:block"></div><div id="min-ra" class="lb" style="left:1274px;top:796px;width:460px;font-size:32px;color:#16181C;text-align:left;font-weight:600">chọn theo “trông giống” → <span style="color:#C2185B">tô nhầm vùng</span></div><div id="min-rb" class="lb" style="left:1274px;top:796px;width:460px;font-size:32px;color:#16181C;text-align:left;font-weight:600">chỉ lấy style từ vùng cùng nhãn → đúng vùng</div><div id="min-sca" class="lb" style="left:740px;top:668px;width:400px;font-size:32px;color:#16181C;text-align:left;font-weight:600">SCA: nhìn cả vùng</div><div id="min-ssa" class="lb" style="left:740px;top:714px;width:400px;font-size:32px;color:#16181C;text-align:left;font-weight:600">SSA: nhìn một điểm</div><p id="min-end" class="ln" style="left:720px;top:900px;width:1008px;font-size:40px;font-weight:600;color:#16181C;text-align:left">Không train lại: cắm thẳng vào mô hình có sẵn.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".minute-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#min-p1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.2);
+tl.fromTo("#min-p2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.35);
+tl.fromTo("#min-box",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},0.7);
+tl.fromTo("#min-bt1",{opacity:0},{opacity:1,duration:0.2,ease:"power2.out"},0.75);
+tl.fromTo("#min-a1",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.5,ease:"power2.inOut"},0.9);
+tl.fromTo("#min-a2",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.5,ease:"power2.inOut"},0.95);
+tl.fromTo("#min-r",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.2);
+tl.fromTo("#min-a5",{strokeDasharray:200,strokeDashoffset:200},{strokeDashoffset:0,duration:0.3,ease:"power2.inOut"},1.2);
+tl.fromTo("#min-ah",{opacity:0},{opacity:1,duration:0.1,ease:"power2.out"},1.45);
+tl.fromTo("#min-ra",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.6);
+tl.set("#min-r2",{opacity:0},0);
+tl.set("#min-bt2",{opacity:0},0);
+tl.set("#min-rb",{opacity:0},0);
+tl.fromTo("#min-m1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},2.1);
+tl.fromTo("#min-m2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},2.25);
+tl.fromTo("#min-a3",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.5,ease:"power2.inOut"},2.4);
+tl.fromTo("#min-a4",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.5,ease:"power2.inOut"},2.45);
+tl.fromTo("#min-bt1",{opacity:1},{opacity:0,duration:0.15,ease:"power2.out",immediateRender:false},2.6);
+tl.fromTo("#min-bt2",{opacity:0},{opacity:1,duration:0.2,ease:"power2.out"},2.7);
+tl.fromTo("#min-r2",{opacity:0},{opacity:1,duration:0.01,ease:"power2.out"},2.8);
+tl.fromTo("#min-r2",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.9,ease:"power2.inOut"},2.8);
+tl.fromTo("#min-ra",{opacity:1},{opacity:0,duration:0.15,ease:"power2.out",immediateRender:false},3.0);
+tl.fromTo("#min-rb",{opacity:0},{opacity:1,duration:0.25,ease:"power2.out"},3.2);
+tl.fromTo("#min-sca",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.8);
+tl.fromTo("#min-ssa",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.95);
+tl.fromTo("#min-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},4.2);
+window.__timelines["minute"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

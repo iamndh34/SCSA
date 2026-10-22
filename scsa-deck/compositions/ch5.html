@@ -1,0 +1,35 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="ch5" data-width="1920" data-height="1080">
+<div class="sc">
+<svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="ch5-rl" d="M300 440 L1620 440" stroke="#C9CDD3" stroke-width="6" stroke-linecap="round" fill="none"/></svg><div id="ch5-d0" style="position:absolute;left:278px;top:418px;width:44px;height:44px;border-radius:50%;background:#7C838F;border:5px solid #7C838F"></div><div id="ch5-n0" class="lb" style="left:140px;top:340px;width:320px;font-size:40px;color:#7C838F;text-align:center;font-weight:800">Bối cảnh</div><div id="ch5-d1" style="position:absolute;left:608px;top:418px;width:44px;height:44px;border-radius:50%;background:#7C838F;border:5px solid #7C838F"></div><div id="ch5-n1" class="lb" style="left:470px;top:340px;width:320px;font-size:40px;color:#7C838F;text-align:center;font-weight:800">Nền tảng</div><div id="ch5-d2" style="position:absolute;left:938px;top:418px;width:44px;height:44px;border-radius:50%;background:#7C838F;border:5px solid #7C838F"></div><div id="ch5-n2" class="lb" style="left:800px;top:340px;width:320px;font-size:40px;color:#7C838F;text-align:center;font-weight:800">Vấn đề</div><div id="ch5-d3" style="position:absolute;left:1268px;top:418px;width:44px;height:44px;border-radius:50%;background:#7C838F;border:5px solid #7C838F"></div><div id="ch5-n3" class="lb" style="left:1130px;top:340px;width:320px;font-size:40px;color:#7C838F;text-align:center;font-weight:800">SCSA</div><div id="ch5-d4" style="position:absolute;left:1598px;top:418px;width:44px;height:44px;border-radius:50%;background:#16181C;border:5px solid #16181C"></div><div id="ch5-n4" class="lb" style="left:1460px;top:340px;width:320px;font-size:40px;color:#16181C;text-align:center;font-weight:800">Kết quả</div><div id="ch5-ring" style="position:absolute;left:1250px;top:400px;width:80px;height:80px;border-radius:50%;border:6px solid #16181C"></div><div id="ch5-k" class="lb" style="left:192px;top:600px;width:1536px;font-size:40px;color:#4B5260;text-align:left;font-weight:600">Chặng 5 · Kết quả</div><h1 id="ch5-qq" class="t" style="top:660px;font-size:96px;width:1536px"><span class="ch5-qw">Tốt</span> <span class="ch5-qw">tới</span> <span class="ch5-qw">đâu?</span></h1>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo("#ch5-rl",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0);
+tl.fromTo("#ch5-d0",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.0);
+tl.fromTo("#ch5-d1",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.05);
+tl.fromTo("#ch5-d2",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.1);
+tl.fromTo("#ch5-d3",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.15000000000000002);
+tl.fromTo("#ch5-d4",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.2);
+tl.fromTo("#ch5-n0",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.0);
+tl.fromTo("#ch5-n1",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.05);
+tl.fromTo("#ch5-n2",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.1);
+tl.fromTo("#ch5-n3",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.15000000000000002);
+tl.fromTo("#ch5-n4",{opacity:0},{opacity:1,duration:0.3,ease:"power2.out"},0.2);
+tl.fromTo("#ch5-ring",{x:0,y:0},{x:330,y:0,duration:0.7,ease:"power2.inOut"},0.3);
+tl.fromTo("#ch5-k",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.8);
+tl.fromTo(".ch5-qw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.09},0.95);
+window.__timelines["ch5"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

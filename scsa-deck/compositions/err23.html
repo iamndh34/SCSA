@@ -1,0 +1,40 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="err23" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="err23-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="err23-tw">Lỗi</span> <span class="err23-tw">2</span> <span class="err23-tw">và</span> <span class="err23-tw">3:</span> <span class="err23-tw">loang</span> <span class="err23-tw">lổ,</span> <span class="err23-tw">nhạt</span> <span class="err23-tw">nhoà</span></h1><div id="e2-h" class="lb" style="left:192px;top:250px;width:600px;font-size:48px;color:#16181C;text-align:left;font-weight:800">Loang lổ</div><div id="e2-a" class="print" style="left:192px;top:320px;width:732px;height:204px;padding:12px"><div style="width:708px;height:180px;background-image:url(assets/img/ex1_sanet.png);background-size:708px 708px;background-position:0 -8px"></div></div><div id="e2-al" class="lb" style="left:192px;top:530px;width:732px;font-size:30px;color:#16181C;text-align:left;font-weight:600">SANet: trời lẫn vệt xanh của núi</div><div id="e2-b" class="print" style="left:192px;top:590px;width:732px;height:204px;padding:12px"><div style="width:708px;height:180px;background-image:url(assets/img/ex1_sanet_scsa.png);background-size:708px 708px;background-position:0 -8px"></div></div><div id="e2-bl" class="lb" style="left:192px;top:800px;width:732px;font-size:30px;color:#4B5260;text-align:left;font-weight:500">mong muốn: trời một tông (SANet + SCSA)</div><div id="e3-h" class="lb" style="left:1020px;top:250px;width:600px;font-size:48px;color:#16181C;text-align:left;font-weight:800">Nhạt nhoà</div><div id="e3-d" class="lb" style="left:1020px;top:315px;width:708px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">Trộn nhiều mảnh sắc nét ra một màu đục.</div><div id="e3-k0" class="tile" style="left:1020px;top:400px;width:110px;height:110px;background-image:url(assets/img/29_paint.jpg);background-size:1320px 1320px;background-position:-1100px -330px;"></div><div id="e3-k1" class="tile" style="left:1150px;top:400px;width:110px;height:110px;background-image:url(assets/img/29_paint.jpg);background-size:1320px 1320px;background-position:-770px -550px;"></div><div id="e3-k2" class="tile" style="left:1280px;top:400px;width:110px;height:110px;background-image:url(assets/img/29_paint.jpg);background-size:1320px 1320px;background-position:-550px -330px;"></div><div id="e3-k3" class="tile" style="left:1410px;top:400px;width:110px;height:110px;background-image:url(assets/img/29_paint.jpg);background-size:1320px 1320px;background-position:-440px -330px;"></div><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="e3-c0" d="M1075 516 L1305 600" stroke="#16181C" stroke-width="3" fill="none"/><path id="e3-c1" d="M1205 516 L1305 600" stroke="#16181C" stroke-width="3" fill="none"/><path id="e3-c2" d="M1335 516 L1305 600" stroke="#16181C" stroke-width="3" fill="none"/><path id="e3-c3" d="M1465 516 L1305 600" stroke="#16181C" stroke-width="3" fill="none"/></svg><div id="e3-r" style="position:absolute;left:1240px;top:610px;width:130px;height:130px;background:rgb(194,183,173);box-shadow:0 0 0 6px #C2185B"></div><div id="e3-rl" class="lb" style="left:1020px;top:760px;width:708px;font-size:30px;color:#16181C;text-align:center;font-weight:600">trộn có trọng số → đục, mất nét cọ</div><p id="e23-end" class="ln" style="left:192px;top:880px;width:1536px;font-size:40px;font-weight:600;color:#16181C;text-align:left">Hai lỗi kéo <span style="color:#C2185B">ngược</span> nhau: cần một tông chung, nhưng vẫn giữ nét riêng.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".err23-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#e2-h",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.3);
+tl.fromTo("#e2-a",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.5);
+tl.fromTo("#e2-al",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.8);
+tl.fromTo("#e2-b",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.1);
+tl.fromTo("#e2-bl",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.4);
+tl.fromTo("#e3-h",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.0);
+tl.fromTo("#e3-d",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},2.15);
+tl.fromTo("#e3-k0",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},2.3);
+tl.fromTo("#e3-c0",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.4,ease:"power2.inOut"},3.0);
+tl.fromTo("#e3-k1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},2.38);
+tl.fromTo("#e3-c1",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.4,ease:"power2.inOut"},3.06);
+tl.fromTo("#e3-k2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},2.46);
+tl.fromTo("#e3-c2",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.4,ease:"power2.inOut"},3.12);
+tl.fromTo("#e3-k3",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},2.54);
+tl.fromTo("#e3-c3",{strokeDasharray:400,strokeDashoffset:400},{strokeDashoffset:0,duration:0.4,ease:"power2.inOut"},3.18);
+tl.fromTo("#e3-r",{opacity:0,scale:0.7},{opacity:1,scale:1,duration:0.5,ease:"expo.out"},3.4);
+tl.fromTo("#e3-rl",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.6);
+tl.fromTo("#e23-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},4.3);
+window.__timelines["err23"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

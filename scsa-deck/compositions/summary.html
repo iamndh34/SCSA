@@ -1,0 +1,30 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="summary" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="sum-big" class="t" style="top:150px;font-size:88px;width:1536px"><span class="sum-w">Chỉ</span> <span class="sum-w">lấy</span> <span class="sum-w">style</span> <span class="sum-w">từ</span> <span class="sum-w">vùng</span> <span class="sum-w" style="color:#C2185B">cùng</span> <span class="sum-w">nhãn.</span></h1><div id="sum-a" class="print" style="left:192px;top:360px;width:364px;height:364px;padding:12px;"><img src="assets/img/ex1_sanet.png" alt="" style="width:340px;height:340px;object-fit:cover;display:block"></div><div id="sum-b" class="print" style="left:600px;top:360px;width:364px;height:364px;padding:12px;"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:340px;height:340px;object-fit:cover;display:block"></div><div id="sum-ca" class="lb" style="left:192px;top:728px;width:364px;font-size:32px;color:#4B5260;text-align:center;font-weight:600">trước</div><div id="sum-cb" class="lb" style="left:600px;top:728px;width:364px;font-size:32px;color:#16181C;text-align:center;font-weight:700">sau</div><p id="sum-1" class="ln" style="left:1040px;top:380px;width:688px;font-size:40px;font-weight:600;color:#16181C;text-align:left">SCA lấy tông chung của cả vùng.</p><p id="sum-2" class="ln" style="left:1040px;top:460px;width:688px;font-size:40px;font-weight:600;color:#16181C;text-align:left">SSA giữ nét cọ của một điểm.</p><p id="sum-3" class="ln" style="left:1040px;top:540px;width:688px;font-size:40px;font-weight:600;color:#16181C;text-align:left">Không train lại; lỗi theo vùng giảm 29–47%.</p><p id="sum-l" class="ln" style="left:192px;top:860px;width:1536px;font-size:30px;font-weight:500;color:#4B5260;text-align:left">arxiv.org/abs/2503.04119 · github.com/scn-00/SCSA</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".sum-w",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.09},0.2);
+tl.fromTo("#sum-a",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.1);
+tl.fromTo("#sum-b",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.25);
+tl.fromTo("#sum-ca",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.4);
+tl.fromTo("#sum-cb",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.5);
+tl.fromTo("#sum-1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.2);
+tl.fromTo("#sum-2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.5);
+tl.fromTo("#sum-3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.8);
+tl.fromTo("#sum-l",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},3.0);
+window.__timelines["summary"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

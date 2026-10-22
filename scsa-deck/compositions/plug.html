@@ -1,0 +1,46 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="plug" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="plug-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="plug-tw">Cắm</span> <span class="plug-tw">vào</span> <span class="plug-tw">ba</span> <span class="plug-tw">họ</span> <span class="plug-tw">mô</span> <span class="plug-tw">hình,</span> <span class="plug-tw" style="color:#C2185B">không</span> <span class="plug-tw">train</span> <span class="plug-tw">lại</span></h1><div id="pl-n0" class="lb" style="left:192px;top:270px;width:900px;font-size:64px;font-weight:800">SANet <span style="color:#4B5260;font-weight:500;font-size:44px">· CNN</span></div><div id="pl-a0" class="lb" style="left:192px;top:360px;width:900px;font-size:34px;color:#4B5260;text-align:left;font-weight:500">tỉ lệ trộn tông / nét: 0,7 / 0,3</div><div id="pl-n1" class="lb" style="left:192px;top:270px;width:900px;font-size:64px;font-weight:800">StyTr2 <span style="color:#4B5260;font-weight:500;font-size:44px">· Transformer</span></div><div id="pl-a1" class="lb" style="left:192px;top:360px;width:900px;font-size:34px;color:#4B5260;text-align:left;font-weight:500">tỉ lệ trộn tông / nét: 1,2 / 0,5</div><div id="pl-n2" class="lb" style="left:192px;top:270px;width:900px;font-size:64px;font-weight:800">StyleID <span style="color:#4B5260;font-weight:500;font-size:44px">· Diffusion</span></div><div id="pl-a2" class="lb" style="left:192px;top:360px;width:900px;font-size:34px;color:#4B5260;text-align:left;font-weight:500">tỉ lệ trộn tông / nét: 0,8 / 0,2</div><div id="pl-enc" style="position:absolute;left:300px;top:500px;width:240px;height:150px;background:#FFFFFF;border:4px solid #16181C;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 12px"><div style="font-size:38px;font-weight:800;color:#16181C">Encoder</div></div><div id="pl-slot" style="position:absolute;left:660px;top:470px;width:340px;height:210px;border:4px dashed #4B5260"></div><div id="pl-old" style="position:absolute;left:680px;top:490px;width:300px;height:170px;background:#C9CDD3;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700">attention gốc</div><div id="pl-new" style="position:absolute;left:680px;top:490px;width:300px;height:170px;background:#16181C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:800">SCSA</div><div id="pl-dec" style="position:absolute;left:1120px;top:500px;width:240px;height:150px;background:#FFFFFF;border:4px solid #16181C;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px 12px"><div style="font-size:38px;font-weight:800;color:#16181C">Decoder</div></div><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="pl-w1" d="M540 575 L656 575" stroke="#16181C" stroke-width="4" fill="none" stroke-linecap="round"/><path id="pl-w2" d="M1004 575 L1116 575" stroke="#16181C" stroke-width="4" fill="none" stroke-linecap="round"/></svg><p id="pl-end" class="ln" style="left:192px;top:860px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:left">Chỉ thay khối attention. Trọng số gốc giữ nguyên: <span style="color:#C2185B">không</span> train lại.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".plug-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#pl-n0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.3);
+tl.fromTo("#pl-a0",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.45);
+tl.fromTo("#pl-enc",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.4);
+tl.fromTo("#pl-dec",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.5);
+tl.fromTo("#pl-w1",{strokeDasharray:200,strokeDashoffset:200},{strokeDashoffset:0,duration:0.3,ease:"power2.inOut"},0.7);
+tl.fromTo("#pl-w2",{strokeDasharray:200,strokeDashoffset:200},{strokeDashoffset:0,duration:0.3,ease:"power2.inOut"},0.7);
+tl.fromTo("#pl-slot",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.8);
+tl.fromTo("#pl-old",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.9);
+tl.set("#pl-new",{opacity:0},0);
+tl.set("#pl-n1",{opacity:0},0);
+tl.set("#pl-n2",{opacity:0},0);
+tl.set("#pl-a1",{opacity:0},0);
+tl.set("#pl-a2",{opacity:0},0);
+tl.fromTo("#pl-old",{y:0,opacity:1},{y:240,opacity:0,duration:0.45,ease:"power3.in",immediateRender:false},1.5);
+tl.fromTo("#pl-new",{y:-260,opacity:0},{y:0,opacity:1,duration:0.7,ease:"expo.out"},1.7);
+tl.fromTo("#pl-n0",{y:0,opacity:1},{y:-40,opacity:0,duration:0.25,ease:"power3.in",immediateRender:false},2.4);
+tl.fromTo("#pl-a0",{opacity:1},{opacity:0,duration:0.2,ease:"power2.out",immediateRender:false},2.4);
+tl.fromTo("#pl-n1",{y:40,opacity:0},{y:0,opacity:1,duration:0.35,ease:"expo.out"},2.55);
+tl.fromTo("#pl-a1",{opacity:0},{opacity:1,duration:0.25,ease:"power2.out"},2.65);
+tl.fromTo("#pl-n1",{y:0,opacity:1},{y:-40,opacity:0,duration:0.25,ease:"power3.in",immediateRender:false},3.2);
+tl.fromTo("#pl-a1",{opacity:1},{opacity:0,duration:0.2,ease:"power2.out",immediateRender:false},3.2);
+tl.fromTo("#pl-n2",{y:40,opacity:0},{y:0,opacity:1,duration:0.35,ease:"expo.out"},3.35);
+tl.fromTo("#pl-a2",{opacity:0},{opacity:1,duration:0.25,ease:"power2.out"},3.45);
+tl.fromTo("#pl-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},4.0);
+window.__timelines["plug"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

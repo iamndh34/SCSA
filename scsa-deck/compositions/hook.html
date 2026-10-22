@@ -1,0 +1,38 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="hook-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="hook-tw">Cùng</span> <span class="hook-tw">ảnh,</span> <span class="hook-tw">cùng</span> <span class="hook-tw">tranh,</span> <span class="hook-tw" style="color:#C2185B">hai</span> <span class="hook-tw">kết</span> <span class="hook-tw">quả</span></h1><div id="hook-a" class="print" style="left:192px;top:250px;width:504px;height:504px;padding:12px;"><img src="assets/img/ex1_sanet.png" alt="" style="width:480px;height:480px;object-fit:cover;display:block"></div><div id="hook-b" class="print" style="left:1212px;top:250px;width:504px;height:504px;padding:12px;"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:480px;height:480px;object-fit:cover;display:block"></div><div id="hook-c" class="print" style="left:768px;top:300px;width:184px;height:184px;padding:8px;"><img src="assets/img/29.jpg" alt="" style="width:168px;height:168px;object-fit:cover;display:block"></div><div id="hook-s" class="print" style="left:972px;top:300px;width:184px;height:184px;padding:8px;"><img src="assets/img/29_paint.jpg" alt="" style="width:168px;height:168px;object-fit:cover;display:block"></div><div id="hook-in" class="lb" style="left:708px;top:500px;width:504px;font-size:32px;color:#4B5260;text-align:center;font-weight:600">cùng đầu vào</div><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="hook-ar1" d="M900 580 L730 580" stroke="#4B5260" stroke-width="3" fill="none" stroke-linecap="round"/><path id="hook-ah1" d="M744 568 L724 580 L744 592Z" fill="#4B5260"/><path id="hook-ar2" d="M1020 580 L1190 580" stroke="#4B5260" stroke-width="3" fill="none" stroke-linecap="round"/><path id="hook-ah2" d="M1176 568 L1196 580 L1176 592Z" fill="#4B5260"/><ellipse id="hook-e1" cx="360" cy="560" rx="118" ry="168" fill="none" stroke="#C2185B" stroke-width="6"/><ellipse id="hook-e2" cx="1380" cy="560" rx="118" ry="168" fill="none" stroke="#16181C" stroke-width="6" stroke-dasharray="14 10"/></svg><div id="hook-ca" class="lb" style="left:192px;top:774px;width:504px;font-size:40px;color:#16181C;text-align:center;font-weight:800">SANet</div><div id="hook-cb" class="lb" style="left:1212px;top:774px;width:504px;font-size:40px;color:#16181C;text-align:center;font-weight:800">SANet + <span style="color:#C2185B">SCSA</span></div><div id="hook-na" class="lb" style="left:192px;top:834px;width:504px;font-size:32px;color:#C2185B;text-align:center;font-weight:600">vách núi bị tô bằng màu trời</div><div id="hook-nb" class="lb" style="left:1212px;top:834px;width:504px;font-size:32px;color:#16181C;text-align:center;font-weight:600">vách núi mang màu núi</div><p id="hook-q" class="ln" style="left:192px;top:900px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:center">Vì sao bên trái tô nhầm? Cả buổi hôm nay trả lời câu này.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".hook-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#hook-c",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.3);
+tl.fromTo("#hook-s",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.45);
+tl.fromTo("#hook-in",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.6);
+tl.fromTo("#hook-ar1",{strokeDasharray:200,strokeDashoffset:200},{strokeDashoffset:0,duration:0.4,ease:"power2.inOut"},0.7);
+tl.fromTo("#hook-ah1",{opacity:0},{opacity:1,duration:0.15,ease:"power2.out"},1.0);
+tl.fromTo("#hook-ar2",{strokeDasharray:200,strokeDashoffset:200},{strokeDashoffset:0,duration:0.4,ease:"power2.inOut"},0.7);
+tl.fromTo("#hook-ah2",{opacity:0},{opacity:1,duration:0.15,ease:"power2.out"},1.0);
+tl.fromTo("#hook-a",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.8);
+tl.fromTo("#hook-b",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.95);
+tl.fromTo("#hook-ca",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.1);
+tl.fromTo("#hook-cb",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.2);
+tl.fromTo("#hook-e1",{strokeDasharray:950,strokeDashoffset:950},{strokeDashoffset:0,duration:0.6,ease:"power2.inOut"},1.6);
+tl.fromTo("#hook-na",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.9);
+tl.fromTo("#hook-e2",{strokeDasharray:950,strokeDashoffset:950},{strokeDashoffset:0,duration:0.6,ease:"power2.inOut"},2.2);
+tl.fromTo("#hook-nb",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},2.5);
+tl.fromTo("#hook-q",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},3.0);
+window.__timelines["hook"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

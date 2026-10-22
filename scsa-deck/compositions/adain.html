@@ -1,0 +1,41 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="adain" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="adain-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="adain-tw">AdaIN:</span> <span class="adain-tw">đổi</span> <span class="adain-tw">tông</span> <span class="adain-tw">bằng</span> <span class="adain-tw" style="color:#C2185B">hai</span> <span class="adain-tw">con</span> <span class="adain-tw">số</span></h1><div id="ad-a" class="print" style="left:192px;top:270px;width:404px;height:404px;padding:12px;"><img src="assets/img/29.jpg" alt="" style="width:380px;height:380px;object-fit:cover;display:block"></div><div id="ad-s" class="print" style="left:680px;top:470px;width:166px;height:166px;padding:8px;"><img src="assets/img/29_paint.jpg" alt="" style="width:150px;height:150px;object-fit:cover;display:block"></div><div id="ad-r" class="print" style="left:1324px;top:270px;width:404px;height:404px;padding:12px;"><img src="assets/img/29_adain.png" alt="" style="width:380px;height:380px;object-fit:cover;display:block"></div><div id="ad-cn" class="lb" style="left:870px;top:284px;width:400px;font-size:32px;color:#16181C;text-align:left;font-weight:700">tông của ảnh</div><div id="ad-cmu" style="position:absolute;left:870px;top:330px;width:90px;height:90px;background:rgb(155,153,146);box-shadow:0 0 0 3px #fff"></div><div id="ad-cml" class="lb" style="left:975px;top:334px;width:300px;font-size:28px;color:#4B5260;text-align:left;font-weight:500">μ màu trung bình</div><div id="ad-csd" style="position:absolute;left:975px;top:382px;width:236px;height:22px;background:#16181C"></div><div id="ad-csl" class="lb" style="left:975px;top:410px;width:260px;font-size:28px;color:#4B5260;text-align:left;font-weight:500">σ độ tương phản</div><div id="ad-sn" class="lb" style="left:870px;top:484px;width:400px;font-size:32px;color:#16181C;text-align:left;font-weight:700">tông của tranh</div><div id="ad-smu" style="position:absolute;left:870px;top:530px;width:90px;height:90px;background:rgb(135,147,149);box-shadow:0 0 0 3px #fff"></div><div id="ad-sml" class="lb" style="left:975px;top:534px;width:300px;font-size:28px;color:#4B5260;text-align:left;font-weight:500">μ màu trung bình</div><div id="ad-ssd" style="position:absolute;left:975px;top:582px;width:142px;height:22px;background:#16181C"></div><div id="ad-ssl" class="lb" style="left:975px;top:610px;width:260px;font-size:28px;color:#4B5260;text-align:left;font-weight:500">σ độ tương phản</div><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="ad-ar" d="M1250 470 L1312 470" stroke="#16181C" stroke-width="4" fill="none" stroke-linecap="round"/><path id="ad-ah" d="M1302 456 L1322 470 L1302 484Z" fill="#16181C"/></svg><div id="ad-rl" class="lb" style="left:1324px;top:690px;width:404px;font-size:32px;color:#16181C;text-align:center;font-weight:600">cả ảnh khoác một tông của tranh</div><p id="ad-step" class="ln" style="left:192px;top:690px;width:500px;font-size:32px;font-weight:500;color:#4B5260;text-align:left">Bỏ μ, σ của ảnh, khoác μ, σ của tranh.</p><p id="ad-end" class="ln" style="left:192px;top:860px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:left">Một cặp số cho cả ảnh: mọi vùng bị kéo về <span style="color:#C2185B">cùng</span> một tông.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".adain-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#ad-a",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.3);
+tl.fromTo("#ad-cn",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.6);
+tl.fromTo("#ad-cmu",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.5,ease:"expo.out"},0.7);
+tl.fromTo("#ad-cml",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.8);
+tl.fromTo("#ad-csd",{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:0.6,ease:"expo.out"},0.8);
+tl.fromTo("#ad-csl",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.0);
+tl.fromTo("#ad-s",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.4);
+tl.fromTo("#ad-sn",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.5);
+tl.fromTo("#ad-smu",{opacity:0,scale:0.6},{opacity:1,scale:1,duration:0.5,ease:"expo.out"},1.6);
+tl.fromTo("#ad-sml",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.7);
+tl.fromTo("#ad-ssd",{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:0.6,ease:"expo.out"},1.7);
+tl.fromTo("#ad-ssl",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.9);
+tl.fromTo("#ad-ar",{strokeDasharray:100,strokeDashoffset:100},{strokeDashoffset:0,duration:0.3,ease:"power2.inOut"},2.4);
+tl.fromTo("#ad-ah",{opacity:0},{opacity:1,duration:0.1,ease:"power2.out"},2.65);
+tl.fromTo("#ad-r",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},2.5);
+tl.fromTo("#ad-r",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.9,ease:"power2.inOut"},2.6);
+tl.fromTo("#ad-rl",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.2);
+tl.fromTo("#ad-step",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},3.2);
+tl.fromTo("#ad-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},3.9);
+window.__timelines["adain"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

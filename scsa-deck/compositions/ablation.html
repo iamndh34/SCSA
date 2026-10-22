@@ -1,0 +1,36 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="ablation" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="ablation-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="ablation-tw">Bỏ</span> <span class="ablation-tw">bớt</span> <span class="ablation-tw">một</span> <span class="ablation-tw">mảnh,</span> <span class="ablation-tw">lỗi</span> <span class="ablation-tw">tăng</span> <span class="ablation-tw">bao</span> <span class="ablation-tw">nhiêu?</span></h1><div id="ab-sub" class="lb" style="left:192px;top:230px;width:900px;font-size:30px;color:#4B5260;text-align:left;font-weight:500">trên StyleID · SSL, thấp là tốt</div><div id="ab-n0" class="lb" style="left:192px;top:314px;width:300px;font-size:40px;color:#16181C;text-align:left;font-weight:800">Đủ cả ba</div><div id="ab-b0" style="position:absolute;left:500px;top:300px;width:398px;height:80px;background:#16181C"></div><div id="ab-v0" class="lb" style="left:918.4000000000001px;top:314px;width:560px;font-size:32px;color:#16181C;text-align:left;font-weight:500"><b style="font-size:44px">1,245</b> · mốc để so</div><div id="ab-n1" class="lb" style="left:192px;top:434px;width:300px;font-size:40px;color:#16181C;text-align:left;font-weight:800">Bỏ SSA</div><div id="ab-b1" style="position:absolute;left:500px;top:420px;width:426px;height:80px;background:#4B5260"></div><div id="ab-v1" class="lb" style="left:945.6px;top:434px;width:560px;font-size:32px;color:#16181C;text-align:left;font-weight:500"><b style="font-size:44px">1,330</b> · mất texture</div><div id="ab-n2" class="lb" style="left:192px;top:554px;width:300px;font-size:40px;color:#16181C;text-align:left;font-weight:800">Bỏ S-AdaIN</div><div id="ab-b2" style="position:absolute;left:500px;top:540px;width:562px;height:80px;background:#4B5260"></div><div id="ab-v2" class="lb" style="left:1081.92px;top:554px;width:560px;font-size:32px;color:#16181C;text-align:left;font-weight:500"><b style="font-size:44px">1,756</b> · kém chính xác, ít chi tiết</div><div id="ab-n3" class="lb" style="left:192px;top:674px;width:300px;font-size:40px;color:#16181C;text-align:left;font-weight:800">Bỏ SCA</div><div id="ab-b3" style="position:absolute;left:500px;top:660px;width:735px;height:80px;background:#C2185B"></div><div id="ab-v3" class="lb" style="left:1255.3600000000001px;top:674px;width:560px;font-size:32px;color:#16181C;text-align:left;font-weight:500"><b style="font-size:44px">2,298</b> · lệch màu giữa các vùng</div><p id="ab-end" class="ln" style="left:192px;top:840px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:left">SCA lo tông chung, SSA lo nét cọ. <span style="color:#C2185B">Thiếu</span> cái nào cũng tệ hơn.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".ablation-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#ab-sub",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.2);
+tl.fromTo("#ab-n0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.3);
+tl.fromTo("#ab-b0",{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:0.6,ease:"expo.out"},0.3);
+tl.fromTo("#ab-v0",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.7);
+tl.fromTo("#ab-n1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.1);
+tl.fromTo("#ab-b1",{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:0.6,ease:"expo.out"},1.1);
+tl.fromTo("#ab-v1",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.5);
+tl.fromTo("#ab-n2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.9000000000000001);
+tl.fromTo("#ab-b2",{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:0.6,ease:"expo.out"},1.9000000000000001);
+tl.fromTo("#ab-v2",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},2.3000000000000003);
+tl.fromTo("#ab-n3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.7);
+tl.fromTo("#ab-b3",{scaleX:0,transformOrigin:"0% 50%"},{scaleX:1,duration:0.6,ease:"expo.out"},2.7);
+tl.fromTo("#ab-v3",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},3.1);
+tl.fromTo("#ab-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},3.6);
+window.__timelines["ablation"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>
