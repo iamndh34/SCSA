@@ -1,88 +1,154 @@
-# SCSA — Tài liệu seminar & bộ slide
-
-Tài liệu nghiên cứu, đề xuất đề tài và bộ slide trình bày cho bài báo:
+# SCSA: Semantic Continuous-Sparse Attention
 
 > **SCSA: A Plug-and-Play Semantic Continuous-Sparse Attention for Arbitrary Semantic Style Transfer** (CVPR 2025, Highlight)
-> Chunnan Shang, Hongwei Wang, Zhizhong Wang, Xiangming Meng — Zhejiang University
-> Paper: https://arxiv.org/abs/2503.04119 · Code gốc: https://github.com/scn-00/SCSA
+> Chunnan Shang, Hongwei Wang, Zhizhong Wang, Xiangming Meng · Zhejiang University
+> Paper: https://arxiv.org/abs/2503.04119 · Code: https://github.com/scn-00/SCSA
 
-**Tóm tắt một câu:** SCSA thay khối Universal Attention trong các mô hình style transfer dựa trên attention (SANet, StyTr2, StyleID) bằng hai attention có ràng buộc ngữ nghĩa (SCA + SSA), không cần huấn luyện lại, để mỗi vùng của ảnh kết quả chỉ lấy style từ vùng cùng nhãn trong tranh.
+**Ý chính:** SCSA thay khối attention toàn cục (Universal Attention, UA) trong các mô hình style transfer dựa trên attention bằng hai attention có ràng buộc nhãn ngữ nghĩa, là **SCA** và **SSA**. Phương pháp **không cần huấn luyện lại**. Kết quả: vùng "trời" trong ảnh kết quả chỉ lấy style từ vùng "trời" của tranh, vùng "cỏ" chỉ lấy từ vùng "cỏ".
 
-## Nội dung repo
+---
 
-| File / thư mục | Nội dung |
-| --- | --- |
-| [`01_Seminar_Outline_SCSA.md`](01_Seminar_Outline_SCSA.md) | Dàn ý seminar (~90 phút): kiến thức nền, ba lỗi của Universal Attention, phương pháp SCA / S-AdaIN / SSA, thực nghiệm, phân tích phản biện, lộ trình đọc code |
-| [`02_Proposal_SCSA.md`](02_Proposal_SCSA.md) | Research proposal **Auto-SCSA**: tương ứng ngữ nghĩa tự động, attention theo vùng hiệu quả, benchmark MS-COCO × WikiArt, kế hoạch 16 tuần |
-| [`03_Script_Trinh_Bay_SCSA.md`](03_Script_Trinh_Bay_SCSA.md) | Lời thoại theo từng slide cho bộ slide bản 1 (33 slide, artifact trên claude.ai) |
-| [`04_Script_HyperFrames_SCSA.md`](04_Script_HyperFrames_SCSA.md) | Lời thoại cho bộ slide bản 2 (HyperFrames, 36 slide) — số lần bấm, thời lượng, nguồn hình từng slide |
-| [`slides_export/`](slides_export) | Bộ slide bản 2 đã xuất thành một file HTML chạy offline |
-| [`scsa-deck/`](scsa-deck) | Mã nguồn bộ slide bản 2 (dự án HyperFrames) |
+## 1. Bài toán
 
-## Trình chiếu nhanh
+**Arbitrary Semantic Style Transfer:** đầu vào gồm bốn thành phần `{I_c, I_csem, I_s, I_ssem}`: ảnh content và semantic map của nó, ảnh style và semantic map của nó. Mô hình cần sinh ảnh `I_cs` thỏa hai điều kiện:
 
-Mở `slides_export/SCSA_trinh_chieu.html` bằng trình duyệt (bấm đúp là được, không cần mạng). Khi mang sang máy khác, chép **cả thư mục** `slides_export/`.
+- giữ nội dung của `I_c`;
+- style của mỗi vùng ngữ nghĩa khớp với **vùng cùng nhãn** trong `I_s`.
 
-| Phím | Tác dụng |
-| --- | --- |
-| `→` / `Space` / click | Bước tiếp theo (chạy hoạt hình) |
-| `←` | Lùi lại |
-| `F` | Toàn màn hình |
-| `P` | Cửa sổ ghi chú người trình bày |
-| `H` | Bảng phím tắt |
+Các phương pháp style transfer dựa trên attention (Attn-AST) như **SANet** (CNN), **StyTr2** (Transformer) và **StyleID** (Diffusion) đều dùng attention toàn cục:
 
-Thời lượng gợi ý: 75–85 phút nói + 10–15 phút hỏi đáp. Lời thoại đầy đủ nằm trong `04_Script_HyperFrames_SCSA.md` và trong cửa sổ ghi chú (phím `P`).
+$$
+Q = f_q(\bar F_c),\quad K = f_k(\bar F_s),\quad V = f_v(F_s),\quad
+F_{cs} = f_o\big(\mathrm{softmax}(Q^\top K)\, V\big) + F_c
+$$
 
-## Bộ slide `scsa-deck/`
+Ở đây mỗi điểm content (query) nhìn vào **mọi** điểm style (key) và chỉ xét độ giống nhau về cấu trúc, không xét nhãn vùng.
 
-Cả buổi dùng một ví dụ thật xuyên suốt: mẫu số 29 trong repo của tác giả (ảnh Yosemite, tranh núi và hai bản đồ nhãn bốn vùng: trời, vách núi, rừng, dãy xa). Các con số trên lưới 12 × 12 là **phép tính minh hoạ** trên ảnh mẫu, không phải số đo của mô hình; số liệu thật của paper chỉ có ở slide SSL và ablation.
+## 2. Ba lỗi của Universal Attention
 
-Tài liệu thiết kế:
+| # | Lỗi | Hệ quả | SCSA sửa bằng |
+| --- | --- | --- | --- |
+| 1 | Query chú ý tới mọi key style, bỏ qua nhãn vùng | Lấy style sai vùng, sinh artifact | Mask theo nhãn |
+| 2 | Style phụ thuộc cấu trúc cục bộ: hai điểm cạnh nhau có cấu trúc hơi khác sẽ nhận style khác nhau | Một vùng cùng nghĩa bị stylize không liên tục | **SCA** |
+| 3 | Đầu ra là trung bình có trọng số của nhiều điểm style | Texture bị làm mờ, kém sống động | **SSA** |
 
-- [`SPEC.md`](scsa-deck/SPEC.md) — mục tiêu, màu, chữ, chuyển động, quy tắc QA
-- [`STORYLINES.md`](scsa-deck/STORYLINES.md) — ba cách kể chuyện đã cân nhắc và lý do chọn
-- [`REVIEW.md`](scsa-deck/REVIEW.md) — các quyết định thiết kế và nguồn dữ liệu
+## 3. Phương pháp
 
-Cấu trúc:
-
-```
-scsa-deck/
-├── index.html, compositions/   # dự án HyperFrames (sinh ra từ _build/)
-├── assets/
-│   ├── img/                    # ảnh mẫu 29 và kết quả từ paper
-│   ├── data/scsa-data.json     # số liệu minh hoạ tính trên ảnh mẫu
-│   ├── fonts/                  # Be Vietnam Pro, JetBrains Mono (OFL)
-│   ├── deck.css, deck-motion.js
-└── _build/
-    ├── build.py                # ghép các slide (s_*.py) thành dự án HyperFrames
-    ├── export_html.py          # xuất bản HTML độc lập
-    ├── s_open.py … s_res.py    # nội dung từng chặng
-    └── compute/                # tính scsa-data.json bằng Chrome headless
+```mermaid
+flowchart LR
+    Ic[Ảnh content] --> E[Encoder]
+    Icsem[Semantic map content] --> E
+    Is[Ảnh style] --> E
+    Issem[Semantic map style] --> E
+    E --> SCA["SCA<br/>Q,K từ semantic map<br/>mask: cùng nhãn"]
+    E --> SAdaIN["S-AdaIN<br/>AdaIN theo từng vùng"]
+    SAdaIN --> SSA["SSA<br/>Q,K từ ảnh<br/>mask: top-1 cùng nhãn"]
+    SCA --> Mix["F_cs = α1·F_sca + α2·F_ssa + F_c"]
+    SSA --> Mix
+    SAdaIN --> Mix
+    Mix --> D[Decoder] --> Ics[Ảnh kết quả]
 ```
 
-### Dựng lại
+SCSA chỉ thay khối UA. Encoder, decoder và trọng số của backbone giữ nguyên, nên phương pháp **plug-and-play**.
 
-Yêu cầu: Python 3, Node.js (dùng `npx`).
+### 3.1 Semantic Continuous Attention (SCA): style tổng thể của vùng
 
-```bash
-cd scsa-deck
+$$
+Q_1 = f_q(\bar F_{csem}),\quad K_1 = f_k(\bar F_{ssem}),\quad V_1 = f_v(F_s)
+$$
 
-# Sinh lại index.html + compositions/ từ mã nguồn Python
-python3 _build/build.py
+$$
+\bar A_{qk} =
+\begin{cases} (Q_1^\top K_1)_{qk} & \text{nếu } q, k \text{ cùng nhãn} \\ -\infty & \text{ngược lại}\end{cases}
+\qquad
+F_{sca} = f_o\big(\mathrm{softmax}(\bar A)\, V_1\big)
+$$
 
-# Kiểm tra (lint, runtime, layout, contrast) và xem trước
-npm run check
-npx hyperframes preview
+- Q và K lấy từ feature của **semantic map**, không lấy từ ảnh. Semantic map không mang cấu trúc ảnh, nên mọi điểm trong cùng một vùng có hàng attention gần như giống nhau.
+- Sau khi mask, trọng số trải đều lên **toàn bộ** vùng style tương ứng ("continuous"). Nhờ vậy cả vùng nhận cùng màu và tông, sửa lỗi #2.
+- V vẫn lấy từ ảnh style, nên thông tin style thực sự vẫn đến từ tranh.
 
-# Xuất bản HTML chạy offline
-python3 _build/export_html.py ../slides_export
-```
+### 3.2 Semantic AdaIN (S-AdaIN)
 
-`export_html.py` gọi lại `build.py`, nhúng font vào file HTML; ảnh và `gsap.min.js` cần nằm cạnh file xuất trong `assets/img/` và `lib/`.
+S-AdaIN tách semantic map thành mặt nạ của từng lớp (bằng K-Means), rồi áp AdaIN **riêng cho từng vùng**: thống kê mean/std của vùng *i* bên content được khớp với vùng *i* bên style. Bước này giảm ảnh hưởng của style vốn có trong ảnh content, cho SSA một query sạch hơn.
 
-`_build/compute/run.mjs` đang trỏ cứng tới đường dẫn Chrome headless và gói `hyperframes` trong cache npx của máy tác giả; sửa hai đường dẫn đó nếu muốn tính lại `scsa-data.json` trên máy khác.
+### 3.3 Semantic Sparse Attention (SSA): texture cụ thể
 
-## Ghi chú
+$$
+Q_2 = f_q(\bar F_c^{\,S\text{-}AdaIN}),\quad K_2 = f_k(\bar F_s),\quad V_2 = f_v(F_s)
+$$
 
-- Số liệu của SCSA trong tài liệu đã đối chiếu với bản PDF arXiv v1. Mọi con số trong proposal là mục tiêu, chưa phải kết quả.
-- Ảnh mẫu và ảnh kết quả lấy từ paper và repo gốc của tác giả, chỉ dùng cho mục đích học tập.
+$$
+\bar B_{qk} =
+\begin{cases} B_{qk} & \text{nếu } B_{qk} = \max_{n\,\in\,\text{cùng nhãn}} B_{qn} \\ -\infty & \text{ngược lại}\end{cases}
+\qquad
+F_{ssa} = f_o\big(\mathrm{softmax}(\bar B)\, V_2\big)
+$$
+
+- Q và K là feature của ảnh, nên SSA so khớp theo cấu trúc, nhưng **chỉ trong cùng vùng**.
+- Mask chỉ giữ **một key** (top-1), nên softmax trở thành one-hot: mỗi điểm sao chép nguyên value của điểm style giống nó nhất ("sparse"). Texture vì thế giữ được độ sắc, sửa lỗi #3. Có thể hiểu SSA là Style-Swap giới hạn trong từng vùng ngữ nghĩa.
+
+### 3.4 Phép trộn
+
+$$
+F_{cs} = \alpha_1 F_{sca} + \alpha_2 F_{ssa} + F_c
+$$
+
+`α1` điều chỉnh mức style tổng thể (màu, tông), `α2` điều chỉnh độ sắc của texture, `F_c` là feature content sau S-AdaIN.
+
+## 4. Cắm vào các backbone
+
+| Backbone | Họ | Vị trí thay UA | Siêu tham số mặc định |
+| --- | --- | --- | --- |
+| SANet | CNN (VGG-19) | Khối SANet | α1 = 0.7, α2 = 0.3 |
+| StyTr2 | Transformer | Các transformer chẵn của decoder | α1 = 1.2, α2 = 0.5, b = 0.7 |
+| StyleID | Diffusion (LDM U-Net) | Self-attention của U-Net sau DDIM inversion | α1 = 0.8, α2 = 0.2, t1 = 0.3, t2 = 0.5 |
+
+Với StyleID, Q/K của SCA không lấy thuần từ semantic map mà trộn với feature ảnh theo hệ số t1, còn Q của SSA trộn theo t2. S-AdaIN chỉ dùng ở bước t = T.
+
+## 5. Kết quả
+
+**Thiết lập:** 91 bộ dữ liệu do tác giả tự tuyển, semantic map dựng tay. Có bốn metric:
+
+- **SSL** (Semantic Style Loss, ↓): style loss Gram tính theo từng vùng, do tác giả đề xuất.
+- **FID** (↓): mức khớp style tổng thể.
+- **CFSD** (↓): mức giữ nội dung.
+- **Pref.** (↑): user study với 1.200 phiếu.
+
+| Phương pháp | SSL ↓ | FID ↓ | CFSD ↓ | Pref. ↑ |
+| --- | --- | --- | --- | --- |
+| SANet | 1.6583 | 14.3385 | 0.1103 | 0.1685 |
+| **SANet + SCSA** | **0.8762** | 13.0788 | 0.0874 | 0.8315 |
+| StyTr2 | 1.9826 | 12.5273 | 0.0752 | 0.1576 |
+| **StyTr2 + SCSA** | 1.2228 | **12.3963** | **0.0705** | 0.8424 |
+| StyleID | 1.7538 | 12.5944 | 0.0916 | 0.2192 |
+| **StyleID + SCSA** | 1.2447 | 12.4497 | 0.1178 | 0.7808 |
+| STROTSS | 1.0981 | 12.8400 | 0.1008 | 0.1867 |
+| MAST | 1.7320 | 16.5163 | 0.0746 | 0.1100 |
+| TR | 1.2631 | 13.5846 | 0.1149 | 0.0450 |
+| DIA | 1.9398 | 20.7942 | 0.1147 | 0.0167 |
+| GLStyleNet | 1.0305 | 14.4880 | 0.3991 | 0.1183 |
+
+- SCSA giảm SSL mạnh trên cả ba backbone. Với SANet, SSL giảm khoảng 47%, đạt mức tốt nhất toàn bảng.
+- FID giảm nhẹ trên cả ba backbone. StyTr2 + SCSA tốt nhất về FID và CFSD.
+- **Ngoại lệ:** CFSD của StyleID + SCSA tăng từ 0.0916 lên 0.1178. Tác giả chấp nhận hy sinh một phần nội dung để stylize đúng ngữ nghĩa hơn.
+
+**Ablation:** SCA chuyển được màu và tông tổng thể nhưng mất texture. SSA chuyển được texture nhưng màu lệch giữa các vùng. Hai thành phần bổ trợ nhau. Bỏ S-AdaIN làm CFSD tốt lên nhưng chất lượng stylize giảm.
+
+## 6. Hạn chế
+
+- Cần semantic map do người dùng cung cấp, với **nhãn khớp nhau** giữa content và style.
+- Tốn thêm thời gian và bộ nhớ so với backbone gốc, vì vẫn tính ma trận attention N×N đầy đủ rồi mới mask.
+- Hiệu quả phụ thuộc backbone: backbone chuyển style càng mạnh thì hiệu ứng càng rõ.
+- Đánh giá quy mô nhỏ (91 bộ). Metric chính SSL do tác giả tự đề xuất.
+- Paper không nói rõ cách xử lý vùng content không có nhãn tương ứng bên style. Khi đó cả hàng attention bị mask thành −∞, nên softmax không xác định.
+- Top-1 cứng trong SSA có thể gây lặp texture và nhạy với nhiễu.
+
+## Tham khảo
+
+- Shang et al., *SCSA*, CVPR 2025: [arXiv 2503.04119](https://arxiv.org/abs/2503.04119)
+- Park & Lee, *SANet*, CVPR 2019
+- Deng et al., *StyTr2*, CVPR 2022
+- Chung et al., *StyleID*, CVPR 2024
+- Huang & Belongie, *AdaIN*, ICCV 2017
+- Chen & Schmidt, *Style-Swap*, 2016
