@@ -13,8 +13,13 @@ ORDER = ["cover", "hook", "minute", "roadmap",
          "ch2", "grid", "attn", "softmax", "adain", "ua",
          "ch3", "err1", "err23", "fixmap",
          "ch4", "idea", "pipe", "sca", "sadain", "ssa", "matrices", "mix", "plug",
-         "ch5", "results", "metrics", "ssl", "ablation", "limits", "code", "summary", "glossary"]
+         "ch5", "results", "metrics", "ssl", "ablation", "limits", "code", "summary"]
 SL = [by[i] for i in ORDER]
+from notes import NOTES
+assert set(NOTES) == set(ORDER), set(NOTES) ^ set(ORDER)
+for s_ in SL:
+    s_["notes"] = NOTES[s_["id"]]
+    assert s_["notes"].count("Bấm") == len(s_["frags"]) - 1, (s_["id"], s_["notes"].count("Bấm"), len(s_["frags"]) - 1)
 
 FT = re.compile(r'tl\.fromTo\("([^"]+)",\{(.*?)\},\{(.*)\},([\d.]+)\);$')
 def keys(frm):

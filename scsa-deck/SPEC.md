@@ -2,7 +2,7 @@
 
 GOAL:    Người mới hiểu vì sao attention tô sai vùng và SCSA sửa thế nào, nhớ một câu: "chỉ lấy style từ vùng cùng nhãn".
 OUTPUT:  HyperFrames slideshow, 1920 x 1080, 30 fps, trình chiếu bằng `hyperframes present`; không render MP4.
-TIME:    36 slide, ~80 phút nói. Mỗi bước (fragment) 0.8–4 s hoạt hình, rồi giữ yên.
+TIME:    35 slide, ~80 phút nói. Mỗi bước (fragment) 0.8–4 s hoạt hình, rồi giữ yên.
 
 LOOK:    medium = "tường triển lãm và bản in": ảnh thật được in, dán lên tường, cắt thành mảnh, dán lại.
          ground #EDEFF1 phẳng, không hạt, không gradient. Bản in: viền trắng #FFFFFF 12 px, bóng 0 18 px 40 px rgba(20,24,28,.14).

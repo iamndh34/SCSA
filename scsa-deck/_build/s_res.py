@@ -172,18 +172,3 @@ js = [WORDS("sum-w", 0.2, 0.09), PLACE("#sum-a", 1.1), PLACE("#sum-b", 1.25), FA
       BLUR("#sum-1", 2.2), BLUR("#sum-2", 2.5), BLUR("#sum-3", 2.8), FADE("#sum-l", 3.0)]
 S.append(dict(id=sid, label="Tóm tắt", dur=3.8, frags=[0.9, 2.0, 3.4], html=m, js="\n".join(js), title="Chỉ lấy style từ vùng cùng nhãn",
   notes="Một câu mang về: chỉ lấy style từ vùng cùng nhãn. Bấm: đây là câu trả lời cho câu hỏi đầu buổi. SANet tô vách núi bằng màu vùng khác vì attention không biết nhãn vùng; SCSA cấm điều đó. Bấm: bên trong là hai cách nhìn: SCA lấy tông chung của cả vùng, SSA giữ nét cọ của một điểm. Không phải train lại, và lỗi style theo vùng giảm 29 đến 47 phần trăm. Nếu chỉ nhớ một hình: ba ma trận. Mình nhận câu hỏi."))
-
-# ---------------- glossary ----------------
-sid = "glossary"
-GL = [("Điểm", "một ô trên lưới mà encoder tạo ra, mang một vector"), ("Query · Key · Value", "câu hỏi · thẻ để so · nội dung lấy về"),
-      ("Softmax", "biến điểm số thành phần trăm, cộng lại 100%"), ("Cấm (mask −∞)", "ô bị cấm nhận đúng 0% trọng số"),
-      ("Semantic map", "ảnh tô màu theo nhãn: cùng màu là cùng nghĩa"), ("AdaIN · S-AdaIN", "khớp tông: cả ảnh · từng vùng"),
-      ("SCA · SSA", "nhìn cả vùng · nhìn một điểm"), ("G1 · G2", "luật cấm của SCA · của SSA"), ("Plug-and-play", "cắm vào mô hình có sẵn, không train lại")]
-m = title(sid, "Từ điển nhanh")
-for i, (a, b_) in enumerate(GL):
-    y = 240 + i * 74
-    m += f'<div class="gl-r" style="position:absolute;left:192px;top:{y}px;width:1536px;height:74px;border-top:2px solid #D3D7DD;display:flex;align-items:center">'
-    m += f'<div style="width:480px;font-size:34px;font-weight:800">{a}</div><div style="font-size:34px;font-weight:500;color:{INK2}">{b_}</div></div>'
-js = [WORDS(f"{sid}-tw", 0.1), 'tl.fromTo(".gl-r",{opacity:0},{opacity:1,duration:0.25,stagger:0.05},0.3);']
-S.append(dict(id=sid, label="Từ điển", dur=1.6, frags=[1.0], html=m, js="\n".join(js), title="Từ điển nhanh",
-  notes="Không đọc. Để slide này mở trong phần hỏi đáp; khi có câu hỏi dùng thuật ngữ, chỉ vào dòng tương ứng. Ký hiệu hay gặp trong paper: F_c, F_s là lưới điểm của ảnh và tranh; F gạch ngang là bản đã chuẩn hoá; α1, α2 là hai hệ số trộn."))
