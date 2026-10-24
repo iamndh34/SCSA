@@ -75,7 +75,7 @@ for j, (k, y, w, l) in enumerate(zip(KEYS, KY, W, KL)):
     m += f'<div id="attn-b{j}" style="position:absolute;left:1000px;top:{y+60}px;width:{max(4, int(w*420))}px;height:34px;background:{INK}"></div>'
     m += label(f"attn-v{j}", f"{PCT[j]}%", 1012 + max(4, int(w*420)), y + 54, 120, 34, INK, weight=800)
     m += f'<div id="attn-pt{j}" style="position:absolute;left:{860+KS/2-18}px;top:{y+KS/2-18}px;width:36px;height:36px;background:{rgb(RGBS[k])};box-shadow:0 0 0 3px #fff"></div>'
-m += label("attn-kl", "4 điểm trong tranh", 860, 822, 400, 32, INK2, weight=500)
+m += label("attn-kl", "minh hoạ: 4 trong 4.096 điểm, độ giống tính trên màu", 860, 822, 860, 32, INK2, weight=500)
 m += f'<div id="attn-r" style="position:absolute;left:1520px;top:400px;width:190px;height:190px;background:#DADDE1;box-shadow:0 0 0 7px {ACC}"></div>'
 m += label("attn-rl", "kết quả = trộn theo trọng số", 1480, 610, 260, 32, INK, "center")
 _ord = sorted(range(4), key=lambda j: -W[j]); WRONGP = sum(PCT[j] for j in range(4) if KL[j] != 1)
@@ -92,7 +92,7 @@ for j, y in enumerate(KY):
            FADE(f"#attn-pt{j}", 4.5 + 0.12*j, 0.15, 1, 0)]
 js += [f'tl.fromTo("#attn-r",{{backgroundColor:"#DADDE1"}},{{backgroundColor:"{rgb(MIX)}",duration:0.5,ease:"power1.inOut",immediateRender:false}},4.6);', BLUR("#attn-end", 5.3, 0.2)]
 S.append(dict(id=sid, label="Attention", dur=6.0, frags=[1.2, 2.4, 3.4, 5.1, 5.7], html=m, js="\n".join(js), title="Attention: hỏi, so, cân, trộn",
-  notes=f"Attention giống tra từ điển, nhưng mềm. Bấm: một điểm trên vách núi của ảnh đặt câu hỏi, gọi là query. Bấm: nó so với các điểm trong tranh; mỗi điểm có thẻ để so, gọi là key, và nội dung để lấy về, gọi là value. Ở đây là bốn mảnh thật của bức tranh: trời, dãy xa, vách núi, rừng. Đường càng dày càng giống. Bấm: độ giống đổi thành trọng số {PCT[0]}, {PCT[1]}, {PCT[2]} và {PCT[3]} phần trăm. Bấm: màu chảy về theo trọng số và trộn lại. Bấm: chú ý, mảnh vách núi xám nhạt trong ảnh trông giống {REGN[KL[_ord[0]]]} và {REGN[KL[_ord[1]]]} của tranh hơn chính vách núi trong tranh, nên {WRONGP} phần trăm màu của nó lấy từ sai vùng. Đó chính là lỗi ta thấy ở kết quả SANet. Số phần trăm tính minh hoạ trên màu của ảnh mẫu, không phải số của mô hình thật."))
+  notes=f"Attention giống tra từ điển, nhưng mềm. Bấm: một điểm trên vách núi của ảnh đặt câu hỏi, gọi là query. Bấm: nó so với các điểm trong tranh; mỗi điểm có thẻ để so, gọi là key, và nội dung để lấy về, gọi là value. Ở đây mình chỉ vẽ bốn điểm trong 4.096 điểm của bức tranh, mỗi điểm là một vị trí trên lưới chứ không phải một pixel: trời, dãy xa, vách núi, rừng. Đường càng dày càng giống. Bấm: độ giống đổi thành trọng số {PCT[0]}, {PCT[1]}, {PCT[2]} và {PCT[3]} phần trăm. Bấm: màu chảy về theo trọng số và trộn lại. Bấm: chú ý, điểm vách núi xám nhạt trong ảnh trông giống {REGN[KL[_ord[0]]]} và {REGN[KL[_ord[1]]]} của tranh hơn chính vách núi trong tranh, nên {WRONGP} phần trăm màu của nó lấy từ sai vùng. Đó chính là lỗi ta thấy ở kết quả SANet. Số phần trăm tính minh hoạ trên màu của ảnh mẫu, không phải số của mô hình thật."))
 
 # ---------------- softmax + mask ----------------
 sid = "softmax"
@@ -103,7 +103,7 @@ H2 = [HMAX * p / 100 for p in PCT]
 KEEP = KL.index(1)
 H3 = [HMAX if j == KEEP else 0 for j in range(4)]
 m = title(sid, "Chia trọng số, và cách “cấm” một ô", ("cấm",))
-m += label("sm-ct", "điểm số của 4 mảnh", 230, 240, 640, 32, INK2, weight=500)
+m += label("sm-ct", "điểm số: độ giống với 4 điểm trong tranh", 230, 240, 640, 32, INK2, weight=500)
 for j, (x, l, k) in enumerate(zip(BX, KL, KEYS)):
     m += f'<div id="sm-b{j}" style="position:absolute;left:{x}px;top:{BASE-HMAX}px;width:110px;height:{HMAX}px;background:{REG[l]};transform-origin:50% 100%"></div>'
     for tag, val, top in (("s", vn(SHOW[j]), H1[j]), ("w", f"{PCT[j]}%", H2[j]), ("v", f"{100 if j == KEEP else 0}%", H3[j])):
@@ -135,7 +135,7 @@ for j in range(4):
            T(f"#sm-g{j}", 3.5, f'{{width:{728*PCT[j]/100:.0f}}}', f'{{width:{728 if j == KEEP else 0}}}', 0.8, "power2.inOut")]
 js.append(BLUR("#sm-end", 4.7, 0.2))
 S.append(dict(id=sid, label="Softmax và luật cấm", dur=5.6, frags=[1.4, 2.8, 4.4, 5.2], html=m, js="\n".join(js), title="Chia trọng số, và cách “cấm” một ô",
-  notes=f"Vẫn bốn mảnh vừa rồi. Bấm: đây là điểm số giống nhau của từng mảnh, cột trời cao nhất. Bấm: softmax biến điểm số thành phần trăm, cộng lại đủ 100: {PCT[0]}, {PCT[1]}, {PCT[2]}, {PCT[3]}. Điểm cao được phần lớn, nhưng không ai bị bỏ hẳn. Bấm: giờ ta ra luật: điểm vách núi chỉ được lấy từ vách núi. Ba mảnh kia bị cấm. Cách cấm là đặt âm vô cực vào điểm số của chúng; e mũ âm vô cực bằng 0, nên ba cột rơi về đúng 0 và cột vách núi nhận 100 phần trăm. Không phải sửa gì khác trong mô hình, đó là lý do SCSA cắm được vào mô hình đã train. Bấm: toàn bộ SCSA chỉ là quyết định ô nào bị cấm."))
+  notes=f"Vẫn bốn điểm vừa rồi. Bấm: đây là điểm số giống nhau của từng điểm trong tranh: dãy xa cao nhất, khoảng bốn phẩy sáu, rồi tới trời, còn vách núi và rừng chỉ quanh nửa. Bấm: softmax biến điểm số thành phần trăm, cộng lại đủ 100: {PCT[0]}, {PCT[1]}, {PCT[2]}, {PCT[3]}. Điểm cao được phần lớn, nhưng không ai bị bỏ hẳn. Bấm: giờ ta ra luật: điểm vách núi chỉ được lấy từ vách núi. Ba điểm kia bị cấm. Cách cấm là đặt âm vô cực vào điểm số của chúng; e mũ âm vô cực bằng 0, nên ba cột rơi về đúng 0 và cột vách núi nhận 100 phần trăm. Không phải sửa gì khác trong mô hình, đó là lý do SCSA cắm được vào mô hình đã train. Bấm: toàn bộ SCSA chỉ là quyết định ô nào bị cấm."))
 
 # ---------------- AdaIN ----------------
 sid = "adain"
@@ -208,4 +208,4 @@ for s_, q in enumerate(order):
 tend = t0 + len(order) * step
 js.append(BLUR("#ua-end", tend + 0.6, 0.2))
 S.append(dict(id=sid, label="Universal Attention", dur=round(tend + 1.4, 1), frags=[1.4, round(tend + 0.2, 2), round(tend + 1.0, 2)], html=m, js="\n".join(js), title="Universal Attention: ai cũng nhìn tất cả",
-  notes="Paper gọi khối attention trong SANet, StyTr2, StyleID là Universal Attention, viết tắt UA. Trái là 144 điểm của ảnh, phải là 144 điểm của tranh, đều là mảnh thật. Bấm: khung magenta là câu hỏi đang xét; nó chạy qua vài điểm của vách núi, trời, rừng, dãy xa. Mỗi lần, các đường nối tới 8 mảnh tranh giống nó nhất. Đường đen là cùng vùng, đường magenta là sang vùng khác. Dòng chữ giữa đọc phần trăm trọng số rơi sang vùng khác. Bấm: chốt ý, mỗi điểm nhìn tất cả 144 thẻ, không ai hỏi điểm đó thuộc vùng nào. Với lưới 64 nhân 64 thật, bảng so khớp có 16 triệu ô. Số tính minh hoạ trên màu của ảnh mẫu."))
+  notes="Paper gọi khối attention trong SANet, StyTr2, StyleID là Universal Attention, viết tắt UA. Trái là 144 điểm của ảnh, phải là 144 điểm của tranh, đều là mảnh thật. Bấm: khung magenta là câu hỏi đang xét; nó chạy qua vài điểm của vách núi, trời, rừng, dãy xa. Mỗi lần, các đường nối tới 8 mảnh tranh giống nó nhất; số 8 mình chọn để nhìn cho rõ, còn phần trăm ở giữa tính trên cả 144 điểm. Đường đen là cùng vùng, đường magenta là sang vùng khác. Dòng chữ giữa đọc phần trăm trọng số rơi sang vùng khác. Bấm: chốt ý, mỗi điểm nhìn tất cả 144 thẻ, không ai hỏi điểm đó thuộc vùng nào. Với lưới 64 nhân 64 thật, bảng so khớp có 16 triệu ô. Số tính minh hoạ trên màu của ảnh mẫu."))

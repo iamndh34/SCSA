@@ -16,7 +16,7 @@ Các con số trên lưới 12 × 12 (phần trăm trọng số, bức ghép SCA
 - Mở `slides_export/SCSA_trinh_chieu.html` bằng trình duyệt (bấm đúp). Không cần mạng. Chép cả thư mục `slides_export` khi mang sang máy khác.
 - **→ / Space / click**: bước tiếp theo, hoạt hình chạy. **←**: lùi, nhảy thẳng. **F**: toàn màn hình. **P**: cửa sổ ghi chú người trình bày. **H**: bảng phím tắt.
 - Mỗi “Bấm” trong lời thoại là một lần mũi tên phải. Lời thoại cũng hiện trong cửa sổ ghi chú (phím P).
-- Slide UA có một đoạn quét dài khoảng 9 giây sau lần bấm thứ hai: nói trong lúc nó chạy.
+- Slide UA có một đoạn quét dài khoảng 8 giây sau lần bấm thứ hai: nói trong lúc nó chạy.
 
 Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng một thẻ chương có câu hỏi riêng; lạc thì quay về thẻ chương hoặc slide “SCSA trong một phút”.
 
@@ -85,7 +85,7 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Số lần bấm:** 2 · **Thời lượng:** 1 phút
 
-**Nói:** Năm chặng, mỗi chặng là một câu hỏi. Bối cảnh: style transfer là gì. Nền tảng: attention chọn style thế nào, phần này có bốn khái niệm, mỗi cái một hoạt hình. Vấn đề: vì sao tô nhầm vùng, ta sẽ thấy tận mắt trên chính bức ảnh Yosemite. SCSA: sửa bằng cách nào, đây là trọng tâm. Kết quả: tốt tới đâu, số liệu và hạn chế. Lạc thì hỏi, mình quay về đầu chặng.
+**Nói:** Năm chặng, mỗi chặng là một câu hỏi. Bối cảnh: style transfer là gì. Nền tảng: attention chọn style thế nào, phần này có năm slide: bốn khái niệm, mỗi cái một hoạt hình, rồi gộp lại thành Universal Attention. Vấn đề: vì sao tô nhầm vùng, ta sẽ thấy tận mắt trên chính bức ảnh Yosemite. SCSA: sửa bằng cách nào. Kết quả: tốt tới đâu, số liệu và hạn chế. Bấm: vòng tròn dừng ở chặng 4, SCSA, đây là trọng tâm. Lạc thì hỏi, mình quay về đầu chặng.
 
 ## Chặng 1 · Bối cảnh (slide 5–8, ~9 phút)
 
@@ -111,7 +111,7 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Số lần bấm:** 5 · **Thời lượng:** 2,5 phút · **Nguồn:** bản đồ nhãn thật trong repo
 
-**Nói:** Bấm: thêm hai bản đồ nhãn, semantic map. Đây là file thật trong repo: 29_sem.png và 29_paint_sem.png. Mỗi màu là một vùng. Bấm: đỏ là trời, vàng là vách núi, xanh lá là rừng, xanh dương là dãy núi xa. Màu chỉ là mã nhãn, không phải màu thật. Bấm: yêu cầu là nối đúng cặp, trời với trời, vách núi với vách núi. Đầu vào giờ là bộ bốn: ảnh, map ảnh, tranh, map tranh. Ai vẽ map? Người dùng, tự vẽ hoặc dùng mô hình phân đoạn. Paper không tự sinh map, đây là một hạn chế ta sẽ nhắc lại.
+**Nói:** Bấm: thêm hai bản đồ nhãn, semantic map. Đây là file thật trong repo: 29_sem.png và 29_paint_sem.png. Mỗi màu là một vùng. Bấm: đỏ là trời, vàng là vách núi, xanh lá là rừng, xanh dương là dãy núi xa. Màu chỉ là mã nhãn, không phải màu thật. Bấm: yêu cầu là nối đúng cặp, trời với trời, vách núi với vách núi. Bấm: chốt, mỗi vùng chỉ được lấy style từ vùng cùng tên. Đầu vào giờ là bộ bốn: ảnh, map ảnh, tranh, map tranh. Ai vẽ map? Người dùng, tự vẽ hoặc dùng mô hình phân đoạn. Paper không tự sinh map, đây là một hạn chế ta sẽ nhắc lại.
 
 ## Chặng 2 · Nền tảng (slide 9–14, ~17 phút)
 
@@ -119,7 +119,7 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Số lần bấm:** 1 · **Thời lượng:** 0,5 phút
 
-**Nói:** Chặng 2, nền tảng. Câu hỏi: attention chọn style thế nào. Bốn khái niệm: lưới điểm, attention, softmax với mask, và AdaIN. Đừng bỏ chặng này, vì cả phần SCSA chỉ là thay đổi nhỏ trên những thứ này.
+**Nói:** Chặng 2, nền tảng. Câu hỏi: attention chọn style thế nào. Bốn khái niệm: lưới điểm, attention, softmax với mask, và AdaIN. Sau đó gộp lại thành Universal Attention, khối attention sẵn có của các mô hình. Đừng bỏ chặng này, vì cả phần SCSA chỉ là thay đổi nhỏ trên những thứ này.
 
 ### Slide 10 · Ảnh được cắt thành lưới điểm
 
@@ -131,13 +131,13 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Số lần bấm:** 5 · **Thời lượng:** 4 phút
 
-**Nói:** Attention giống tra từ điển, nhưng mềm. Bấm: một điểm trên vách núi của ảnh đặt câu hỏi, gọi là query. Bấm: nó so với các điểm trong tranh; mỗi điểm có thẻ để so, gọi là key, và nội dung để lấy về, gọi là value. Ở đây là bốn mảnh thật của bức tranh: trời, dãy xa, vách núi, rừng. Đường càng dày càng giống. Bấm: độ giống đổi thành trọng số 35, 63, 1 và 1 phần trăm. Bấm: màu chảy về theo trọng số và trộn lại. Bấm: chú ý, mảnh vách núi xám nhạt trong ảnh trông giống dãy xa và trời của tranh hơn chính vách núi trong tranh, nên 99 phần trăm màu của nó lấy từ sai vùng. Đó chính là lỗi ta thấy ở kết quả SANet. Số phần trăm tính minh hoạ trên màu của ảnh mẫu, không phải số của mô hình thật.
+**Nói:** Attention giống tra từ điển, nhưng mềm. Bấm: một điểm trên vách núi của ảnh đặt câu hỏi, gọi là query. Bấm: nó so với các điểm trong tranh; mỗi điểm có thẻ để so, gọi là key, và nội dung để lấy về, gọi là value. Ở đây mình chỉ vẽ bốn điểm trong 4.096 điểm của bức tranh, mỗi điểm là một vị trí trên lưới chứ không phải một pixel: trời, dãy xa, vách núi, rừng. Đường càng dày càng giống. Bấm: độ giống đổi thành trọng số 35, 63, 1 và 1 phần trăm. Bấm: màu chảy về theo trọng số và trộn lại. Bấm: chú ý, điểm vách núi xám nhạt trong ảnh trông giống dãy xa và trời của tranh hơn chính vách núi trong tranh, nên 99 phần trăm màu của nó lấy từ sai vùng. Đó chính là lỗi ta thấy ở kết quả SANet. Số phần trăm tính minh hoạ trên màu của ảnh mẫu, không phải số của mô hình thật.
 
 ### Slide 12 · Chia trọng số, và cách “cấm” một ô
 
 **Số lần bấm:** 4 · **Thời lượng:** 3,5 phút
 
-**Nói:** Vẫn bốn mảnh vừa rồi. Bấm: đây là điểm số giống nhau của từng mảnh, cột trời cao nhất. Bấm: softmax biến điểm số thành phần trăm, cộng lại đủ 100: 35, 63, 1, 1. Điểm cao được phần lớn, nhưng không ai bị bỏ hẳn. Bấm: giờ ta ra luật: điểm vách núi chỉ được lấy từ vách núi. Ba mảnh kia bị cấm. Cách cấm là đặt âm vô cực vào điểm số của chúng; e mũ âm vô cực bằng 0, nên ba cột rơi về đúng 0 và cột vách núi nhận 100 phần trăm. Không phải sửa gì khác trong mô hình, đó là lý do SCSA cắm được vào mô hình đã train. Bấm: toàn bộ SCSA chỉ là quyết định ô nào bị cấm.
+**Nói:** Vẫn bốn điểm vừa rồi. Bấm: đây là điểm số giống nhau của từng điểm trong tranh: dãy xa cao nhất, khoảng bốn phẩy sáu, rồi tới trời, còn vách núi và rừng chỉ quanh nửa. Bấm: softmax biến điểm số thành phần trăm, cộng lại đủ 100: 35, 63, 1, 1. Điểm cao được phần lớn, nhưng không ai bị bỏ hẳn. Bấm: giờ ta ra luật: điểm vách núi chỉ được lấy từ vách núi. Ba điểm kia bị cấm. Cách cấm là đặt âm vô cực vào điểm số của chúng; e mũ âm vô cực bằng 0, nên ba cột rơi về đúng 0 và cột vách núi nhận 100 phần trăm. Không phải sửa gì khác trong mô hình, đó là lý do SCSA cắm được vào mô hình đã train. Bấm: toàn bộ SCSA chỉ là quyết định ô nào bị cấm.
 
 ### Slide 13 · AdaIN: đổi tông bằng hai con số
 
@@ -149,7 +149,7 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Số lần bấm:** 3 · **Thời lượng:** 3 phút
 
-**Nói:** Paper gọi khối attention trong SANet, StyTr2, StyleID là Universal Attention, viết tắt UA. Trái là 144 điểm của ảnh, phải là 144 điểm của tranh, đều là mảnh thật. Bấm: khung magenta là câu hỏi đang xét; nó chạy qua vài điểm của vách núi, trời, rừng, dãy xa. Mỗi lần, các đường nối tới 8 mảnh tranh giống nó nhất. Đường đen là cùng vùng, đường magenta là sang vùng khác. Dòng chữ giữa đọc phần trăm trọng số rơi sang vùng khác. Bấm: chốt ý, mỗi điểm nhìn tất cả 144 thẻ, không ai hỏi điểm đó thuộc vùng nào. Với lưới 64 nhân 64 thật, bảng so khớp có 16 triệu ô. Số tính minh hoạ trên màu của ảnh mẫu.
+**Nói:** Paper gọi khối attention trong SANet, StyTr2, StyleID là Universal Attention, viết tắt UA. Trái là 144 điểm của ảnh, phải là 144 điểm của tranh, đều là mảnh thật. Bấm: khung magenta là câu hỏi đang xét; nó chạy qua vài điểm của vách núi, trời, rừng, dãy xa. Mỗi lần, các đường nối tới 8 mảnh tranh giống nó nhất; số 8 mình chọn để nhìn cho rõ, còn phần trăm ở giữa tính trên cả 144 điểm. Đường đen là cùng vùng, đường magenta là sang vùng khác. Dòng chữ giữa đọc phần trăm trọng số rơi sang vùng khác. Bấm: chốt ý, mỗi điểm nhìn tất cả 144 thẻ, không ai hỏi điểm đó thuộc vùng nào. Với lưới 64 nhân 64 thật, bảng so khớp có 16 triệu ô. Số tính minh hoạ trên màu của ảnh mẫu.
 
 ## Chặng 3 · Vấn đề (slide 15–18, ~10 phút)
 
@@ -219,7 +219,7 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Số lần bấm:** 4 · **Thời lượng:** 2,5 phút
 
-**Nói:** Mỗi ma trận: hàng là điểm của ảnh, ba trời ba vách núi; cột là điểm của tranh. Ô càng đậm, trọng số càng lớn. Trái, UA: dày đặc, mỗi hàng trải khắp nơi, ô magenta là trọng số tràn sang vùng khác; lỗi 1 nằm ở đó. Bấm: giữa, SCA: luật G1 gạch bỏ hai khối chéo, phần còn lại đều nhau vì hỏi bằng map phẳng; hết loang lổ. Bấm: phải, SSA: mỗi hàng giữ đúng một ô, luôn trong khối đúng; hai hàng có thể chọn cùng một ô. Hết nhạt nhoà. Giá trị trong hình là minh hoạ.
+**Nói:** Mỗi ma trận: hàng là điểm của ảnh, ba trời ba vách núi; cột là điểm của tranh. Ô càng đậm, trọng số càng lớn. Trái, UA: dày đặc, mỗi hàng trải khắp nơi, ô magenta là trọng số tràn sang vùng khác; lỗi 1 nằm ở đó. Bấm: giữa, SCA: luật G1 gạch bỏ hai khối chéo, phần còn lại đều nhau vì hỏi bằng map phẳng; hết loang lổ. Bấm: phải, SSA: mỗi hàng giữ đúng một ô, luôn trong khối đúng; hai hàng có thể chọn cùng một ô. Hết nhạt nhoà. Bấm: chốt, nếu chỉ nhớ một hình của cả buổi thì nhớ hình này. Giá trị trong hình là minh hoạ.
 
 ### Slide 26 · Trộn hai nhánh: một nút chỉnh tông và nét
 
@@ -233,7 +233,7 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Nói:** Mỗi backbone có một khối attention nằm giữa encoder và decoder. Bấm: SCSA thay đúng khối đó, encoder, decoder và trọng số gốc giữ nguyên. Bấm: tên đổi sang StyTr2, một transformer, tỉ lệ trộn 1,2 và 0,5. Bấm: StyleID, một mô hình diffusion, 0,8 và 0,2. Với StyleID có thêm chi tiết: hỏi thuần bằng map làm mất chi tiết, nên tác giả pha thêm feature của ảnh; S-AdaIN chỉ dùng ở bước đầu. Chi tiết ở Appendix C của paper. Bấm: chốt ý, không train lại, dùng ngay với model có sẵn.
 
-## Chặng 5 · Kết quả (slide 28–36, ~14 phút)
+## Chặng 5 · Kết quả (slide 28–36, ~18 phút)
 
 ### Slide 28 · Chặng 5 · Tốt tới đâu?
 
@@ -269,13 +269,13 @@ Cấu trúc: tổng quát trước, chi tiết sau. Mỗi chặng mở bằng m�
 
 **Số lần bấm:** 3 · **Thời lượng:** 2,5 phút · **Nguồn:** tính minh hoạ trên ảnh mẫu
 
-**Nói:** Ba hạn chế nhìn được ngay trên ví dụ của ta. Bản đồ nhãn phải do người dùng cung cấp, và nhãn hai bên phải khớp nhau; tác giả tự nêu điều này. Bấm: SSA chỉ lấy một điểm, nên một mảnh tranh có thể bị dùng lại nhiều lần: trên lưới minh hoạ, một mảnh bị dùng 19 lần, khung magenta. Ở độ phân giải thật, điều này có thể gây lặp texture. Bấm: thêm các điểm để thảo luận: chỉ 91 bộ dữ liệu tự tuyển; SSL do tác giả tự đặt; tốn thời gian và bộ nhớ hơn; và nếu một vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng attention bị cấm, paper không nói xử lý thế nào. Mỗi điểm là một hướng mở rộng cho proposal.
+**Nói:** Hai hạn chế nhìn được ngay trên ví dụ của ta. Bản đồ nhãn phải do người dùng cung cấp, và nhãn hai bên phải khớp nhau; tác giả tự nêu điều này. Bấm: SSA chỉ lấy một điểm, nên một mảnh tranh có thể bị dùng lại nhiều lần: trên lưới minh hoạ, một mảnh bị dùng 19 lần, khung magenta. Ở độ phân giải thật, điều này có thể gây lặp texture. Bấm: thêm các điểm để thảo luận: chỉ 91 bộ dữ liệu tự tuyển; SSL do tác giả tự đặt; tốn thời gian và bộ nhớ hơn; và nếu một vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng attention bị cấm, paper không nói xử lý thế nào. Mỗi điểm là một hướng mở rộng cho proposal.
 
 ### Slide 34 · Chạy code gốc trên đúng ví dụ này
 
 **Số lần bấm:** 3 · **Thời lượng:** 2 phút · **Nguồn:** file thật trong repo
 
-**Nói:** Bốn file bên trái chính là bộ bốn ta dùng cả buổi, nằm trong sem_data/29 của repo. Bấm: bốn bước. Clone repo, môi trường Python 3.8, PyTorch 2.4.1. Chạy sem.py để tạo mặt nạ nhãn từ semantic map; nó gom màu bằng K-Means. Tải trọng số gốc của SANet vào thư mục models. Vào SANet+SCSA và chạy SCSA.py với mẫu 29; lệnh đầy đủ có thêm hai cờ sem_map_64 và sem_map_32 trỏ tới sem_precomputed_feats/29. Muốn so với bản gốc thì chạy SANet.py cùng ảnh. StyleID dùng tên cờ khác, và sem.py có bảng màu cứng theo số thư mục.
+**Nói:** Bốn file bên trái chính là bộ bốn ta dùng cả buổi, nằm trong sem_data/29 của repo. Bấm: bốn bước. Clone repo, môi trường Python 3.8, PyTorch 2.4.1. Chạy sem.py để tạo mặt nạ nhãn từ semantic map; nó gom màu bằng K-Means. Tải trọng số gốc của SANet vào thư mục models. Vào SANet+SCSA và chạy SCSA.py với mẫu 29. Muốn so với bản gốc thì chạy SANet.py cùng ảnh. Bấm: lệnh đầy đủ có thêm hai cờ sem_map_64 và sem_map_32 trỏ tới sem_precomputed_feats/29. StyleID dùng tên cờ khác, và sem.py có bảng màu cứng theo số thư mục.
 
 ### Slide 35 · Chỉ lấy style từ vùng cùng nhãn
 

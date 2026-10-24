@@ -70,11 +70,10 @@ m += box("pp-dec", 1290, 430, 170, 160, "Decoder", fs=30)
 m += print_img("pp-out", IMG + "ex1_sanet_scsa.png", 1500, 390, 220)
 P = {"in": "M296 338 L330 338 M296 442 L330 442 M296 546 L330 546 M296 650 L330 650", "e1": "M480 370 L530 370", "e2": "M480 616 L530 616",
      "e3": "M720 616 L740 616", "m1": "M930 370 L960 370 L960 470 L990 470", "m2": "M930 616 L960 616 L960 550 L990 550",
-     "res": "M625 696 L625 750 L1115 750 L1115 600", "d1": "M1240 510 L1290 510", "d2": "M1460 510 L1500 510"}
+     "res": "M405 696 L405 750 L1115 750 L1115 600", "d1": "M1240 510 L1290 510", "d2": "M1460 510 L1500 510"}
 pp = ""
 for k, d in P.items():
-    dash = ' stroke-dasharray="12 9"' if k == "res" else ""
-    pp += f'<path id="pp-p{k}" d="{d}" stroke="{ACC if k == "res" else INK}" stroke-width="4" fill="none"{dash}/>'
+    pp += f'<path id="pp-p{k}" d="{d}" stroke="{ACC if k == "res" else INK}" stroke-width="4" fill="none"/>'
 DOTS = [("e1", 480, 370, 530, 370), ("e3", 720, 616, 740, 616), ("d1", 1240, 510, 1290, 510), ("d2", 1460, 510, 1500, 510)]
 for k, x1, y1, x2, y2 in DOTS:
     pp += f'<circle id="pp-dot{k}" cx="{x1}" cy="{y1}" r="9" fill="{ACC}"/>'
@@ -85,7 +84,7 @@ js = [WORDS(f"{sid}-tw", 0.1), 'tl.fromTo("#pp-in .print",{opacity:0,y:20},{opac
       DRAW("#pp-pin", 0.7, 0.3, 300), BLUR("#pp-enc", 0.8, 0.2),
       DRAW("#pp-pe1", 1.4, 0.3, 100), PLACE("#pp-sca", 1.5, 0.6),
       DRAW("#pp-pe2", 2.3, 0.3, 100), PLACE("#pp-sad", 2.4, 0.6), DRAW("#pp-pe3", 2.7, 0.2, 100), PLACE("#pp-ssa", 2.8, 0.6),
-      DRAW("#pp-pm1", 3.4, 0.4, 300), DRAW("#pp-pm2", 3.4, 0.4, 300), PLACE("#pp-mix", 3.6, 0.6), DRAW("#pp-pres", 3.7, 0.6, 1000), BLUR("#pp-rl", 4.0),
+      DRAW("#pp-pm1", 3.4, 0.4, 300), DRAW("#pp-pm2", 3.4, 0.4, 300), PLACE("#pp-mix", 3.6, 0.6), DRAW("#pp-pres", 3.7, 0.6, 1000), 'tl.set("#pp-pres",{strokeDasharray:"12 9",strokeDashoffset:0},4.3);', BLUR("#pp-rl", 4.0),
       DRAW("#pp-pd1", 4.5, 0.2, 100), PLACE("#pp-dec", 4.6, 0.6), DRAW("#pp-pd2", 4.8, 0.2, 100), PLACE("#pp-out", 4.9, 0.7),
       BLUR("#pp-end", 5.6, 0.2)]
 for k, x1, y1, x2, y2 in DOTS:
@@ -219,7 +218,7 @@ for i in range(3):
     js += [f'tl.fromTo(".mx-c{i}",{{opacity:0,scale:0.4,transformOrigin:"50% 50%"}},{{opacity:1,scale:1,duration:0.3,ease:"back.out(1.4)",stagger:0.015}},{t});', BLUR(f"#mx-t{i}", t + 0.5), FADE(f"#mx-d{i}", t + 0.6)]
 js.append(BLUR("#mx-end", 4.1, 0.2))
 S.append(dict(id=sid, label="Ba ma trận", dur=4.8, frags=[1.4, 2.6, 3.8, 4.5], html=m, js="\n".join(js), title="Ba ma trận attention, nhìn là thấy khác",
-  notes="Mỗi ma trận: hàng là điểm của ảnh, ba trời ba vách núi; cột là điểm của tranh. Ô càng đậm, trọng số càng lớn. Trái, UA: dày đặc, mỗi hàng trải khắp nơi, ô magenta là trọng số tràn sang vùng khác; lỗi 1 nằm ở đó. Bấm: giữa, SCA: luật G1 gạch bỏ hai khối chéo, phần còn lại đều nhau vì hỏi bằng map phẳng; hết loang lổ. Bấm: phải, SSA: mỗi hàng giữ đúng một ô, luôn trong khối đúng; hai hàng có thể chọn cùng một ô. Hết nhạt nhoà. Giá trị trong hình là minh hoạ."))
+  notes="Mỗi ma trận: hàng là điểm của ảnh, ba trời ba vách núi; cột là điểm của tranh. Ô càng đậm, trọng số càng lớn. Trái, UA: dày đặc, mỗi hàng trải khắp nơi, ô magenta là trọng số tràn sang vùng khác; lỗi 1 nằm ở đó. Bấm: giữa, SCA: luật G1 gạch bỏ hai khối chéo, phần còn lại đều nhau vì hỏi bằng map phẳng; hết loang lổ. Bấm: phải, SSA: mỗi hàng giữ đúng một ô, luôn trong khối đúng; hai hàng có thể chọn cùng một ô. Hết nhạt nhoà. Bấm: chốt, nếu chỉ nhớ một hình của cả buổi thì nhớ hình này. Giá trị trong hình là minh hoạ."))
 
 # ---------------- mix with slider ----------------
 sid = "mix"

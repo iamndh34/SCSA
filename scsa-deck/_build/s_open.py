@@ -102,11 +102,11 @@ for i in range(5):
     js += [T(f"#roadmap-d{i}", 0.5 + 0.15*i, '{opacity:0,scale:0.4}', '{opacity:1,scale:1}', 0.5, "back.out(1.4)"), BLUR(f"#roadmap-n{i}", 0.55 + 0.15*i), FADE(f"#roadmap-q{i}", 0.7 + 0.15*i, 0.3)]
 js += [T("#roadmap-ring", 2.0, '{opacity:0,scale:1.6}', '{opacity:1,scale:1}', 0.5, "expo.out"), BLUR("#roadmap-end", 2.3, 0.2)]
 S.append(dict(id=sid, label="Lộ trình", dur=3.2, frags=[1.7, 2.8], html=m, js="\n".join(js), title="Năm chặng, từ tổng quát tới chi tiết",
-  notes="Năm chặng, mỗi chặng là một câu hỏi. Bối cảnh: style transfer là gì. Nền tảng: attention chọn style thế nào, phần này có bốn khái niệm, mỗi cái một hoạt hình. Vấn đề: vì sao tô nhầm vùng, ta sẽ thấy tận mắt trên chính bức ảnh Yosemite. SCSA: sửa bằng cách nào, đây là trọng tâm. Kết quả: tốt tới đâu, số liệu và hạn chế. Lạc thì hỏi, mình quay về đầu chặng."))
+  notes="Năm chặng, mỗi chặng là một câu hỏi. Bối cảnh: style transfer là gì. Nền tảng: attention chọn style thế nào, phần này có năm slide: bốn khái niệm, mỗi cái một hoạt hình, rồi gộp lại thành Universal Attention. Vấn đề: vì sao tô nhầm vùng, ta sẽ thấy tận mắt trên chính bức ảnh Yosemite. SCSA: sửa bằng cách nào. Kết quả: tốt tới đâu, số liệu và hạn chế. Bấm: vòng tròn dừng ở chặng 4, SCSA, đây là trọng tâm. Lạc thì hỏi, mình quay về đầu chặng."))
 
 CHAPTER_NOTES = [
   "Chặng 1, bối cảnh. Câu hỏi: style transfer là gì, và phiên bản “semantic” muốn thêm điều gì.",
-  "Chặng 2, nền tảng. Câu hỏi: attention chọn style thế nào. Bốn khái niệm: lưới điểm, attention, softmax với mask, và AdaIN. Đừng bỏ chặng này, vì cả phần SCSA chỉ là thay đổi nhỏ trên những thứ này.",
+  "Chặng 2, nền tảng. Câu hỏi: attention chọn style thế nào. Bốn khái niệm: lưới điểm, attention, softmax với mask, và AdaIN. Sau đó gộp lại thành Universal Attention, khối attention sẵn có của các mô hình. Đừng bỏ chặng này, vì cả phần SCSA chỉ là thay đổi nhỏ trên những thứ này.",
   "Chặng 3, vấn đề. Câu hỏi: vì sao tô nhầm vùng. Ta chạy attention trên chính bức ảnh Yosemite và đếm xem bao nhiêu style lấy sai chỗ.",
   "Chặng 4, SCSA, phần trọng tâm. Câu hỏi: sửa bằng cách nào. Đi từ ý tưởng, sơ đồ, rồi từng khối: SCA, S-AdaIN, SSA, phép trộn.",
   "Chặng 5, kết quả. Câu hỏi: tốt tới đâu. Ảnh thật, số thật từ paper, ablation, hạn chế, và cách chạy code.",

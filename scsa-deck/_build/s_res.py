@@ -135,7 +135,7 @@ js = [WORDS(f"{sid}-tw", 0.1), PLACE("#lm-map", 0.3), BLUR("#lm-ml", 0.6),
       'tl.fromTo(".lm-rep",{opacity:0,scale:1.6,transformOrigin:"50% 50%"},{opacity:1,scale:1,duration:0.3,ease:"expo.out",stagger:0.05},1.9);', BLUR("#lm-rl", 2.4)]
 for j in range(4): js.append(BLUR(f"#lm-s{j}", 3.2 + 0.25*j, 0.2))
 S.append(dict(id=sid, label="Hạn chế", dur=4.6, frags=[1.0, 3.0, 4.2], html=m, js="\n".join(js), title="Những điều SCSA chưa giải quyết",
-  notes=f"Ba hạn chế nhìn được ngay trên ví dụ của ta. Bản đồ nhãn phải do người dùng cung cấp, và nhãn hai bên phải khớp nhau; tác giả tự nêu điều này. Bấm: SSA chỉ lấy một điểm, nên một mảnh tranh có thể bị dùng lại nhiều lần: trên lưới minh hoạ, một mảnh bị dùng {top_n} lần, khung magenta. Ở độ phân giải thật, điều này có thể gây lặp texture. Bấm: thêm các điểm để thảo luận: chỉ 91 bộ dữ liệu tự tuyển; SSL do tác giả tự đặt; tốn thời gian và bộ nhớ hơn; và nếu một vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng attention bị cấm, paper không nói xử lý thế nào. Mỗi điểm là một hướng mở rộng cho proposal."))
+  notes=f"Hai hạn chế nhìn được ngay trên ví dụ của ta. Bản đồ nhãn phải do người dùng cung cấp, và nhãn hai bên phải khớp nhau; tác giả tự nêu điều này. Bấm: SSA chỉ lấy một điểm, nên một mảnh tranh có thể bị dùng lại nhiều lần: trên lưới minh hoạ, một mảnh bị dùng {top_n} lần, khung magenta. Ở độ phân giải thật, điều này có thể gây lặp texture. Bấm: thêm các điểm để thảo luận: chỉ 91 bộ dữ liệu tự tuyển; SSL do tác giả tự đặt; tốn thời gian và bộ nhớ hơn; và nếu một vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng attention bị cấm, paper không nói xử lý thế nào. Mỗi điểm là một hướng mở rộng cho proposal."))
 
 # ---------------- code ----------------
 sid = "code"
@@ -157,7 +157,7 @@ for i in range(len(TERM)):
     js.append(f'tl.fromTo("#cd-t{i}",{{clipPath:"inset(0% 100% 0% 0%)"}},{{clipPath:"inset(0% 0% 0% 0%)",duration:0.35,ease:"steps(20)"}},{1.6 + 0.3*i});')
 js.append(FADE("#cd-end", 4.2))
 S.append(dict(id=sid, label="Chạy code", dur=5.0, frags=[1.0, 4.0, 4.6], html=m, js="\n".join(js), title="Chạy code gốc trên đúng ví dụ này",
-  notes="Bốn file bên trái chính là bộ bốn ta dùng cả buổi, nằm trong sem_data/29 của repo. Bấm: bốn bước. Clone repo, môi trường Python 3.8, PyTorch 2.4.1. Chạy sem.py để tạo mặt nạ nhãn từ semantic map; nó gom màu bằng K-Means. Tải trọng số gốc của SANet vào thư mục models. Vào SANet+SCSA và chạy SCSA.py với mẫu 29; lệnh đầy đủ có thêm hai cờ sem_map_64 và sem_map_32 trỏ tới sem_precomputed_feats/29. Muốn so với bản gốc thì chạy SANet.py cùng ảnh. StyleID dùng tên cờ khác, và sem.py có bảng màu cứng theo số thư mục."))
+  notes="Bốn file bên trái chính là bộ bốn ta dùng cả buổi, nằm trong sem_data/29 của repo. Bấm: bốn bước. Clone repo, môi trường Python 3.8, PyTorch 2.4.1. Chạy sem.py để tạo mặt nạ nhãn từ semantic map; nó gom màu bằng K-Means. Tải trọng số gốc của SANet vào thư mục models. Vào SANet+SCSA và chạy SCSA.py với mẫu 29. Muốn so với bản gốc thì chạy SANet.py cùng ảnh. Bấm: lệnh đầy đủ có thêm hai cờ sem_map_64 và sem_map_32 trỏ tới sem_precomputed_feats/29. StyleID dùng tên cờ khác, và sem.py có bảng màu cứng theo số thư mục."))
 
 # ---------------- summary ----------------
 sid = "summary"
