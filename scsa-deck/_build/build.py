@@ -18,8 +18,9 @@ SL = [by[i] for i in ORDER]
 from notes import NOTES
 assert set(NOTES) == set(ORDER), set(NOTES) ^ set(ORDER)
 for s_ in SL:
-    s_["notes"] = NOTES[s_["id"]]
-    assert s_["notes"].count("Bấm") == len(s_["frags"]) - 1, (s_["id"], s_["notes"].count("Bấm"), len(s_["frags"]) - 1)
+    steps = NOTES[s_["id"]]
+    assert len(steps) == len(s_["frags"]), (s_["id"], len(steps), len(s_["frags"]))
+    s_["notes"] = "\n".join((f"Bấm {k} · " if k else "") + f"{lab}: {txt}" for k, (lab, txt) in enumerate(steps))
 
 FT = re.compile(r'tl\.fromTo\("([^"]+)",\{(.*?)\},\{(.*)\},([\d.]+)\);$')
 def keys(frm):

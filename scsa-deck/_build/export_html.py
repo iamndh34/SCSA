@@ -113,7 +113,7 @@ const META = {json.dumps(meta, ensure_ascii=False).replace("</", "<\\/")};
     const el = notesWin.document.getElementById("n");
     if (!el) return;
     el.innerHTML = '<div class="top"><span>Slide ' + (cur + 1) + ' / ' + N + '</span><span>Bước ' + (frag + 1) + ' / ' + m.frags.length + '</span><span id="clock"></span></div>'
-      + '<h1>' + esc(m.title) + '</h1><p>' + esc(m.notes) + '</p>'
+      + '<h1>' + esc(m.title) + '</h1>' + m.notes.split("\\n").map(function (ln, i) {{ return '<p class="' + (i === frag ? "cur" : "dim") + '">' + esc(ln) + '</p>'; }}).join("")
       + '<div class="next">Tiếp theo: ' + (nx ? esc(nx.title) : "hết") + '</div>';
   }}
   function openNotes() {{
@@ -122,7 +122,7 @@ const META = {json.dumps(meta, ensure_ascii=False).replace("</", "<\\/")};
     notesWin.document.open();
     notesWin.document.write('<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Ghi chú · SCSA</title><style>'
       + 'body{{font-family:-apple-system,Segoe UI,sans-serif;background:#16181C;color:#E9ECEF;margin:0;padding:28px 34px}}'
-      + '.top{{display:flex;gap:28px;color:#9AA1AC;font-size:18px}} h1{{font-size:30px;margin:14px 0}} p{{font-size:24px;line-height:1.55}}'
+      + '.top{{display:flex;gap:28px;color:#9AA1AC;font-size:18px}} h1{{font-size:30px;margin:14px 0}} p{{font-size:24px;line-height:1.5;margin:10px 0;padding-left:14px;border-left:4px solid transparent}} p.dim{{color:#7C838E}} p.cur{{color:#fff;border-left-color:#E0568A}}'
       + '.next{{margin-top:24px;color:#F2B8CF;font-size:20px}} .hint{{color:#6B7280;font-size:15px;margin-top:30px}}</style></head>'
       + '<body><div id="n"></div><div class="hint">Phím → ← dùng được ở cả cửa sổ này.</div></body></html>');
     notesWin.document.close();
