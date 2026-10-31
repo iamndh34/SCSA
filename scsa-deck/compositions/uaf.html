@@ -1,0 +1,61 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="uaf" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="uaf-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="uaf-tw">Attention</span> <span class="uaf-tw">bằng</span> <span class="uaf-tw">một</span> <span class="uaf-tw">công</span> <span class="uaf-tw">thức</span></h1><div id="uf-f" class="lb" style="left:192px;top:222px;width:1300px;font-size:68px;font-weight:600;white-space:nowrap;letter-spacing:0">Attention = <span id="uf-fsm">softmax(</span> <span id="uf-fq">Q</span> <span id="uf-fk">K<sup style="font-size:0.6em">T</sup></span> <span id="uf-fsm2">)</span> <span id="uf-fv">· V</span></div><div id="uf-an" class="lb" style="left:192px;top:318px;width:1536px;font-size:34px;color:#4B5260;text-align:left;font-weight:500">Như tra cứu: Q là câu hỏi, K là nhãn của từng ngăn, V là đồ nằm trong ngăn.</div><div id="uf-q" class="tile" style="left:470px;top:430px;width:84px;height:84px;background-image:url(assets/img/29.jpg);background-size:1008px 1008px;background-position:-336px -420px;box-shadow:0 0 0 5px #C2185B"></div><div id="uf-ql" class="lb" style="left:400px;top:528px;width:224px;font-size:30px;color:#16181C;text-align:center;font-weight:600">Q: điểm hỏi</div><div id="uf-kh" class="lb" style="left:700px;top:384px;width:620px;font-size:30px;color:#4B5260;text-align:left;font-weight:500">K, V: 4 điểm của tranh</div><div id="uf-k0" class="tile" style="left:728px;top:430px;width:84px;height:84px;background-image:url(assets/img/29_paint.jpg);background-size:1008px 1008px;background-position:-588px -84px;"></div><div id="uf-kn0" class="lb" style="left:700px;top:528px;width:140px;font-size:30px;color:#16181C;text-align:center;font-weight:600">trời</div><div id="uf-k1" class="tile" style="left:888px;top:430px;width:84px;height:84px;background-image:url(assets/img/29_paint.jpg);background-size:1008px 1008px;background-position:-756px -420px;"></div><div id="uf-kn1" class="lb" style="left:860px;top:528px;width:140px;font-size:30px;color:#16181C;text-align:center;font-weight:600">dãy xa</div><div id="uf-k2" class="tile" style="left:1048px;top:430px;width:84px;height:84px;background-image:url(assets/img/29_paint.jpg);background-size:1008px 1008px;background-position:-924px -840px;"></div><div id="uf-kn2" class="lb" style="left:1020px;top:528px;width:140px;font-size:30px;color:#16181C;text-align:center;font-weight:600">vách núi</div><div id="uf-k3" class="tile" style="left:1208px;top:430px;width:84px;height:84px;background-image:url(assets/img/29_paint.jpg);background-size:1008px 1008px;background-position:-84px -672px;"></div><div id="uf-kn3" class="lb" style="left:1180px;top:528px;width:140px;font-size:30px;color:#16181C;text-align:center;font-weight:600">rừng</div><div id="uf-r1-h" class="lb" style="left:192px;top:604px;width:480px;font-size:34px;color:#16181C;text-align:left;font-weight:600">Q K<sup>T</sup> · độ giống</div><div id="uf-r1-0" class="lb" style="left:700px;top:600px;width:140px;font-size:40px;color:#16181C;text-align:center;font-weight:800">4,0</div><div id="uf-r1-1" class="lb" style="left:860px;top:600px;width:140px;font-size:40px;color:#16181C;text-align:center;font-weight:800">4,6</div><div id="uf-r1-2" class="lb" style="left:1020px;top:600px;width:140px;font-size:40px;color:#16181C;text-align:center;font-weight:800">0,6</div><div id="uf-r1-3" class="lb" style="left:1180px;top:600px;width:140px;font-size:40px;color:#16181C;text-align:center;font-weight:800">0,5</div><div id="uf-r2-h" class="lb" style="left:192px;top:668px;width:480px;font-size:34px;color:#16181C;text-align:left;font-weight:600">softmax · chia đủ 100%</div><div id="uf-r2-0" class="lb" style="left:700px;top:664px;width:140px;font-size:40px;color:#C2185B;text-align:center;font-weight:800">35%</div><div id="uf-r2-1" class="lb" style="left:860px;top:664px;width:140px;font-size:40px;color:#C2185B;text-align:center;font-weight:800">63%</div><div id="uf-r2-2" class="lb" style="left:1020px;top:664px;width:140px;font-size:40px;color:#16181C;text-align:center;font-weight:800">1%</div><div id="uf-r2-3" class="lb" style="left:1180px;top:664px;width:140px;font-size:40px;color:#C2185B;text-align:center;font-weight:800">1%</div><div id="uf-r3-h" class="lb" style="left:192px;top:736px;width:480px;font-size:34px;color:#16181C;text-align:left;font-weight:600">· V · trộn màu theo %</div><div id="uf-mix" style="position:absolute;left:700px;top:728px;width:620px;height:56px;background:rgb(191,179,168)"></div><div id="uf-mixl" class="lb" style="left:1340px;top:736px;width:420px;font-size:30px;color:#16181C;text-align:left;font-weight:600">màu lấy về: <span style="color:#C2185B">63%</span> dãy xa, <span style="color:#C2185B">35%</span> trời</div><p id="uf-end" class="ln" style="left:192px;top:840px;width:1536px;font-size:40px;font-weight:600;color:#16181C;text-align:left">Công thức <span style="color:#C2185B">không</span> biết nhãn vùng, nên điểm vách núi lấy màu của vùng khác.</p><div id="uf-src" class="lb" style="left:192px;top:910px;width:800px;font-size:30px;color:#4B5260;text-align:left;font-weight:500">số tính minh hoạ trên ảnh mẫu</div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".uaf-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#uf-f",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.25,ease:"power2.out"},0.3);
+tl.fromTo("#uf-an",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.6);
+tl.fromTo("#uf-fq",{color:"#16181C"},{color:"#C2185B",duration:0.25,ease:"power2.out"},1.2);
+tl.fromTo("#uf-fk",{color:"#16181C"},{color:"#C2185B",duration:0.25,ease:"power2.out"},1.3);
+tl.fromTo("#uf-fv",{color:"#16181C"},{color:"#C2185B",duration:0.25,ease:"power2.out"},1.3);
+tl.fromTo("#uf-fv",{color:"#C2185B"},{color:"#16181C",duration:0.25,ease:"power2.out",immediateRender:false},2.4);
+tl.fromTo("#uf-q",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},1.2);
+tl.fromTo("#uf-ql",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.3);
+tl.fromTo("#uf-kh",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.3);
+tl.fromTo("#uf-k0",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},1.3499999999999999);
+tl.fromTo("#uf-k1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},1.43);
+tl.fromTo("#uf-k2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},1.5099999999999998);
+tl.fromTo("#uf-k3",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},1.5899999999999999);
+tl.fromTo("#uf-kn0",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.5);
+tl.fromTo("#uf-kn1",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.58);
+tl.fromTo("#uf-kn2",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.66);
+tl.fromTo("#uf-kn3",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.74);
+tl.fromTo("#uf-fq",{color:"#C2185B"},{color:"#16181C",duration:0.25,ease:"power2.out",immediateRender:false},3.6);
+tl.fromTo("#uf-fk",{color:"#C2185B"},{color:"#16181C",duration:0.25,ease:"power2.out",immediateRender:false},3.6);
+tl.fromTo("#uf-r1-h",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.5);
+tl.fromTo("#uf-r1-0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.6);
+tl.fromTo("#uf-r1-1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.68);
+tl.fromTo("#uf-r1-2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.7600000000000002);
+tl.fromTo("#uf-r1-3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.84);
+tl.fromTo("#uf-fsm",{color:"#16181C"},{color:"#C2185B",duration:0.25,ease:"power2.out"},3.7);
+tl.fromTo("#uf-fsm",{color:"#C2185B"},{color:"#16181C",duration:0.25,ease:"power2.out",immediateRender:false},4.9);
+tl.fromTo("#uf-fsm2",{color:"#16181C"},{color:"#C2185B",duration:0.25,ease:"power2.out"},3.7);
+tl.fromTo("#uf-fsm2",{color:"#C2185B"},{color:"#16181C",duration:0.25,ease:"power2.out",immediateRender:false},4.9);
+tl.fromTo("#uf-r2-h",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.7);
+tl.fromTo("#uf-r2-0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.8000000000000003);
+tl.fromTo("#uf-r2-1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.8800000000000003);
+tl.fromTo("#uf-r2-2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.9600000000000004);
+tl.fromTo("#uf-r2-3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},4.04);
+tl.fromTo("#uf-src",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},4.1);
+tl.fromTo("#uf-fv",{color:"#16181C"},{color:"#C2185B",duration:0.25,ease:"power2.out",immediateRender:false},5.0);
+tl.fromTo("#uf-r3-h",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},5.0);
+tl.fromTo("#uf-mix",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.7,ease:"power2.inOut"},5.1);
+tl.fromTo("#uf-mixl",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},5.7);
+tl.fromTo("#uf-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},6.3);
+window.__timelines["uaf"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

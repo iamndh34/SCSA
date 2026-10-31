@@ -70,7 +70,7 @@ m += box("pp-dec", 1290, 430, 170, 160, "Decoder", fs=30)
 m += print_img("pp-out", IMG + "ex1_sanet_scsa.png", 1500, 390, 220)
 P = {"in": "M296 338 L330 338 M296 442 L330 442 M296 546 L330 546 M296 650 L330 650", "e1": "M480 370 L530 370", "e2": "M480 616 L530 616",
      "e3": "M720 616 L740 616", "m1": "M930 370 L960 370 L960 470 L990 470", "m2": "M930 616 L960 616 L960 550 L990 550",
-     "res": "M405 696 L405 750 L1115 750 L1115 600", "d1": "M1240 510 L1290 510", "d2": "M1460 510 L1500 510"}
+     "res": "M625 696 L625 750 L1115 750 L1115 600", "d1": "M1240 510 L1290 510", "d2": "M1460 510 L1500 510"}
 pp = ""
 for k, d in P.items():
     pp += f'<path id="pp-p{k}" d="{d}" stroke="{ACC if k == "res" else INK}" stroke-width="4" fill="none"/>'
@@ -78,8 +78,8 @@ DOTS = [("e1", 480, 370, 530, 370), ("e3", 720, 616, 740, 616), ("d1", 1240, 510
 for k, x1, y1, x2, y2 in DOTS:
     pp += f'<circle id="pp-dot{k}" cx="{x1}" cy="{y1}" r="9" fill="{ACC}"/>'
 m += svg(pp)
-m += label("pp-rl", "bố cục của ảnh được cộng vào", 650, 760, 460, 30, ACC, weight=600)
-m += line("pp-end", f'Encoder, decoder giữ nguyên. Chỉ ba khối ở giữa là {acc("SCSA")}.', 860, 44)
+m += label("pp-rl", "bố cục của ảnh (sau S-AdaIN) được cộng vào", 650, 760, 560, 30, ACC, weight=600)
+m += line("pp-end", f'Encoder, decoder giữ nguyên. Các khối ở giữa là {acc("SCSA")}.', 860, 44)
 js = [WORDS(f"{sid}-tw", 0.1), 'tl.fromTo("#pp-in .print",{opacity:0,y:20},{opacity:1,y:0,duration:0.6,ease:"expo.out",stagger:0.08},0.3);',
       DRAW("#pp-pin", 0.7, 0.3, 300), BLUR("#pp-enc", 0.8, 0.2),
       DRAW("#pp-pe1", 1.4, 0.3, 100), PLACE("#pp-sca", 1.5, 0.6),
@@ -223,30 +223,32 @@ S.append(dict(id=sid, label="Ba ma trận", dur=4.8, frags=[1.4, 2.6, 3.8, 4.5],
 # ---------------- mix with slider ----------------
 sid = "mix"
 CL, XM, YM = 40, 192, 360
+NOL = ";box-shadow:none"  # no grid lines, so the brush texture stays visible under the mix
 def ssa40(i):
     k = SSA[i]; r, c = divmod(k, G)
-    return f';background-image:url({IMG}29_paint.jpg);background-size:{G*CL}px {G*CL}px;background-position:-{c*CL}px -{r*CL}px'
+    return f';background-image:url({IMG}29_paint.jpg);background-size:{G*CL}px {G*CL}px;background-position:-{c*CL}px -{r*CL}px{NOL}'
 TX0, TW = 300, 300
-m = (title(sid, "Trộn hai nhánh: một nút chỉnh tông và nét", ("nút",))
-     + label("mx2-l", "SSA", 192, 278, 90, 32, INK, weight=800) + label("mx2-r", "SCA", TX0 + TW + 28, 278, 100, 32, INK, weight=800)
-     + f'<div id="mx2-tr" style="position:absolute;left:{TX0}px;top:296px;width:{TW}px;height:8px;background:{INK}"></div>'
-     + f'<div id="mx2-k" style="position:absolute;left:{TX0-20}px;top:280px;width:40px;height:40px;border-radius:50%;background:{ACC};box-shadow:0 0 0 5px #fff"></div>'
-     + "".join(f'<div class="mx2-p tile" style="left:{XM + (i % G)*CL}px;top:{YM + (i // G)*CL}px;width:{CL}px;height:{CL}px{ssa40(i)}"></div>' for i in range(G*G))
-     + f'<div id="mx2-sca">' + flat("mx2-s", [rgb(SCA[i]) for i in range(G*G)], XM, YM, CL) + '</div>'
-     + line("mx2-t0", "Chỉ SSA: sắc nét, nhưng màu nhảy giữa các ô.", 380, 40, left=760, width=480, weight=600)
-     + line("mx2-t1", "Chỉ SCA: đều màu, nhưng phẳng.", 380, 40, left=760, width=480, weight=600)
-     + line("mx2-t2", f'SANet dùng {acc("0,7")} tông chung + 0,3 nét cọ.', 380, 40, left=760, width=480, weight=600)
-     + print_img("mx2-real", IMG + "ex1_sanet_scsa.png", 1300, 348, 404)
-     + label("mx2-rl", "kết quả thật của SANet + SCSA", 1300, 790, 428, 30, INK2, "center", 500)
-     + line("mx2-end", "Kết quả = tông chung + nét cọ + bố cục của ảnh.", 880, 44))
-js = [WORDS(f"{sid}-tw", 0.1), FADE("#mx2-l", 0.3), FADE("#mx2-r", 0.3), GROW_X("#mx2-tr", 0.3, 0.5), FADE("#mx2-k", 0.5, 0.2),
-      'tl.fromTo(".mx2-p",{opacity:0},{opacity:1,duration:0.3,stagger:0.003},0.4);', HIDE("#mx2-sca"), HIDE("#mx2-t1"), HIDE("#mx2-t2"),
-      BLUR("#mx2-t0", 0.9),
-      MOVE("#mx2-k", 1.6, 0, 0, TW, 0, 1.2, "power2.inOut"), FADE("#mx2-sca", 1.6, 1.2, 0, 1, "power2.inOut"), FADE("#mx2-t0", 1.6, 0.2, 1, 0), BLUR("#mx2-t1", 2.6),
-      MOVE("#mx2-k", 3.4, TW, 0, TW*0.7, 0, 0.8, "power2.inOut"), FADE("#mx2-sca", 3.4, 0.8, 1, 0.7, "power2.inOut"), FADE("#mx2-t1", 3.4, 0.2, 1, 0), BLUR("#mx2-t2", 4.0),
-      PLACE("#mx2-real", 4.8), FADE("#mx2-rl", 5.1), BLUR("#mx2-end", 5.6, 0.2)]
-S.append(dict(id=sid, label="Trộn hai nhánh", dur=6.4, frags=[1.2, 3.0, 4.4, 5.4, 6.0], html=m, js="\n".join(js), title="Trộn hai nhánh: một nút chỉnh tông và nét",
-  notes="Kết quả cuối là tông chung từ SCA cộng nét cọ từ SSA, cộng bố cục của ảnh. Hai hệ số là nút chỉnh. Bấm đầu: nút ở SSA thuần, bức ghép toàn mảnh tranh thật, sắc nét nhưng màu nhảy giữa các ô. Bấm: kéo hết sang SCA thuần, đều màu nhưng phẳng. Bấm: SANet dùng 0,7 tông chung và 0,3 nét cọ. Bức ghép này tính trên lưới 12 nhân 12 nên còn thô. Bấm: bên phải là kết quả thật của SANet cộng SCSA trên cùng cặp ảnh, ở độ phân giải đầy đủ. Các backbone khác dùng hệ số khác: StyTr2 1,2 và 0,5, StyleID 0,8 và 0,2."))
+m = (title(sid, "Trộn hai nhánh: chỉnh tông và nét", ("Trộn",))
+     + label("mz-l", "SSA", 192, 278, 90, 32, INK, weight=800) + label("mz-r", "SCA", TX0 + TW + 28, 278, 100, 32, INK, weight=800)
+     + f'<div id="mz-tr" style="position:absolute;left:{TX0}px;top:296px;width:{TW}px;height:8px;background:{INK}"></div>'
+     + f'<div id="mz-k" style="position:absolute;left:{TX0-20}px;top:280px;width:40px;height:40px;border-radius:50%;background:{ACC};box-shadow:0 0 0 5px #fff"></div>'
+     + "".join(f'<div class="mz-p tile" style="left:{XM + (i % G)*CL}px;top:{YM + (i // G)*CL}px;width:{CL}px;height:{CL}px{ssa40(i)}"></div>' for i in range(G*G))
+     + f'<div id="mz-tone" style="position:absolute;inset:0;mix-blend-mode:color">' + flat("mz-c", [rgb(SCA[i]) for i in range(G*G)], XM, YM, CL, extra_fn=lambda i: NOL) + '</div>'
+     + f'<div id="mz-sca">' + flat("mz-s", [rgb(SCA[i]) for i in range(G*G)], XM, YM, CL, extra_fn=lambda i: NOL) + '</div>'
+     + line("mz-t0", "Chỉ SSA: sắc nét, nhưng màu nhảy giữa các ô.", 380, 40, left=760, width=480, weight=600)
+     + line("mz-t1", "Chỉ SCA: đều màu, nhưng phẳng.", 380, 40, left=760, width=480, weight=600)
+     + line("mz-t2", f'SANet: {acc("0,7")} tông chung + {acc("0,3")} nét cọ → đều màu mà vẫn có nét.', 380, 40, left=760, width=480, weight=600)
+     + print_img("mz-real", IMG + "ex1_sanet_scsa.png", 1300, 348, 404)
+     + label("mz-rl", "kết quả thật", 1300, 790, 428, 30, INK2, "center", 500)
+     + line("mz-end", f'Kết quả = {acc("α₁")}·SCA + {acc("α₂")}·SSA + bố cục của ảnh', 880, 44))
+js = [WORDS(f"{sid}-tw", 0.1), FADE("#mz-l", 0.3), FADE("#mz-r", 0.3), GROW_X("#mz-tr", 0.3, 0.5), FADE("#mz-k", 0.5, 0.2),
+      'tl.fromTo(".mz-p",{opacity:0},{opacity:1,duration:0.3,stagger:0.003},0.4);', HIDE("#mz-sca"), HIDE("#mz-tone"), HIDE("#mz-t1"), HIDE("#mz-t2"),
+      BLUR("#mz-t0", 0.9),
+      MOVE("#mz-k", 1.6, 0, 0, TW, 0, 1.2, "power2.inOut"), FADE("#mz-sca", 1.6, 1.2, 0, 1, "power2.inOut"), FADE("#mz-t0", 1.6, 0.2, 1, 0), BLUR("#mz-t1", 2.6),
+      MOVE("#mz-k", 3.4, TW, 0, TW*0.7, 0, 0.8, "power2.inOut"), FADE("#mz-sca", 3.4, 0.8, 1, 0.35, "power2.inOut"), FADE("#mz-tone", 3.4, 0.01), FADE("#mz-t1", 3.4, 0.2, 1, 0), BLUR("#mz-t2", 4.0),
+      PLACE("#mz-real", 4.8), FADE("#mz-rl", 5.1), BLUR("#mz-end", 5.6, 0.2)]
+S.append(dict(id=sid, label="Trộn hai nhánh", dur=6.4, frags=[1.2, 3.0, 4.4, 5.4, 6.0], html=m, js="\n".join(js), title="Trộn hai nhánh: chỉnh tông và nét",
+  notes="Thanh trượt giữa SSA thuần và SCA thuần; SANet đặt ở 0,7 / 0,3."))
 
 # ---------------- plug into three backbones ----------------
 sid = "plug"
@@ -276,3 +278,93 @@ for j in (1, 2):
 js.append(BLUR("#pl-end", 4.0, 0.2))
 S.append(dict(id=sid, label="Cắm vào backbone", dur=4.8, frags=[1.2, 2.2, 3.0, 3.8, 4.5], html=m, js="\n".join(js), title="Cắm vào ba họ mô hình, không train lại",
   notes="Mỗi backbone có một khối attention nằm giữa encoder và decoder. Bấm: SCSA thay đúng khối đó, encoder, decoder và trọng số gốc giữ nguyên. Bấm: tên đổi sang StyTr2, một transformer, tỉ lệ trộn 1,2 và 0,5. Bấm: StyleID, một mô hình diffusion, 0,8 và 0,2. Với StyleID có thêm chi tiết: hỏi thuần bằng map làm mất chi tiết, nên tác giả pha thêm feature của ảnh; S-AdaIN chỉ dùng ở bước đầu. Chi tiết ở Appendix C của paper. Bấm: chốt ý, không train lại, dùng ngay với model có sẵn."))
+
+# ---------------- training process and what is new ----------------
+sid = "train"
+TR = [("Backbone: train sẵn, giữ nguyên", "SANet, StyTr2: MS-COCO × WikiArt · StyleID: Stable Diffusion có sẵn"),
+      (f'SCSA: {acc("0")} tham số mới', "không loss mới, không bước train nào"),
+      ("Lúc chạy: ba việc", "tạo mặt nạ nhãn (K-Means) → thay khối attention → trộn α₁, α₂")]
+NEW = [("SCA", "hỏi bằng bản đồ nhãn, cả vùng chung một tông"),
+       ("SSA", "top-1 trong cùng vùng, giữ nguyên nét cọ"),
+              ("Cắm được", "một khối cho CNN, Transformer, Diffusion"),
+       ("SSL", "thước đo style theo từng vùng")]
+m = title(sid, "Huấn luyện thế nào, và điểm mới ở đâu")
+m += label("tr-h", "Huấn luyện", 192, 262, 700, 48, INK, weight=800)
+for i, (h, d) in enumerate(TR):
+    y = 340 + i * 150
+    m += label(f"tr-a{i}", h, 192, y, 700, 38, INK, weight=700)
+    m += label(f"tr-b{i}", d, 192, y + 52, 700, 32, INK2, weight=500)
+m += svg(f'<path id="tr-div" d="M960 270 L960 800" stroke="#C9CDD3" stroke-width="4" fill="none"/>')
+m += label("tr-nh", "Điểm mới", 1028, 262, 700, 48, INK, weight=800)
+for j, (h, d) in enumerate(NEW):
+    m += label(f"tr-n{j}", f'<b>{h}</b> · {d}', 1028, 340 + j * 94, 700, 34, INK, weight=500)
+m += line("tr-end", f'Cái mới nằm ở {acc("luật")} {acc("cấm")} theo nhãn, không nằm ở trọng số.', 870, 44)
+js = [WORDS(f"{sid}-tw", 0.1), BLUR("#tr-h", 0.3)]
+for i in range(3):
+    t = 0.5 + 0.45 * i
+    js += [BLUR(f"#tr-a{i}", t), FADE(f"#tr-b{i}", t + 0.15)]
+js += [DRAW("#tr-div", 2.2, 0.5, 600), BLUR("#tr-nh", 2.3)]
+for j in range(len(NEW)):
+    js.append(BLUR(f"#tr-n{j}", 2.5 + 0.25 * j))
+js.append(BLUR("#tr-end", 4.3, 0.2))
+S.append(dict(id=sid, label="Huấn luyện và điểm mới", dur=5.0, frags=[2.0, 4.0, 4.6], html=m, js="\n".join(js), title="Huấn luyện thế nào, và điểm mới ở đâu",
+  notes="Huấn luyện và điểm mới."))
+
+# ---------------- one formula, plus a mask ----------------
+sid = "maskf"
+MROW = ["−∞" if B.KL[j] != 1 else "0" for j in range(4)]
+OUTP = ["0%" if B.KL[j] != 1 else "100%" for j in range(4)]
+CLIFF = B.RGBS[B.KEYS[B.KL.index(1)]]
+m = title(sid, "SCA, SSA: cùng công thức, thêm mặt nạ M")
+m += eq("mk-f", f'softmax( Q K<sup style="font-size:0.6em">T</sup> <span id="mk-fm">+ M</span> ) · V', 222, size=68, width=1300)
+m += label("mk-fn", f'M = 0: được lấy · M = {acc("−∞")}: bị cấm (e<sup>−∞</sup> = 0, nên ô cấm nhận 0%)', 192, 318, 1536, 34, INK2, weight=500)
+m += B.ex_head("mk", 420)
+m += B.ex_row("mk-r1", f'Q K<sup>T</sup> · độ giống', [vn(v_) for v_ in B.SHOW], 590)
+m += B.ex_row("mk-r2", f'{acc("+ M")} · khác nhãn thì cấm', MROW, 652, [ACC if x_ != "0" else INK for x_ in MROW])
+m += B.ex_row("mk-r3", "softmax · chia đủ 100%", OUTP, 714)
+m += f'<div id="mk-out" style="position:absolute;left:{B.EXC[2]}px;top:774px;width:140px;height:44px;background:{rgb(CLIFF)}"></div>'
+m += label("mk-outl", "→ lấy đúng màu vách núi", B.EXC[3] + 160, 778, 420, 30, INK, weight=600)
+m += label("mk-sca", f'<b>SCA</b> · Q, K hỏi bằng {acc("bản đồ nhãn")}; M cấm ô khác nhãn → cả vùng một tông', 192, 846, 1536, 32, INK, weight=500)
+m += label("mk-ssa", f'<b>SSA</b> · Q hỏi bằng ảnh; M cấm thêm, chỉ chừa {acc("1 ô")} giống nhất cùng nhãn → giữ nét cọ', 192, 896, 1536, 32, INK, weight=500)
+js = [WORDS(f"{sid}-tw", 0.1), BLUR("#mk-f", 0.3, 0.25), FADE("#mk-fn", 0.6)]
+js += B.ex_head_js("mk", 1.2) + B.ex_js("mk-r1", 1.6)
+js += [T("#mk-fm", 2.6, f'{{color:"{INK}"}}', f'{{color:"{ACC}"}}', 0.25, "power2.out")] + B.ex_js("mk-r2", 2.6)
+js += B.ex_js("mk-r3", 3.6) + [WIPE("#mk-out", 4.0, 0.5), BLUR("#mk-outl", 4.4)]
+js += [BLUR("#mk-sca", 5.0), BLUR("#mk-ssa", 5.4)]
+S.append(dict(id=sid, label="Công thức SCA, SSA", dur=6.2, frags=[1.0, 2.5, 3.5, 4.8, 5.8], html=m, js="\n".join(js), title="SCA, SSA: cùng công thức, thêm mặt nạ M",
+  notes="Công thức mặt nạ."))
+
+# ---------------- the whole algorithm ----------------
+sid = "algo"
+STEPS = [("Vào", "ảnh, map ảnh, tranh, map tranh · hai hệ số α₁, α₂"),
+         ("1", "Encoder: ảnh, tranh và hai map → lưới điểm"),
+         ("2", "K-Means trên hai map → mặt nạ nhãn"),
+         ("3", "SCA, mặt nạ cùng nhãn → tông chung"),
+         ("4", "S-AdaIN: đổi tông ảnh riêng từng vùng"),
+         ("5", "SSA, mặt nạ top-1 cùng nhãn → nét cọ"),
+         ("6", f'Trộn: F = α₁·SCA + α₂·SSA + {v("F","c")}'),
+         ("Ra", "Decoder: lưới điểm → ảnh kết quả")]
+GROUPS = [(0, 1, 2), (3, 4, 5), (6, 7)]
+m = title(sid, "Thuật toán SCSA: một lượt chạy, không train")
+m += f'<div id="al-panel" style="position:absolute;left:192px;top:250px;width:1100px;height:560px;background:#FFFFFF;box-shadow:0 18px 40px rgba(20,24,28,.10)"></div>'
+m += f'<div id="al-hl" style="position:absolute;left:192px;top:276px;width:1100px;height:58px;background:rgba(194,24,91,0.10)"></div>'
+for i, (k, s_) in enumerate(STEPS):
+    y = 280 + i * 64
+    m += label(f"al-k{i}", k, 216, y, 80, 34, ACC if k in ("Vào", "Ra") else INK2, "right", 800)
+    m += f'<div id="al-s{i}" class="lb" style="left:320px;top:{y}px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">{s_}</div>'
+m += label("al-ch", "Chi phí mỗi lớp attention", 1360, 262, 368, 34, INK, weight=800)
+m += f'<div id="al-big" class="big" style="left:1360px;top:370px;font-size:110px">4.096²</div>'
+m += label("al-cn", "≈ 16,8 triệu ô mỗi bảng; SCA, SSA mỗi nhánh một bảng", 1360, 500, 368, 32, INK, weight=500)
+m += label("al-cg", "bước 2 làm sẵn một lần (sem.py)", 1360, 680, 368, 32, INK2, weight=500)
+m += line("al-end", f'Bước 2–6 là phần SCSA; encoder, decoder {acc("giữ")} nguyên.', 880, 44)
+js = [WORDS(f"{sid}-tw", 0.1), PLACE("#al-panel", 0.2), HIDE("#al-hl")]
+t0 = [0.5, 2.0, 3.6]
+for g, idx in enumerate(GROUPS):
+    for j, i in enumerate(idx):
+        js += [BLUR(f"#al-k{i}", t0[g] + 0.25 * j), WIPE(f"#al-s{i}", t0[g] + 0.25 * j, 0.5)]
+    first, last = idx[0], idx[-1]
+    p0, p1 = (GROUPS[g - 1][0], GROUPS[g - 1][-1]) if g else (first, first)
+    js.append(T("#al-hl", t0[g], f'{{y:{p0 * 64},height:{(p1 - p0) * 64 + 58},opacity:{1 if g else 0}}}', f'{{y:{first * 64},height:{(last - first) * 64 + 58},opacity:1}}', 0.5, "power2.inOut"))
+js += [BLUR("#al-ch", 4.6), BLUR("#al-big", 4.75), FADE("#al-cn", 4.9), FADE("#al-cg", 5.0), BLUR("#al-end", 5.6, 0.2)]
+S.append(dict(id=sid, label="Thuật toán", dur=6.4, frags=[1.6, 3.2, 4.5, 5.4, 6.0], html=m, js="\n".join(js), title="Thuật toán SCSA: một lượt chạy, không train",
+  notes="Thuật toán."))

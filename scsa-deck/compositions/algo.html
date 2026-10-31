@@ -1,0 +1,48 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="algo" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="algo-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="algo-tw">Thuật</span> <span class="algo-tw">toán</span> <span class="algo-tw">SCSA:</span> <span class="algo-tw">một</span> <span class="algo-tw">lượt</span> <span class="algo-tw">chạy,</span> <span class="algo-tw">không</span> <span class="algo-tw">train</span></h1><div id="al-panel" style="position:absolute;left:192px;top:250px;width:1100px;height:560px;background:#FFFFFF;box-shadow:0 18px 40px rgba(20,24,28,.10)"></div><div id="al-hl" style="position:absolute;left:192px;top:276px;width:1100px;height:58px;background:rgba(194,24,91,0.10)"></div><div id="al-k0" class="lb" style="left:216px;top:280px;width:80px;font-size:34px;color:#C2185B;text-align:right;font-weight:800">Vào</div><div id="al-s0" class="lb" style="left:320px;top:280px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">ảnh, map ảnh, tranh, map tranh · hai hệ số α₁, α₂</div><div id="al-k1" class="lb" style="left:216px;top:344px;width:80px;font-size:34px;color:#4B5260;text-align:right;font-weight:800">1</div><div id="al-s1" class="lb" style="left:320px;top:344px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">Encoder: ảnh, tranh và hai map → lưới điểm</div><div id="al-k2" class="lb" style="left:216px;top:408px;width:80px;font-size:34px;color:#4B5260;text-align:right;font-weight:800">2</div><div id="al-s2" class="lb" style="left:320px;top:408px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">K-Means trên hai map → mặt nạ nhãn</div><div id="al-k3" class="lb" style="left:216px;top:472px;width:80px;font-size:34px;color:#4B5260;text-align:right;font-weight:800">3</div><div id="al-s3" class="lb" style="left:320px;top:472px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">SCA, mặt nạ cùng nhãn → tông chung</div><div id="al-k4" class="lb" style="left:216px;top:536px;width:80px;font-size:34px;color:#4B5260;text-align:right;font-weight:800">4</div><div id="al-s4" class="lb" style="left:320px;top:536px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">S-AdaIN: đổi tông ảnh riêng từng vùng</div><div id="al-k5" class="lb" style="left:216px;top:600px;width:80px;font-size:34px;color:#4B5260;text-align:right;font-weight:800">5</div><div id="al-s5" class="lb" style="left:320px;top:600px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">SSA, mặt nạ top-1 cùng nhãn → nét cọ</div><div id="al-k6" class="lb" style="left:216px;top:664px;width:80px;font-size:34px;color:#4B5260;text-align:right;font-weight:800">6</div><div id="al-s6" class="lb" style="left:320px;top:664px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">Trộn: F = α₁·SCA + α₂·SSA + F<sub style="font-size:max(28px,0.7em)">c</sub></div><div id="al-k7" class="lb" style="left:216px;top:728px;width:80px;font-size:34px;color:#C2185B;text-align:right;font-weight:800">Ra</div><div id="al-s7" class="lb" style="left:320px;top:728px;width:950px;font-size:34px;font-weight:600;white-space:nowrap">Decoder: lưới điểm → ảnh kết quả</div><div id="al-ch" class="lb" style="left:1360px;top:262px;width:368px;font-size:34px;color:#16181C;text-align:left;font-weight:800">Chi phí mỗi lớp attention</div><div id="al-big" class="big" style="left:1360px;top:370px;font-size:110px">4.096²</div><div id="al-cn" class="lb" style="left:1360px;top:500px;width:368px;font-size:32px;color:#16181C;text-align:left;font-weight:500">≈ 16,8 triệu ô mỗi bảng; SCA, SSA mỗi nhánh một bảng</div><div id="al-cg" class="lb" style="left:1360px;top:680px;width:368px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">bước 2 làm sẵn một lần (sem.py)</div><p id="al-end" class="ln" style="left:192px;top:880px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:left">Bước 2–6 là phần SCSA; encoder, decoder <span style="color:#C2185B">giữ</span> nguyên.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".algo-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#al-panel",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.2);
+tl.set("#al-hl",{opacity:0},0);
+tl.fromTo("#al-k0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.5);
+tl.fromTo("#al-s0",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},0.5);
+tl.fromTo("#al-k1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.75);
+tl.fromTo("#al-s1",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},0.75);
+tl.fromTo("#al-k2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.0);
+tl.fromTo("#al-s2",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},1.0);
+tl.fromTo("#al-hl",{y:0,height:58,opacity:0},{y:0,height:186,opacity:1,duration:0.5,ease:"power2.inOut"},0.5);
+tl.fromTo("#al-k3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.0);
+tl.fromTo("#al-s3",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},2.0);
+tl.fromTo("#al-k4",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.25);
+tl.fromTo("#al-s4",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},2.25);
+tl.fromTo("#al-k5",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.5);
+tl.fromTo("#al-s5",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},2.5);
+tl.fromTo("#al-hl",{y:0,height:186,opacity:1},{y:192,height:186,opacity:1,duration:0.5,ease:"power2.inOut",immediateRender:false},2.0);
+tl.fromTo("#al-k6",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.6);
+tl.fromTo("#al-s6",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},3.6);
+tl.fromTo("#al-k7",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.85);
+tl.fromTo("#al-s7",{clipPath:"inset(0% 100% 0% 0%)"},{clipPath:"inset(0% 0% 0% 0%)",duration:0.5,ease:"power2.inOut"},3.85);
+tl.fromTo("#al-hl",{y:192,height:186,opacity:1},{y:384,height:122,opacity:1,duration:0.5,ease:"power2.inOut",immediateRender:false},3.6);
+tl.fromTo("#al-ch",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},4.6);
+tl.fromTo("#al-big",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},4.75);
+tl.fromTo("#al-cn",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},4.9);
+tl.fromTo("#al-cg",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},5.0);
+tl.fromTo("#al-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},5.6);
+window.__timelines["algo"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

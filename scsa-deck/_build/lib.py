@@ -154,3 +154,41 @@ if (window.hfPlayForward) window.hfPlayForward(tl);
 </script>
 </template>
 '''
+
+# ---------------- formulas (HTML, no math renderer: the deck must run offline) ----------------
+def ob(t): return f'<span style="text-decoration:overline;text-decoration-thickness:3px">{t}</span>'
+def v(base, sub="", sup=""):  # a variable with optional sub/superscript (side by side, never stacked)
+    s = f'<sub style="font-size:max(28px,0.7em)">{sub}</sub>' if sub else ""
+    p = f'<sup style="font-size:max(28px,0.7em)">{sup}</sup>' if sup else ""
+    return f'{base}{s}{p}'
+def cases(lhs, rows, size=44):
+    r = "".join(f'<div style="display:flex;gap:28px"><span>{a}</span><span style="color:{INK2};font-weight:500">{b}</span></div>' for a, b in rows)
+    return (f'<span style="display:inline-flex;align-items:center;gap:14px">{lhs} =<span style="font-size:{size*2.2:.0f}px;font-weight:300;line-height:1">{{</span>'
+            f'<span style="display:inline-flex;flex-direction:column;gap:6px">{r}</span></span>')
+def eq(id_, html, y, note="", left=192, size=44, width=1536, note_gap=None):
+    out = (f'<div id="{id_}" class="lb" style="left:{left}px;top:{y}px;width:{width}px;font-size:{size}px;font-weight:600;'
+           f'white-space:nowrap;letter-spacing:0">{html}</div>')
+    if note:
+        out += label(f"{id_}-n", note, left, y + (note_gap or size + 36), width, 32, INK2, weight=500)
+    return out
+
+def mini_matrix(cls, x0, y0, C, val, color=lambda r, c: INK, bars=True, n=6):
+    """n x n attention cells (rows: 3 sky + 3 cliff points of the photo, cols: same for the painting)."""
+    s = ""
+    if bars:
+        h = n // 2
+        s += f'<rect x="{x0}" y="{y0-18}" width="{h*C}" height="9" fill="{REG[0]}"/><rect x="{x0+h*C}" y="{y0-18}" width="{h*C}" height="9" fill="{REG[1]}"/>'
+        s += f'<rect x="{x0-18}" y="{y0}" width="9" height="{h*C}" fill="{REG[0]}"/><rect x="{x0-18}" y="{y0+h*C}" width="9" height="{h*C}" fill="{REG[1]}"/>'
+    for r in range(n):
+        for c in range(n):
+            a = val(r, c)
+            if a is None: continue
+            fill = a if isinstance(a, str) else color(r, c)
+            op = "" if isinstance(a, str) else f' fill-opacity="{min(1, a):.2f}"'
+            s += f'<rect class="{cls}" x="{x0 + c*C + 3}" y="{y0 + r*C + 3}" width="{C-6}" height="{C-6}" fill="{fill}"{op}/>'
+    return s
+
+def gauss(cx, sd, base, h, x0, x1, step=8):
+    import math as _m
+    pts = [(x, base - h * _m.exp(-((x - cx) / sd) ** 2 / 2)) for x in range(x0, x1 + 1, step)]
+    return "M" + " L".join(f"{x:.0f} {y:.1f}" for x, y in pts)

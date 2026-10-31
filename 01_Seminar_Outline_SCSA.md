@@ -193,7 +193,7 @@ Cách đọc khi trình bày:
 - SCSA giảm SSL mạnh trên cả 3 backbone (SANet giảm ~47%); SANet+SCSA tốt nhất toàn bảng về SSL.
 - FID giảm nhẹ ở cả 3; StyTr2+SCSA tốt nhất toàn bảng về FID và CFSD.
 - **Ngoại lệ:** StyleID+SCSA có CFSD **tăng** (0.0916 → 0.1178) — tác giả chấp nhận đánh đổi giữ nội dung để lấy semantic stylization.
-- Pref.: hàng "không SCSA" và "có SCSA" là hai phần user study khác nhau (so cặp vs. so 8 ảnh), không nên cộng/so chéo giữa hai phần.
+- Pref.: user study có hai phần (Appendix G, 40 người × 30 câu = 1.200 phiếu). Phần 1 so từng cặp backbone ↔ backbone + SCSA (hai số mỗi cặp cộng lại bằng 1, ví dụ 0,1685 + 0,8315); phần 2 so bản có SCSA với 5 phương pháp chuyên biệt. Không so chéo số Pref. giữa hai phần.
 
 ### A.5.3 Ablation (Fig. 6)
 
@@ -262,37 +262,7 @@ Kết luận của paper: SCA chuyển màu/tông tổng thể nhưng mất text
 4. Sec. 3.2 + Fig. 4 (khung tổng thể) → Appendix C (chi tiết từng backbone).
 5. Sec. 4 + Appendix D (ảnh hưởng α1, α2, b, t1), E (dữ liệu), F (so với S-AdaIN/Style-Swap), H (khác instance), I (hạn chế).
 
-### A.7.2 Checklist chạy code (theo README)
-
-- [ ] Môi trường: Python 3.8, PyTorch 2.4.1 (README không ghi CUDA/torchvision; cần thêm `numpy`, `scikit-learn`, `opencv-python`).
-- [ ] Tải trọng số gốc của từng backbone (repo SCSA không chứa trọng số):
-    - SANet → từ https://github.com/GlebSBrykin/SANET, đặt vào `models/`.
-    - StyTr2 → từ https://github.com/diyiiyiii/StyTR-2, đặt vào `experiments/`.
-    - StyleID → từ https://github.com/jiwoogit/StyleID, đặt vào `models/`.
-- [ ] Tiền xử lý semantic map (bắt buộc trước mọi lệnh SCSA):
-
-```bash
-git clone https://github.com/scn-00/SCSA
-cd SCSA
-python sem.py        # sinh sem_precomputed_feats/<N>/ (mask 32/64/128, ma trận map 32/64)
-```
-
-- [ ] Chạy SANet + SCSA (so với SANet gốc):
-
-```bash
-cd SANet+SCSA
-python SANet.py --content ../sem_data/29/29.jpg --style ../sem_data/29/29_paint.jpg
-python SCSA.py --content ../sem_data/29/29.jpg --style ../sem_data/29/29_paint.jpg \
-  --content_sem ../sem_data/29/29_sem.png --style_sem ../sem_data/29/29_paint_sem.png \
-  --sem_map_64 ../sem_precomputed_feats/29/29_29_paint_map_64.pt \
-  --sem_map_32 ../sem_precomputed_feats/29/29_29_paint_map_32.pt
-python run.py        # chạy cả bộ
-```
-
-- [ ] StyTr2 + SCSA: tương tự trong `StyTr2+SCSA/` (README ví dụ với mẫu 31, cờ `--content/--style/--content_sem/--style_sem`).
-- [ ] StyleID + SCSA: dùng `run.py` với cờ `--cnt/--sty/--cnt_sem/--sty_sem/--sem_map_32/--sem_map_64` (khác tên cờ với hai backbone kia).
-
-### A.7.3 Cấu trúc dữ liệu cần biết
+### A.7.2 Cấu trúc dữ liệu cần biết
 
 ```
 sem_data/<N>/
@@ -305,7 +275,7 @@ sem_data/<N>/
 - `sem.py` resize map về 512 rồi về 32/64/128 (nearest), chạy K-Means với số cụm = số màu trong **bảng màu cứng theo số thư mục N** → muốn thêm dữ liệu mới phải thêm bảng màu cho N mới.
 - Vai trò content/style có thể đảo theo ví dụ (mẫu 31 dùng `31_paint.jpg` làm content).
 
-### A.7.4 Bài tập nhỏ trước seminar
+### A.7.3 Bài tập nhỏ trước seminar
 
 - [ ] Chạy SANet vs SANet+SCSA trên 3 mẫu, đặt ảnh cạnh nhau.
 - [ ] Đổi α1/α2 (ví dụ 0.3/0.7 và 1.0/0.0) để thấy vai trò SCA vs SSA.

@@ -103,23 +103,26 @@ H2 = [HMAX * p / 100 for p in PCT]
 KEEP = KL.index(1)
 H3 = [HMAX if j == KEEP else 0 for j in range(4)]
 m = title(sid, "Chia trọng số, và cách “cấm” một ô", ("cấm",))
-m += label("sm-ct", "điểm số: độ giống với 4 điểm trong tranh", 230, 240, 640, 32, INK2, weight=500)
+m += ptile("sm-q", IMG + "29.jpg", QA, 230, 228, 56, f"box-shadow:0 0 0 5px {ACC}")
+m += label("sm-ct", "điểm vách núi của ảnh so với 4 điểm tranh", 306, 240, 1000, 32, INK2, weight=500)
 for j, (x, l, k) in enumerate(zip(BX, KL, KEYS)):
     m += f'<div id="sm-b{j}" style="position:absolute;left:{x}px;top:{BASE-HMAX}px;width:110px;height:{HMAX}px;background:{REG[l]};transform-origin:50% 100%"></div>'
     for tag, val, top in (("s", vn(SHOW[j]), H1[j]), ("w", f"{PCT[j]}%", H2[j]), ("v", f"{100 if j == KEEP else 0}%", H3[j])):
-        m += label(f"sm-{tag}{j}", val, x - 25, BASE - top - 52, 160, 38, ACC if tag != "s" else INK, "center", 800)
+        m += label(f"sm-{tag}{j}", val, x - 25, BASE - top - 52, 160, 38, (INK if tag == "s" else (INK2 if tag == "v" and j != KEEP else ACC)), "center", 800)
     m += ptile(f"sm-t{j}", IMG + "29_paint.jpg", k, x + 20, BASE + 16, 70)
     m += label(f"sm-n{j}", REGN[l], x - 25, BASE + 94, 160, 28, INK, "center", 600)
 m += f'<div style="position:absolute;left:230px;top:{BASE}px;width:660px;height:5px;background:{INK}"></div>'
 m += svg(hatch_def("smh") + "".join(f'<rect id="sm-h{j}" x="{BX[j]-6}" y="{BASE-HMAX-20}" width="122" height="{HMAX+20}" fill="url(#smh)"/>' for j in range(4) if j != KEEP))
-m += label("sm-x", f'khác nhãn vách núi: {acc("cấm")}', 230, 240, 660, 32, INK, weight=700)
+m += label("sm-x", f'điểm hỏi là vách núi → khác nhãn thì {acc("cấm")}', 306, 240, 1000, 32, INK, weight=700)
 m += label("sm-sbl", "chia 100% trọng số", 1000, 330, 728, 32, INK2, weight=500)
 seg = "".join(f'<div id="sm-g{j}" style="height:110px;width:{728*PCT[j]/100:.0f}px;background:{REG[KL[j]]}"></div>' for j in range(4))
 m += f'<div id="sm-sb" style="position:absolute;left:1000px;top:380px;width:728px;height:110px;display:flex;overflow:hidden;background:#fff">{seg}</div>'
 m += line("sm-e1", "Softmax: điểm cao được phần lớn, cộng lại đúng 100%.", 540, 40, left=1000, width=728, weight=500)
-m += line("sm-e2", f'Đặt {acc("−∞")} vào ô bị cấm: ô đó nhận đúng 0%, phần còn lại tự chia lại.', 540, 40, left=1000, width=728, weight=500)
-m += line("sm-end", f'SCSA chỉ làm một việc: quyết định {acc("ô")} {acc("nào")} {acc("bị")} {acc("cấm")}.', 760, 44, left=1000, width=728)
-js = [WORDS(f"{sid}-tw", 0.1), FADE("#sm-ct", 0.3)]
+TOPJ = max(range(4), key=lambda j: PCT[j])
+m += line("sm-e2", f'Luật này xét {acc("nhãn")}: {REGN[KL[TOPJ]]} {PCT[TOPJ]}% vẫn bị cấm vì sai vùng. '
+           f'Ô cấm nhận {acc("−∞")} → 0%; {REGN[1]} còn một mình nên {PCT[KEEP]}% → 100%.', 530, 36, left=1000, width=728, weight=500)
+m += line("sm-end", f'Cốt lõi của SCSA: {acc("cấm")} ô khác nhãn.', 800, 44, left=1000, width=728)
+js = [WORDS(f"{sid}-tw", 0.1), PLACE("#sm-q", 0.2, 0.6), FADE("#sm-ct", 0.3)]
 for j in range(4):
     js += [GROW_Y(f"#sm-b{j}", 0.4 + 0.12*j, 0.7, 0, H1[j]/HMAX), PLACE(f"#sm-t{j}", 0.4 + 0.12*j, 0.6), FADE(f"#sm-n{j}", 0.5 + 0.12*j), BLUR(f"#sm-s{j}", 0.8 + 0.12*j)]
     js += [HIDE(f"#sm-w{j}"), HIDE(f"#sm-v{j}")]
@@ -209,3 +212,56 @@ tend = t0 + len(order) * step
 js.append(BLUR("#ua-end", tend + 0.6, 0.2))
 S.append(dict(id=sid, label="Universal Attention", dur=round(tend + 1.4, 1), frags=[1.4, round(tend + 0.2, 2), round(tend + 1.0, 2)], html=m, js="\n".join(js), title="Universal Attention: ai cũng nhìn tất cả",
   notes="Paper gọi khối attention trong SANet, StyTr2, StyleID là Universal Attention, viết tắt UA. Trái là 144 điểm của ảnh, phải là 144 điểm của tranh, đều là mảnh thật. Bấm: khung magenta là câu hỏi đang xét; nó chạy qua vài điểm của vách núi, trời, rừng, dãy xa. Mỗi lần, các đường nối tới 8 mảnh tranh giống nó nhất; số 8 mình chọn để nhìn cho rõ, còn phần trăm ở giữa tính trên cả 144 điểm. Đường đen là cùng vùng, đường magenta là sang vùng khác. Dòng chữ giữa đọc phần trăm trọng số rơi sang vùng khác. Bấm: chốt ý, mỗi điểm nhìn tất cả 144 thẻ, không ai hỏi điểm đó thuộc vùng nào. Với lưới 64 nhân 64 thật, bảng so khớp có 16 triệu ô. Số tính minh hoạ trên màu của ảnh mẫu."))
+
+# ---------------- the 4-point example, run through the formula ----------------
+EXC = [700 + 160 * j for j in range(4)]   # column lefts (width 140)
+def ex_head(pfx, y, q=True):
+    """Q tile (photo) on the left, the 4 painting points as columns."""
+    m = ""
+    if q:
+        m += ptile(f"{pfx}-q", IMG + "29.jpg", QA, 470, y, 84, f"box-shadow:0 0 0 5px {ACC}")
+        m += label(f"{pfx}-ql", "Q: điểm hỏi", 400, y + 98, 224, 30, INK, "center", 600)
+    m += label(f"{pfx}-kh", "K, V: 4 điểm của tranh", EXC[0], y - 46, 620, 30, INK2, weight=500)
+    for j, k in enumerate(KEYS):
+        m += ptile(f"{pfx}-k{j}", IMG + "29_paint.jpg", k, EXC[j] + 28, y, 84)
+        m += label(f"{pfx}-kn{j}", REGN[KL[j]], EXC[j], y + 98, 140, 30, INK, "center", 600)
+    return m
+def ex_row(pfx, name, vals, y, colors=None, size=40):
+    m = label(f"{pfx}-h", name, 192, y + 4, 480, 34, INK, weight=600)
+    for j, v_ in enumerate(vals):
+        c = colors[j] if colors else INK
+        m += label(f"{pfx}-{j}", v_, EXC[j], y, 140, size, c, "center", 800)
+    return m
+def ex_js(pfx, t, n=4, gap=0.08):
+    return [BLUR(f"#{pfx}-h", t)] + [BLUR(f"#{pfx}-{j}", t + 0.1 + gap * j) for j in range(n)]
+def ex_head_js(pfx, t, q=True):
+    js = [PLACE(f"#{pfx}-q", t, 0.6), FADE(f"#{pfx}-ql", t + 0.1)] if q else []
+    js += [FADE(f"#{pfx}-kh", t + 0.1)] + [PLACE(f"#{pfx}-k{j}", t + 0.15 + 0.08 * j, 0.6) for j in range(4)] + [FADE(f"#{pfx}-kn{j}", t + 0.3 + 0.08 * j) for j in range(4)]
+    return js
+
+# ---------------- attention as one formula ----------------
+sid = "uaf"
+fp = lambda id_, t: f'<span id="{id_}">{t}</span>'
+WRONGC = [ACC if KL[j] != 1 else INK for j in range(4)]
+m = title(sid, "Attention bằng một công thức")
+m += eq("uf-f", f'Attention = {fp("uf-fsm", "softmax(")} {fp("uf-fq", "Q")} {fp("uf-fk", "K<sup style=\"font-size:0.6em\">T</sup>")} {fp("uf-fsm2", ")")} {fp("uf-fv", "· V")}', 222, size=68, width=1300)
+m += label("uf-an", "Như tra cứu: Q là câu hỏi, K là nhãn của từng ngăn, V là đồ nằm trong ngăn.", 192, 318, 1536, 34, INK2, weight=500)
+m += ex_head("uf", 430)
+m += ex_row("uf-r1", f'Q K<sup>T</sup> · độ giống', [vn(v_) for v_ in SHOW], 600)
+m += ex_row("uf-r2", "softmax · chia đủ 100%", [f"{p_}%" for p_ in PCT], 664, WRONGC)
+m += label("uf-r3-h", "· V · trộn màu theo %", 192, 736, 480, 34, INK, weight=600)
+m += f'<div id="uf-mix" style="position:absolute;left:{EXC[0]}px;top:728px;width:{EXC[3] + 140 - EXC[0]}px;height:56px;background:{rgb(MIX)}"></div>'
+m += label("uf-mixl", f'màu lấy về: {acc("63%")} dãy xa, {acc("35%")} trời', 1340, 736, 420, 30, INK, weight=600)
+m += line("uf-end", f'Công thức {acc("không")} biết nhãn vùng, nên điểm vách núi lấy màu của vùng khác.', 840, 40)
+m += label("uf-src", "số tính minh hoạ trên ảnh mẫu", 192, 910, 800, 30, INK2, weight=500)
+def hl(id_, t, back=None):
+    out = [T(f"#{id_}", t, f'{{color:"{INK}"}}', f'{{color:"{ACC}"}}', 0.25, "power2.out")]
+    if back: out.append(T(f"#{id_}", back, f'{{color:"{ACC}"}}', f'{{color:"{INK}"}}', 0.25, "power2.out"))
+    return out
+js = [WORDS(f"{sid}-tw", 0.1), BLUR("#uf-f", 0.3, 0.25), FADE("#uf-an", 0.6)]
+js += hl("uf-fq", 1.2) + hl("uf-fk", 1.3) + hl("uf-fv", 1.3, 2.4) + ex_head_js("uf", 1.2)
+js += [T(f"#{k}", 3.6, f'{{color:"{ACC}"}}', f'{{color:"{INK}"}}', 0.25, "power2.out") for k in ("uf-fq", "uf-fk")] + ex_js("uf-r1", 2.5)
+js += hl("uf-fsm", 3.7, 4.9) + hl("uf-fsm2", 3.7, 4.9) + ex_js("uf-r2", 3.7) + [FADE("#uf-src", 4.1)]
+js += hl("uf-fv", 5.0) + [BLUR("#uf-r3-h", 5.0), WIPE("#uf-mix", 5.1, 0.7), BLUR("#uf-mixl", 5.7), BLUR("#uf-end", 6.3, 0.2)]
+S.append(dict(id=sid, label="Công thức attention", dur=7.0, frags=[1.0, 2.3, 3.5, 4.7, 6.7], html=m, js="\n".join(js), title="Attention bằng một công thức",
+  notes="Công thức attention."))

@@ -33,7 +33,7 @@ sid = "metrics"
 MT = [("SSL", "↓ thấp là tốt", "So style từng vùng: trời với trời, vách núi với vách núi.", "ssl"),
       ("FID", "↓ thấp là tốt", "Cả tập kết quả có “trông như tranh” không, xét tổng thể.", "fid"),
       ("CFSD", "↓ thấp là tốt", "Kết quả còn giữ bố cục của ảnh gốc không.", "cfsd"),
-      ("Người xem", "↑ cao là tốt", "40 người so từng cặp có và không có SCSA, tổng 1.200 phiếu.", "vote")]
+      ("Người xem", "↑ cao là tốt", "40 người × 30 câu = 1.200 phiếu: so có/không SCSA, và so với 5 phương pháp khác.", "vote")]
 m = title(sid, "Bốn thước đo, đọc trước khi xem số")
 for j, (h, a, s, kind) in enumerate(MT):
     g = f'<div id="mt-g{j}" style="position:absolute;left:0;top:0;width:1920px;height:1080px">'
@@ -97,15 +97,15 @@ S.append(dict(id=sid, label="Số liệu SSL", dur=4.8, frags=[1.4, 3.0, 4.4], h
 
 # ---------------- ablation ----------------
 sid = "ablation"
-AB = [("Đủ cả ba", 1.245, "mốc để so", INK), ("Bỏ SSA", 1.330, "mất texture", INK2), ("Bỏ S-AdaIN", 1.756, "kém chính xác, ít chi tiết", INK2), ("Bỏ SCA", 2.298, "lệch màu giữa các vùng", ACC)]
+AB = [("Đủ cả ba", 1.245, "mốc để so", INK), ("Bỏ SSA", 1.330, "mất texture", INK2), ("Bỏ S-AdaIN", 1.756, "tông từng vùng kém chính xác", INK2), ("Bỏ SCA", 2.298, "lệch màu giữa các vùng", ACC)]
 m = title(sid, "Bỏ bớt một mảnh, lỗi tăng bao nhiêu?")
-m += label("ab-sub", "trên StyleID · SSL, thấp là tốt", 192, 230, 900, 30, INK2, weight=500)
+m += label("ab-sub", "trên StyleID · SSL, thấp là tốt · Fig. 6 của paper", 192, 230, 900, 30, INK2, weight=500)
 for i, (n, v, d, c) in enumerate(AB):
     y = 300 + i * 120; w = v * 320
     m += label(f"ab-n{i}", n, 192, y + 14, 300, 40, INK, weight=800)
     m += f'<div id="ab-b{i}" style="position:absolute;left:500px;top:{y}px;width:{w:.0f}px;height:80px;background:{c}"></div>'
-    m += label(f"ab-v{i}", f'<b style="font-size:44px">{vn(v, 3)}</b> · {d}', 520 + w, y + 14, 560, 32, INK, weight=500)
-m += line("ab-end", f'SCA lo tông chung, SSA lo nét cọ. {acc("Thiếu")} cái nào cũng tệ hơn.', 840, 44)
+    m += label(f"ab-v{i}", f'<b style="font-size:44px">{vn(v, 3)}</b> · {d}', 520 + w, y + 14, 760, 32, INK, weight=500)
+m += line("ab-end", f'SCA lo tông chung, SSA lo nét cọ. {acc("Thiếu")} khối nào, SSL cũng tăng.', 840, 44)
 js = [WORDS(f"{sid}-tw", 0.1), FADE("#ab-sub", 0.2)]
 for i in range(4):
     t = 0.3 + 0.8*i
@@ -127,13 +127,13 @@ m += print_img("lm-map", IMG + "29_sem.png", 192, 288, 336)
 m += label("lm-ml", "phải tự có bản đồ nhãn, nhãn hai bên phải khớp", 192, 660, 380, 32, INK, weight=600)
 m += "".join(f'<div class="lm-t tile" style="left:{XM + (i % G)*CL}px;top:{YM + (i // G)*CL}px;width:{CL}px;height:{CL}px{t30(i)}"></div>' for i in range(G*G))
 m += svg("".join(f'<rect class="lm-rep" x="{XM + (i % G)*CL + 2}" y="{YM + (i // G)*CL + 2}" width="{CL-4}" height="{CL-4}" fill="none" stroke="{ACC}" stroke-width="4"/>' for i in range(G*G) if SSA[i] == top_k))
-m += label("lm-rl", f'một mảnh tranh bị SSA dùng lại {acc(str(top_n) + " lần")}', 600, 660, 420, 32, INK, weight=600)
-for j, s in enumerate(("Chỉ 91 bộ dữ liệu tự tuyển, chưa có benchmark lớn.", "SSL, thước đo chính, do tác giả tự đặt.", "Chậm và tốn bộ nhớ hơn mô hình gốc.", "Vùng không có cặp bên tranh thì sao?")):
-    m += line(f"lm-s{j}", s, 300 + j*120, 38, left=1100, width=628, weight=600)
+m += label("lm-rl", f'kết quả SSA trên lưới minh hoạ, mỗi ô một mảnh tranh: một mảnh dùng lại {acc(str(top_n) + " lần")}', 600, 660, 440, 30, INK, weight=600)
+for j, s in enumerate(("Chỉ 91 bộ dữ liệu tự tuyển, chưa có benchmark lớn.", "SSL, thước đo chính, do tác giả tự đặt.", "Chậm và tốn bộ nhớ hơn mô hình gốc.", "Vùng không có cặp bên tranh thì sao?", "StyleID + SCSA giữ bố cục kém hơn (CFSD 0,092 → 0,118).")):
+    m += line(f"lm-s{j}", s, 290 + j*112, 36, left=1100, width=628, weight=600)
 js = [WORDS(f"{sid}-tw", 0.1), PLACE("#lm-map", 0.3), BLUR("#lm-ml", 0.6),
       'tl.fromTo(".lm-t",{opacity:0},{opacity:1,duration:0.3,stagger:0.004},1.2);', HIDE(".lm-rep"),
       'tl.fromTo(".lm-rep",{opacity:0,scale:1.6,transformOrigin:"50% 50%"},{opacity:1,scale:1,duration:0.3,ease:"expo.out",stagger:0.05},1.9);', BLUR("#lm-rl", 2.4)]
-for j in range(4): js.append(BLUR(f"#lm-s{j}", 3.2 + 0.25*j, 0.2))
+for j in range(5): js.append(BLUR(f"#lm-s{j}", 3.2 + 0.2*j, 0.2))
 S.append(dict(id=sid, label="Hạn chế", dur=4.6, frags=[1.0, 3.0, 4.2], html=m, js="\n".join(js), title="Những điều SCSA chưa giải quyết",
   notes=f"Hai hạn chế nhìn được ngay trên ví dụ của ta. Bản đồ nhãn phải do người dùng cung cấp, và nhãn hai bên phải khớp nhau; tác giả tự nêu điều này. Bấm: SSA chỉ lấy một điểm, nên một mảnh tranh có thể bị dùng lại nhiều lần: trên lưới minh hoạ, một mảnh bị dùng {top_n} lần, khung magenta. Ở độ phân giải thật, điều này có thể gây lặp texture. Bấm: thêm các điểm để thảo luận: chỉ 91 bộ dữ liệu tự tuyển; SSL do tác giả tự đặt; tốn thời gian và bộ nhớ hơn; và nếu một vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng attention bị cấm, paper không nói xử lý thế nào. Mỗi điểm là một hướng mở rộng cho proposal."))
 
@@ -163,7 +163,7 @@ S.append(dict(id=sid, label="Chạy code", dur=5.0, frags=[1.0, 4.0, 4.6], html=
 sid = "summary"
 m = (f'<h1 id="sum-big" class="t" style="top:150px;font-size:88px;width:1536px">{words("Chỉ lấy style từ vùng cùng nhãn.", "sum-w", ("cùng", "nhãn."))}</h1>'
      + print_img("sum-a", IMG + "ex1_sanet.png", 192, 360, 340) + print_img("sum-b", IMG + "ex1_sanet_scsa.png", 600, 360, 340)
-     + label("sum-ca", "trước", 192, 728, 364, 32, INK2, "center", 600) + label("sum-cb", "sau", 600, 728, 364, 32, INK, "center", 700)
+     + label("sum-ca", "SANet", 192, 728, 364, 32, INK2, "center", 600) + label("sum-cb", "SANet + SCSA", 600, 728, 364, 32, INK, "center", 700)
      + line("sum-1", "SCA lấy tông chung của cả vùng.", 380, 40, left=1040, width=688)
      + line("sum-2", "SSA giữ nét cọ của một điểm.", 460, 40, left=1040, width=688)
      + line("sum-3", "Không train lại; lỗi theo vùng giảm 29–47%.", 540, 40, left=1040, width=688)
@@ -172,3 +172,96 @@ js = [WORDS("sum-w", 0.2, 0.09), PLACE("#sum-a", 1.1), PLACE("#sum-b", 1.25), FA
       BLUR("#sum-1", 2.2), BLUR("#sum-2", 2.5), BLUR("#sum-3", 2.8), FADE("#sum-l", 3.0)]
 S.append(dict(id=sid, label="Tóm tắt", dur=3.8, frags=[0.9, 2.0, 3.4], html=m, js="\n".join(js), title="Chỉ lấy style từ vùng cùng nhãn",
   notes="Một câu mang về: chỉ lấy style từ vùng cùng nhãn. Bấm: đây là câu trả lời cho câu hỏi đầu buổi. SANet tô vách núi bằng màu vùng khác vì attention không biết nhãn vùng; SCSA cấm điều đó. Bấm: bên trong là hai cách nhìn: SCA lấy tông chung của cả vùng, SSA giữ nét cọ của một điểm. Không phải train lại, và lỗi style theo vùng giảm 29 đến 47 phần trăm. Nếu chỉ nhớ một hình: ba ma trận. Mình nhận câu hỏi."))
+
+# ---------------- compared with dedicated semantic methods ----------------
+sid = "compare"
+CP = sorted([("SANet + SCSA", 0.8762, True), ("StyTr2 + SCSA", 1.2228, True), ("StyleID + SCSA", 1.2447, True),
+             ("STROTSS", 1.0981, False), ("MAST", 1.7320, False), ("TR", 1.2631, False), ("DIA", 1.9398, False), ("GLStyleNet", 1.0305, False)],
+            key=lambda r: r[1])
+SCL = 270
+m = title(sid, "So với năm phương pháp semantic chuyên biệt")
+m += label("cp-leg", f'SSL, thấp là tốt · <span style="color:{INK}">■</span> mô hình + SCSA · <span style="color:#9AA1AC">■</span> phương pháp chuyên biệt', 192, 222, 1100, 30, INK2, weight=500)
+for i, (n, v, ours) in enumerate(CP):
+    y = 282 + i * 64; w = v * SCL
+    m += label(f"cp-n{i}", n, 192, y + 4, 330, 32, INK, "right", 800 if ours else 500)
+    m += f'<div id="cp-b{i}" style="position:absolute;left:546px;top:{y}px;width:{w:.0f}px;height:46px;background:{INK if ours else "#9AA1AC"}"></div>'
+    m += label(f"cp-v{i}", vn(v, 2), 558 + w, y + 4, 120, 32, INK if ours else INK2, weight=700)
+SIDE = [("FID và CFSD", "tốt nhất bảng: StyTr2 + SCSA (12,40 · 0,071)"),
+        ("GLStyleNet", f'SSL thứ hai, nhưng CFSD 0,399: bố cục {acc("vỡ")}'),
+        ("STROTSS", "tối ưu lại cho từng ảnh; SANet + SCSA chỉ chạy một lượt qua mạng")]
+for j, (h, s_) in enumerate(SIDE):
+    m += label(f"cp-k{j}", h, 1260, 282 + j * 170, 468, 38, INK, weight=800)
+    m += label(f"cp-ks{j}", s_, 1260, 330 + j * 170, 468, 32, INK, weight=500)
+m += line("cp-src", "Số liệu: Table 1 của paper, cùng 91 bộ bốn.", 880, 30, weight=500, color=INK2)
+js = [WORDS(f"{sid}-tw", 0.1), FADE("#cp-leg", 0.3)]
+for i in range(len(CP)):
+    t = 0.4 + 0.12 * i
+    js += [FADE(f"#cp-n{i}", t), GROW_X(f"#cp-b{i}", t, 0.6), FADE(f"#cp-v{i}", t + 0.4)]
+for j in range(3):
+    js += [BLUR(f"#cp-k{j}", 2.3 + 0.7 * j), FADE(f"#cp-ks{j}", 2.45 + 0.7 * j)]
+js.append(FADE("#cp-src", 1.6))
+S.append(dict(id=sid, label="So với phương pháp khác", dur=4.6, frags=[2.1, 2.9, 3.6, 4.3], html=m, js="\n".join(js), title="So với năm phương pháp semantic chuyên biệt",
+  notes="So sánh."))
+
+# ---------------- strengths ----------------
+sid = "strengths"
+ST = [("Không train, cắm là chạy", "0 tham số mới; dùng lại trọng số gốc của backbone"),
+      ("Tổng quát cho ba họ mô hình", "CNN, Transformer, Diffusion đều giảm SSL 29–47%"),
+      ("Hai nhánh bổ trợ, có nút chỉnh", "α₁ chỉnh tông, α₂ chỉnh nét; bỏ khối nào, SSL cũng tăng"),
+      ("Người xem đồng ý", "chọn bản có SCSA trong 78–84% số cặp so sánh"),
+      ("Dễ giải thích", "nhìn ma trận attention là biết mỗi điểm lấy style từ đâu")]
+m = title(sid, "Điểm mạnh: đúng vùng mà không phải train")
+for i, (h, d) in enumerate(ST):
+    y = 252 + i * 128
+    m += label(f"sg-h{i}", h, 192, y, 1060, 42, INK, weight=800)
+    m += label(f"sg-d{i}", d, 192, y + 54, 1060, 32, INK2, weight=500)
+for e, (ex, bb) in enumerate((("ex1", "SANet"), ("ex2", "StyTr2"), ("ex3", "StyleID"))):
+    m += print_img(f"sg-p{e}", IMG + f"{ex}_{bb.lower()}_scsa.png", 1504, 262 + e * 230, 180, mat=10)
+    m += label(f"sg-pl{e}", bb, 1290, 334 + e * 230, 190, 32, INK, "right", 700)
+js = [WORDS(f"{sid}-tw", 0.1)]
+for i in range(5):
+    t = (0.4, 1.2, 2.6, 3.4, 4.2)[i]
+    js += [BLUR(f"#sg-h{i}", t), FADE(f"#sg-d{i}", t + 0.15)]
+    if i == 1:
+        js += [PLACE(f"#sg-p{e}", t + 0.1 + 0.1 * e) for e in range(3)] + [FADE(f"#sg-pl{e}", t + 0.3 + 0.1 * e) for e in range(3)]
+S.append(dict(id=sid, label="Điểm mạnh", dur=5.2, frags=[1.0, 2.4, 3.2, 4.0, 4.7], html=m, js="\n".join(js), title="Điểm mạnh: đúng vùng mà không phải train",
+  notes="Điểm mạnh."))
+
+# ---------------- future directions ----------------
+sid = "future"
+FU = [("Bản đồ nhãn vẽ tay", "Sinh map tự động", "SAM 2 + CLIP, ghép nhãn hai bên bằng embedding"),
+      ("Vùng không có cặp", "Có phương án dự phòng", "lùi về attention thường hoặc vùng gần nghĩa"),
+      ("Tốn thời gian, bộ nhớ", "Tính riêng từng vùng", "O(N·M) → O(Σ Nᵢ·Mᵢ); SSA = tìm láng giềng gần"),
+      ("SSA top-1 cứng", "Top-k có nhiệt độ", "giữ nét cọ mà mượt hơn ở biên vùng"),
+      ("91 bộ, SSL tự đặt", "Benchmark lớn, đo độc lập", "MS-COCO × WikiArt; ArtFID, LPIPS, CLIP")]
+m = title(sid, "Hướng phát triển: mỗi hạn chế một lối mở")
+paths = ""
+for i, (a, b_, c) in enumerate(FU):
+    y = 250 + i * 128
+    m += label(f"fu-a{i}", a, 192, y, 560, 38, INK2, weight=700)
+    m += label(f"fu-b{i}", b_, 900, y, 828, 40, INK, weight=800)
+    m += label(f"fu-c{i}", c, 900, y + 54, 828, 32, INK2, weight=500)
+    paths += f'<path id="fu-r{i}" d="M760 {y+24} L860 {y+24}" stroke="{INK}" stroke-width="4" fill="none"/><path id="fu-h{i}" d="M848 {y+12} L868 {y+24} L848 {y+36}Z" fill="{INK}"/>'
+m += svg(paths)
+m += line("fu-end", f'Bốn hướng đầu là bốn module trong {acc("proposal")} của nhóm.', 900, 40)
+js = [WORDS(f"{sid}-tw", 0.1)]
+for i in range(5):
+    t = 0.4 + 1.0 * i
+    js += [BLUR(f"#fu-a{i}", t), DRAW(f"#fu-r{i}", t + 0.2, 0.3, 200), FADE(f"#fu-h{i}", t + 0.45, 0.1), BLUR(f"#fu-b{i}", t + 0.35), FADE(f"#fu-c{i}", t + 0.5)]
+js.append(BLUR("#fu-end", 5.5, 0.2))
+S.append(dict(id=sid, label="Hướng phát triển", dur=6.3, frags=[1.3, 2.3, 3.3, 4.3, 5.3, 5.9], html=m, js="\n".join(js), title="Hướng phát triển: mỗi hạn chế một lối mở",
+  notes="Hướng phát triển."))
+
+# ---------------- closing ----------------
+sid = "end"
+m = (f'<div id="end-h" class="big" style="left:192px;top:330px;font-size:200px">{words("SCSA", "end-l")}</div>'
+     + f'<p id="end-t" class="ln" style="left:192px;top:570px;width:760px;font-size:44px;font-weight:700">{words("Semantic Continuous-Sparse Attention for Arbitrary Semantic Style Transfer", "end-w")}</p>'
+     + line("end-v", "CVPR 2025", 790, 30, width=760, weight=500, color=INK2)
+     + print_img("end-p1", IMG + "ex2_stytr2_scsa.png", 1060, 130, 280, rot=-3)
+     + print_img("end-p2", IMG + "29_paint.jpg", 1400, 170, 300, rot=2)
+     + print_img("end-p3", IMG + "ex1_sanet_scsa.png", 1080, 500, 300, rot=2)
+     + print_img("end-p4", IMG + "ex3_styleid_scsa.png", 1420, 560, 280, rot=-2))
+js = [WORDS("end-l", 0.2, 0.1), WORDS("end-w", 0.6, 0.04), FADE("#end-v", 1.2),
+      PLACE("#end-p1", 0.4), PLACE("#end-p2", 0.6), PLACE("#end-p3", 0.8), PLACE("#end-p4", 1.0)]
+S.append(dict(id=sid, label="Kết thúc", dur=4.0, frags=[2.0], html=m, js="\n".join(js), title="SCSA",
+  notes="Cảm ơn mọi người đã lắng nghe."))

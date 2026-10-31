@@ -1,0 +1,34 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="apps" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="apps-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="apps-tw">Vì</span> <span class="apps-tw">sao</span> <span class="apps-tw" style="color:#C2185B">quan</span> <span class="apps-tw">trọng:</span> <span class="apps-tw">style</span> <span class="apps-tw">transfer</span> <span class="apps-tw">dùng</span> <span class="apps-tw">ở</span> <span class="apps-tw">đâu</span></h1><div id="ap-h0" class="lb" style="left:192px;top:262px;width:1000px;font-size:44px;color:#16181C;text-align:left;font-weight:800">Chỉnh ảnh</div><div id="ap-d0" class="lb" style="left:192px;top:320px;width:1000px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">biến ảnh chụp thành tranh trong vài giây (Prisma, 2016)</div><div id="ap-h1" class="lb" style="left:192px;top:398px;width:1000px;font-size:44px;color:#16181C;text-align:left;font-weight:800">Phim, thiết kế</div><div id="ap-d1" class="lb" style="left:192px;top:456px;width:1000px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">Come Swim (2017) tô cảnh quay theo tranh của đạo diễn</div><div id="ap-h2" class="lb" style="left:192px;top:534px;width:1000px;font-size:44px;color:#16181C;text-align:left;font-weight:800">Tăng cường dữ liệu</div><div id="ap-d2" class="lb" style="left:192px;top:592px;width:1000px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">Stylized-ImageNet (2019): đổi phong cách ảnh train</div><div id="ap-h3" class="lb" style="left:192px;top:670px;width:1000px;font-size:44px;color:#16181C;text-align:left;font-weight:800">Chân dung, cảnh vật</div><div id="ap-d3" class="lb" style="left:192px;top:728px;width:1000px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">áo, mặt, trời, núi phải lấy nét từ đúng chỗ</div><div id="ap-r" class="print" style="left:1236px;top:262px;width:492px;height:492px;padding:12px;"><img src="assets/img/ex1_sanet.png" alt="" style="width:468px;height:468px;object-fit:cover;display:block"></div><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><ellipse id="ap-e" cx="1388" cy="555" rx="112" ry="160" fill="none" stroke="#C2185B" stroke-width="6"/></svg><div id="ap-rl" class="lb" style="left:1236px;top:770px;width:492px;font-size:32px;color:#16181C;text-align:left;font-weight:600">vách núi mang màu trời: <span style="color:#C2185B">không dùng được</span> trong sản phẩm</div><p id="ap-end" class="ln" style="left:192px;top:870px;width:1536px;font-size:40px;font-weight:600;color:#16181C;text-align:left">Ứng dụng nào cũng cần một điều: trời ra trời, núi ra núi, tức là <span style="color:#C2185B">đúng</span> <span style="color:#C2185B">vùng</span>.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".apps-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#ap-h0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.4);
+tl.fromTo("#ap-d0",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.55);
+tl.fromTo("#ap-h1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.9);
+tl.fromTo("#ap-d1",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.05);
+tl.fromTo("#ap-h2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.6);
+tl.fromTo("#ap-d2",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.75);
+tl.fromTo("#ap-h3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.1);
+tl.fromTo("#ap-d3",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},2.25);
+tl.fromTo("#ap-r",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},2.8);
+tl.fromTo("#ap-e",{strokeDasharray:1000,strokeDashoffset:1000},{strokeDashoffset:0,duration:0.6,ease:"power2.inOut"},3.3);
+tl.fromTo("#ap-rl",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.6);
+tl.fromTo("#ap-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},4.1);
+window.__timelines["apps"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

@@ -44,7 +44,7 @@ for i in range(5):
     if i: js.append(MOVE("#history-ring", t - 0.1, CX[i-1] - CX[0], 0, CX[i] - CX[0], 0, 0.6))
     else: js.append(T("#history-ring", t - 0.1, '{opacity:0,scale:1.5}', '{opacity:1,scale:1}', 0.5, "expo.out"))
     js += [T(f"#history-d{i}", t, '{scale:0}', '{scale:1}', 0.45, "back.out(1.6)"), BLUR(f"#history-y{i}", t + 0.1), BLUR(f"#history-n{i}", t + 0.2), FADE(f"#history-t{i}", t + 0.3, 0.3)]
-js += [FADE("#history-br", 5.4, 0.01), DRAW("#history-br", 5.4, 0.7, 2000), BLUR("#history-end", 5.8, 0.2)]
+js += [T("#history-br", 5.4, '{opacity:0,scale:1.04,svgOrigin:"1114 532"}', '{opacity:1,scale:1}', 0.6, "expo.out"), BLUR("#history-end", 5.8, 0.2)]
 S.append(dict(id=sid, label="Mười năm", dur=6.6, frags=[1.5, 2.4, 3.3, 4.2, 5.1, 6.2], html=m, js="\n".join(js), title="Mười năm style transfer, năm bước",
   notes="Bấm qua từng mốc. 2016, Gatys: chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống chữ ký màu của tranh; đẹp nhưng mỗi ảnh vài phút. 2017, AdaIN: một mạng cho mọi tranh, khớp tông của cả ảnh; nhanh nhưng thô, ta sẽ gặp lại nó ở chặng 2. 2019 đến 2022, SANet và StyTr2: attention, mỗi điểm của ảnh tự đi tìm điểm giống nó trong tranh. 2024, StyleID: attention nằm bên trong Stable Diffusion, không cần train. 2025, SCSA: attention biết nhãn vùng. Bấm cuối: khung cam bao ba mô hình ở giữa, đó là ba backbone SCSA cắm vào; SCSA không thay chúng."))
 
@@ -89,3 +89,51 @@ for l in range(4):
 js.append(BLUR("#maps-end", 4.7, 0.2))
 S.append(dict(id=sid, label="Bản đồ nhãn", dur=5.4, frags=[1.0, 2.2, 3.4, 4.5, 5.1], html=m, js="\n".join(js), title="Semantic: mỗi ảnh có thêm một bản đồ nhãn",
   notes="Bấm: thêm hai bản đồ nhãn, semantic map. Đây là file thật trong repo: 29_sem.png và 29_paint_sem.png. Mỗi màu là một vùng. Bấm: đỏ là trời, vàng là vách núi, xanh lá là rừng, xanh dương là dãy núi xa. Màu chỉ là mã nhãn, không phải màu thật. Bấm: yêu cầu là nối đúng cặp, trời với trời, vách núi với vách núi. Bấm: chốt, mỗi vùng chỉ được lấy style từ vùng cùng tên. Đầu vào giờ là bộ bốn: ảnh, map ảnh, tranh, map tranh. Ai vẽ map? Người dùng, tự vẽ hoặc dùng mô hình phân đoạn. Paper không tự sinh map, đây là một hạn chế ta sẽ nhắc lại."))
+
+# ---------------- why it matters, where it is used ----------------
+sid = "apps"
+APPS = [("Chỉnh ảnh", "biến ảnh chụp thành tranh trong vài giây (Prisma, 2016)"),
+        ("Phim, thiết kế", "Come Swim (2017) tô cảnh quay theo tranh của đạo diễn"),
+        ("Tăng cường dữ liệu", "Stylized-ImageNet (2019): đổi phong cách ảnh train"),
+        ("Chân dung, cảnh vật", "áo, mặt, trời, núi phải lấy nét từ đúng chỗ")]
+m = title(sid, "Vì sao quan trọng: style transfer dùng ở đâu", ("quan", "trọng:"))
+for i, (h, d) in enumerate(APPS):
+    y = 262 + i * 136
+    m += label(f"ap-h{i}", h, 192, y, 1000, 44, INK, weight=800)
+    m += label(f"ap-d{i}", d, 192, y + 58, 1000, 32, INK2, weight=500)
+m += print_img("ap-r", IMG + "ex1_sanet.png", 1236, 262, 468)
+m += svg(f'<ellipse id="ap-e" cx="{1248 + 0.30*468:.0f}" cy="{274 + 0.60*468:.0f}" rx="112" ry="160" fill="none" stroke="{ACC}" stroke-width="6"/>')
+m += label("ap-rl", f'vách núi mang màu trời: {acc("không dùng được")} trong sản phẩm', 1236, 770, 492, 32, INK, weight=600)
+m += line("ap-end", f'Ứng dụng nào cũng cần một điều: trời ra trời, núi ra núi, tức là {acc("đúng")} {acc("vùng")}.', 870, 40)
+js = [WORDS(f"{sid}-tw", 0.1)]
+for i in range(4):
+    t = (0.4, 0.9, 1.6, 2.1)[i]
+    js += [BLUR(f"#ap-h{i}", t), FADE(f"#ap-d{i}", t + 0.15)]
+js += [PLACE("#ap-r", 2.8), DRAW("#ap-e", 3.3, 0.6, 1000), BLUR("#ap-rl", 3.6), BLUR("#ap-end", 4.1, 0.2)]
+S.append(dict(id=sid, label="Vì sao quan trọng", dur=4.8, frags=[1.5, 2.7, 4.0, 4.5], html=m, js="\n".join(js), title="Vì sao quan trọng: style transfer dùng ở đâu",
+  notes="Style transfer không chỉ là trò chơi ảnh."))
+
+# ---------------- problem statement ----------------
+sid = "task"
+QIN = [("29.jpg", 192, 262), ("29_sem.png", 372, 262), ("29_paint.jpg", 192, 442), ("29_paint_sem.png", 372, 442)]
+m = title(sid, "Bài toán: bộ bốn vào, một ảnh ra")
+for j, (f, x, y) in enumerate(QIN):
+    m += print_img(f"tk-i{j}", IMG + f, x, y, 140, mat=8)
+m += label("tk-il", "ảnh + map ảnh · tranh + map tranh", 192, 618, 520, 30, INK2, weight=500)
+m += f'<div id="tk-box" style="position:absolute;left:720px;top:360px;width:360px;height:150px;border:4px solid {INK};border-radius:20px;background:#F7F8F9;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:800">phương pháp</div>'
+m += svg(leader("tk-w1", [(556, 435), (712, 435)], INK, 4, False) + '<path id="tk-h1" d="M700 423 L720 435 L700 447Z" fill="#16181C"/>'
+         + leader("tk-w2", [(1084, 435), (1214, 435)], INK, 4, False) + '<path id="tk-h2" d="M1202 423 L1222 435 L1202 447Z" fill="#16181C"/>')
+m += print_img("tk-o", IMG + "ex1_sanet_scsa.png", 1236, 262, 344)
+m += label("tk-ol", "một ảnh kết quả", 1236, 632, 368, 30, INK2, "center", 500)
+REQ = [("1", "Giữ bố cục của ảnh chụp.", INK), ("2", f'{acc("Đúng vùng")}: trời lấy style từ trời, núi từ núi.', INK), ("3", "Dùng cho mọi bức tranh, không train lại.", INK)]
+for j, (n, s_, c) in enumerate(REQ):
+    m += line(f"tk-r{j}", f'<b>{n}</b> · {s_}', 690 + j*60, 38, weight=500)
+m += line("tk-end", f'Thách thức: mô hình attention hiện nay đạt 1 và 3, nhưng {acc("hỏng")} 2.', 880, 44)
+js = [WORDS(f"{sid}-tw", 0.1)] + [PLACE(f"#tk-i{j}", 0.3 + 0.08*j, 0.6) for j in range(4)] + [FADE("#tk-il", 0.7),
+      DRAW("#tk-w1", 1.0, 0.3, 200), FADE("#tk-h1", 1.25, 0.1), BLUR("#tk-box", 1.2, 0.2),
+      DRAW("#tk-w2", 1.5, 0.3, 200), FADE("#tk-h2", 1.75, 0.1), PLACE("#tk-o", 1.7), FADE("#tk-ol", 2.0)]
+for j in range(3):
+    js.append(BLUR(f"#tk-r{j}", 2.6 + 0.4*j))
+js.append(BLUR("#tk-end", 4.2, 0.2))
+S.append(dict(id=sid, label="Phát biểu bài toán", dur=5.0, frags=[2.55, 3.9, 4.6], html=m, js="\n".join(js), title="Bài toán: bộ bốn vào, một ảnh ra",
+  notes="Phát biểu bài toán."))

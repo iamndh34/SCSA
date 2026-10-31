@@ -1,0 +1,28 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="end" data-width="1920" data-height="1080">
+<div class="sc">
+<div id="end-h" class="big" style="left:192px;top:330px;font-size:200px"><span class="end-l">SCSA</span></div><p id="end-t" class="ln" style="left:192px;top:570px;width:760px;font-size:44px;font-weight:700"><span class="end-w">Semantic</span> <span class="end-w">Continuous-Sparse</span> <span class="end-w">Attention</span> <span class="end-w">for</span> <span class="end-w">Arbitrary</span> <span class="end-w">Semantic</span> <span class="end-w">Style</span> <span class="end-w">Transfer</span></p><p id="end-v" class="ln" style="left:192px;top:790px;width:760px;font-size:30px;font-weight:500;color:#4B5260;text-align:left">CVPR 2025</p><div id="end-p1" class="print" style="left:1060px;top:130px;width:304px;height:304px;padding:12px;rotate:-3deg;"><img src="assets/img/ex2_stytr2_scsa.png" alt="" style="width:280px;height:280px;object-fit:cover;display:block"></div><div id="end-p2" class="print" style="left:1400px;top:170px;width:324px;height:324px;padding:12px;rotate:2deg;"><img src="assets/img/29_paint.jpg" alt="" style="width:300px;height:300px;object-fit:cover;display:block"></div><div id="end-p3" class="print" style="left:1080px;top:500px;width:324px;height:324px;padding:12px;rotate:2deg;"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:300px;height:300px;object-fit:cover;display:block"></div><div id="end-p4" class="print" style="left:1420px;top:560px;width:304px;height:304px;padding:12px;rotate:-2deg;"><img src="assets/img/ex3_styleid_scsa.png" alt="" style="width:280px;height:280px;object-fit:cover;display:block"></div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".end-l",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.1},0.2);
+tl.fromTo(".end-w",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.04},0.6);
+tl.fromTo("#end-v",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.2);
+tl.fromTo("#end-p1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.4);
+tl.fromTo("#end-p2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.6);
+tl.fromTo("#end-p3",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},0.8);
+tl.fromTo("#end-p4",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.0);
+window.__timelines["end"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

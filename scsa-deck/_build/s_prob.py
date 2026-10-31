@@ -49,13 +49,14 @@ for r in range(G):
             if best is None or var > best[0]: best = (var, seg, l)
 _, ROW, RL = best
 q = B.QA
-top4 = UA[q]["top"][:4]
+top4 = [(k, 0) for k in sorted((k for k in range(G*G) if LS[k] == 1), key=lambda k: d2(DATA["rgbAd"][q], DATA["rgbS"][k]))[:4]]
+MIX4 = [round(sum(DATA["rgbS"][k][c] for k, _ in top4) / 4) for c in range(3)]
 def sky(id_, src, y):
     return (f'<div id="{id_}" class="print" style="left:192px;top:{y}px;width:732px;height:204px;padding:12px">'
             f'<div style="width:708px;height:180px;background-image:url({IMG}{src});background-size:708px 708px;background-position:0 -8px"></div></div>')
 m = (title(sid, "Lỗi 2 và 3: loang lổ, nhạt nhoà")
      + label("e2-h", "Loang lổ", 192, 250, 600, 48, INK, weight=800)
-     + sky("e2-a", "ex1_sanet.png", 320) + label("e2-al", 'SANet: trời lẫn vệt xanh của núi', 192, 530, 732, 30, INK, weight=600)
+     + sky("e2-a", "ex1_sanet.png", 320) + label("e2-al", 'SANet: cùng là trời mà mỗi chỗ một màu', 192, 530, 732, 30, INK, weight=600)
      + sky("e2-b", "ex1_sanet_scsa.png", 590) + label("e2-bl", "mong muốn: trời một tông (SANet + SCSA)", 192, 800, 732, 30, INK2, weight=500)
      + label("e3-h", "Nhạt nhoà", 1020, 250, 600, 48, INK, weight=800)
      + label("e3-d", "Trộn nhiều mảnh sắc nét ra một màu đục.", 1020, 315, 708, 32, INK2, weight=500))
@@ -64,8 +65,8 @@ for j, (k, w) in enumerate(top4):
     m += B.ptile(f"e3-k{j}", IMG + "29_paint.jpg", k, 1020 + j*130, 400, 110)
     conv += f'<path id="e3-c{j}" d="M{1075 + j*130} 516 L1305 600" stroke="{INK}" stroke-width="3" fill="none"/>'
 m += svg(conv)
-m += f'<div id="e3-r" style="position:absolute;left:1240px;top:610px;width:130px;height:130px;background:{rgb(UA[q]["rgb"])};box-shadow:0 0 0 6px {ACC}"></div>'
-m += label("e3-rl", "trộn có trọng số → đục, mất nét cọ", 1020, 760, 708, 30, INK, "center", 600)
+m += f'<div id="e3-r" style="position:absolute;left:1240px;top:610px;width:130px;height:130px;background:{rgb(MIX4)};box-shadow:0 0 0 6px {ACC}"></div>'
+m += label("e3-rl", "bốn mảnh vách núi trộn lại → đục, mất nét cọ", 1020, 760, 708, 30, INK, "center", 600)
 m += line("e23-end", f'Hai lỗi kéo {acc("ngược")} nhau: cần một tông chung, nhưng vẫn giữ nét riêng.', 880, 40)
 js = [WORDS(f"{sid}-tw", 0.1), BLUR("#e2-h", 0.3), PLACE("#e2-a", 0.5), BLUR("#e2-al", 0.8), PLACE("#e2-b", 1.1), BLUR("#e2-bl", 1.4),
       BLUR("#e3-h", 2.0), FADE("#e3-d", 2.15)]
@@ -91,7 +92,7 @@ for i, (a, b_, c) in enumerate(rows):
     paths += f'<path id="fx-s{i}" d="M188 {y+36} L{196+w} {y+34}" stroke="{ACC}" stroke-width="7" fill="none" stroke-linecap="round"/>'
     paths += f'<path id="fx-r{i}" d="M720 {y+36} L860 {y+36}" stroke="{INK}" stroke-width="4" fill="none"/><path id="fx-h{i}" d="M848 {y+24} L868 {y+36} L848 {y+48}Z" fill="{INK}"/>'
 m += svg(paths)
-m += line("fx-end", f'Một gốc chung: attention {acc("không")} biết nhãn vùng. SCSA thêm đúng mảnh đó.', 830, 44)
+m += line("fx-end", f'Cả ba nằm trong attention gốc: {acc("không")} biết nhãn, hỏi theo cấu trúc, trộn mềm.', 830, 44)
 js = [WORDS(f"{sid}-tw", 0.1)]
 for i in range(3):
     t = 0.4 + i * 1.0

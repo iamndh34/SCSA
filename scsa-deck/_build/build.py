@@ -8,12 +8,12 @@ import s_open, s_ctx, s_base, s_prob, s_meth, s_res
 by = {s["id"]: s for mod in (s_open, s_ctx, s_base, s_prob, s_meth, s_res) for s in mod.S}
 for k in range(5):
     c = s_open.chapter(k); by[c["id"]] = c
-ORDER = ["cover", "hook", "minute", "roadmap",
-         "ch1", "st", "history", "maps",
-         "ch2", "grid", "attn", "softmax", "adain", "ua",
-         "ch3", "err1", "err23", "fixmap",
-         "ch4", "idea", "pipe", "sca", "sadain", "ssa", "matrices", "mix", "plug",
-         "ch5", "results", "metrics", "ssl", "ablation", "limits", "code", "summary"]
+ORDER = ["cover", "hook", "roadmap",
+         "ch1", "st", "apps", "history",
+         "ch2", "maps", "task", "grid", "attn", "softmax", "adain", "ua", "uaf", "err1", "err23", "fixmap", "minute",
+         "ch3", "idea", "pipe", "sca", "sadain", "ssa", "matrices", "maskf", "mix", "algo", "plug", "train",
+         "ch4", "metrics", "results", "ssl", "compare", "ablation", "strengths", "limits",
+         "ch5", "summary", "future", "end"]
 SL = [by[i] for i in ORDER]
 from notes import NOTES
 assert set(NOTES) == set(ORDER), set(NOTES) ^ set(ORDER)

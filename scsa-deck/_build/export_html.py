@@ -1,7 +1,7 @@
 """Export the deck as one standalone HTML presentation (no server, works offline).
 Run from the project root: python3 _build/export_html.py <out_dir>
-Images go to <out_dir>/assets/img, GSAP to <out_dir>/lib/gsap.min.js (copy them alongside)."""
-import base64, json, math, pathlib, sys
+Everything is inlined (fonts, images, GSAP), so the single .html file can be sent on its own."""
+import base64, json, math, pathlib, re, sys
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import build                                   # rebuilds the HyperFrames project and exposes SL
@@ -156,5 +156,23 @@ const META = {json.dumps(meta, ensure_ascii=False).replace("</", "<\\/")};
 </body>
 </html>
 '''
+# inline images: CSS backgrounds via one custom property per image, <img> sources as data URIs
+MIME = {".jpg": "image/jpeg", ".png": "image/png"}
+def data_uri(name):
+    f = ROOT / "assets/img" / name
+    return f"data:{MIME[f.suffix]};base64," + base64.b64encode(f.read_bytes()).decode()
+used = sorted(set(re.findall(r'assets/img/([\w.-]+)', html)))
+var = {n: "--im-" + re.sub(r"\W", "_", n) for n in used}
+html = re.sub(r"""url\((["']?)assets/img/([\w.-]+)\1\)""", lambda m: f"var({var[m.group(2)]})", html)
+html = re.sub(r'src="assets/img/([\w.-]+)"', lambda m: f'data-im="{m.group(1)}"', html)  # filled once from IM below
+assert "assets/img/" not in html
+root_vars = ":root{" + ";".join(f"{var[n]}:url({data_uri(n)})" for n in used) + "}"
+html = html.replace("<style>\n", "<style>\n" + root_vars + "\n", 1)
+gsap = (HERE / "gsap.min.js").read_text(encoding="utf-8")
+html = html.replace('<script src="lib/gsap.min.js"></script>', "<script>" + gsap + "</script>", 1)
+im_js = ("<script>const IM = " + json.dumps({n: data_uri(n) for n in used}) + ";\n"
+         "document.querySelectorAll('img[data-im]').forEach(function (e) { e.src = IM[e.dataset.im]; });</script>")
+html = html.replace('<div id="hud"></div>', im_js + '\n<div id="hud"></div>', 1)
+assert "lib/gsap.min.js" not in html
 (OUT / "SCSA_trinh_chieu.html").write_text(html, encoding="utf-8")
 print("wrote", OUT / "SCSA_trinh_chieu.html", round(len(html) / 1e6, 2), "MB")

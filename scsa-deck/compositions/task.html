@@ -1,0 +1,38 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="task" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="task-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="task-tw">Bài</span> <span class="task-tw">toán:</span> <span class="task-tw">bộ</span> <span class="task-tw">bốn</span> <span class="task-tw">vào,</span> <span class="task-tw">một</span> <span class="task-tw">ảnh</span> <span class="task-tw">ra</span></h1><div id="tk-i0" class="print" style="left:192px;top:262px;width:156px;height:156px;padding:8px;"><img src="assets/img/29.jpg" alt="" style="width:140px;height:140px;object-fit:cover;display:block"></div><div id="tk-i1" class="print" style="left:372px;top:262px;width:156px;height:156px;padding:8px;"><img src="assets/img/29_sem.png" alt="" style="width:140px;height:140px;object-fit:cover;display:block"></div><div id="tk-i2" class="print" style="left:192px;top:442px;width:156px;height:156px;padding:8px;"><img src="assets/img/29_paint.jpg" alt="" style="width:140px;height:140px;object-fit:cover;display:block"></div><div id="tk-i3" class="print" style="left:372px;top:442px;width:156px;height:156px;padding:8px;"><img src="assets/img/29_paint_sem.png" alt="" style="width:140px;height:140px;object-fit:cover;display:block"></div><div id="tk-il" class="lb" style="left:192px;top:618px;width:520px;font-size:30px;color:#4B5260;text-align:left;font-weight:500">ảnh + map ảnh · tranh + map tranh</div><div id="tk-box" style="position:absolute;left:720px;top:360px;width:360px;height:150px;border:4px solid #16181C;border-radius:20px;background:#F7F8F9;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:800">phương pháp</div><svg class="ov" width="1920" height="1080" viewBox="0 0 1920 1080"><path id="tk-w1" d="M556 435 L712 435" stroke="#16181C" stroke-width="4" fill="none" stroke-linecap="round"/><path id="tk-h1" d="M700 423 L720 435 L700 447Z" fill="#16181C"/><path id="tk-w2" d="M1084 435 L1214 435" stroke="#16181C" stroke-width="4" fill="none" stroke-linecap="round"/><path id="tk-h2" d="M1202 423 L1222 435 L1202 447Z" fill="#16181C"/></svg><div id="tk-o" class="print" style="left:1236px;top:262px;width:368px;height:368px;padding:12px;"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:344px;height:344px;object-fit:cover;display:block"></div><div id="tk-ol" class="lb" style="left:1236px;top:632px;width:368px;font-size:30px;color:#4B5260;text-align:center;font-weight:500">một ảnh kết quả</div><p id="tk-r0" class="ln" style="left:192px;top:690px;width:1536px;font-size:38px;font-weight:500;color:#16181C;text-align:left"><b>1</b> · Giữ bố cục của ảnh chụp.</p><p id="tk-r1" class="ln" style="left:192px;top:750px;width:1536px;font-size:38px;font-weight:500;color:#16181C;text-align:left"><b>2</b> · <span style="color:#C2185B">Đúng vùng</span>: trời lấy style từ trời, núi từ núi.</p><p id="tk-r2" class="ln" style="left:192px;top:810px;width:1536px;font-size:38px;font-weight:500;color:#16181C;text-align:left"><b>3</b> · Dùng cho mọi bức tranh, không train lại.</p><p id="tk-end" class="ln" style="left:192px;top:880px;width:1536px;font-size:44px;font-weight:600;color:#16181C;text-align:left">Thách thức: mô hình attention hiện nay đạt 1 và 3, nhưng <span style="color:#C2185B">hỏng</span> 2.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".task-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#tk-i0",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},0.3);
+tl.fromTo("#tk-i1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},0.38);
+tl.fromTo("#tk-i2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},0.45999999999999996);
+tl.fromTo("#tk-i3",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.6,ease:"expo.out"},0.54);
+tl.fromTo("#tk-il",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.7);
+tl.fromTo("#tk-w1",{strokeDasharray:200,strokeDashoffset:200},{strokeDashoffset:0,duration:0.3,ease:"power2.inOut"},1.0);
+tl.fromTo("#tk-h1",{opacity:0},{opacity:1,duration:0.1,ease:"power2.out"},1.25);
+tl.fromTo("#tk-box",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},1.2);
+tl.fromTo("#tk-w2",{strokeDasharray:200,strokeDashoffset:200},{strokeDashoffset:0,duration:0.3,ease:"power2.inOut"},1.5);
+tl.fromTo("#tk-h2",{opacity:0},{opacity:1,duration:0.1,ease:"power2.out"},1.75);
+tl.fromTo("#tk-o",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.7);
+tl.fromTo("#tk-ol",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},2.0);
+tl.fromTo("#tk-r0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.6);
+tl.fromTo("#tk-r1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.0);
+tl.fromTo("#tk-r2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.4000000000000004);
+tl.fromTo("#tk-end",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.2,ease:"power2.out"},4.2);
+window.__timelines["task"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>

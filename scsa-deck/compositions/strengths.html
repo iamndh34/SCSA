@@ -1,0 +1,38 @@
+<template>
+<style>
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Regular.ttf') format('truetype'); font-weight:400; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Medium.ttf') format('truetype'); font-weight:500; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-SemiBold.ttf') format('truetype'); font-weight:600; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-Bold.ttf') format('truetype'); font-weight:700; font-display:block; }
+@font-face { font-family:'Be Vietnam Pro'; src:url('assets/fonts/BeVietnamPro-ExtraBold.ttf') format('truetype'); font-weight:800; font-display:block; }
+@font-face { font-family:'JetBrains Mono'; src:url('assets/fonts/JetBrainsMono.ttf') format('truetype'); font-weight:100 800; font-display:block; }
+#root { position:absolute; inset:0; background:#EDEFF1; }
+</style>
+<div id="root" data-composition-id="strengths" data-width="1920" data-height="1080">
+<div class="sc">
+<h1 id="strengths-title" class="t" style="top:108px;font-size:66px;width:1536px"><span class="strengths-tw">Điểm</span> <span class="strengths-tw">mạnh:</span> <span class="strengths-tw">đúng</span> <span class="strengths-tw">vùng</span> <span class="strengths-tw">mà</span> <span class="strengths-tw">không</span> <span class="strengths-tw">phải</span> <span class="strengths-tw">train</span></h1><div id="sg-h0" class="lb" style="left:192px;top:252px;width:1060px;font-size:42px;color:#16181C;text-align:left;font-weight:800">Không train, cắm là chạy</div><div id="sg-d0" class="lb" style="left:192px;top:306px;width:1060px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">0 tham số mới; dùng lại trọng số gốc của backbone</div><div id="sg-h1" class="lb" style="left:192px;top:380px;width:1060px;font-size:42px;color:#16181C;text-align:left;font-weight:800">Tổng quát cho ba họ mô hình</div><div id="sg-d1" class="lb" style="left:192px;top:434px;width:1060px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">CNN, Transformer, Diffusion đều giảm SSL 29–47%</div><div id="sg-h2" class="lb" style="left:192px;top:508px;width:1060px;font-size:42px;color:#16181C;text-align:left;font-weight:800">Hai nhánh bổ trợ, có nút chỉnh</div><div id="sg-d2" class="lb" style="left:192px;top:562px;width:1060px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">α₁ chỉnh tông, α₂ chỉnh nét; bỏ khối nào, SSL cũng tăng</div><div id="sg-h3" class="lb" style="left:192px;top:636px;width:1060px;font-size:42px;color:#16181C;text-align:left;font-weight:800">Người xem đồng ý</div><div id="sg-d3" class="lb" style="left:192px;top:690px;width:1060px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">chọn bản có SCSA trong 78–84% số cặp so sánh</div><div id="sg-h4" class="lb" style="left:192px;top:764px;width:1060px;font-size:42px;color:#16181C;text-align:left;font-weight:800">Dễ giải thích</div><div id="sg-d4" class="lb" style="left:192px;top:818px;width:1060px;font-size:32px;color:#4B5260;text-align:left;font-weight:500">nhìn ma trận attention là biết mỗi điểm lấy style từ đâu</div><div id="sg-p0" class="print" style="left:1504px;top:262px;width:200px;height:200px;padding:10px;"><img src="assets/img/ex1_sanet_scsa.png" alt="" style="width:180px;height:180px;object-fit:cover;display:block"></div><div id="sg-pl0" class="lb" style="left:1290px;top:334px;width:190px;font-size:32px;color:#16181C;text-align:right;font-weight:700">SANet</div><div id="sg-p1" class="print" style="left:1504px;top:492px;width:200px;height:200px;padding:10px;"><img src="assets/img/ex2_stytr2_scsa.png" alt="" style="width:180px;height:180px;object-fit:cover;display:block"></div><div id="sg-pl1" class="lb" style="left:1290px;top:564px;width:190px;font-size:32px;color:#16181C;text-align:right;font-weight:700">StyTr2</div><div id="sg-p2" class="print" style="left:1504px;top:722px;width:200px;height:200px;padding:10px;"><img src="assets/img/ex3_styleid_scsa.png" alt="" style="width:180px;height:180px;object-fit:cover;display:block"></div><div id="sg-pl2" class="lb" style="left:1290px;top:794px;width:190px;font-size:32px;color:#16181C;text-align:right;font-weight:700">StyleID</div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+tl.fromTo(".strengths-tw",{opacity:0,filter:"blur(6px)"},{opacity:1,filter:"blur(0px)",duration:0.13,ease:"power2.out",stagger:0.067},0.1);
+tl.fromTo("#sg-h0",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},0.4);
+tl.fromTo("#sg-d0",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},0.55);
+tl.fromTo("#sg-h1",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},1.2);
+tl.fromTo("#sg-d1",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.3499999999999999);
+tl.fromTo("#sg-p0",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.3);
+tl.fromTo("#sg-p1",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.4000000000000001);
+tl.fromTo("#sg-p2",{opacity:0,y:28,scale:0.985},{opacity:1,y:0,scale:1,duration:0.8,ease:"expo.out"},1.5);
+tl.fromTo("#sg-pl0",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.5);
+tl.fromTo("#sg-pl1",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.6);
+tl.fromTo("#sg-pl2",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},1.7);
+tl.fromTo("#sg-h2",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},2.6);
+tl.fromTo("#sg-d2",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},2.75);
+tl.fromTo("#sg-h3",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},3.4);
+tl.fromTo("#sg-d3",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},3.55);
+tl.fromTo("#sg-h4",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:0.18,ease:"power2.out"},4.2);
+tl.fromTo("#sg-d4",{opacity:0},{opacity:1,duration:0.35,ease:"power2.out"},4.3500000000000005);
+window.__timelines["strengths"] = tl;
+if (window.hfPlayForward) window.hfPlayForward(tl);
+</script>
+</template>
