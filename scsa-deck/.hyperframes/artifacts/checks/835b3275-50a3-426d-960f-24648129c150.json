@@ -1,0 +1,2723 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "composition_file_too_large",
+        "severity": "warning",
+        "message": "This HTML composition file has 487 lines. Smaller sub-compositions are easier to read, iterate on, and diff.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/bibeo/Desktop/SCSA/scsa-deck/index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Split coherent scenes or layers into separate .html files under compositions/, then mount them from the parent with data-composition-src so each file stays small enough to inspect, revise, and validate independently."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/bibeo/Desktop/SCSA/scsa-deck/compositions/grid.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 3 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/bibeo/Desktop/SCSA/scsa-deck/compositions/metrics.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/Users/bibeo/Desktop/SCSA/scsa-deck/compositions/st.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      }
+    ],
+    "filesScanned": 44
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "duration": 219,
+    "samples": [
+      12.167,
+      36.5,
+      60.833,
+      85.167,
+      109.5,
+      133.833,
+      158.167,
+      182.5,
+      206.833
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 0,
+    "truncated": false
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 4,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.05:1; WCAG AA requires 3:1.",
+        "text": "Bài toán",
+        "fg": "rgb(163,169,178)",
+        "bg": "rgb(237,239,241)",
+        "ratio": 2.05,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(133,138,145)",
+        "large": true,
+        "selector": "#ch1-n1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch1.html",
+        "bbox": {
+          "x": 470,
+          "y": 340,
+          "width": 320,
+          "height": 50
+        },
+        "time": 12.167,
+        "times": [
+          12.167
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.05:1; WCAG AA requires 3:1.",
+        "text": "Kỹ thuật",
+        "fg": "rgb(163,169,178)",
+        "bg": "rgb(237,239,241)",
+        "ratio": 2.05,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(133,138,145)",
+        "large": true,
+        "selector": "#ch1-n2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch1.html",
+        "bbox": {
+          "x": 800,
+          "y": 340,
+          "width": 320,
+          "height": 50
+        },
+        "time": 12.167,
+        "times": [
+          12.167
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.05:1; WCAG AA requires 3:1.",
+        "text": "So sánh",
+        "fg": "rgb(163,169,178)",
+        "bg": "rgb(237,239,241)",
+        "ratio": 2.05,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(133,138,145)",
+        "large": true,
+        "selector": "#ch1-n3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch1.html",
+        "bbox": {
+          "x": 1130,
+          "y": 340,
+          "width": 320,
+          "height": 50
+        },
+        "time": 12.167,
+        "times": [
+          12.167
+        ]
+      },
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 2.05:1; WCAG AA requires 3:1.",
+        "text": "Kết luận",
+        "fg": "rgb(163,169,178)",
+        "bg": "rgb(237,239,241)",
+        "ratio": 2.05,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(133,138,145)",
+        "large": true,
+        "selector": "#ch1-n4",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch1.html",
+        "bbox": {
+          "x": 1460,
+          "y": 340,
+          "width": 320,
+          "height": 50
+        },
+        "time": 12.167,
+        "times": [
+          12.167
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      12.167,
+      60.833,
+      109.5,
+      158.167,
+      206.833
+    ],
+    "checked": 69,
+    "passed": 65
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 130,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "film_silent",
+        "severity": "warning",
+        "message": "This 219 s film has no sound source (no <audio>, no <video> with sound): add a music bed and sounds on the visible actions unless the person asked for silence; see references/sound.md.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Dạy attention nhìn đúng vùng khi chuyển phong cách cho ảnh\" (11 words) is on screen 2.26 s (±0.01 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Dạy attention nhìn đúng vùng khi chuyển phong cách cho ảnh",
+        "selector": "#cover-sub",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cover.html",
+        "bbox": {
+          "x": 192,
+          "y": 520,
+          "width": 757.53,
+          "height": 133.59000000000003
+        },
+        "time": 0.754,
+        "words": 11,
+        "seconds": 2.262,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Semantic Continuous-Sparse Attention for Arbitrary Semant...\" (11 words) is on screen 1.71 s (±0.01 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Semantic Continuous-Sparse Attention for Arbitrary Semantic Style Transfer · CVPR 2025",
+        "selector": "#cover-paper",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cover.html",
+        "bbox": {
+          "x": 192,
+          "y": 760,
+          "width": 768.73,
+          "height": 77
+        },
+        "time": 1.302,
+        "words": 11,
+        "seconds": 1.714,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chunnan Shang, Hongwei Wang, Zhizhong Wang, Xiangming Men...\" (10 words) is on screen 1.58 s (±0.01 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chunnan Shang, Hongwei Wang, Zhizhong Wang, Xiangming Meng · Zhejiang University",
+        "selector": "#cover-au",
+        "dataAttributes": {},
+        "sourceFile": "compositions/cover.html",
+        "bbox": {
+          "x": 192,
+          "y": 850,
+          "width": 715.09,
+          "height": 77
+        },
+        "time": 1.439,
+        "words": 10,
+        "seconds": 1.577,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"vách núi mang màu núi\" (5 words) is on screen 1.39 s (±0.01 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "vách núi mang màu núi",
+        "selector": "#hook-nb",
+        "dataAttributes": {},
+        "sourceFile": "compositions/hook.html",
+        "bbox": {
+          "x": 1284.17,
+          "y": 834,
+          "width": 359.6600000000001,
+          "height": 40
+        },
+        "time": 5.621,
+        "words": 5,
+        "seconds": 1.394,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Vì sao bên trái tô nhầm? Cả buổi hôm nay trả lời câu này.\" (14 words) is on screen 0.94 s (±0.01 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Vì sao bên trái tô nhầm? Cả buổi hôm nay trả lời câu này.",
+        "selector": "#hook-q",
+        "dataAttributes": {},
+        "sourceFile": "compositions/hook.html",
+        "bbox": {
+          "x": 345.14,
+          "y": 900,
+          "width": 1229.7200000000003,
+          "height": 56
+        },
+        "time": 6.078,
+        "words": 14,
+        "seconds": 0.937,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Mỗi chặng mở bằng một câu hỏi, rồi mới đi vào chi tiết. l...\" (18 words) is on screen 1.14 s (±0.01 s), under its 4.42 s floor: hold it about 0.5 s + 0.3 s a word (5.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Mỗi chặng mở bằng một câu hỏi, rồi mới đi vào chi tiết. là trọng tâm. Chặng 3",
+        "selector": "#roadmap-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/roadmap.html",
+        "bbox": {
+          "x": 192,
+          "y": 760,
+          "width": 1511.8,
+          "height": 51
+        },
+        "time": 9.369,
+        "words": 18,
+        "seconds": 1.143,
+        "floorSeconds": 4.425
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chặng 1 · Giới thiệu\" (4 words) is on screen 1.14 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chặng 1 · Giới thiệu",
+        "selector": "#ch1-k",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch1.html",
+        "bbox": {
+          "x": 192,
+          "y": 599,
+          "width": 377.38,
+          "height": 51
+        },
+        "time": 11.38,
+        "words": 4,
+        "seconds": 1.143,
+        "floorSeconds": 1.275
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Vì sao quan trọng, dùng ở đâu?\" (7 words) is on screen 1.01 s (±0.01 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Vì sao quan trọng, dùng ở đâu?",
+        "selector": "#ch1-qq",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch1.html",
+        "bbox": {
+          "x": 192,
+          "y": 652,
+          "width": 553.39,
+          "height": 121
+        },
+        "time": 11.517,
+        "words": 7,
+        "seconds": 1.006,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"kết quả: bố cục cũ, áo mới\" (7 words) is on screen 1.62 s (±0.01 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "kết quả: bố cục cũ, áo mới",
+        "selector": "#st-lc",
+        "dataAttributes": {},
+        "sourceFile": "compositions/st.html",
+        "bbox": {
+          "x": 1257.23,
+          "y": 738,
+          "width": 413.52,
+          "height": 40
+        },
+        "time": 15.881,
+        "words": 7,
+        "seconds": 1.622,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\": một mô hình dùng cho bức tranh, không train lại. Arbitr...\" (12 words) is on screen 1.12 s (±0.01 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": ": một mô hình dùng cho bức tranh, không train lại. Arbitrary mọi",
+        "selector": "#st-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/st.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1363.23,
+          "height": 56
+        },
+        "time": 16.384,
+        "words": 12,
+        "seconds": 1.12,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"vách núi mang màu trời: trong sản phẩm không dùng được\" (11 words) is on screen 1.33 s (±0.01 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "vách núi mang màu trời: trong sản phẩm không dùng được",
+        "selector": "#ap-rl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/apps.html",
+        "bbox": {
+          "x": 1236,
+          "y": 770,
+          "width": 485.02,
+          "height": 80
+        },
+        "time": 21.182,
+        "words": 11,
+        "seconds": 1.326,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Ứng dụng nào cũng cần một điều: trời ra trời, núi ra núi,...\" (17 words) is on screen 0.82 s (±0.01 s), under its 4.20 s floor: hold it about 0.5 s + 0.3 s a word (5.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Ứng dụng nào cũng cần một điều: trời ra trời, núi ra núi, tức là . đúng vùng",
+        "selector": "#ap-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/apps.html",
+        "bbox": {
+          "x": 192,
+          "y": 870,
+          "width": 1424.11,
+          "height": 51
+        },
+        "time": 21.685,
+        "words": 17,
+        "seconds": 0.822,
+        "floorSeconds": 4.2
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SCSA là cắm vào ba mô hình trong khung: SANet, StyTr2, St...\" (14 words) is on screen 1.14 s (±0.01 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SCSA là cắm vào ba mô hình trong khung: SANet, StyTr2, StyleID. mảnh ghép",
+        "selector": "#history-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/history.html",
+        "bbox": {
+          "x": 192,
+          "y": 790,
+          "width": 1511.47,
+          "height": 51
+        },
+        "time": 28.381,
+        "words": 14,
+        "seconds": 1.142,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chặng 2 · Bài toán và tổng quan\" (7 words) is on screen 1.14 s (±0.01 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chặng 2 · Bài toán và tổng quan",
+        "selector": "#ch2-k",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch2.html",
+        "bbox": {
+          "x": 192,
+          "y": 599,
+          "width": 633,
+          "height": 51
+        },
+        "time": 30.369,
+        "words": 7,
+        "seconds": 1.142,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Bài toán gì, khó ở đâu?\" (6 words) is on screen 1.00 s (±0.01 s), under its 1.72 s floor: hold it about 0.5 s + 0.3 s a word (2.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Bài toán gì, khó ở đâu?",
+        "selector": "#ch2-qq",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch2.html",
+        "bbox": {
+          "x": 192,
+          "y": 652,
+          "width": 540.33,
+          "height": 121
+        },
+        "time": 30.506,
+        "words": 6,
+        "seconds": 1.005,
+        "floorSeconds": 1.725
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Mỗi vùng chỉ được lấy style từ vùng trong tranh. cùng tên\" (12 words) is on screen 0.73 s (±0.01 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Mỗi vùng chỉ được lấy style từ vùng trong tranh. cùng tên",
+        "selector": "#maps-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/maps.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1220.47,
+          "height": 56
+        },
+        "time": 36.287,
+        "words": 12,
+        "seconds": 0.732,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· : trời lấy style từ trời, núi từ núi. 2 Đúng vùng\" (11 words) is on screen 1.94 s (±0.01 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· : trời lấy style từ trời, núi từ núi. 2 Đúng vùng",
+        "selector": "#tk-r1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/task.html",
+        "bbox": {
+          "x": 192,
+          "y": 750,
+          "width": 814.97,
+          "height": 48
+        },
+        "time": 40.08,
+        "words": 11,
+        "seconds": 1.942,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· Dùng cho mọi bức tranh, không train lại. 3\" (9 words) is on screen 1.55 s (±0.01 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· Dùng cho mọi bức tranh, không train lại. 3",
+        "selector": "#tk-r2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/task.html",
+        "bbox": {
+          "x": 192,
+          "y": 810,
+          "width": 786.5799999999999,
+          "height": 48
+        },
+        "time": 40.469,
+        "words": 9,
+        "seconds": 1.553,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Thách thức: mô hình attention hiện nay đạt 1 và 3, nhưng ...\" (14 words) is on screen 0.75 s (±0.01 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Thách thức: mô hình attention hiện nay đạt 1 và 3, nhưng 2. hỏng",
+        "selector": "#tk-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/task.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 1387.61,
+          "height": 56
+        },
+        "time": 41.268,
+        "words": 14,
+        "seconds": 0.754,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"ảnh 512 × 512 pixel\" (4 words) is on screen 0.59 s (±0.01 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "ảnh 512 × 512 pixel",
+        "selector": "#grid-l1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/grid.html",
+        "bbox": {
+          "x": 192,
+          "y": 690,
+          "width": 292.23,
+          "height": 40
+        },
+        "time": 42.708,
+        "words": 4,
+        "seconds": 0.595,
+        "floorSeconds": 1.275
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"1 điểm vách núi = 1 vector, ví dụ 512 số: mô tả mảng ảnh ...\" (16 words) is on screen 2.24 s (±0.01 s), under its 3.97 s floor: hold it about 0.5 s + 0.3 s a word (5.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "1 điểm vách núi = 1 vector, ví dụ 512 số: mô tả mảng ảnh quanh nó",
+        "selector": "#grid-vl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/grid.html",
+        "bbox": {
+          "x": 820,
+          "y": 420,
+          "width": 879.8800000000001,
+          "height": 80
+        },
+        "time": 45.267,
+        "words": 16,
+        "seconds": 2.239,
+        "floorSeconds": 3.975
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"decoder vẽ lưới thành ảnh\" (5 words) is on screen 1.46 s (±0.18 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "decoder vẽ lưới thành ảnh",
+        "selector": "#grid-dec",
+        "dataAttributes": {},
+        "sourceFile": "compositions/grid.html",
+        "bbox": {
+          "x": 820,
+          "y": 540,
+          "width": 407.78,
+          "height": 40
+        },
+        "time": 46.067,
+        "words": 5,
+        "seconds": 1.463,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SCSA chỉ sửa ở giữa. lưới điểm\" (7 words) is on screen 0.73 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SCSA chỉ sửa ở giữa. lưới điểm",
+        "selector": "#grid-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/grid.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 595.78,
+          "height": 51
+        },
+        "time": 46.798,
+        "words": 7,
+        "seconds": 0.732,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Vách núi giống dãy xa và trời hơn vách núi: màu lấy sai v...\" (15 words) is on screen 0.73 s (±0.18 s), under its 3.75 s floor: hold it about 0.5 s + 0.3 s a word (5.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Vách núi giống dãy xa và trời hơn vách núi: màu lấy sai vùng. 99%",
+        "selector": "#attn-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/attn.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1410.44,
+          "height": 56
+        },
+        "time": 53.013,
+        "words": 15,
+        "seconds": 0.731,
+        "floorSeconds": 3.75
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"điểm vách núi của ảnh so với 4 điểm tranh\" (10 words) is on screen 2.56 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "điểm vách núi của ảnh so với 4 điểm tranh",
+        "selector": "#sm-ct",
+        "dataAttributes": {},
+        "sourceFile": "compositions/softmax.html",
+        "bbox": {
+          "x": 306,
+          "y": 240,
+          "width": 658.77,
+          "height": 40
+        },
+        "time": 54.11,
+        "words": 10,
+        "seconds": 2.559,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"0,6\" (2 words) is on screen 0.37 s (±0.18 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (1.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "0,6",
+        "selector": "#sm-s2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/softmax.html",
+        "bbox": {
+          "x": 611.27,
+          "y": 602.06,
+          "width": 67.45000000000005,
+          "height": 48
+        },
+        "time": 54.841,
+        "words": 2,
+        "seconds": 0.365,
+        "floorSeconds": 0.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"0,5\" (2 words) is on screen 0.37 s (±0.18 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (1.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "0,5",
+        "selector": "#sm-s3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/softmax.html",
+        "bbox": {
+          "x": 781.59,
+          "y": 609.83,
+          "width": 66.82000000000005,
+          "height": 48
+        },
+        "time": 54.841,
+        "words": 2,
+        "seconds": 0.365,
+        "floorSeconds": 0.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Softmax: điểm cao được phần lớn, cộng lại đúng 100%.\" (10 words) is on screen 0.73 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Softmax: điểm cao được phần lớn, cộng lại đúng 100%.",
+        "selector": "#sm-e1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/softmax.html",
+        "bbox": {
+          "x": 1000,
+          "y": 540,
+          "width": 670.05,
+          "height": 103
+        },
+        "time": 56.304,
+        "words": 10,
+        "seconds": 0.731,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Luật này xét : dãy xa 63% vẫn bị cấm vì sai vùng. Ô cấm n...\" (25 words) is on screen 2.56 s (±0.18 s), under its 6.00 s floor: hold it about 0.5 s + 0.3 s a word (8.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Luật này xét : dãy xa 63% vẫn bị cấm vì sai vùng. Ô cấm nhận → 0%; vách núi còn một mình nên 1% → 100%. nhãn −∞",
+        "selector": "#sm-e2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/softmax.html",
+        "bbox": {
+          "x": 1000,
+          "y": 530,
+          "width": 672.44,
+          "height": 139.59000000000003
+        },
+        "time": 57.035,
+        "words": 25,
+        "seconds": 2.56,
+        "floorSeconds": 6
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Cốt lõi của SCSA: ô khác nhãn. cấm\" (8 words) is on screen 1.10 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Cốt lõi của SCSA: ô khác nhãn. cấm",
+        "selector": "#sm-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/softmax.html",
+        "bbox": {
+          "x": 1000,
+          "y": 800,
+          "width": 644.31,
+          "height": 113.19000000000005
+        },
+        "time": 58.497,
+        "words": 8,
+        "seconds": 1.097,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"cả ảnh khoác một tông của tranh\" (7 words) is on screen 1.83 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "cả ảnh khoác một tông của tranh",
+        "selector": "#ad-rl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/adain.html",
+        "bbox": {
+          "x": 1342.77,
+          "y": 690,
+          "width": 366.46000000000004,
+          "height": 80
+        },
+        "time": 62.885,
+        "words": 7,
+        "seconds": 1.828,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Bỏ μ, σ của ảnh, khoác μ, σ của tranh.\" (10 words) is on screen 1.83 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Bỏ μ, σ của ảnh, khoác μ, σ của tranh.",
+        "selector": "#ad-step",
+        "dataAttributes": {},
+        "sourceFile": "compositions/adain.html",
+        "bbox": {
+          "x": 192,
+          "y": 690,
+          "width": 479.5799999999999,
+          "height": 81.59000000000003
+        },
+        "time": 62.885,
+        "words": 10,
+        "seconds": 1.828,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Một cặp số cho cả ảnh: mọi vùng bị kéo về một tông. cùng\" (14 words) is on screen 1.10 s (±0.18 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Một cặp số cho cả ảnh: mọi vùng bị kéo về một tông. cùng",
+        "selector": "#ad-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/adain.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1248.34,
+          "height": 56
+        },
+        "time": 63.616,
+        "words": 14,
+        "seconds": 1.097,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"trời: trọng số sang vùng khác ■ 33%\" (7 words) is on screen 1.10 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "trời: trọng số sang vùng khác ■ 33%",
+        "selector": "#ua-r0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 637.7,
+          "y": 773,
+          "width": 644.5800000000002,
+          "height": 46
+        },
+        "time": 66.175,
+        "words": 7,
+        "seconds": 1.097,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"vách núi: trọng số sang vùng khác ■ 98%\" (8 words) is on screen 1.10 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "vách núi: trọng số sang vùng khác ■ 98%",
+        "selector": "#ua-r1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 594.3,
+          "y": 773,
+          "width": 731.3999999999999,
+          "height": 46
+        },
+        "time": 67.272,
+        "words": 8,
+        "seconds": 1.097,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"vách núi: trọng số sang vùng khác ■ 95%\" (8 words) is on screen 0.73 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "vách núi: trọng số sang vùng khác ■ 95%",
+        "selector": "#ua-r2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 594.05,
+          "y": 773,
+          "width": 731.8999999999999,
+          "height": 46
+        },
+        "time": 68.369,
+        "words": 8,
+        "seconds": 0.731,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"rừng: trọng số sang vùng khác ■ 79%\" (7 words) is on screen 0.73 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "rừng: trọng số sang vùng khác ■ 79%",
+        "selector": "#ua-r3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 628.91,
+          "y": 773,
+          "width": 662.17,
+          "height": 46
+        },
+        "time": 69.466,
+        "words": 7,
+        "seconds": 0.731,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"vách núi: trọng số sang vùng khác ■ 84%\" (8 words) is on screen 1.10 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "vách núi: trọng số sang vùng khác ■ 84%",
+        "selector": "#ua-r4",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 593.94,
+          "y": 773,
+          "width": 732.1199999999999,
+          "height": 46
+        },
+        "time": 70.197,
+        "words": 8,
+        "seconds": 1.097,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"trời: trọng số sang vùng khác ■ 90%\" (7 words) is on screen 1.10 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "trời: trọng số sang vùng khác ■ 90%",
+        "selector": "#ua-r5",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 636.75,
+          "y": 773,
+          "width": 646.48,
+          "height": 46
+        },
+        "time": 71.294,
+        "words": 7,
+        "seconds": 1.097,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"dãy xa: trọng số sang vùng khác ■ 100%\" (8 words) is on screen 0.73 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "dãy xa: trọng số sang vùng khác ■ 100%",
+        "selector": "#ua-r6",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 600.88,
+          "y": 773,
+          "width": 718.2300000000001,
+          "height": 46
+        },
+        "time": 72.391,
+        "words": 8,
+        "seconds": 0.731,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Mỗi điểm nhìn tất cả 144 thẻ. ai hỏi điểm đó thuộc vùng n...\" (15 words) is on screen 0.73 s (±0.18 s), under its 3.75 s floor: hold it about 0.5 s + 0.3 s a word (5.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Mỗi điểm nhìn tất cả 144 thẻ. ai hỏi điểm đó thuộc vùng nào. Không",
+        "selector": "#ua-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ua.html",
+        "bbox": {
+          "x": 192,
+          "y": 868,
+          "width": 1448.59,
+          "height": 56
+        },
+        "time": 74.95,
+        "words": 15,
+        "seconds": 0.732,
+        "floorSeconds": 3.75
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"màu lấy về: dãy xa, trời 63% 35%\" (8 words) is on screen 1.10 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "màu lấy về: dãy xa, trời 63% 35%",
+        "selector": "#uf-mixl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/uaf.html",
+        "bbox": {
+          "x": 1340,
+          "y": 735,
+          "width": 358.5899999999999,
+          "height": 75.5
+        },
+        "time": 81.531,
+        "words": 8,
+        "seconds": 1.097,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Công thức biết nhãn vùng, nên điểm vách núi lấy màu của v...\" (15 words) is on screen 0.73 s (±0.18 s), under its 3.75 s floor: hold it about 0.5 s + 0.3 s a word (5.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Công thức biết nhãn vùng, nên điểm vách núi lấy màu của vùng khác. không",
+        "selector": "#uf-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/uaf.html",
+        "bbox": {
+          "x": 192,
+          "y": 840,
+          "width": 1480.27,
+          "height": 51
+        },
+        "time": 81.896,
+        "words": 15,
+        "seconds": 0.731,
+        "floorSeconds": 3.75
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"kết quả thật của SANet: vách núi cũng mang màu trời\" (11 words) is on screen 1.46 s (±0.18 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "kết quả thật của SANet: vách núi cũng mang màu trời",
+        "selector": "#e1-rl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/err1.html",
+        "bbox": {
+          "x": 1272,
+          "y": 759,
+          "width": 436.69000000000005,
+          "height": 75.5
+        },
+        "time": 86.649,
+        "words": 11,
+        "seconds": 1.463,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Cùng một chỗ sai: phép tính đơn giản và mô hình thật đều ...\" (20 words) is on screen 0.73 s (±0.18 s), under its 4.88 s floor: hold it about 0.5 s + 0.3 s a word (6.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Cùng một chỗ sai: phép tính đơn giản và mô hình thật đều tô vách núi bằng màu vùng khác.",
+        "selector": "#e1-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/err1.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1461.84,
+          "height": 103
+        },
+        "time": 87.381,
+        "words": 20,
+        "seconds": 0.731,
+        "floorSeconds": 4.875
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"bốn mảnh vách núi trộn lại → đục, mất nét cọ\" (10 words) is on screen 1.83 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "bốn mảnh vách núi trộn lại → đục, mất nét cọ",
+        "selector": "#e3-rl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/err23.html",
+        "bbox": {
+          "x": 1040.16,
+          "y": 759,
+          "width": 667.6800000000001,
+          "height": 38
+        },
+        "time": 91.768,
+        "words": 10,
+        "seconds": 1.828,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Hai lỗi kéo nhau: cần một tông chung, nhưng vẫn giữ nét r...\" (14 words) is on screen 1.10 s (±0.18 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Hai lỗi kéo nhau: cần một tông chung, nhưng vẫn giữ nét riêng. ngược",
+        "selector": "#e23-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/err23.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 1346.47,
+          "height": 51
+        },
+        "time": 92.499,
+        "words": 14,
+        "seconds": 1.097,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"chỉ lấy một điểm, giữ nguyên nét cọ\" (8 words) is on screen 1.46 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "chỉ lấy một điểm, giữ nguyên nét cọ",
+        "selector": "#fx-c2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fixmap.html",
+        "bbox": {
+          "x": 900,
+          "y": 692,
+          "width": 553.9200000000001,
+          "height": 40
+        },
+        "time": 96.886,
+        "words": 8,
+        "seconds": 1.463,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Cả ba nằm trong attention gốc: biết nhãn, hỏi theo cấu tr...\" (15 words) is on screen 1.10 s (±0.18 s), under its 3.75 s floor: hold it about 0.5 s + 0.3 s a word (5.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Cả ba nằm trong attention gốc: biết nhãn, hỏi theo cấu trúc, trộn mềm. không",
+        "selector": "#fx-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/fixmap.html",
+        "bbox": {
+          "x": 192,
+          "y": 830,
+          "width": 1444.11,
+          "height": 113.19000000000005
+        },
+        "time": 97.252,
+        "words": 15,
+        "seconds": 1.097,
+        "floorSeconds": 3.75
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"chọn theo “trông giống” → tô nhầm vùng\" (7 words) is on screen 1.46 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "chọn theo “trông giống” → tô nhầm vùng",
+        "selector": "#min-ra",
+        "dataAttributes": {},
+        "sourceFile": "compositions/minute.html",
+        "bbox": {
+          "x": 1274,
+          "y": 796,
+          "width": 418.4100000000001,
+          "height": 80
+        },
+        "time": 99.811,
+        "words": 7,
+        "seconds": 1.463,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"chỉ lấy style từ vùng cùng nhãn → đúng vùng\" (9 words) is on screen 1.83 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "chỉ lấy style từ vùng cùng nhãn → đúng vùng",
+        "selector": "#min-rb",
+        "dataAttributes": {},
+        "sourceFile": "compositions/minute.html",
+        "bbox": {
+          "x": 1274,
+          "y": 796,
+          "width": 400.6700000000001,
+          "height": 80
+        },
+        "time": 101.274,
+        "words": 9,
+        "seconds": 1.828,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SCA: nhìn cả vùng\" (4 words) is on screen 1.10 s (±0.18 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SCA: nhìn cả vùng",
+        "selector": "#min-sca",
+        "dataAttributes": {},
+        "sourceFile": "compositions/minute.html",
+        "bbox": {
+          "x": 740,
+          "y": 668,
+          "width": 286.53,
+          "height": 40
+        },
+        "time": 102.005,
+        "words": 4,
+        "seconds": 1.097,
+        "floorSeconds": 1.275
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SSA: nhìn một điểm\" (4 words) is on screen 1.10 s (±0.18 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SSA: nhìn một điểm",
+        "selector": "#min-ssa",
+        "dataAttributes": {},
+        "sourceFile": "compositions/minute.html",
+        "bbox": {
+          "x": 740,
+          "y": 714,
+          "width": 307.47,
+          "height": 40
+        },
+        "time": 102.005,
+        "words": 4,
+        "seconds": 1.097,
+        "floorSeconds": 1.275
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Không train lại: cắm thẳng vào mô hình có sẵn.\" (10 words) is on screen 0.73 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Không train lại: cắm thẳng vào mô hình có sẵn.",
+        "selector": "#min-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/minute.html",
+        "bbox": {
+          "x": 720,
+          "y": 900,
+          "width": 916.3800000000001,
+          "height": 51
+        },
+        "time": 102.371,
+        "words": 10,
+        "seconds": 0.731,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chặng 3 · Chi tiết kỹ thuật\" (6 words) is on screen 1.10 s (±0.18 s), under its 1.72 s floor: hold it about 0.5 s + 0.3 s a word (2.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chặng 3 · Chi tiết kỹ thuật",
+        "selector": "#ch3-k",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch3.html",
+        "bbox": {
+          "x": 192,
+          "y": 599,
+          "width": 516.48,
+          "height": 51
+        },
+        "time": 104.199,
+        "words": 6,
+        "seconds": 1.097,
+        "floorSeconds": 1.725
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SCSA hoạt động thế nào?\" (5 words) is on screen 1.10 s (±0.18 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SCSA hoạt động thế nào?",
+        "selector": "#ch3-qq",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch3.html",
+        "bbox": {
+          "x": 192,
+          "y": 652,
+          "width": 773.89,
+          "height": 121
+        },
+        "time": 104.199,
+        "words": 5,
+        "seconds": 1.097,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"lấy nét cọ của đúng một điểm giống nhất\" (9 words) is on screen 1.46 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "lấy nét cọ của đúng một điểm giống nhất",
+        "selector": "#idea-b2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/idea.html",
+        "bbox": {
+          "x": 192,
+          "y": 652,
+          "width": 641.89,
+          "height": 40
+        },
+        "time": 108.586,
+        "words": 9,
+        "seconds": 1.463,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"emantic · ontinuous · parse · ttention S C S A\" (8 words) is on screen 0.73 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "emantic · ontinuous · parse · ttention S C S A",
+        "selector": "#idea-name",
+        "dataAttributes": {},
+        "sourceFile": "compositions/idea.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 900.44,
+          "height": 56
+        },
+        "time": 109.317,
+        "words": 8,
+        "seconds": 0.731,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"bố cục của ảnh (sau S-AdaIN) được cộng vào\" (10 words) is on screen 2.56 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "bố cục của ảnh (sau S-AdaIN) được cộng vào",
+        "selector": "#pp-rl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/pipe.html",
+        "bbox": {
+          "x": 650,
+          "y": 759,
+          "width": 534.73,
+          "height": 75.5
+        },
+        "time": 114.07,
+        "words": 10,
+        "seconds": 2.559,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Encoder, decoder giữ nguyên. Các khối ở giữa là . SCSA\" (10 words) is on screen 0.73 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Encoder, decoder giữ nguyên. Các khối ở giữa là . SCSA",
+        "selector": "#pp-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/pipe.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1192.52,
+          "height": 56
+        },
+        "time": 115.898,
+        "words": 10,
+        "seconds": 0.731,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Liền mạch, đúng vùng. Cái giá: , mất nét cọ. phẳng\" (10 words) is on screen 0.73 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Liền mạch, đúng vùng. Cái giá: , mất nét cọ. phẳng",
+        "selector": "#sca-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/sca.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 1084.31,
+          "height": 56
+        },
+        "time": 122.479,
+        "words": 10,
+        "seconds": 0.731,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"vách núi xanh, dãy xa hồng: như trong tranh\" (9 words) is on screen 1.83 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "vách núi xanh, dãy xa hồng: như trong tranh",
+        "selector": "#sd-nc",
+        "dataAttributes": {},
+        "sourceFile": "compositions/sadain.html",
+        "bbox": {
+          "x": 1332.72,
+          "y": 761,
+          "width": 406.55999999999995,
+          "height": 75.5
+        },
+        "time": 126.501,
+        "words": 9,
+        "seconds": 1.828,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Để làm gì? Để SSA so “giống” trên cùng một thang màu với ...\" (14 words) is on screen 1.10 s (±0.18 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Để làm gì? Để SSA so “giống” trên cùng một thang màu với tranh.",
+        "selector": "#sd-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/sadain.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 1398.77,
+          "height": 56
+        },
+        "time": 127.232,
+        "words": 14,
+        "seconds": 1.097,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"mỗi ô là một mảnh tranh thật\" (7 words) is on screen 1.83 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "mỗi ô là một mảnh tranh thật",
+        "selector": "#ssa-n3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ssa.html",
+        "bbox": {
+          "x": 1296,
+          "y": 782,
+          "width": 382.44000000000005,
+          "height": 80
+        },
+        "time": 133.447,
+        "words": 7,
+        "seconds": 1.828,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Copy một mảnh tranh: giữ nét cọ, hết nhạt nhoà. nguyên\" (11 words) is on screen 1.10 s (±0.18 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Copy một mảnh tranh: giữ nét cọ, hết nhạt nhoà. nguyên",
+        "selector": "#ssa-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ssa.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 1207.55,
+          "height": 56
+        },
+        "time": 134.179,
+        "words": 11,
+        "seconds": 1.097,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"hàng: điểm của ảnh (3 trời, 3 vách núi) · cột: điểm của t...\" (18 words) is on screen 4.39 s (±0.18 s), under its 4.42 s floor: hold it about 0.5 s + 0.3 s a word (5.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "hàng: điểm của ảnh (3 trời, 3 vách núi) · cột: điểm của tranh · ô đậm: trọng số lớn",
+        "selector": "#mx-ax",
+        "dataAttributes": {},
+        "sourceFile": "compositions/matrices.html",
+        "bbox": {
+          "x": 192,
+          "y": 229,
+          "width": 1185.06,
+          "height": 38
+        },
+        "time": 135.641,
+        "words": 18,
+        "seconds": 4.388,
+        "floorSeconds": 4.425
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"mỗi hàng đúng một ô, luôn trong khối đúng\" (9 words) is on screen 1.10 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "mỗi hàng đúng một ô, luôn trong khối đúng",
+        "selector": "#mx-d2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/matrices.html",
+        "bbox": {
+          "x": 1269.83,
+          "y": 703,
+          "width": 388.3299999999999,
+          "height": 75.5
+        },
+        "time": 138.932,
+        "words": 9,
+        "seconds": 1.097,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Nếu chỉ nhớ một hình của cả buổi, hãy nhớ hình này.\" (12 words) is on screen 0.73 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Nếu chỉ nhớ một hình của cả buổi, hãy nhớ hình này.",
+        "selector": "#mx-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/matrices.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 1108.81,
+          "height": 56
+        },
+        "time": 139.297,
+        "words": 12,
+        "seconds": 0.731,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· Q, K hỏi bằng ; M cấm ô khác nhãn → cả vùng một tông SC...\" (17 words) is on screen 1.46 s (±0.18 s), under its 4.20 s floor: hold it about 0.5 s + 0.3 s a word (5.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· Q, K hỏi bằng ; M cấm ô khác nhãn → cả vùng một tông SCA bản đồ nhãn",
+        "selector": "#mk-sca",
+        "dataAttributes": {},
+        "sourceFile": "compositions/maskf.html",
+        "bbox": {
+          "x": 192,
+          "y": 846,
+          "width": 1148.91,
+          "height": 40
+        },
+        "time": 145.147,
+        "words": 17,
+        "seconds": 1.463,
+        "floorSeconds": 4.2
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· Q hỏi bằng ảnh; M cấm thêm, chỉ chừa giống nhất cùng nh...\" (19 words) is on screen 1.10 s (±0.18 s), under its 4.65 s floor: hold it about 0.5 s + 0.3 s a word (6.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· Q hỏi bằng ảnh; M cấm thêm, chỉ chừa giống nhất cùng nhãn → giữ nét cọ SSA 1 ô",
+        "selector": "#mk-ssa",
+        "dataAttributes": {},
+        "sourceFile": "compositions/maskf.html",
+        "bbox": {
+          "x": 192,
+          "y": 896,
+          "width": 1285.1299999999999,
+          "height": 40
+        },
+        "time": 145.513,
+        "words": 19,
+        "seconds": 1.097,
+        "floorSeconds": 4.65
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chỉ SSA: sắc nét, nhưng màu nhảy giữa các ô.\" (10 words) is on screen 0.73 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chỉ SSA: sắc nét, nhưng màu nhảy giữa các ô.",
+        "selector": "#mz-t0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mix.html",
+        "bbox": {
+          "x": 760,
+          "y": 380,
+          "width": 467.25,
+          "height": 103
+        },
+        "time": 147.706,
+        "words": 10,
+        "seconds": 0.731,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chỉ SCA: đều màu, nhưng phẳng.\" (6 words) is on screen 1.10 s (±0.18 s), under its 1.72 s floor: hold it about 0.5 s + 0.3 s a word (2.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chỉ SCA: đều màu, nhưng phẳng.",
+        "selector": "#mz-t1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mix.html",
+        "bbox": {
+          "x": 760,
+          "y": 380,
+          "width": 364.55999999999995,
+          "height": 103
+        },
+        "time": 149.169,
+        "words": 6,
+        "seconds": 1.096,
+        "floorSeconds": 1.725
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SANet: tông chung + nét cọ → đều màu mà vẫn có nét. 0,7 0,3\" (15 words) is on screen 2.56 s (±0.18 s), under its 3.75 s floor: hold it about 0.5 s + 0.3 s a word (5.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SANet: tông chung + nét cọ → đều màu mà vẫn có nét. 0,7 0,3",
+        "selector": "#mz-t2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mix.html",
+        "bbox": {
+          "x": 760,
+          "y": 380,
+          "width": 476.1700000000001,
+          "height": 155
+        },
+        "time": 150.631,
+        "words": 15,
+        "seconds": 2.56,
+        "floorSeconds": 3.75
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Kết quả = ·SCA + ·SSA + bố cục của ảnh α₁ α₂\" (10 words) is on screen 0.73 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Kết quả = ·SCA + ·SSA + bố cục của ảnh α₁ α₂",
+        "selector": "#mz-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/mix.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 941.45,
+          "height": 56
+        },
+        "time": 152.459,
+        "words": 10,
+        "seconds": 0.731,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"≈ 16,8 triệu ô mỗi bảng; SCA, SSA mỗi nhánh một bảng\" (12 words) is on screen 1.46 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "≈ 16,8 triệu ô mỗi bảng; SCA, SSA mỗi nhánh một bảng",
+        "selector": "#al-cn",
+        "dataAttributes": {},
+        "sourceFile": "compositions/algo.html",
+        "bbox": {
+          "x": 1360,
+          "y": 500,
+          "width": 365.25,
+          "height": 120
+        },
+        "time": 158.309,
+        "words": 12,
+        "seconds": 1.463,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"bước 2 làm sẵn một lần (sem.py)\" (8 words) is on screen 1.46 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "bước 2 làm sẵn một lần (sem.py)",
+        "selector": "#al-cg",
+        "dataAttributes": {},
+        "sourceFile": "compositions/algo.html",
+        "bbox": {
+          "x": 1360,
+          "y": 680,
+          "width": 363.6600000000001,
+          "height": 80
+        },
+        "time": 158.309,
+        "words": 8,
+        "seconds": 1.463,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Bước 2–6 là phần SCSA; encoder, decoder nguyên. giữ\" (10 words) is on screen 1.10 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Bước 2–6 là phần SCSA; encoder, decoder nguyên. giữ",
+        "selector": "#al-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/algo.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 1186.08,
+          "height": 56
+        },
+        "time": 158.674,
+        "words": 10,
+        "seconds": 1.097,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"tỉ lệ trộn tông / nét: 0,7 / 0,3\" (9 words) is on screen 2.19 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "tỉ lệ trộn tông / nét: 0,7 / 0,3",
+        "selector": "#pl-a0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/plug.html",
+        "bbox": {
+          "x": 192,
+          "y": 359,
+          "width": 474.98,
+          "height": 43
+        },
+        "time": 160.137,
+        "words": 9,
+        "seconds": 2.194,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"tỉ lệ trộn tông / nét: 1,2 / 0,5\" (9 words) is on screen 0.73 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "tỉ lệ trộn tông / nét: 1,2 / 0,5",
+        "selector": "#pl-a1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/plug.html",
+        "bbox": {
+          "x": 192,
+          "y": 359,
+          "width": 467.38,
+          "height": 43
+        },
+        "time": 162.331,
+        "words": 9,
+        "seconds": 0.731,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"tỉ lệ trộn tông / nét: 0,8 / 0,2\" (9 words) is on screen 1.46 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "tỉ lệ trộn tông / nét: 0,8 / 0,2",
+        "selector": "#pl-a2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/plug.html",
+        "bbox": {
+          "x": 192,
+          "y": 359,
+          "width": 476.28,
+          "height": 43
+        },
+        "time": 163.062,
+        "words": 9,
+        "seconds": 1.462,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chỉ thay khối attention. Trọng số gốc giữ nguyên: train l...\" (12 words) is on screen 0.73 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chỉ thay khối attention. Trọng số gốc giữ nguyên: train lại. không",
+        "selector": "#pl-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/plug.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1390.16,
+          "height": 56
+        },
+        "time": 163.793,
+        "words": 12,
+        "seconds": 0.731,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· hỏi bằng bản đồ nhãn, cả vùng chung một tông SCA\" (11 words) is on screen 2.56 s (±0.18 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· hỏi bằng bản đồ nhãn, cả vùng chung một tông SCA",
+        "selector": "#tr-n0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/train.html",
+        "bbox": {
+          "x": 1028,
+          "y": 339,
+          "width": 611.3899999999999,
+          "height": 85.5
+        },
+        "time": 167.083,
+        "words": 11,
+        "seconds": 2.559,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· top-1 trong cùng vùng, giữ nguyên nét cọ SSA\" (10 words) is on screen 2.19 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· top-1 trong cùng vùng, giữ nguyên nét cọ SSA",
+        "selector": "#tr-n1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/train.html",
+        "bbox": {
+          "x": 1028,
+          "y": 433,
+          "width": 666.02,
+          "height": 85.5
+        },
+        "time": 167.449,
+        "words": 10,
+        "seconds": 2.194,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· một khối cho CNN, Transformer, Diffusion Cắm được\" (8 words) is on screen 1.83 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· một khối cho CNN, Transformer, Diffusion Cắm được",
+        "selector": "#tr-n2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/train.html",
+        "bbox": {
+          "x": 1028,
+          "y": 527,
+          "width": 511.95000000000005,
+          "height": 85.5
+        },
+        "time": 167.815,
+        "words": 8,
+        "seconds": 1.828,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· thước đo style theo từng vùng SSL\" (7 words) is on screen 1.83 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· thước đo style theo từng vùng SSL",
+        "selector": "#tr-n3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/train.html",
+        "bbox": {
+          "x": 1028,
+          "y": 621,
+          "width": 593.1999999999998,
+          "height": 43
+        },
+        "time": 167.815,
+        "words": 7,
+        "seconds": 1.828,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Cái mới nằm ở theo nhãn, không nằm ở trọng số. luật cấm\" (13 words) is on screen 0.73 s (±0.18 s), under its 3.30 s floor: hold it about 0.5 s + 0.3 s a word (4.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Cái mới nằm ở theo nhãn, không nằm ở trọng số. luật cấm",
+        "selector": "#tr-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/train.html",
+        "bbox": {
+          "x": 192,
+          "y": 870,
+          "width": 1236.56,
+          "height": 56
+        },
+        "time": 168.912,
+        "words": 13,
+        "seconds": 0.731,
+        "floorSeconds": 3.3
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chặng 4 · So sánh và thảo luận\" (7 words) is on screen 1.46 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chặng 4 · So sánh và thảo luận",
+        "selector": "#ch4-k",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch4.html",
+        "bbox": {
+          "x": 192,
+          "y": 599,
+          "width": 610.05,
+          "height": 51
+        },
+        "time": 170.374,
+        "words": 7,
+        "seconds": 1.463,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Hơn ai, kém ở đâu?\" (5 words) is on screen 1.10 s (±0.18 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Hơn ai, kém ở đâu?",
+        "selector": "#ch4-qq",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch4.html",
+        "bbox": {
+          "x": 192,
+          "y": 652,
+          "width": 545.03,
+          "height": 121
+        },
+        "time": 170.74,
+        "words": 5,
+        "seconds": 1.096,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SSL\" (1 word) is on screen 0.37 s (±0.18 s), under its 0.40 s floor: hold it about 0.5 s + 0.3 s a word (0.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SSL",
+        "selector": "#mt-g0 > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 284,
+          "width": 231.61,
+          "height": 152
+        },
+        "time": 172.202,
+        "words": 1,
+        "seconds": 0.366,
+        "floorSeconds": 0.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"↓ thấp là tốt\" (3 words) is on screen 0.37 s (±0.18 s), under its 1.05 s floor: hold it about 0.5 s + 0.3 s a word (1.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "↓ thấp là tốt",
+        "selector": "#mt-a0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 439,
+          "width": 239.16999999999996,
+          "height": 51
+        },
+        "time": 172.202,
+        "words": 3,
+        "seconds": 0.366,
+        "floorSeconds": 1.05
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"So style từng vùng: trời với trời, vách núi với vách núi.\" (12 words) is on screen 0.37 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "So style từng vùng: trời với trời, vách núi với vách núi.",
+        "selector": "#mt-s0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 520,
+          "width": 867.9099999999999,
+          "height": 113.19000000000005
+        },
+        "time": 172.202,
+        "words": 12,
+        "seconds": 0.366,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"kết quả ↔ tranh, từng vùng\" (5 words) is on screen 0.37 s (±0.18 s), under its 1.50 s floor: hold it about 0.5 s + 0.3 s a word (2.00 s here) before it leaves or changes; see references/motion.md.",
+        "text": "kết quả ↔ tranh, từng vùng",
+        "selector": "#mt-x0l",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 1222.92,
+          "y": 580,
+          "width": 428.1399999999999,
+          "height": 40
+        },
+        "time": 172.202,
+        "words": 5,
+        "seconds": 0.366,
+        "floorSeconds": 1.5
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"↓ thấp là tốt\" (3 words) is on screen 0.73 s (±0.18 s), under its 1.05 s floor: hold it about 0.5 s + 0.3 s a word (1.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "↓ thấp là tốt",
+        "selector": "#mt-a1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 439,
+          "width": 239.16999999999996,
+          "height": 51
+        },
+        "time": 172.933,
+        "words": 3,
+        "seconds": 0.731,
+        "floorSeconds": 1.05
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Cả tập kết quả có “trông như tranh” không, xét tổng thể.\" (12 words) is on screen 0.73 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Cả tập kết quả có “trông như tranh” không, xét tổng thể.",
+        "selector": "#mt-s1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 520,
+          "width": 765.47,
+          "height": 113.19000000000005
+        },
+        "time": 172.933,
+        "words": 12,
+        "seconds": 0.731,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"cả tập kết quả ↔ cả tập tranh\" (7 words) is on screen 0.73 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "cả tập kết quả ↔ cả tập tranh",
+        "selector": "#mt-x1l",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 1199.98,
+          "y": 700,
+          "width": 474.03999999999996,
+          "height": 40
+        },
+        "time": 172.933,
+        "words": 7,
+        "seconds": 0.731,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"↓ thấp là tốt\" (3 words) is on screen 0.73 s (±0.18 s), under its 1.05 s floor: hold it about 0.5 s + 0.3 s a word (1.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "↓ thấp là tốt",
+        "selector": "#mt-a2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 439,
+          "width": 239.16999999999996,
+          "height": 51
+        },
+        "time": 173.664,
+        "words": 3,
+        "seconds": 0.732,
+        "floorSeconds": 1.05
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Kết quả còn giữ bố cục của ảnh gốc không.\" (10 words) is on screen 0.73 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Kết quả còn giữ bố cục của ảnh gốc không.",
+        "selector": "#mt-s2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 520,
+          "width": 768.69,
+          "height": 113.19000000000005
+        },
+        "time": 173.664,
+        "words": 10,
+        "seconds": 0.732,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"bố cục ảnh gốc ↔ bố cục kết quả\" (8 words) is on screen 0.73 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "bố cục ảnh gốc ↔ bố cục kết quả",
+        "selector": "#mt-x2l",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 1174.41,
+          "y": 580,
+          "width": 525.1800000000001,
+          "height": 40
+        },
+        "time": 173.664,
+        "words": 8,
+        "seconds": 0.732,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"40 người × 30 câu = 1.200 phiếu: so có/không SCSA, và so ...\" (18 words) is on screen 1.83 s (±0.18 s), under its 4.42 s floor: hold it about 0.5 s + 0.3 s a word (5.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "40 người × 30 câu = 1.200 phiếu: so có/không SCSA, và so với 5 phương pháp khác.",
+        "selector": "#mt-s3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 520,
+          "width": 774.67,
+          "height": 170.38
+        },
+        "time": 174.396,
+        "words": 18,
+        "seconds": 1.828,
+        "floorSeconds": 4.425
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SSL do tác giả đề xuất: nhìn thêm FID và CFSD để thấy cái...\" (16 words) is on screen 1.10 s (±0.18 s), under its 3.97 s floor: hold it about 0.5 s + 0.3 s a word (5.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SSL do tác giả đề xuất: nhìn thêm FID và CFSD để thấy cái giá. chính",
+        "selector": "#mt-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/metrics.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 1480.48,
+          "height": 56
+        },
+        "time": 175.127,
+        "words": 16,
+        "seconds": 1.097,
+        "floorSeconds": 3.975
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"vách núi: màu trời → màu núi, trời đúng màu trời\" (10 words) is on screen 0.37 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "vách núi: màu trời → màu núi, trời đúng màu trời",
+        "selector": "#rs-n0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/results.html",
+        "bbox": {
+          "x": 192,
+          "y": 760,
+          "width": 933.56,
+          "height": 51
+        },
+        "time": 177.321,
+        "words": 10,
+        "seconds": 0.365,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"dòng thác trắng, liền mạch; đá giữ màu tối của đá\" (11 words) is on screen 1.10 s (±0.18 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "dòng thác trắng, liền mạch; đá giữ màu tối của đá",
+        "selector": "#rs-n1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/results.html",
+        "bbox": {
+          "x": 193.42,
+          "y": 760,
+          "width": 978.4500000000002,
+          "height": 51
+        },
+        "time": 178.052,
+        "words": 11,
+        "seconds": 1.097,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"áo, mặt, nền lấy nét từ đúng vùng trong tranh\" (10 words) is on screen 2.19 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "áo, mặt, nền lấy nét từ đúng vùng trong tranh",
+        "selector": "#rs-n2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/results.html",
+        "bbox": {
+          "x": 245.96,
+          "y": 760,
+          "width": 882.8399999999999,
+          "height": 51
+        },
+        "time": 179.149,
+        "words": 10,
+        "seconds": 2.194,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"tốt hơn nhẹ ở cả ba mô hình\" (8 words) is on screen 1.46 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "tốt hơn nhẹ ở cả ba mô hình",
+        "selector": "#sl-ks0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ssl.html",
+        "bbox": {
+          "x": 1180,
+          "y": 351,
+          "width": 459.75,
+          "height": 43
+        },
+        "time": 184.633,
+        "words": 8,
+        "seconds": 1.463,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Số liệu: Table 1 của paper, 91 bộ bốn do tác giả tuyển.\" (13 words) is on screen 1.46 s (±0.18 s), under its 3.30 s floor: hold it about 0.5 s + 0.3 s a word (4.40 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Số liệu: Table 1 của paper, 91 bộ bốn do tác giả tuyển.",
+        "selector": "#sl-src",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ssl.html",
+        "bbox": {
+          "x": 192,
+          "y": 880,
+          "width": 779.7,
+          "height": 38
+        },
+        "time": 184.633,
+        "words": 13,
+        "seconds": 1.463,
+        "floorSeconds": 3.3
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"StyleID + SCSA giữ bố cục hơn: 0,092 → 0,118 kém\" (11 words) is on screen 1.10 s (±0.18 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "StyleID + SCSA giữ bố cục hơn: 0,092 → 0,118 kém",
+        "selector": "#sl-ks1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ssl.html",
+        "bbox": {
+          "x": 1180,
+          "y": 521,
+          "width": 510.73,
+          "height": 85.5
+        },
+        "time": 184.998,
+        "words": 11,
+        "seconds": 1.097,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"chọn bản SCSA: 83% · 84% · 78%\" (6 words) is on screen 0.73 s (±0.18 s), under its 1.72 s floor: hold it about 0.5 s + 0.3 s a word (2.30 s here) before it leaves or changes; see references/motion.md.",
+        "text": "chọn bản SCSA: 83% · 84% · 78%",
+        "selector": "#sl-ks2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ssl.html",
+        "bbox": {
+          "x": 1180,
+          "y": 691,
+          "width": 546.02,
+          "height": 43
+        },
+        "time": 185.364,
+        "words": 6,
+        "seconds": 0.732,
+        "floorSeconds": 1.725
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SSL thứ hai, nhưng CFSD 0,399: bố cục vỡ\" (10 words) is on screen 1.83 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SSL thứ hai, nhưng CFSD 0,399: bố cục vỡ",
+        "selector": "#cp-ks1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/compare.html",
+        "bbox": {
+          "x": 1260,
+          "y": 500,
+          "width": 387.53,
+          "height": 80
+        },
+        "time": 189.386,
+        "words": 10,
+        "seconds": 1.828,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"tối ưu lại cho từng ảnh; SANet + SCSA chỉ chạy một lượt q...\" (14 words) is on screen 1.10 s (±0.18 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "tối ưu lại cho từng ảnh; SANet + SCSA chỉ chạy một lượt qua mạng",
+        "selector": "#cp-ks2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/compare.html",
+        "bbox": {
+          "x": 1260,
+          "y": 670,
+          "width": 465.28,
+          "height": 120
+        },
+        "time": 190.117,
+        "words": 14,
+        "seconds": 1.097,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"· lệch màu giữa các vùng 2,298\" (7 words) is on screen 1.83 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "· lệch màu giữa các vùng 2,298",
+        "selector": "#ab-v3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ablation.html",
+        "bbox": {
+          "x": 1255.36,
+          "y": 673,
+          "width": 528.45,
+          "height": 56
+        },
+        "time": 194.504,
+        "words": 7,
+        "seconds": 1.828,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SCA lo tông chung, SSA lo nét cọ. khối nào, SSL cũng tăng...\" (14 words) is on screen 1.46 s (±0.18 s), under its 3.53 s floor: hold it about 0.5 s + 0.3 s a word (4.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SCA lo tông chung, SSA lo nét cọ. khối nào, SSL cũng tăng. Thiếu",
+        "selector": "#ab-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ablation.html",
+        "bbox": {
+          "x": 192,
+          "y": 840,
+          "width": 1400.19,
+          "height": 56
+        },
+        "time": 194.87,
+        "words": 14,
+        "seconds": 1.462,
+        "floorSeconds": 3.525
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"α₁ chỉnh tông, α₂ chỉnh nét; bỏ khối nào, SSL cũng tăng\" (12 words) is on screen 2.92 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "α₁ chỉnh tông, α₂ chỉnh nét; bỏ khối nào, SSL cũng tăng",
+        "selector": "#sg-d2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/strengths.html",
+        "bbox": {
+          "x": 192,
+          "y": 562,
+          "width": 850.52,
+          "height": 40
+        },
+        "time": 198.891,
+        "words": 12,
+        "seconds": 2.925,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"chọn bản có SCSA trong 78–84% số cặp so sánh\" (11 words) is on screen 1.83 s (±0.18 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "chọn bản có SCSA trong 78–84% số cặp so sánh",
+        "selector": "#sg-d3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/strengths.html",
+        "bbox": {
+          "x": 192,
+          "y": 690,
+          "width": 764.23,
+          "height": 40
+        },
+        "time": 199.988,
+        "words": 11,
+        "seconds": 1.828,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"nhìn ma trận attention là biết mỗi điểm lấy style từ đâu\" (12 words) is on screen 1.10 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "nhìn ma trận attention là biết mỗi điểm lấy style từ đâu",
+        "selector": "#sg-d4",
+        "dataAttributes": {},
+        "sourceFile": "compositions/strengths.html",
+        "bbox": {
+          "x": 192,
+          "y": 818,
+          "width": 855.3,
+          "height": 40
+        },
+        "time": 200.72,
+        "words": 12,
+        "seconds": 1.096,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"kết quả SSA trên lưới minh hoạ, mỗi ô một mảnh tranh: một...\" (18 words) is on screen 2.56 s (±0.18 s), under its 4.42 s floor: hold it about 0.5 s + 0.3 s a word (5.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "kết quả SSA trên lưới minh hoạ, mỗi ô một mảnh tranh: một mảnh dùng lại 19 lần",
+        "selector": "#lm-rl",
+        "dataAttributes": {},
+        "sourceFile": "compositions/limits.html",
+        "bbox": {
+          "x": 600,
+          "y": 659,
+          "width": 407.1700000000001,
+          "height": 113
+        },
+        "time": 204.01,
+        "words": 18,
+        "seconds": 2.56,
+        "floorSeconds": 4.425
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chỉ 91 bộ dữ liệu tự tuyển, chưa có benchmark lớn.\" (11 words) is on screen 1.46 s (±0.18 s), under its 2.85 s floor: hold it about 0.5 s + 0.3 s a word (3.80 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chỉ 91 bộ dữ liệu tự tuyển, chưa có benchmark lớn.",
+        "selector": "#lm-s0",
+        "dataAttributes": {},
+        "sourceFile": "compositions/limits.html",
+        "bbox": {
+          "x": 1100,
+          "y": 290,
+          "width": 600.23,
+          "height": 92.80000000000001
+        },
+        "time": 205.107,
+        "words": 11,
+        "seconds": 1.463,
+        "floorSeconds": 2.85
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SSL, thước đo chính, do tác giả tự đặt.\" (9 words) is on screen 1.46 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SSL, thước đo chính, do tác giả tự đặt.",
+        "selector": "#lm-s1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/limits.html",
+        "bbox": {
+          "x": 1100,
+          "y": 402,
+          "width": 600.53,
+          "height": 92.80000000000001
+        },
+        "time": 205.107,
+        "words": 9,
+        "seconds": 1.463,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chậm và tốn bộ nhớ hơn mô hình gốc.\" (9 words) is on screen 1.10 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chậm và tốn bộ nhớ hơn mô hình gốc.",
+        "selector": "#lm-s2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/limits.html",
+        "bbox": {
+          "x": 1100,
+          "y": 514,
+          "width": 572.8,
+          "height": 92.79999999999995
+        },
+        "time": 205.472,
+        "words": 9,
+        "seconds": 1.097,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Vùng không có cặp bên tranh thì sao?\" (8 words) is on screen 1.10 s (±0.18 s), under its 2.17 s floor: hold it about 0.5 s + 0.3 s a word (2.90 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Vùng không có cặp bên tranh thì sao?",
+        "selector": "#lm-s3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/limits.html",
+        "bbox": {
+          "x": 1100,
+          "y": 626,
+          "width": 572.3800000000001,
+          "height": 92.79999999999995
+        },
+        "time": 205.472,
+        "words": 8,
+        "seconds": 1.097,
+        "floorSeconds": 2.175
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"StyleID + SCSA giữ bố cục kém hơn (CFSD 0,092 → 0,118).\" (12 words) is on screen 0.73 s (±0.18 s), under its 3.07 s floor: hold it about 0.5 s + 0.3 s a word (4.10 s here) before it leaves or changes; see references/motion.md.",
+        "text": "StyleID + SCSA giữ bố cục kém hơn (CFSD 0,092 → 0,118).",
+        "selector": "#lm-s4",
+        "dataAttributes": {},
+        "sourceFile": "compositions/limits.html",
+        "bbox": {
+          "x": 1100,
+          "y": 738,
+          "width": 615.22,
+          "height": 92.79999999999995
+        },
+        "time": 205.838,
+        "words": 12,
+        "seconds": 0.732,
+        "floorSeconds": 3.075
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Chặng 5 · Kết luận\" (4 words) is on screen 1.10 s (±0.18 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Chặng 5 · Kết luận",
+        "selector": "#ch5-k",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch5.html",
+        "bbox": {
+          "x": 192,
+          "y": 599,
+          "width": 358.55999999999995,
+          "height": 51
+        },
+        "time": 207.666,
+        "words": 4,
+        "seconds": 1.096,
+        "floorSeconds": 1.275
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Mang về điều gì?\" (4 words) is on screen 1.10 s (±0.18 s), under its 1.27 s floor: hold it about 0.5 s + 0.3 s a word (1.70 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Mang về điều gì?",
+        "selector": "#ch5-qq",
+        "dataAttributes": {},
+        "sourceFile": "compositions/ch5.html",
+        "bbox": {
+          "x": 192,
+          "y": 652,
+          "width": 394.20000000000005,
+          "height": 121
+        },
+        "time": 207.666,
+        "words": 4,
+        "seconds": 1.096,
+        "floorSeconds": 1.275
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SCA lấy tông chung của cả vùng.\" (7 words) is on screen 1.83 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SCA lấy tông chung của cả vùng.",
+        "selector": "#sum-1",
+        "dataAttributes": {},
+        "sourceFile": "compositions/summary.html",
+        "bbox": {
+          "x": 1040,
+          "y": 380,
+          "width": 646.4099999999999,
+          "height": 51
+        },
+        "time": 210.957,
+        "words": 7,
+        "seconds": 1.828,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"SSA giữ nét cọ của một điểm.\" (7 words) is on screen 1.46 s (±0.18 s), under its 1.95 s floor: hold it about 0.5 s + 0.3 s a word (2.60 s here) before it leaves or changes; see references/motion.md.",
+        "text": "SSA giữ nét cọ của một điểm.",
+        "selector": "#sum-2",
+        "dataAttributes": {},
+        "sourceFile": "compositions/summary.html",
+        "bbox": {
+          "x": 1040,
+          "y": 460,
+          "width": 575.8400000000001,
+          "height": 51
+        },
+        "time": 211.322,
+        "words": 7,
+        "seconds": 1.463,
+        "floorSeconds": 1.95
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"Không train lại; lỗi theo vùng giảm 29–47%.\" (9 words) is on screen 1.10 s (±0.18 s), under its 2.40 s floor: hold it about 0.5 s + 0.3 s a word (3.20 s here) before it leaves or changes; see references/motion.md.",
+        "text": "Không train lại; lỗi theo vùng giảm 29–47%.",
+        "selector": "#sum-3",
+        "dataAttributes": {},
+        "sourceFile": "compositions/summary.html",
+        "bbox": {
+          "x": 1040,
+          "y": 540,
+          "width": 668.9200000000001,
+          "height": 103
+        },
+        "time": 211.688,
+        "words": 9,
+        "seconds": 1.097,
+        "floorSeconds": 2.4
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "\"arxiv.org/abs/2503.04119 · github.com/scn-00/SCSA\" (10 words) is on screen 1.10 s (±0.18 s), under its 2.63 s floor: hold it about 0.5 s + 0.3 s a word (3.50 s here) before it leaves or changes; see references/motion.md.",
+        "text": "arxiv.org/abs/2503.04119 · github.com/scn-00/SCSA",
+        "selector": "#sum-l",
+        "dataAttributes": {},
+        "sourceFile": "compositions/summary.html",
+        "bbox": {
+          "x": 192,
+          "y": 860,
+          "width": 802.5,
+          "height": 38
+        },
+        "time": 211.688,
+        "words": 10,
+        "seconds": 1.097,
+        "floorSeconds": 2.625
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"Benchmark lớn, đo độc lập\" (5 words) is on screen 1.64 s (±0.18 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "Benchmark lớn, đo độc lập",
+        "selector": "#fu-b4",
+        "dataAttributes": {},
+        "sourceFile": "compositions/future.html",
+        "bbox": {
+          "x": 900,
+          "y": 761,
+          "width": 544.53,
+          "height": 51
+        },
+        "time": 217.538,
+        "words": 5,
+        "seconds": 1.645,
+        "floorSeconds": 2
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"MS-COCO × WikiArt; ArtFID, LPIPS, CLIP\" (6 words) is on screen 1.64 s (±0.18 s), under the 2.00 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "MS-COCO × WikiArt; ArtFID, LPIPS, CLIP",
+        "selector": "#fu-c4",
+        "dataAttributes": {},
+        "sourceFile": "compositions/future.html",
+        "bbox": {
+          "x": 900,
+          "y": 816,
+          "width": 645.19,
+          "height": 40
+        },
+        "time": 217.538,
+        "words": 6,
+        "seconds": 1.645,
+        "floorSeconds": 2
+      },
+      {
+        "code": "line_unread",
+        "severity": "warning",
+        "message": "The film's last line \"Bốn hướng đầu là bốn module trong của nhóm. proposal\" (10 words) is on screen 0.91 s (±0.18 s), under the 2.63 s a closing line needs: hold it about 0.5 s + 0.3 s a word and at least 2 s before the film ends; see references/motion.md.",
+        "text": "Bốn hướng đầu là bốn module trong của nhóm. proposal",
+        "selector": "#fu-end",
+        "dataAttributes": {},
+        "sourceFile": "compositions/future.html",
+        "bbox": {
+          "x": 192,
+          "y": 900,
+          "width": 1095.14,
+          "height": 51
+        },
+        "time": 218.269,
+        "words": 10,
+        "seconds": 0.914,
+        "floorSeconds": 2.625
+      }
+    ],
+    "enabled": true,
+    "step": 0.36599999999998545,
+    "samples": 599
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

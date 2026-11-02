@@ -1,0 +1,13 @@
+torch
+torchvision
+Pillow
+matplotlib
+numpy
+pandas
+tqdm
+lpips
+scikit-image
+einops
+jupyterlab
+ipykernel
+ipywidgets
