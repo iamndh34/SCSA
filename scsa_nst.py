@@ -703,14 +703,20 @@ def run_scsa(
         masks_s5 = _masks_from_labels(ls5, n_clusters)
 
         # ── Precomputed sem maps (N×N binary) ────────────────────────────────
+        def _make_map(lc, ls):
+            lc_f = lc.view(-1); ls_f = ls.view(-1)
+            return (lc_f[:, None] == ls_f[None, :]).float().to(device)
+
+        N4 = h4 * w4   # 4096 @ img_size=512,  1024 @ img_size=256
+        N5 = h5 * w5   # 1024 @ img_size=512,   256 @ img_size=256
+
         if has_sem_maps:
-            map_64 = torch.load(str(sem_map_64), map_location=device, weights_only=True)
-            map_32 = torch.load(str(sem_map_32), map_location=device, weights_only=True)
+            _m64 = torch.load(str(sem_map_64), map_location=device, weights_only=True)
+            _m32 = torch.load(str(sem_map_32), map_location=device, weights_only=True)
+            # Chỉ dùng precomputed nếu kích thước khớp đúng feature map hiện tại
+            map_64 = _m64 if (_m64.shape[0] == N4) else _make_map(lc4, ls4)
+            map_32 = _m32 if (_m32.shape[0] == N5) else _make_map(lc5, ls5)
         else:
-            # on-the-fly
-            def _make_map(lc, ls):
-                lc_f = lc.view(-1); ls_f = ls.view(-1)
-                return (lc_f[:, None] == ls_f[None, :]).float().to(device)
             map_64 = _make_map(lc4, ls4)
             map_32 = _make_map(lc5, ls5)
 
