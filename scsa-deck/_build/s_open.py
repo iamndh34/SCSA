@@ -62,8 +62,8 @@ m = (title(sid, "SCSA trong một phút")
      + f'<div id="min-r2" class="print" style="left:1274px;top:330px;width:444px;height:444px;padding:12px;background:transparent;box-shadow:none"><img src="{IMG}ex1_sanet_scsa.png" alt="" style="width:420px;height:420px;object-fit:cover;display:block"></div>'
      + label("min-ra", f'chọn theo “trông giống” → {acc("tô nhầm vùng")}', 1274, 796, 460, 32)
      + label("min-rb", "chỉ lấy style từ vùng cùng nhãn → đúng vùng", 1274, 796, 460, 32)
-     + label("min-sca", "SCA: nhìn cả vùng", 740, 668, 400, 32)
-     + label("min-ssa", "SSA: nhìn một điểm", 740, 714, 400, 32)
+     + label("min-sca", "SCA (Continuous): nhìn cả vùng", 740, 668, 520, 32)
+     + label("min-ssa", "SSA (Sparse): nhìn một điểm", 740, 714, 520, 32)
      + line("min-end", "Không train lại: cắm thẳng vào mô hình có sẵn.", 900, 40, left=720, width=1008))
 js = "\n".join([WORDS(f"{sid}-tw", 0.1), PLACE("#min-p1", 0.2), PLACE("#min-p2", 0.35), BLUR("#min-box", 0.7, 0.2), FADE("#min-bt1", 0.75, 0.2),
                 DRAW("#min-a1", 0.9, 0.5, 400), DRAW("#min-a2", 0.95, 0.5, 400), PLACE("#min-r", 1.2), DRAW("#min-a5", 1.2, 0.3, 200), FADE("#min-ah", 1.45, 0.1), FADE("#min-ra", 1.6),
@@ -79,7 +79,12 @@ S.append(dict(id=sid, label="SCSA trong một phút", dur=5.0, frags=[2.0, 3.6, 
 XS = [300, 630, 960, 1290, 1620]
 CH = ["Giới thiệu", "Bài toán", "Kỹ thuật", "So sánh", "Kết luận"]
 CHL = ["Giới thiệu", "Bài toán và tổng quan", "Chi tiết kỹ thuật", "So sánh và thảo luận", "Kết luận"]
-QS = ["Vì sao quan trọng, dùng ở đâu?", "Bài toán gì, khó ở đâu?", "SCSA hoạt động thế nào?", "Hơn ai, kém ở đâu?", "Mang về điều gì?"]
+QS = ["Style transfer là gì, đã đi tới đâu?", "Vì sao vách núi bị tô sai?", "SCSA sửa thế nào?", "Sửa được bao nhiêu, kém ở đâu?", "Mang về gì, đi tiếp đâu?"]
+# what the previous chapter answered (shown on the next chapter card): the thread question → answer
+ANS = ["", "style transfer đã nhanh và đẹp, nhưng vẫn tô vách núi sai màu.",
+       "attention chọn style theo “trông giống”, không nhìn nhãn: sai vùng, loang lổ, nhạt nhoà.",
+       "SCSA cấm vùng khác nhãn; SCA lấy tông chung, SSA lấy nét cọ.",
+       "lỗi theo vùng giảm 29–47%, không train lại; đổi lại cần bản đồ nhãn và chạy chậm hơn."]
 
 def rail(sid, cur, show_q=True):
     m = svg(f'<path id="{sid}-rl" d="M{XS[0]} 440 L{XS[-1]} 440" stroke="#C9CDD3" stroke-width="6" stroke-linecap="round" fill="none"/>')
@@ -97,7 +102,7 @@ def rail(sid, cur, show_q=True):
 sid = "roadmap"
 m = title(sid, "Năm chặng, theo khung của buổi seminar") + rail(sid, None)
 m += f'<div id="roadmap-ring" style="position:absolute;left:{XS[2]-40}px;top:400px;width:80px;height:80px;border-radius:50%;border:6px solid {ACC}"></div>'
-m += line("roadmap-end", f'Mỗi chặng mở bằng một câu hỏi, rồi mới đi vào chi tiết. {acc("Chặng 3")} là trọng tâm.', 760, 40)
+m += line("roadmap-end", f'Mỗi chặng trả lời một câu hỏi và mở ra câu sau. {acc("Chặng 3")} là trọng tâm.', 760, 40)
 js = [WORDS(f"{sid}-tw", 0.1), DRAW("#roadmap-rl", 0.3, 0.8, 1400)]
 for i in range(5):
     js += [T(f"#roadmap-d{i}", 0.5 + 0.15*i, '{opacity:0,scale:0.4}', '{opacity:1,scale:1}', 0.5, "back.out(1.4)"), BLUR(f"#roadmap-n{i}", 0.55 + 0.15*i), FADE(f"#roadmap-q{i}", 0.7 + 0.15*i, 0.3)]
@@ -119,7 +124,10 @@ def chapter(k):
     prev = max(k - 1, 0)
     m += f'<div id="{sid}-ring" style="position:absolute;left:{XS[prev]-40}px;top:400px;width:80px;height:80px;border-radius:50%;border:6px solid {INK}"></div>'
     m += label(f"{sid}-k", f"Chặng {k+1} · {CHL[k]}", 192, 600, 1536, 40, INK2, weight=600)
+    if ANS[k]:
+        m += label(f"{sid}-a", f'<span style="color:{INK};font-weight:800">Chặng {k} trả lời:</span> {ANS[k]}', 192, 196, 1536, 36, INK2, weight=600)
     m += f'<h1 id="{sid}-qq" class="t" style="top:660px;font-size:96px;width:1536px">{words(QS[k], sid + "-qw")}</h1>'
     js = [FADE(f"#{sid}-rl", 0, 0.3)] + [FADE(f"#{sid}-d{i}", 0.05*i, 0.3) for i in range(5)] + [FADE(f"#{sid}-n{i}", 0.05*i, 0.3) for i in range(5)]
+    if ANS[k]: js.append(BLUR(f"#{sid}-a", 0.15, 0.25))
     js += [MOVE(f"#{sid}-ring", 0.3, 0, 0, XS[k] - XS[prev], 0, 0.7), BLUR(f"#{sid}-k", 0.8), WORDS(f"{sid}-qw", 0.95, 0.09)]
     return dict(id=sid, label=f"Chặng {k+1}: {CHL[k]}", dur=2.0, frags=[1.6], html=m, js="\n".join(js), title=f"Chặng {k+1} · {QS[k]}", notes=CHAPTER_NOTES[k])

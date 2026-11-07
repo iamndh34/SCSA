@@ -37,7 +37,7 @@ for i, (x, (y_, n, d)) in enumerate(zip(CX, stops)):
     m += label(f"history-n{i}", n, x - 150, 510, 300, 36, INK, "center", 700)
     m += label(f"history-t{i}", d, x - 145, 560, 290, 32, INK2, "center", 500)
 m += f'<div id="history-ring" style="position:absolute;left:{CX[0]-38}px;top:432px;width:76px;height:76px;border-radius:50%;border:6px solid {INK}"></div>'
-m += line("history-end", f'SCSA là {acc("mảnh")} {acc("ghép")} cắm vào ba mô hình trong khung: SANet, StyTr2, StyleID.', 790, 40)
+m += line("history-end", f'SCSA là {acc("mảnh")} {acc("ghép")} cắm vào từng mô hình trong khung, mỗi lần một.', 790, 40)
 js = [WORDS(f"{sid}-tw", 0.1), DRAW("#history-rl", 0.3, 0.8, 1500), HIDE("#history-br")]
 for i in range(5):
     t = 0.8 + i * 0.9
@@ -47,6 +47,41 @@ for i in range(5):
 js += [T("#history-br", 5.4, '{opacity:0,scale:1.04,svgOrigin:"1114 532"}', '{opacity:1,scale:1}', 0.6, "expo.out"), BLUR("#history-end", 5.8, 0.2)]
 S.append(dict(id=sid, label="Mười năm", dur=6.6, frags=[1.5, 2.4, 3.3, 4.2, 5.1, 6.2], html=m, js="\n".join(js), title="Mười năm style transfer, năm bước",
   notes="Bấm qua từng mốc. 2016, Gatys: chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống chữ ký màu của tranh; đẹp nhưng mỗi ảnh vài phút. 2017, AdaIN: một mạng cho mọi tranh, khớp tông của cả ảnh; nhanh nhưng thô, ta sẽ gặp lại nó ở chặng 2. 2019 đến 2022, SANet và StyTr2: attention, mỗi điểm của ảnh tự đi tìm điểm giống nó trong tranh. 2024, StyleID: attention nằm bên trong Stable Diffusion, không cần train. 2025, SCSA: attention biết nhãn vùng. Bấm cuối: khung cam bao ba mô hình ở giữa, đó là ba backbone SCSA cắm vào; SCSA không thay chúng."))
+
+# ---------------- same pair, four methods (real runs: compare_style_transfer.ipynb) ----------------
+sid = "gens"
+GX, GY, GW = [404, 740, 1076, 1412], 250, 290
+GENS = [("cmp_gatys.jpg", "Gatys · 2016", "26,8 s · 300 bước", "vách núi ngả hồng cam: lẫn màu dãy xa", ACC),
+        ("cmp_adain.jpg", "AdaIN · 2017", "97 ms · một lượt", "cả ảnh một tông đục, trời loang xanh", ACC),
+        ("cmp_sanet.jpg", "SANet · 2019", "124 ms · một lượt", "vách núi trắng như mây: lấy màu trời", ACC),
+        ("cmp_scsa.jpg", f'SANet + {acc("SCSA")}', "473 ms · một lượt", "trời kem, vách núi xanh, dãy xa hồng", INK)]
+m = (title(sid, "Cùng một cặp ảnh, bốn phương pháp")
+     + print_img("gn-c", IMG + "29.jpg", 192, GY, 128, mat=8)
+     + print_img("gn-s", IMG + "29_paint.jpg", 192, GY + 170, 128, mat=8)
+     + label("gn-in", "ảnh + tranh", 168, GY + 330, 192, 30, INK2, "center", 500))
+ells = ""
+for i, (f, n, t_, d, col) in enumerate(GENS):
+    x = GX[i]
+    m += print_img(f"gn-p{i}", IMG + f, x, GY, GW)
+    m += label(f"gn-n{i}", n, x, GY + 334, GW + 24, 36, INK, "center", 800)
+    m += label(f"gn-t{i}", t_, x, GY + 384, GW + 24, 30, INK2, "center", 500)
+    m += label(f"gn-d{i}", d, x, GY + 430, GW + 24, 30, col, "center", 600)
+    cx, cy = x + 12 + 0.33 * GW, GY + 12 + 0.60 * GW
+    dash = "" if i < 3 else ' stroke-dasharray="14 10"'
+    ells += f'<ellipse id="gn-e{i}" cx="{cx:.0f}" cy="{cy:.0f}" rx="74" ry="104" fill="none" stroke="{col}" stroke-width="6"{dash}/>'
+m += svg(ells)
+m += line("gn-end", f'Ba cách đầu tô {acc("nhầm")} vùng; SCSA chỉ lấy style từ vùng cùng nhãn.', 836, 40)
+m += line("gn-src", "Chạy lại trên mẫu 29, 512 × 512, Apple MPS: compare_style_transfer.ipynb.", 916, 30, weight=500, color=INK2)
+js = [WORDS(f"{sid}-tw", 0.1), PLACE("#gn-c", 0.3, 0.6), PLACE("#gn-s", 0.4, 0.6), FADE("#gn-in", 0.6)]
+for i in range(4):
+    t = 1.1 + i * 1.3
+    js += [PLACE(f"#gn-p{i}", t), BLUR(f"#gn-n{i}", t + 0.25), FADE(f"#gn-t{i}", t + 0.35),
+           DRAW(f"#gn-e{i}", t + 0.55, 0.5, 600) if i < 3 else
+           T(f"#gn-e{i}", t + 0.55, f'{{opacity:0,scale:1.2,svgOrigin:"{GX[i] + 12 + 0.33*GW:.0f} {GY + 12 + 0.60*GW:.0f}"}}', '{opacity:1,scale:1}', 0.5, "expo.out"),
+           BLUR(f"#gn-d{i}", t + 0.75)]
+js += [BLUR("#gn-end", 6.4, 0.2), FADE("#gn-src", 6.5)]
+S.append(dict(id=sid, label="Bốn phương pháp, một cặp ảnh", dur=7.2, frags=[1.0, 2.2, 3.5, 4.8, 6.1, 6.8], html=m, js="\n".join(js), title="Cùng một cặp ảnh, bốn phương pháp",
+  notes="(xem notes.py)"))
 
 # ---------------- semantic maps ----------------
 sid = "maps"
@@ -86,7 +121,7 @@ for l in range(4):
     js += [BLUR(f"#maps-c{l}", 2.4 + 0.12*l), BLUR(f"#maps-s{l}", 2.45 + 0.12*l)]
 for l in range(4):
     js.append(DRAW(f"#maps-arc{l}", 3.6 + 0.15*l, 0.7, 1400))
-js.append(BLUR("#maps-end", 4.7, 0.2))
+js.append(BLUR("#maps-end", 4.8, 0.2))
 S.append(dict(id=sid, label="Bản đồ nhãn", dur=5.4, frags=[1.0, 2.2, 3.4, 4.5, 5.1], html=m, js="\n".join(js), title="Semantic: mỗi ảnh có thêm một bản đồ nhãn",
   notes="Bấm: thêm hai bản đồ nhãn, semantic map. Đây là file thật trong repo: 29_sem.png và 29_paint_sem.png. Mỗi màu là một vùng. Bấm: đỏ là trời, vàng là vách núi, xanh lá là rừng, xanh dương là dãy núi xa. Màu chỉ là mã nhãn, không phải màu thật. Bấm: yêu cầu là nối đúng cặp, trời với trời, vách núi với vách núi. Bấm: chốt, mỗi vùng chỉ được lấy style từ vùng cùng tên. Đầu vào giờ là bộ bốn: ảnh, map ảnh, tranh, map tranh. Ai vẽ map? Người dùng, tự vẽ hoặc dùng mô hình phân đoạn. Paper không tự sinh map, đây là một hạn chế ta sẽ nhắc lại."))
 

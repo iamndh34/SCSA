@@ -35,7 +35,7 @@ m = (title(sid, "Ảnh được cắt thành lưới điểm")
      + print_img("grid-p", IMG + "29.jpg", 192, 250, 408)
      + tiles("grid-t", IMG + "29.jpg", X0, Y0, C0)
      + label("grid-l1", "ảnh 512 × 512 pixel", 192, 690, 520, 32, INK2, weight=500)
-     + label("grid-l2", "12 × 12 = 144 điểm · mô hình thật: 64 × 64 = 4.096", 192, 750, 720, 32, INK, weight=600))
+     + label("grid-l2", "12 × 12 = 144 điểm · mô hình thật: 64 × 64 = 4.096", 192, 750, 980, 32, INK, weight=600))
 bars = [int(30 + (RGBC[LIFT][k % 3] * (k + 3) * 37) % 110) for k in range(18)]
 m += f'<div id="grid-vec" style="position:absolute;left:1000px;top:250px;width:560px;height:150px;display:flex;align-items:flex-end;gap:10px">'
 m += "".join(f'<div class="grid-bar" style="width:20px;height:{h}px;background:{INK}"></div>' for h in bars) + '</div>'
@@ -46,7 +46,7 @@ m += print_img("grid-out", IMG + "29.jpg", 1300, 520, 400)
 m += line("grid-end", f'SCSA chỉ sửa {acc("lưới")} {acc("điểm")} ở giữa.', 860, 40, width=1060)
 js = [WORDS(f"{sid}-tw", 0.1), PLACE("#grid-p", 0.3), FADE("#grid-l1", 0.6), HIDE(".grid-t-c")]
 js += [FADE(".grid-t-c", 1.2, 0.01), FADE("#grid-p", 1.25, 0.3, 1, 0), FADE("#grid-l1", 1.25, 0.2, 1, 0)]
-js.append(f'tl.fromTo(".grid-t-c",{{x:0,y:0}},{{x:function(i){{return (i%{G})*{GAP};}},y:function(i){{return Math.floor(i/{G})*{GAP};}},duration:0.8,ease:"power2.inOut",stagger:{{each:0.004,from:"start"}}}},1.3);')
+js.append(f'tl.fromTo(".grid-t-c",{{x:0,y:0}},{{x:function(i){{return (i%{G})*{GAP};}},y:function(i){{return Math.floor(i/{G})*{GAP};}},duration:0.7,ease:"power2.inOut",stagger:{{each:0.003,from:"start"}}}},1.25);')
 js.append(BLUR("#grid-l2", 1.9))
 r, c = divmod(LIFT, G)
 sx, sy = X0 + c*(C0+GAP), Y0 + r*(C0+GAP)
@@ -102,43 +102,32 @@ H1 = [HMAX * v / smax for v in SHOW]
 H2 = [HMAX * p / 100 for p in PCT]
 KEEP = KL.index(1)
 H3 = [HMAX if j == KEEP else 0 for j in range(4)]
-m = title(sid, "Chia trọng số, và cách “cấm” một ô", ("cấm",))
+m = title(sid, "Softmax: chia trọng số theo độ giống")
 m += ptile("sm-q", IMG + "29.jpg", QA, 230, 228, 56, f"box-shadow:0 0 0 5px {ACC}")
 m += label("sm-ct", "điểm vách núi của ảnh so với 4 điểm tranh", 306, 240, 1000, 32, INK2, weight=500)
 for j, (x, l, k) in enumerate(zip(BX, KL, KEYS)):
     m += f'<div id="sm-b{j}" style="position:absolute;left:{x}px;top:{BASE-HMAX}px;width:110px;height:{HMAX}px;background:{REG[l]};transform-origin:50% 100%"></div>'
-    for tag, val, top in (("s", vn(SHOW[j]), H1[j]), ("w", f"{PCT[j]}%", H2[j]), ("v", f"{100 if j == KEEP else 0}%", H3[j])):
+    for tag, val, top in (("s", vn(SHOW[j]), H1[j]), ("w", f"{PCT[j]}%", H2[j])):
         m += label(f"sm-{tag}{j}", val, x - 25, BASE - top - 52, 160, 38, (INK if tag == "s" else (INK2 if tag == "v" and j != KEEP else ACC)), "center", 800)
     m += ptile(f"sm-t{j}", IMG + "29_paint.jpg", k, x + 20, BASE + 16, 70)
     m += label(f"sm-n{j}", REGN[l], x - 25, BASE + 94, 160, 28, INK, "center", 600)
 m += f'<div style="position:absolute;left:230px;top:{BASE}px;width:660px;height:5px;background:{INK}"></div>'
-m += svg(hatch_def("smh") + "".join(f'<rect id="sm-h{j}" x="{BX[j]-6}" y="{BASE-HMAX-20}" width="122" height="{HMAX+20}" fill="url(#smh)"/>' for j in range(4) if j != KEEP))
-m += label("sm-x", f'điểm hỏi là vách núi → khác nhãn thì {acc("cấm")}', 306, 240, 1000, 32, INK, weight=700)
 m += label("sm-sbl", "chia 100% trọng số", 1000, 330, 728, 32, INK2, weight=500)
 seg = "".join(f'<div id="sm-g{j}" style="height:110px;width:{728*PCT[j]/100:.0f}px;background:{REG[KL[j]]}"></div>' for j in range(4))
 m += f'<div id="sm-sb" style="position:absolute;left:1000px;top:380px;width:728px;height:110px;display:flex;overflow:hidden;background:#fff">{seg}</div>'
 m += line("sm-e1", "Softmax: điểm cao được phần lớn, cộng lại đúng 100%.", 540, 40, left=1000, width=728, weight=500)
 TOPJ = max(range(4), key=lambda j: PCT[j])
-m += line("sm-e2", f'Luật này xét {acc("nhãn")}: {REGN[KL[TOPJ]]} {PCT[TOPJ]}% vẫn bị cấm vì sai vùng. '
-           f'Ô cấm nhận {acc("−∞")} → 0%; {REGN[1]} còn một mình nên {PCT[KEEP]}% → 100%.', 530, 36, left=1000, width=728, weight=500)
-m += line("sm-end", f'Cốt lõi của SCSA: {acc("cấm")} ô khác nhãn.', 800, 44, left=1000, width=728)
+m += line("sm-end", f'Softmax chỉ nhìn độ giống, không nhìn {acc("nhãn")}: {REGN[KL[TOPJ]]} sai vùng vẫn nhận {PCT[TOPJ]}%.', 680, 40, left=1000, width=728)
 js = [WORDS(f"{sid}-tw", 0.1), PLACE("#sm-q", 0.2, 0.6), FADE("#sm-ct", 0.3)]
 for j in range(4):
     js += [GROW_Y(f"#sm-b{j}", 0.4 + 0.12*j, 0.7, 0, H1[j]/HMAX), PLACE(f"#sm-t{j}", 0.4 + 0.12*j, 0.6), FADE(f"#sm-n{j}", 0.5 + 0.12*j), BLUR(f"#sm-s{j}", 0.8 + 0.12*j)]
-    js += [HIDE(f"#sm-w{j}"), HIDE(f"#sm-v{j}")]
-js += [HIDE("#sm-x"), HIDE("#sm-e2")] + [HIDE(f"#sm-h{j}") for j in range(4) if j != KEEP]
+    js += [HIDE(f"#sm-w{j}")]
 for j in range(4):
     js += [FADE(f"#sm-s{j}", 1.6, 0.2, 1, 0), T(f"#sm-b{j}", 1.7, f'{{scaleY:{H1[j]/HMAX:.4f}}}', f'{{scaleY:{H2[j]/HMAX:.4f}}}', 0.8, "power2.inOut"), BLUR(f"#sm-w{j}", 2.4)]
 js += [WIPE("#sm-sb", 1.8, 0.9), FADE("#sm-sbl", 1.8), BLUR("#sm-e1", 2.4, 0.2)]
-for j in range(4):
-    if j != KEEP: js.append(FADE(f"#sm-h{j}", 3.0, 0.3))
-js += [FADE("#sm-ct", 2.9, 0.15, 1, 0), BLUR("#sm-x", 3.0), FADE("#sm-e1", 3.2, 0.2, 1, 0), BLUR("#sm-e2", 3.4, 0.2)]
-for j in range(4):
-    js += [FADE(f"#sm-w{j}", 3.3, 0.2, 1, 0), T(f"#sm-b{j}", 3.4, f'{{scaleY:{H2[j]/HMAX:.4f}}}', f'{{scaleY:{max(H3[j],0.001)/HMAX:.4f}}}', 0.8, "power2.inOut"), BLUR(f"#sm-v{j}", 4.1),
-           T(f"#sm-g{j}", 3.5, f'{{width:{728*PCT[j]/100:.0f}}}', f'{{width:{728 if j == KEEP else 0}}}', 0.8, "power2.inOut")]
-js.append(BLUR("#sm-end", 4.7, 0.2))
-S.append(dict(id=sid, label="Softmax và luật cấm", dur=5.6, frags=[1.4, 2.8, 4.4, 5.2], html=m, js="\n".join(js), title="Chia trọng số, và cách “cấm” một ô",
-  notes=f"Vẫn bốn điểm vừa rồi. Bấm: đây là điểm số giống nhau của từng điểm trong tranh: dãy xa cao nhất, khoảng bốn phẩy sáu, rồi tới trời, còn vách núi và rừng chỉ quanh nửa. Bấm: softmax biến điểm số thành phần trăm, cộng lại đủ 100: {PCT[0]}, {PCT[1]}, {PCT[2]}, {PCT[3]}. Điểm cao được phần lớn, nhưng không ai bị bỏ hẳn. Bấm: giờ ta ra luật: điểm vách núi chỉ được lấy từ vách núi. Ba điểm kia bị cấm. Cách cấm là đặt âm vô cực vào điểm số của chúng; e mũ âm vô cực bằng 0, nên ba cột rơi về đúng 0 và cột vách núi nhận 100 phần trăm. Không phải sửa gì khác trong mô hình, đó là lý do SCSA cắm được vào mô hình đã train. Bấm: toàn bộ SCSA chỉ là quyết định ô nào bị cấm."))
+js.append(BLUR("#sm-end", 3.0, 0.2))
+S.append(dict(id=sid, label="Softmax", dur=4.0, frags=[1.4, 2.8, 3.5], html=m, js="\n".join(js), title="Softmax: chia trọng số theo độ giống",
+  notes="(xem notes.py)"))
 
 # ---------------- AdaIN ----------------
 sid = "adain"

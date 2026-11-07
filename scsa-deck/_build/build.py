@@ -9,16 +9,24 @@ by = {s["id"]: s for mod in (s_open, s_ctx, s_base, s_prob, s_meth, s_res) for s
 for k in range(5):
     c = s_open.chapter(k); by[c["id"]] = c
 ORDER = ["cover", "hook", "roadmap",
-         "ch1", "st", "apps", "history",
-         "ch2", "maps", "task", "grid", "attn", "softmax", "adain", "ua", "uaf", "err1", "err23", "fixmap", "minute",
-         "ch3", "idea", "pipe", "sca", "sadain", "ssa", "matrices", "maskf", "mix", "algo", "plug", "train",
+         "ch1", "st", "apps", "history", "gens",
+         "ch2", "maps", "task", "grid", "attn", "softmax", "ua", "uaf", "err1", "err23", "fixmap", "minute",
+         "ch3", "pipe", "sca", "adain", "sadain", "ssa", "matrices", "maskf", "mix", "algo", "plug", "train",
          "ch4", "metrics", "results", "ssl", "compare", "ablation", "strengths", "limits",
-         "ch5", "summary", "future", "end"]
+         "ch5", "summary", "future", "next", "end"]
 SL = [by[i] for i in ORDER]
-from notes import NOTES
+from settle import settle
+for s_ in SL:  # never pause a step while its motion is still running
+    s_["frags"], _iss = settle(s_)
+    for f, f2, leak in _iss:
+        print(f"settle: {s_['id']} step at {f}s still moving until {f2}s; next-step tweens start inside: {leak}")
+from notes import NOTES, BRIDGE
 assert set(NOTES) == set(ORDER), set(NOTES) ^ set(ORDER)
 for s_ in SL:
-    steps = NOTES[s_["id"]]
+    steps = list(NOTES[s_["id"]])
+    if s_["id"] in BRIDGE:
+        lab_, txt_ = steps[-1]
+        steps[-1] = (lab_, f"{txt_} Dẫn: {BRIDGE[s_['id']]}")
     assert len(steps) == len(s_["frags"]), (s_["id"], len(steps), len(s_["frags"]))
     s_["notes"] = "\n".join((f"Bấm {k} · " if k else "") + f"{lab}: {txt}" for k, (lab, txt) in enumerate(steps))
 

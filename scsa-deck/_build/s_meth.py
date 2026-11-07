@@ -61,13 +61,19 @@ def box(id_, x, y, w, h, t1, t2="", dark=False, accent=False, fs=38):
 ins = ["29.jpg", "29_sem.png", "29_paint.jpg", "29_paint_sem.png"]
 m = title(sid, "Toàn cảnh: SCSA nằm ở giữa", ("giữa",))
 m += '<div id="pp-in">' + "".join(print_img(f"pp-i{j}", IMG + f, 192, 290 + j*104, 80, mat=8) for j, f in enumerate(ins)) + '</div>'
-m += box("pp-enc", 330, 290, 150, 406, "Encoder", fs=28)
+m += box("pp-enc", 330, 290, 150, 406, "Encoder", "của mô hình gốc", fs=28)
 m += box("pp-sca", 530, 290, 400, 160, "SCA", "tông chung cả vùng", dark=True)
 m += box("pp-sad", 530, 536, 190, 160, "S-AdaIN", "", fs=30)
 m += box("pp-ssa", 740, 536, 190, 160, "SSA", "1 điểm", dark=True)
 m += box("pp-mix", 990, 420, 250, 180, "Trộn", "tông + nét + bố cục", accent=True)
-m += box("pp-dec", 1290, 430, 170, 160, "Decoder", fs=30)
+m += box("pp-dec", 1290, 430, 170, 170, "Decoder", "của mô hình gốc", fs=30)
 m += print_img("pp-out", IMG + "ex1_sanet_scsa.png", 1500, 390, 220)
+m += label("pp-ol", "SANet + SCSA", 1488, 640, 268, 30, INK, "center", 700)
+PSUB = ["SANet (CNN): encoder VGG → SCSA → decoder CNN",
+        "StyTr2 (Transformer): transformer encoder → SCSA trong transformer decoder → decoder CNN",
+        "StyleID (Diffusion): DDIM inversion → SCSA trong U-Net → VAE decoder"]
+for j, t_ in enumerate(PSUB):
+    m += label(f"pp-sub{j}", t_, 192, 212, 1600, 32, INK2, weight=500)
 P = {"in": "M296 338 L330 338 M296 442 L330 442 M296 546 L330 546 M296 650 L330 650", "e1": "M480 370 L530 370", "e2": "M480 616 L530 616",
      "e3": "M720 616 L740 616", "m1": "M930 370 L960 370 L960 470 L990 470", "m2": "M930 616 L960 616 L960 550 L990 550",
      "res": "M625 696 L625 750 L1115 750 L1115 600", "d1": "M1240 510 L1290 510", "d2": "M1460 510 L1500 510"}
@@ -79,18 +85,22 @@ for k, x1, y1, x2, y2 in DOTS:
     pp += f'<circle id="pp-dot{k}" cx="{x1}" cy="{y1}" r="9" fill="{ACC}"/>'
 m += svg(pp)
 m += label("pp-rl", "bố cục của ảnh (sau S-AdaIN) được cộng vào", 650, 760, 560, 30, ACC, weight=600)
-m += line("pp-end", f'Encoder, decoder giữ nguyên. Các khối ở giữa là {acc("SCSA")}.', 860, 44)
-js = [WORDS(f"{sid}-tw", 0.1), 'tl.fromTo("#pp-in .print",{opacity:0,y:20},{opacity:1,y:0,duration:0.6,ease:"expo.out",stagger:0.08},0.3);',
+m += line("pp-end", f'Hai đầu là của mô hình gốc, giữ nguyên. Các khối ở giữa là {acc("SCSA")}.', 860, 44)
+js = [WORDS(f"{sid}-tw", 0.1), FADE("#pp-sub0", 0.4), HIDE("#pp-sub1"), HIDE("#pp-sub2"), 'tl.fromTo("#pp-in .print",{opacity:0,y:20},{opacity:1,y:0,duration:0.6,ease:"expo.out",stagger:0.08},0.3);',
       DRAW("#pp-pin", 0.7, 0.3, 300), BLUR("#pp-enc", 0.8, 0.2),
       DRAW("#pp-pe1", 1.4, 0.3, 100), PLACE("#pp-sca", 1.5, 0.6),
       DRAW("#pp-pe2", 2.3, 0.3, 100), PLACE("#pp-sad", 2.4, 0.6), DRAW("#pp-pe3", 2.7, 0.2, 100), PLACE("#pp-ssa", 2.8, 0.6),
       DRAW("#pp-pm1", 3.4, 0.4, 300), DRAW("#pp-pm2", 3.4, 0.4, 300), PLACE("#pp-mix", 3.6, 0.6), DRAW("#pp-pres", 3.7, 0.6, 1000), 'tl.set("#pp-pres",{strokeDasharray:"12 9",strokeDashoffset:0},4.3);', BLUR("#pp-rl", 4.0),
-      DRAW("#pp-pd1", 4.5, 0.2, 100), PLACE("#pp-dec", 4.6, 0.6), DRAW("#pp-pd2", 4.8, 0.2, 100), PLACE("#pp-out", 4.9, 0.7),
-      BLUR("#pp-end", 5.6, 0.2)]
+      DRAW("#pp-pd1", 4.5, 0.2, 100), PLACE("#pp-dec", 4.6, 0.6), DRAW("#pp-pd2", 4.8, 0.2, 100), PLACE("#pp-out", 4.9, 0.7), FADE("#pp-ol", 5.2),
+      FADE("#pp-sub0", 5.6, 0.25, 1, 0), BLUR("#pp-sub1", 5.8, 0.25),
+      T("#pp-enc", 5.6, '{borderColor:"#16181C"}', '{borderColor:"#C2185B"}', 0.3, "power2.out"),
+      T("#pp-dec", 5.6, '{borderColor:"#16181C"}', '{borderColor:"#C2185B"}', 0.3, "power2.out"),
+      FADE("#pp-sub1", 6.4, 0.25, 1, 0), BLUR("#pp-sub2", 6.6, 0.25),
+      BLUR("#pp-end", 7.3, 0.2)]
 for k, x1, y1, x2, y2 in DOTS:
     t_on = {"e1": 1.5, "e3": 2.8, "d1": 4.6, "d2": 4.9}[k]
-    js += [HIDE(f"#pp-dot{k}"), f'tl.fromTo("#pp-dot{k}",{{attr:{{cx:{x1}}},opacity:1}},{{attr:{{cx:{x2}}},duration:0.6,ease:"none",repeat:2}},{t_on});', f'tl.set("#pp-dot{k}",{{opacity:0}},{t_on + 1.8});']
-S.append(dict(id=sid, label="Sơ đồ toàn cảnh", dur=6.4, frags=[1.2, 2.0, 3.2, 4.4, 5.4, 6.0], html=m, js="\n".join(js), title="Toàn cảnh: SCSA nằm ở giữa",
+    js += [HIDE(f"#pp-dot{k}"), f'tl.fromTo("#pp-dot{k}",{{attr:{{cx:{x1}}},opacity:1}},{{attr:{{cx:{x2}}},duration:0.5,ease:"none"}},{t_on});', f'tl.set("#pp-dot{k}",{{opacity:0}},{t_on + 0.5});']
+S.append(dict(id=sid, label="Sơ đồ toàn cảnh", dur=8.0, frags=[1.2, 2.0, 3.2, 4.4, 5.4, 6.2, 7.0, 7.7], html=m, js="\n".join(js), title="Toàn cảnh: SCSA nằm ở giữa",
   notes="Bấm từng bước, từ trái sang phải. Bốn đầu vào: ảnh, map ảnh, tranh, map tranh. Encoder biến cả bốn thành lưới điểm, kể cả hai map. Bấm: nhánh trên, SCA: hỏi bằng map, lấy tông chung của cả vùng. Bấm: nhánh dưới hai bước: S-AdaIN đổi tông ảnh theo từng vùng để làm sạch câu hỏi, rồi SSA tìm một điểm giống nhất trong cùng vùng. Bấm: trộn tông chung, nét cọ, và cộng bố cục của ảnh vào, đường đứt nét magenta. Bấm: decoder vẽ ra ảnh. Bấm: encoder, decoder giữ nguyên, chỉ ba khối giữa là SCSA. Với StyleID, encoder là VAE cộng DDIM inversion."))
 
 # ---------------- SCA ----------------
@@ -252,31 +262,34 @@ S.append(dict(id=sid, label="Trộn hai nhánh", dur=6.4, frags=[1.2, 3.0, 4.4, 
 
 # ---------------- plug into three backbones ----------------
 sid = "plug"
-BB = [("SANet", "CNN", "0,7 / 0,3"), ("StyTr2", "Transformer", "1,2 / 0,5"), ("StyleID", "Diffusion", "0,8 / 0,2")]
+# where SCSA goes in each backbone: README §4 / outline A.4.6 (paper Appendix C)
+BB = [("SANet", "CNN", ("Encoder VGG", ""), "khối SANet", "thay khối attention SANet", ("Decoder", "CNN"), "0,7 / 0,3"),
+      ("StyTr2", "Transformer", ("Transformer encoder", "ảnh, tranh"), "attention ảnh–tranh", "thay attention ảnh–tranh ở lớp chẵn của decoder", ("Decoder", "CNN"), "1,2 / 0,5"),
+      ("StyleID", "Diffusion", ("DDIM inversion", "ảnh, tranh → nhiễu"), "self-attention của U-Net", "thay self-attention của U‑Net (K, V từ tranh)", ("VAE decoder", "Stable Diffusion"), "0,8 / 0,2")]
+PCX, PW = [192, 720, 1248], 480
 m = title(sid, "Cắm vào ba họ mô hình, không train lại", ("không",))
-for j, (n, f, a) in enumerate(BB):
-    m += f'<div id="pl-n{j}" class="lb" style="left:192px;top:270px;width:900px;font-size:64px;font-weight:800">{n} <span style="color:{INK2};font-weight:500;font-size:44px">· {f}</span></div>'
-    m += label(f"pl-a{j}", f"tỉ lệ trộn tông / nét: {a}", 192, 360, 900, 34, INK2, weight=500)
-m += box("pl-enc", 300, 500, 240, 150, "Encoder")
-m += f'<div id="pl-slot" style="position:absolute;left:660px;top:470px;width:340px;height:210px;border:4px dashed {INK2}"></div>'
-m += f'<div id="pl-old" style="position:absolute;left:680px;top:490px;width:300px;height:170px;background:#C9CDD3;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700">attention gốc</div>'
-m += f'<div id="pl-new" style="position:absolute;left:680px;top:490px;width:300px;height:170px;background:{INK};color:#fff;display:flex;align-items:center;justify-content:center;font-size:56px;font-weight:800">SCSA</div>'
-m += box("pl-dec", 1120, 500, 240, 150, "Decoder")
-m += svg(leader("pl-w1", [(540, 575), (656, 575)], INK, 4, False) + leader("pl-w2", [(1004, 575), (1116, 575)], INK, 4, False))
-m += line("pl-end", f'Chỉ thay khối attention. Trọng số gốc giữ nguyên: {acc("không")} train lại.', 860, 44)
-js = [WORDS(f"{sid}-tw", 0.1), BLUR("#pl-n0", 0.3), FADE("#pl-a0", 0.45), PLACE("#pl-enc", 0.4), PLACE("#pl-dec", 0.5), DRAW("#pl-a1", 0.7, 0.3, 200), DRAW("#pl-a2", 0.7, 0.3, 200),
-      FADE("#pl-slot", 0.8), FADE("#pl-old", 0.9), HIDE("#pl-new"), HIDE("#pl-n1"), HIDE("#pl-n2"), HIDE("#pl-a1"), HIDE("#pl-a2")]
-js = [j for j in js if j not in (HIDE("#pl-a1"), HIDE("#pl-a2"))] + [HIDE("#pl-a1"), HIDE("#pl-a2")]
-js = [WORDS(f"{sid}-tw", 0.1), BLUR("#pl-n0", 0.3), FADE("#pl-a0", 0.45), PLACE("#pl-enc", 0.4), PLACE("#pl-dec", 0.5), DRAW("#pl-w1", 0.7, 0.3, 200), DRAW("#pl-w2", 0.7, 0.3, 200),
-      FADE("#pl-slot", 0.8), FADE("#pl-old", 0.9), HIDE("#pl-new"), HIDE("#pl-n1"), HIDE("#pl-n2"), HIDE("#pl-a1"), HIDE("#pl-a2"),
-      T("#pl-old", 1.5, '{y:0,opacity:1}', '{y:240,opacity:0}', 0.45, "power3.in"),
-      T("#pl-new", 1.7, '{y:-260,opacity:0}', '{y:0,opacity:1}', 0.7, "expo.out")]
-for j in (1, 2):
-    t = 2.4 + (j - 1) * 0.8
-    js += [T(f"#pl-n{j-1}", t, '{y:0,opacity:1}', '{y:-40,opacity:0}', 0.25, "power3.in"), FADE(f"#pl-a{j-1}", t, 0.2, 1, 0),
-           T(f"#pl-n{j}", t + 0.15, '{y:40,opacity:0}', '{y:0,opacity:1}', 0.35, "expo.out"), FADE(f"#pl-a{j}", t + 0.25, 0.25)]
-js.append(BLUR("#pl-end", 4.0, 0.2))
-S.append(dict(id=sid, label="Cắm vào backbone", dur=4.8, frags=[1.2, 2.2, 3.0, 3.8, 4.5], html=m, js="\n".join(js), title="Cắm vào ba họ mô hình, không train lại",
+wires = ""
+for j, (n, fam, b1, old, new_, b3, a) in enumerate(BB):
+    x = PCX[j]
+    m += f'<div id="pl-n{j}" class="lb" style="left:{x}px;top:236px;width:{PW}px;font-size:48px;font-weight:800">{n} <span style="color:{INK2};font-weight:500;font-size:34px">· {fam}</span></div>'
+    m += box(f"pl-e{j}", x, 316, PW, 104, b1[0], b1[1], fs=32)
+    m += f'<div id="pl-o{j}" style="position:absolute;left:{x}px;top:452px;width:{PW}px;height:176px;background:#C9CDD3;border:4px dashed {INK2};display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;font-size:34px;font-weight:700;color:{INK}">{old}</div>'
+    m += (f'<div id="pl-s{j}" style="position:absolute;left:{x}px;top:452px;width:{PW}px;height:176px;background:{INK};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 18px">'
+          f'<div style="font-size:44px;font-weight:800;color:#fff">SCSA</div><div style="font-size:30px;font-weight:500;color:#C9CDD3;line-height:1.2;margin-top:4px">{new_}</div></div>')
+    m += box(f"pl-d{j}", x, 660, PW, 104, b3[0], b3[1], fs=32)
+    m += label(f"pl-a{j}", f"trộn tông / nét: {a}", x, 784, PW, 30, INK2, "center", 500)
+    cx = x + PW // 2
+    wires += f'<path id="pl-w{j}a" d="M{cx} 420 L{cx} 452" stroke="{INK}" stroke-width="4"/><path id="pl-w{j}b" d="M{cx} 628 L{cx} 660" stroke="{INK}" stroke-width="4"/>'
+m += svg(wires)
+m += line("pl-end", f'Mỗi lần cắm vào một mô hình, chỉ thay khối attention: {acc("không")} train lại.', 860, 44)
+def col(j, t, swap_at):
+    out = [BLUR(f"#pl-n{j}", t), PLACE(f"#pl-e{j}", t + 0.1, 0.6), FADE(f"#pl-w{j}a", t + 0.3, 0.2), FADE(f"#pl-o{j}", t + 0.35, 0.3),
+           FADE(f"#pl-w{j}b", t + 0.45, 0.2), PLACE(f"#pl-d{j}", t + 0.5, 0.6), FADE(f"#pl-a{j}", t + 0.7), HIDE(f"#pl-s{j}"),
+           T(f"#pl-o{j}", swap_at, '{y:0,opacity:1}', '{y:60,opacity:0}', 0.35, "power3.in"),
+           T(f"#pl-s{j}", swap_at + 0.2, '{y:-80,opacity:0}', '{y:0,opacity:1}', 0.6, "expo.out")]
+    return out
+js = [WORDS(f"{sid}-tw", 0.1)] + col(0, 0.3, 1.4) + col(1, 2.4, 3.1) + col(2, 4.1, 4.8) + [BLUR("#pl-end", 5.8, 0.2)]
+S.append(dict(id=sid, label="Cắm vào backbone", dur=6.6, frags=[1.2, 2.25, 4.0, 5.7, 6.2], html=m, js="\n".join(js), title="Cắm vào ba họ mô hình, không train lại",
   notes="Mỗi backbone có một khối attention nằm giữa encoder và decoder. Bấm: SCSA thay đúng khối đó, encoder, decoder và trọng số gốc giữ nguyên. Bấm: tên đổi sang StyTr2, một transformer, tỉ lệ trộn 1,2 và 0,5. Bấm: StyleID, một mô hình diffusion, 0,8 và 0,2. Với StyleID có thêm chi tiết: hỏi thuần bằng map làm mất chi tiết, nên tác giả pha thêm feature của ảnh; S-AdaIN chỉ dùng ở bước đầu. Chi tiết ở Appendix C của paper. Bấm: chốt ý, không train lại, dùng ngay với model có sẵn."))
 
 # ---------------- training process and what is new ----------------

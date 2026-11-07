@@ -95,8 +95,8 @@ m += svg(paths)
 m += line("fx-end", f'Cả ba nằm trong attention gốc: {acc("không")} biết nhãn, hỏi theo cấu trúc, trộn mềm.', 830, 44)
 js = [WORDS(f"{sid}-tw", 0.1)]
 for i in range(3):
-    t = 0.4 + i * 1.0
+    t = 0.4 + i * 1.1
     js += [BLUR(f"#fx-a{i}", t), DRAW(f"#fx-s{i}", t + 0.3, 0.35, 500), DRAW(f"#fx-r{i}", t + 0.45, 0.3, 200), FADE(f"#fx-h{i}", t + 0.7, 0.1), BLUR(f"#fx-b{i}", t + 0.6), FADE(f"#fx-c{i}", t + 0.75)]
-js.append(BLUR("#fx-end", 3.6, 0.2))
-S.append(dict(id=sid, label="Ba lỗi, ba cách sửa", dur=4.4, frags=[1.3, 2.3, 3.3, 4.0], html=m, js="\n".join(js), title="Ba lỗi, ba cách sửa",
+js.append(BLUR("#fx-end", 3.8, 0.2))
+S.append(dict(id=sid, label="Ba lỗi, ba cách sửa", dur=4.6, frags=[1.45, 2.55, 3.65, 4.2], html=m, js="\n".join(js), title="Ba lỗi, ba cách sửa",
   notes="Bản đồ nối sang phần SCSA. Bấm từng hàng. Sai vùng, sửa bằng luật cấm theo nhãn; luật này nằm sẵn trong cả SCA và SSA nên lỗi 1 được sửa miễn phí. Loang lổ, sửa bằng SCA: cả vùng dùng chung một tông. Nhạt nhoà, sửa bằng SSA: chỉ lấy một điểm, giữ nguyên nét. Bấm: cả ba lỗi chung một gốc, attention không biết nhãn vùng. Mọi slide sau chỉ phóng to cột phải."))

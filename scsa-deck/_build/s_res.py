@@ -253,6 +253,42 @@ S.append(dict(id=sid, label="Hướng phát triển", dur=6.3, frags=[1.3, 2.3, 
   notes="Hướng phát triển."))
 
 # ---------------- closing ----------------
+sid = "next"
+# facts: arXiv 2603.10354 (He et al., CVPR 2026) — abstract, Sec. 3.3–3.5, 4.1 (SD 1.5, RTX 4090, 150 steps), 4.2 (Fig. 7 vs SCSA), 4.4 (≈30 s → ≈8 s), 5 (limitations)
+NX = [192, 332, 472, 612]
+m = title(sid, "Bước tiếp: StyleGallery bỏ bản đồ nhãn", ("bỏ",))
+m += label("nx-a", "SCSA cần bộ bốn", 192, 248, 600, 36, INK, weight=800)
+for j, f in enumerate(("29.jpg", "29_sem.png", "29_paint.jpg", "29_paint_sem.png")):
+    m += print_img(f"nx-a{j}", IMG + f, NX[j], 298, 110, mat=8)
+m += label("nx-al", "hai map: người dùng phải vẽ", 192, 434, 560, 30, ACC, weight=600)
+m += label("nx-b", "StyleGallery chỉ cần", 192, 494, 600, 36, INK, weight=800)
+for j, f in enumerate(("29.jpg", "29_paint.jpg")):
+    m += print_img(f"nx-b{j}", IMG + f, NX[j], 544, 110, mat=8)
+m += label("nx-bl", "+ thêm tranh tuỳ ý, không map", 472, 586, 330, 30, INK2, weight=500)
+m += svg("".join(f'<path id="nx-{p}{k}" d="M{NX[j]+6} 304 L{NX[j]+120} 418 M{NX[j]+120} 304 L{NX[j]+6} 418" stroke="{c}" stroke-width="{w}" stroke-linecap="round" fill="none"/>'
+                 for k, j in enumerate((1, 3)) for p, c, w in (("h", "#FFFFFF", 14), ("x", ACC, 7))))
+m += print_img("nx-fig", IMG + "stylegallery_fig1b.jpg", 860, 248, 856, 353, fit="contain")
+m += label("nx-fl", "Fig. 1(b): tự gom cụm → ghép cụm với nhiều tranh → tối ưu", 860, 636, 880, 30, INK2, weight=500)
+STEPS = [("1 · Tự chia vùng", "K-means trên đặc trưng của Stable Diffusion 1.5"),
+         ("2 · Ghép vùng", "so độ giống từng cặp cụm, với nhiều tranh cùng lúc"),
+         ("3 · Tô theo vùng", "tối ưu khi lấy mẫu; không train")]
+for j, (h, d) in enumerate(STEPS):
+    x = 192 + j * 524
+    m += label(f"nx-s{j}", h, x, 706, 500, 38, INK, weight=800)
+    m += label(f"nx-d{j}", d, x, 756, 500, 30, INK2, weight=500)
+m += line("nx-end", f'Đổi lại: ≈30 s mỗi ảnh (RTX 4090), và cụm {acc("sai")} thì tô vỡ từng phần.', 858, 40)
+m += line("nx-src", "He et al., StyleGallery, CVPR 2026 · arXiv 2603.10354 · github.com/iiiiiiiword/StyleGallery", 930, 30, weight=500, color=INK2)
+js = [WORDS(f"{sid}-tw", 0.1), BLUR("#nx-a", 0.3)] + [PLACE(f"#nx-a{j}", 0.4 + 0.08 * j, 0.6) for j in range(4)]
+js += [DRAW("#nx-h0", 1.1, 0.35, 400), DRAW("#nx-x0", 1.1, 0.35, 400), DRAW("#nx-h1", 1.2, 0.35, 400), DRAW("#nx-x1", 1.2, 0.35, 400), BLUR("#nx-al", 1.4)]
+js += [BLUR("#nx-b", 2.0), PLACE("#nx-b0", 2.1, 0.6), PLACE("#nx-b1", 2.2, 0.6), FADE("#nx-bl", 2.4),
+       PLACE("#nx-fig", 2.5), FADE("#nx-fl", 2.9)]
+for j in range(3):
+    js += [BLUR(f"#nx-s{j}", 3.5 + 0.3 * j), FADE(f"#nx-d{j}", 3.6 + 0.3 * j)]
+js += [BLUR("#nx-end", 4.7, 0.2), FADE("#nx-src", 4.8)]
+S.append(dict(id=sid, label="Bước tiếp: StyleGallery", dur=5.6, frags=[1.8, 3.3, 4.5, 5.2], html=m, js="\n".join(js), title="Bước tiếp: StyleGallery bỏ bản đồ nhãn",
+  notes="(xem notes.py)"))
+
+# ---------------- end ----------------
 sid = "end"
 m = (f'<div id="end-h" class="big" style="left:192px;top:330px;font-size:200px">{words("SCSA", "end-l")}</div>'
      + f'<p id="end-t" class="ln" style="left:192px;top:570px;width:760px;font-size:44px;font-weight:700">{words("Semantic Continuous-Sparse Attention for Arbitrary Semantic Style Transfer", "end-w")}</p>'

@@ -27,16 +27,16 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:#EDEFF1; }
    "fragments": [
     2.4
    ],
-   "notes": "Mở đầu: Chào mọi người. Hôm nay mình trình bày SCSA, paper CVPR 2025: dạy attention nhìn đúng vùng khi chuyển phong cách cho ảnh. Mình giả định mọi người chưa biết style transfer. Ba ảnh bên phải là thật, từ repo của tác giả: ảnh chụp Yosemite, một bức tranh núi, và kết quả tô ảnh theo tranh bằng SCSA. Cả buổi dùng đúng cặp ảnh này."
+   "notes": "Mở đầu: Chào mọi người. Hôm nay mình trình bày SCSA, paper CVPR 2025: dạy attention nhìn đúng vùng khi chuyển phong cách cho ảnh. Mình giả định mọi người chưa biết style transfer. Ba ảnh bên phải là thật, từ repo của tác giả: ảnh chụp Yosemite, một bức tranh núi, và kết quả tô ảnh theo tranh bằng SCSA. Cả buổi dùng đúng cặp ảnh này. Dẫn: Bắt đầu bằng một câu hỏi."
   },
   {
    "sceneId": "hook",
    "fragments": [
-    4.5,
+    4.54,
     5.9,
     6.5
    ],
-   "notes": "Hai kết quả: Kết quả thật trong paper, cùng một đầu vào ở giữa. Trái là SANet, mô hình có sẵn. Phải là SANet cộng SCSA.\nBấm 1 · Vách núi: Nhìn vách núi lớn. SANet tô nó bằng màu kem của trời. SCSA tô đúng màu xanh của núi.\nBấm 2 · Câu hỏi: Vì sao bên trái tô nhầm? Cả buổi trả lời câu này. Giữ nó trong đầu."
+   "notes": "Hai kết quả: Kết quả thật trong paper, cùng một đầu vào ở giữa. Trái là SANet, mô hình có sẵn. Phải là SANet cộng SCSA.\nBấm 1 · Vách núi: Nhìn vách núi lớn. SANet tô nó bằng màu kem của trời. SCSA tô đúng màu xanh của núi.\nBấm 2 · Câu hỏi: Vì sao bên trái tô nhầm? Cả buổi trả lời câu này. Giữ nó trong đầu. Dẫn: Để trả lời, mình đi năm chặng."
   },
   {
    "sceneId": "roadmap",
@@ -44,14 +44,14 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:#EDEFF1; }
     8.7,
     9.8
    ],
-   "notes": "Năm chặng: Buổi này đi theo năm chặng, mỗi chặng trả lời một câu hỏi. Giới thiệu: vì sao chủ đề quan trọng, dùng ở đâu. Bài toán và tổng quan: bài toán gì, mô hình hiện nay làm thế nào, khó ở đâu. Chi tiết kỹ thuật: SCSA hoạt động thế nào, bằng hình, công thức và thuật toán; huấn luyện ra sao; điểm mới là gì. So sánh và thảo luận: hơn ai, kém ở đâu, điểm mạnh và hạn chế. Kết luận: điều mang về và hướng phát triển.\nBấm 1 · Trọng tâm: Chặng 3, chi tiết kỹ thuật, là trọng tâm. Lạc thì hỏi, mình quay về đầu chặng."
+   "notes": "Năm chặng: Cả buổi là một chuỗi câu hỏi, mỗi chặng trả lời một câu và mở ra câu sau. Một: style transfer là gì, đã đi tới đâu. Hai: vì sao vách núi bị tô sai, tức câu hỏi vừa đặt ra. Ba: SCSA sửa thế nào, bằng hình, công thức và thuật toán. Bốn: sửa được bao nhiêu, kém ở đâu. Năm: mang về gì, đi tiếp đâu. Năm chặng này đúng theo khung của giảng viên: giới thiệu, bài toán và tổng quan, chi tiết kỹ thuật, so sánh và thảo luận, kết luận.\nBấm 1 · Trọng tâm: Chặng 3, SCSA sửa thế nào, là trọng tâm. Mỗi thẻ chương sẽ nhắc lại câu trả lời của chặng trước; lạc thì nhìn dòng đó. Dẫn: Chặng 1: style transfer là gì."
   },
   {
    "sceneId": "ch1",
    "fragments": [
-    12.1
+    12.24
    ],
-   "notes": "Mở chặng: Chặng 1, giới thiệu. Câu hỏi: style transfer là gì, vì sao quan trọng, và đang được dùng ở đâu?"
+   "notes": "Mở chặng: Chặng 1, giới thiệu. Câu hỏi: style transfer là gì, dùng ở đâu, và đã đi tới đâu? Bốn slide: định nghĩa, ứng dụng, mười năm phát triển, và bốn phương pháp chạy thật trên cùng cặp ảnh của ta. Dẫn: Bắt đầu từ định nghĩa."
   },
   {
    "sceneId": "st",
@@ -61,7 +61,7 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:#EDEFF1; }
     16.1,
     16.7
    ],
-   "notes": "Ảnh chụp: Ảnh chụp cho bố cục: trời ở trên, vách núi ở giữa, rừng ở dưới.\nBấm 1 · Bức tranh: Bức tranh cho lớp áo: màu, nét cọ, bề mặt.\nBấm 2 · Kết quả: Bố cục cũ, áo mới. Để ý: trời mang màu kem của tranh, vách núi mang màu xanh của núi.\nBấm 3 · Arbitrary: Một mô hình dùng cho mọi bức tranh, không train lại. Hỏi nhanh: vách núi bị tô màu trời có thành công không? Không: vẫn là áo của tranh, nhưng mặc sai chỗ."
+   "notes": "Ảnh chụp: Ảnh chụp cho bố cục: trời ở trên, vách núi ở giữa, rừng ở dưới.\nBấm 1 · Bức tranh: Bức tranh cho lớp áo: màu, nét cọ, bề mặt.\nBấm 2 · Kết quả: Bố cục cũ, áo mới. Để ý: trời mang màu kem của tranh, vách núi mang màu xanh của núi.\nBấm 3 · Arbitrary: Một mô hình dùng cho mọi bức tranh, không train lại. Hỏi nhanh: vách núi bị tô màu trời có thành công không? Không: vẫn là áo của tranh, nhưng mặc sai chỗ. Dẫn: Làm đúng điều này thì được gì? Xem nó được dùng ở đâu."
   },
   {
    "sceneId": "apps",
@@ -71,7 +71,7 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:#EDEFF1; }
     21.5,
     22.0
    ],
-   "notes": "Chỉnh ảnh, phim: Style transfer không chỉ là trò chơi ảnh. Chỉnh ảnh: Prisma năm 2016 đưa nó lên điện thoại, biến ảnh chụp thành tranh trong vài giây. Phim: phim ngắn Come Swim năm 2017 dùng nó để tô các cảnh quay theo bức tranh của đạo diễn.\nBấm 1 · Dữ liệu, chân dung: Tăng cường dữ liệu: Stylized-ImageNet năm 2019 đổi phong cách ảnh train để mô hình nhận dạng bớt dựa vào texture, bền hơn khi ảnh đổi miền. Chân dung, cảnh vật: áo, mặt, trời, núi, mỗi phần phải lấy nét từ đúng chỗ.\nBấm 2 · Lỗi sai vùng: Và đây là lý do chủ đề quan trọng: kết quả SANet ta vừa thấy, vách núi mang màu trời. Trong bất kỳ sản phẩm nào ở trên, ảnh này không dùng được.\nBấm 3 · Đúng vùng: Mọi ứng dụng đều cần một điều: trời ra trời, núi ra núi. Đó chính là thứ SCSA giải quyết."
+   "notes": "Chỉnh ảnh, phim: Style transfer không chỉ là trò chơi ảnh. Chỉnh ảnh: Prisma năm 2016 đưa nó lên điện thoại, biến ảnh chụp thành tranh trong vài giây. Phim: phim ngắn Come Swim năm 2017 dùng nó để tô các cảnh quay theo bức tranh của đạo diễn.\nBấm 1 · Dữ liệu, chân dung: Tăng cường dữ liệu: Stylized-ImageNet năm 2019 đổi phong cách ảnh train để mô hình nhận dạng bớt dựa vào texture, bền hơn khi ảnh đổi miền. Chân dung, cảnh vật: áo, mặt, trời, núi, mỗi phần phải lấy nét từ đúng chỗ.\nBấm 2 · Lỗi sai vùng: Và đây là lý do chủ đề quan trọng: kết quả SANet ta vừa thấy, vách núi mang màu trời. Trong bất kỳ sản phẩm nào ở trên, ảnh này không dùng được.\nBấm 3 · Đúng vùng: Mọi ứng dụng đều cần một điều: trời ra trời, núi ra núi. Đó chính là thứ SCSA giải quyết. Dẫn: Người ta đã làm việc này mười năm; xem họ đi tới đâu."
   },
   {
    "sceneId": "history",
@@ -83,374 +83,387 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:#EDEFF1; }
     27.6,
     28.7
    ],
-   "notes": "2016 · Gatys: Chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống màu tranh. Đẹp nhưng chậm, mỗi ảnh vài phút.\nBấm 1 · 2017 · AdaIN: Một mạng cho mọi tranh, khớp tông cả ảnh. Nhanh nhưng thô. Sẽ gặp lại ở chặng 2.\nBấm 2 · 2019–22 · SANet, StyTr2: Attention: mỗi điểm của ảnh tự đi tìm style.\nBấm 3 · 2024 · StyleID: Attention bên trong Stable Diffusion.\nBấm 4 · 2025 · SCSA: Attention biết nhãn vùng.\nBấm 5 · Khung magenta: Ba mô hình ở giữa là ba mô hình SCSA cắm vào. SCSA không thay chúng."
+   "notes": "2016 · Gatys: Chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống màu tranh. Đẹp nhưng chậm, mỗi ảnh vài phút.\nBấm 1 · 2017 · AdaIN: Một mạng cho mọi tranh, khớp tông cả ảnh. Nhanh nhưng thô. Sẽ gặp lại ở chặng 2.\nBấm 2 · 2019–22 · SANet, StyTr2: Attention: mỗi điểm của ảnh tự đi tìm style.\nBấm 3 · 2024 · StyleID: Attention bên trong Stable Diffusion.\nBấm 4 · 2025 · SCSA: Attention biết nhãn vùng.\nBấm 5 · Khung magenta: Ba mô hình trong khung là chỗ SCSA cắm vào, nhưng từng cái một: SCSA gắn vào SANet thì ra SANet cộng SCSA, gắn vào StyTr2 thì ra StyTr2 cộng SCSA, tương tự StyleID. Không phải ghép cả ba thành một. SCSA không thay các mô hình này, nó chỉ thay khối attention bên trong. Dẫn: Nói suông khó thấy, nên nhóm chạy thử chính các phương pháp này trên cặp ảnh của ta."
+  },
+  {
+   "sceneId": "gens",
+   "fragments": [
+    30.5,
+    31.7,
+    33.0,
+    34.3,
+    35.6,
+    36.34
+   ],
+   "notes": "Đầu vào: Nói suông thì khó thấy, nên nhóm chạy lại các phương pháp trên đúng cặp ảnh của buổi hôm nay: ảnh Yosemite và bức tranh núi, cỡ 512 × 512, trên máy Mac. Code trong notebook compare_style_transfer.ipynb. Cả lớp nhìn vào một chỗ: vách núi lớn bên trái. Trong tranh, vách núi màu xanh.\nBấm 1 · Gatys: Gatys 2016 tối ưu từng pixel 300 bước, mất 26,8 giây. Ảnh khá đẹp, mây của ảnh còn nguyên. Nhưng vách núi ngả hồng cam, màu của dãy núi xa trong tranh. Gatys khớp thống kê màu, nét của cả bức tranh, không biết vùng nào ứng với vùng nào.\nBấm 2 · AdaIN: AdaIN 2017: một lượt qua mạng, 97 mili giây, nhanh gần 280 lần. Đổi lại, chỉ một cặp trung bình, độ lệch cho cả ảnh: mọi vùng khoác chung một tông đục, trời loang vệt xanh, vách núi xám nhạt.\nBấm 3 · SANet: SANet 2019 dùng attention: mỗi điểm tự đi tìm style giống nó, 124 mili giây. Nhưng nó tìm theo hình dáng, không theo nhãn: vách núi trắng như mây vì lấy màu trời, bầu trời thì loang lổ. Đây đúng là lỗi ta sẽ mổ xẻ ở chặng 2.\nBấm 4 · SANet + SCSA: Vẫn SANet, cắm thêm SCSA và hai bản đồ nhãn. Trời mang màu kem của trời trong tranh, vách núi xanh như núi trong tranh, dãy xa hồng như dãy xa. Cái giá: 473 mili giây, chậm hơn SANet khoảng 350 mili giây và cần bản đồ nhãn, nhưng vẫn nhanh hơn Gatys khoảng 57 lần.\nBấm 5 · Chốt: Ba cách đầu không biết nhãn vùng nên tô nhầm. SCSA chỉ lấy style từ vùng cùng nhãn. Phần còn lại của buổi hôm nay giải thích vì sao bên trái sai, và SCSA sửa thế nào. Lưu ý: thời gian đo trên một máy, một ảnh, chỉ để so thứ bậc. Dẫn: Ba cách đầu đều tô sai vách núi; chặng 2 tìm xem vì sao."
   },
   {
    "sceneId": "ch2",
    "fragments": [
-    31.1
+    38.65
    ],
-   "notes": "Mở chặng: Chặng 2, bài toán và tổng quan. Câu hỏi: bài toán gì, khó ở đâu? Ba phần: phát biểu bài toán; xem mô hình hiện nay làm thế nào qua bốn khái niệm (lưới điểm, attention, softmax với mask, AdaIN), rồi khối attention sẵn có gọi là Universal Attention và công thức của nó; rồi chỉ ra ba thách thức nó gặp. Cuối chặng là tổng quan SCSA trong một phút."
+   "notes": "Mở chặng: Dòng trên cùng là câu trả lời của chặng 1: style transfer đã nhanh và đẹp, nhưng vẫn tô vách núi sai màu. Chặng 2 hỏi: vì sao? Đi ba bước. Một: phát biểu bài toán cho rõ, có bản đồ nhãn. Hai: mở mô hình ra xem nó chọn style thế nào: lưới điểm, attention, softmax, gộp lại thành Universal Attention và công thức của nó. Ba: đo ba lỗi trên chính ảnh của ta. Cuối chặng là SCSA trong một phút. Dẫn: Trước hết, nói rõ đầu vào: SCSA cần thêm bản đồ nhãn."
   },
   {
    "sceneId": "maps",
    "fragments": [
-    32.5,
-    33.7,
-    34.9,
-    36.0,
-    36.6
+    40.04,
+    41.21,
+    42.4,
+    43.73,
+    44.1
    ],
-   "notes": "Ảnh và tranh: Ảnh chụp và bức tranh của ta.\nBấm 1 · Hai bản đồ nhãn: Thêm hai bản đồ nhãn (semantic map). Mỗi màu là một vùng. Đây là file thật trong repo.\nBấm 2 · Màu là mã nhãn: Đỏ là trời, vàng là vách núi, xanh lá là rừng, xanh dương là dãy xa. Màu chỉ là mã, không phải màu thật.\nBấm 3 · Nối cặp: Nối đúng cặp: trời với trời, vách núi với vách núi.\nBấm 4 · Luật: Mỗi vùng chỉ lấy style từ vùng cùng tên. Đầu vào giờ là bộ bốn: ảnh, map ảnh, tranh, map tranh. Ai vẽ map? Người dùng, hoặc mô hình phân đoạn. Paper không tự sinh map, đó là một hạn chế."
+   "notes": "Ảnh và tranh: Ảnh chụp và bức tranh của ta.\nBấm 1 · Hai bản đồ nhãn: Thêm hai bản đồ nhãn (semantic map). Mỗi màu là một vùng. Đây là file thật trong repo.\nBấm 2 · Màu là mã nhãn: Đỏ là trời, vàng là vách núi, xanh lá là rừng, xanh dương là dãy xa. Màu chỉ là mã, không phải màu thật.\nBấm 3 · Nối cặp: Nối đúng cặp: trời với trời, vách núi với vách núi.\nBấm 4 · Luật: Mỗi vùng chỉ lấy style từ vùng cùng tên. Đầu vào giờ là bộ bốn: ảnh, map ảnh, tranh, map tranh. Ai vẽ map? Người dùng, hoặc mô hình phân đoạn. Paper không tự sinh map, đó là một hạn chế. Dẫn: Có bản đồ nhãn rồi, phát biểu bài toán cho gọn."
   },
   {
    "sceneId": "task",
    "fragments": [
-    39.55,
-    40.9,
-    41.6
+    47.05,
+    48.4,
+    49.1
    ],
-   "notes": "Bộ bốn vào: Phát biểu bài toán semantic style transfer. Đầu vào là bộ bốn: ảnh chụp và bản đồ nhãn của nó, bức tranh và bản đồ nhãn của nó. Đầu ra là một ảnh.\nBấm 1 · Ba yêu cầu: Ảnh ra phải đạt ba điều. Một: giữ bố cục của ảnh chụp. Hai: đúng vùng, trời lấy style từ trời, núi lấy style từ núi. Ba: dùng cho mọi bức tranh, không train lại cho từng tranh.\nBấm 2 · Thách thức: Các mô hình attention hiện nay như SANet, StyTr2, StyleID đạt yêu cầu 1 và 3, nhưng hỏng yêu cầu 2. Phần còn lại của chặng trả lời: chúng chọn style thế nào, và vì sao hỏng."
+   "notes": "Bộ bốn vào: Phát biểu bài toán semantic style transfer. Đầu vào là bộ bốn: ảnh chụp và bản đồ nhãn của nó, bức tranh và bản đồ nhãn của nó. Đầu ra là một ảnh.\nBấm 1 · Ba yêu cầu: Ảnh ra phải đạt ba điều. Một: giữ bố cục của ảnh chụp. Hai: đúng vùng, trời lấy style từ trời, núi lấy style từ núi. Ba: dùng cho mọi bức tranh, không train lại cho từng tranh.\nBấm 2 · Thách thức: Các mô hình attention hiện nay như SANet, StyTr2, StyleID đạt yêu cầu 1 và 3, nhưng hỏng yêu cầu 2. Phần còn lại của chặng trả lời: chúng chọn style thế nào, và vì sao hỏng. Dẫn: Muốn biết vì sao hỏng yêu cầu 2, phải nhìn vào bên trong mô hình; bước đầu, ảnh thành lưới điểm."
   },
   {
    "sceneId": "grid",
    "fragments": [
-    43.0,
-    44.4,
-    45.6,
-    47.0
+    50.5,
+    51.9,
+    53.13,
+    54.5
    ],
-   "notes": "Ảnh 512×512: Từ “điểm” dùng suốt phần sau. Đây là ảnh 512 nhân 512 pixel.\nBấm 1 · Lưới điểm: Encoder cắt ảnh thành lưới. Ở đây 12×12 cho dễ nhìn; mô hình thật 64×64, tức 4.096 điểm.\nBấm 2 · Điểm là vector: Mỗi điểm là một vector, ví dụ 512 số, mô tả mảng ảnh quanh nó: màu, cạnh, bề mặt. Không phải một pixel.\nBấm 3 · Decoder: Decoder vẽ lưới ngược lại thành ảnh. SCSA chỉ sửa ở giữa, trên lưới điểm."
+   "notes": "Ảnh 512×512: Từ “điểm” dùng suốt phần sau. Đây là ảnh 512 nhân 512 pixel.\nBấm 1 · Lưới điểm: Encoder cắt ảnh thành lưới. Ở đây 12×12 cho dễ nhìn; mô hình thật 64×64, tức 4.096 điểm.\nBấm 2 · Điểm là vector: Mỗi điểm là một vector, ví dụ 512 số, mô tả mảng ảnh quanh nó: màu, cạnh, bề mặt. Không phải một pixel.\nBấm 3 · Decoder: Decoder vẽ lưới ngược lại thành ảnh. SCSA chỉ sửa ở giữa, trên lưới điểm. Dẫn: Mỗi điểm của lưới đi tìm style thế nào? Đó là attention."
   },
   {
    "sceneId": "attn",
    "fragments": [
-    48.7,
-    49.9,
-    50.9,
-    52.6,
-    53.2
+    56.2,
+    57.4,
+    58.46,
+    60.15,
+    60.7
    ],
-   "notes": "Query: Attention giống tra từ điển, nhưng mềm. Một điểm vách núi của ảnh hỏi: “style nào hợp với tôi?”. Đây là query.\nBấm 1 · Key và value: Nó so với các điểm của tranh. Mỗi điểm có key để so và value để lấy về. Mình chỉ vẽ 4 trong 4.096 điểm: trời, dãy xa, vách núi, rừng. Mỗi điểm là một vị trí trên lưới, không phải pixel. Đường càng dày càng giống.\nBấm 2 · Trọng số: Độ giống đổi thành trọng số: 35, 63, 1 và 1 phần trăm.\nBấm 3 · Trộn: Màu chảy về theo trọng số rồi trộn lại.\nBấm 4 · Lỗi: Chú ý: điểm vách núi xám nhạt giống dãy xa và trời của tranh hơn vách núi của tranh, nên 99% màu lấy từ sai vùng. Cùng kiểu lỗi với SANet: lấy màu từ vùng khác (ở SANet thật là màu trời). Số tính minh hoạ trên màu của ảnh mẫu, không phải số của mô hình thật."
+   "notes": "Query: Attention giống tra từ điển, nhưng mềm. Một điểm vách núi của ảnh hỏi: “style nào hợp với tôi?”. Đây là query.\nBấm 1 · Key và value: Nó so với các điểm của tranh. Mỗi điểm có key để so và value để lấy về. Mình chỉ vẽ 4 trong 4.096 điểm: trời, dãy xa, vách núi, rừng. Mỗi điểm là một vị trí trên lưới, không phải pixel. Đường càng dày càng giống.\nBấm 2 · Trọng số: Độ giống đổi thành trọng số: 35, 63, 1 và 1 phần trăm.\nBấm 3 · Trộn: Màu chảy về theo trọng số rồi trộn lại.\nBấm 4 · Lỗi: Chú ý: điểm vách núi xám nhạt giống dãy xa và trời của tranh hơn vách núi của tranh, nên 99% màu lấy từ sai vùng. Cùng kiểu lỗi với SANet: lấy màu từ vùng khác (ở SANet thật là màu trời). Số tính minh hoạ trên màu của ảnh mẫu, không phải số của mô hình thật. Dẫn: Bước “cân” làm bằng softmax; xem nó chia trọng số ra sao."
   },
   {
    "sceneId": "softmax",
    "fragments": [
-    54.9,
-    56.3,
-    57.9,
-    58.7
+    62.4,
+    63.8,
+    64.5
    ],
-   "notes": "Điểm số: Vẫn điểm vách núi của ảnh ở slide trước (ô viền magenta góc trên) và bốn điểm của tranh. Điểm số giống nhau: dãy xa cao nhất, khoảng 4,6; trời khoảng 4; vách núi và rừng quanh 0,5.\nBấm 1 · Softmax: Đổi điểm số thành phần trăm, cộng lại đủ 100: 35, 63, 1, 1. Điểm cao được phần lớn, nhưng không ai bị bỏ hẳn.\nBấm 2 · Cấm: Luật: điểm hỏi (ô viền magenta) là vách núi, nên chỉ được lấy style từ vách núi; ba điểm kia bị cấm. Để ý: luật này xét nhãn, không xét ai cao điểm. Dãy xa đang được 63% vẫn bị cấm, chính vì nó cao mà sai vùng nên mới có lỗi tô nhầm. Cách cấm: đặt âm vô cực vào điểm số của chúng; e mũ âm vô cực bằng 0 nên ba cột về đúng 0. Softmax chia lại 100% cho phần còn lại; vách núi chỉ có 1% nhưng còn một mình nên nhận trọn 100%. Luật này không cần train thêm gì.\nBấm 3 · Chốt: Đây là cốt lõi của SCSA: cấm ô khác nhãn. Chặng 3 sẽ thêm vài chi tiết quanh luật này."
-  },
-  {
-   "sceneId": "adain",
-   "fragments": [
-    60.7,
-    61.7,
-    63.1,
-    63.9
-   ],
-   "notes": "Tông của ảnh: AdaIN là phương pháp 2017; SCSA dùng lại. Tông của một ảnh tóm trong hai số: μ là màu trung bình, σ là độ tương phản (đọc “miu” và “xích-ma”). Ảnh chụp này xám ấm.\nBấm 1 · Tông của tranh: Bức tranh có μ, σ riêng: kem xanh, tương phản thấp hơn.\nBấm 2 · Khoác tông: Bỏ μ, σ của ảnh, khoác μ, σ của tranh. Ảnh bên phải là phép tính thật trên pixel: cả ảnh ngả về tông của tranh. Trong mô hình, phép này làm trên lưới điểm, không phải pixel.\nBấm 3 · Giới hạn: Chỉ một cặp số cho cả ảnh, nên trời, vách núi, rừng bị kéo về cùng một tông. S-AdaIN ở chặng 3 sẽ sửa."
+   "notes": "Điểm số: Vẫn điểm vách núi của ảnh ở slide trước (ô viền magenta góc trên) và bốn điểm của tranh. Điểm số độ giống: dãy xa cao nhất, khoảng 4,6; trời khoảng 4; vách núi và rừng quanh 0,5.\nBấm 1 · Softmax: Softmax đổi điểm số thành phần trăm, cộng lại đủ 100: 35, 63, 1, 1. Điểm cao được phần lớn, nhưng không ai bị bỏ hẳn.\nBấm 2 · Không nhìn nhãn: Để ý: điểm hỏi là vách núi, vậy mà dãy xa nhận 63%, còn vách núi của tranh chỉ 1%. Softmax chỉ nhìn độ giống, không nhìn nhãn vùng. Giữ con số 63% này: đó là mầm của lỗi tô sai vùng mà ta sẽ đo ở cuối chặng. Dẫn: Một điểm đã vậy; nếu cả 144 điểm cùng làm thì sao?"
   },
   {
    "sceneId": "ua",
    "fragments": [
-    65.9,
-    74.3,
-    75.1
+    66.4,
+    74.8,
+    75.6
    ],
-   "notes": "Hai lưới: Paper gọi khối attention của SANet, StyTr2, StyleID là Universal Attention, viết tắt UA. Trái: 144 điểm của ảnh. Phải: 144 điểm của tranh.\nBấm 1 · Quét: Khung magenta là câu hỏi đang xét, chạy qua vài điểm. Mỗi lần nối tới 8 điểm tranh giống nhất (số 8 mình chọn cho dễ nhìn). Đường đen là cùng vùng, magenta là sang vùng khác. Chữ ở giữa là phần trăm trọng số sang vùng khác, tính trên cả 144 điểm. Đoạn này chạy khoảng 8 giây, nói trong lúc đó.\nBấm 2 · Chốt: Mỗi điểm nhìn tất cả 144 thẻ, không ai hỏi điểm đó thuộc vùng nào. Với lưới thật 64×64, bảng so có 16 triệu ô. Số tính minh hoạ."
+   "notes": "Hai lưới: Paper gọi khối attention của SANet, StyTr2, StyleID là Universal Attention, viết tắt UA. Trái: 144 điểm của ảnh. Phải: 144 điểm của tranh.\nBấm 1 · Quét: Khung magenta là câu hỏi đang xét, chạy qua vài điểm. Mỗi lần nối tới 8 điểm tranh giống nhất (số 8 mình chọn cho dễ nhìn). Đường đen là cùng vùng, magenta là sang vùng khác. Chữ ở giữa là phần trăm trọng số sang vùng khác, tính trên cả 144 điểm. Đoạn này chạy khoảng 8 giây, nói trong lúc đó.\nBấm 2 · Chốt: Mỗi điểm nhìn tất cả 144 thẻ, không ai hỏi điểm đó thuộc vùng nào. Với lưới thật 64×64, bảng so có 16 triệu ô. Số tính minh hoạ. Dẫn: Viết gọn cả quá trình bằng một công thức."
   },
   {
    "sceneId": "uaf",
    "fragments": [
-    76.5,
-    77.8,
-    79.0,
-    80.2,
-    82.2
+    77.0,
+    78.3,
+    79.5,
+    80.7,
+    82.7
    ],
-   "notes": "Công thức: Những gì ta vừa xem gói trong một dòng. Không cần nhớ ký hiệu; cứ hiểu như tra cứu: Q là câu hỏi, K là nhãn của từng ngăn, V là đồ trong ngăn.\nBấm 1 · Q, K, V: Q là điểm vách núi của ảnh đang hỏi. K và V là bốn điểm của tranh.\nBấm 2 · Q Kᵀ: Bước một, so: được độ giống, chính là bốn con số ở slide softmax.\nBấm 3 · softmax: Bước hai, chia thành phần trăm: 35, 63, 1, 1.\nBấm 4 · · V: Bước ba, trộn màu theo phần trăm đó: ra màu nghiêng về dãy xa và trời. Công thức không hề nhắc tới nhãn vùng, nên mới lấy sai vùng."
+   "notes": "Công thức: Những gì ta vừa xem gói trong một dòng. Không cần nhớ ký hiệu; cứ hiểu như tra cứu: Q là câu hỏi, K là nhãn của từng ngăn, V là đồ trong ngăn.\nBấm 1 · Q, K, V: Q là điểm vách núi của ảnh đang hỏi. K và V là bốn điểm của tranh.\nBấm 2 · Q Kᵀ: Bước một, so: được độ giống, chính là bốn con số ở slide softmax.\nBấm 3 · softmax: Bước hai, chia thành phần trăm: 35, 63, 1, 1.\nBấm 4 · · V: Bước ba, trộn màu theo phần trăm đó: ra màu nghiêng về dãy xa và trời. Công thức không hề nhắc tới nhãn vùng, nên mới lấy sai vùng. Dẫn: Công thức không có nhãn; giờ đo xem nó tô sai bao nhiêu trên ảnh của ta."
   },
   {
    "sceneId": "err1",
    "fragments": [
-    83.9,
-    85.5,
-    86.9,
-    87.5
+    84.52,
+    86.0,
+    87.4,
+    88.0
    ],
-   "notes": "Bức ghép UA: Chạy UA cho cả 144 điểm của ảnh. Mỗi ô là màu trộn mà điểm đó lấy về.\nBấm 1 · Phủ magenta: Phủ magenta lên ô lấy style từ vùng khác, càng đậm càng nhiều. Trung bình 36% trọng số sang vùng sai; 36 trên 144 điểm lấy phần lớn style từ vùng sai, dồn vào vách núi.\nBấm 2 · Kết quả thật: So với kết quả thật của SANet: đúng chỗ đó, vách núi mang màu trời.\nBấm 3 · Lỗi 1: Phép tính của mình dùng màu trung bình nên chỉ là minh hoạ, nhưng nó chỉ ra cùng một chỗ sai với mô hình thật. Lỗi 1: lấy style từ sai vùng."
+   "notes": "Bức ghép UA: Chạy UA cho cả 144 điểm của ảnh. Mỗi ô là màu trộn mà điểm đó lấy về.\nBấm 1 · Phủ magenta: Phủ magenta lên ô lấy style từ vùng khác, càng đậm càng nhiều. Trung bình 36% trọng số sang vùng sai; 36 trên 144 điểm lấy phần lớn style từ vùng sai, dồn vào vách núi.\nBấm 2 · Kết quả thật: So với kết quả thật của SANet: đúng chỗ đó, vách núi mang màu trời.\nBấm 3 · Lỗi 1: Phép tính của mình dùng màu trung bình nên chỉ là minh hoạ, nhưng nó chỉ ra cùng một chỗ sai với mô hình thật. Lỗi 1: lấy style từ sai vùng. Dẫn: Sai vùng chưa phải lỗi duy nhất; còn hai lỗi tinh hơn."
   },
   {
    "sceneId": "err23",
    "fragments": [
-    89.8,
-    92.1,
-    92.7
+    90.3,
+    92.6,
+    93.2
    ],
-   "notes": "Lỗi 2 · loang lổ: Dải trời cắt từ hai kết quả thật. Trên là SANet: cùng là trời mà mỗi chỗ một màu, vì mỗi điểm tự chọn style theo cấu trúc riêng của nó. Dưới là SANet cộng SCSA: cả vùng trời một tông, đó là điều ta muốn.\nBấm 1 · Lỗi 3 · nhạt nhoà: Kể cả khi chỉ lấy đúng vùng: bốn mảnh vách núi của tranh, mỗi mảnh sắc nét, trộn mềm lại thành một màu đục, mất nét cọ.\nBấm 2 · Hai lỗi kéo ngược: Sửa lỗi 2 cần các điểm trong vùng giống nhau hơn; sửa lỗi 3 cần mỗi điểm giữ nét riêng. Vì vậy SCSA cần hai cách nhìn."
+   "notes": "Lỗi 2 · loang lổ: Dải trời cắt từ hai kết quả thật. Trên là SANet: cùng là trời mà mỗi chỗ một màu, vì mỗi điểm tự chọn style theo cấu trúc riêng của nó. Dưới là SANet cộng SCSA: cả vùng trời một tông, đó là điều ta muốn.\nBấm 1 · Lỗi 3 · nhạt nhoà: Kể cả khi chỉ lấy đúng vùng: bốn mảnh vách núi của tranh, mỗi mảnh sắc nét, trộn mềm lại thành một màu đục, mất nét cọ.\nBấm 2 · Hai lỗi kéo ngược: Sửa lỗi 2 cần các điểm trong vùng giống nhau hơn; sửa lỗi 3 cần mỗi điểm giữ nét riêng. Vì vậy SCSA cần hai cách nhìn. Dẫn: Gom ba lỗi lại, mỗi lỗi một cách sửa."
   },
   {
    "sceneId": "fixmap",
    "fragments": [
-    94.8,
-    95.8,
-    96.8,
-    97.5
+    95.49,
+    96.59,
+    97.69,
+    98.2
    ],
-   "notes": "Sai vùng: Sửa bằng luật cấm theo nhãn, có sẵn trong cả SCA và SSA, nên lỗi 1 được sửa miễn phí.\nBấm 1 · Loang lổ: Sửa bằng SCA: cả vùng dùng chung một tông.\nBấm 2 · Nhạt nhoà: Sửa bằng SSA: chỉ lấy một điểm, giữ nguyên nét cọ.\nBấm 3 · Ba gốc: Cả ba lỗi đều nằm trong attention gốc: lỗi 1 vì không biết nhãn, lỗi 2 vì hỏi theo cấu trúc từng điểm, lỗi 3 vì trộn mềm nhiều điểm. Đó là ba thách thức SCSA giải quyết. Slide sau là tổng quan cách giải."
+   "notes": "Sai vùng: Sửa bằng luật cấm theo nhãn, có sẵn trong cả SCA và SSA, nên lỗi 1 được sửa miễn phí.\nBấm 1 · Loang lổ: Sửa bằng SCA: cả vùng dùng chung một tông.\nBấm 2 · Nhạt nhoà: Sửa bằng SSA: chỉ lấy một điểm, giữ nguyên nét cọ.\nBấm 3 · Ba gốc: Cả ba lỗi đều nằm trong attention gốc: lỗi 1 vì không biết nhãn, lỗi 2 vì hỏi theo cấu trúc từng điểm, lỗi 3 vì trộn mềm nhiều điểm. Đó là ba thách thức SCSA giải quyết. Slide sau là tổng quan cách giải. Dẫn: Ba cách sửa ấy chính là SCSA; xem nó trong một phút trước khi đi chi tiết."
   },
   {
    "sceneId": "minute",
    "fragments": [
-    100.0,
-    101.6,
-    102.6
+    101.0,
+    102.66,
+    103.6
    ],
-   "notes": "Attention chọn style: Tổng quan trước khi vào chi tiết: cả paper trong một sơ đồ. Ảnh và tranh vào khối attention; khối này chọn mỗi điểm của ảnh lấy style từ đâu trong tranh. Nó chọn theo kiểu “trông giống”, nên tô nhầm vùng, đúng lỗi 1 vừa thấy.\nBấm 1 · Thêm nhãn vùng: SCSA thêm bản đồ nhãn, mỗi màu một vùng. Attention chỉ lấy style từ vùng cùng nhãn, nên đúng vùng.\nBấm 2 · Hai cách nhìn: Bên trong có hai cách. SCA nhìn cả vùng, lấy tông chung, sửa loang lổ. SSA nhìn một điểm, lấy nét cọ, sửa nhạt nhoà. Không train lại. Chặng 3 đi từng khối."
+   "notes": "Attention chọn style: Tổng quan trước khi vào chi tiết: cả paper trong một sơ đồ. Ảnh và tranh vào khối attention; khối này chọn mỗi điểm của ảnh lấy style từ đâu trong tranh. Nó chọn theo kiểu “trông giống”, nên tô nhầm vùng, đúng lỗi 1 vừa thấy.\nBấm 1 · Thêm nhãn vùng: SCSA thêm bản đồ nhãn, mỗi màu một vùng. Attention chỉ lấy style từ vùng cùng nhãn, nên đúng vùng.\nBấm 2 · Hai cách nhìn: Bên trong có hai cách. SCA nhìn cả vùng, lấy tông chung, sửa loang lổ. SSA nhìn một điểm, lấy nét cọ, sửa nhạt nhoà. Không train lại. Tên gọi cũng kể đúng điều này: S là Semantic, dùng nhãn vùng; C là Continuous, nhìn liền cả vùng, tức SCA; S là Sparse, thưa, một điểm, tức SSA; A là Attention. Dẫn: Chặng 3 mở từng khối."
   },
   {
    "sceneId": "ch3",
    "fragments": [
-    104.6
+    105.6
    ],
-   "notes": "Mở chặng: Chặng 3, chi tiết kỹ thuật, phần trọng tâm. Câu hỏi: SCSA hoạt động thế nào? Đi từ ý tưởng, kiến trúc toàn cảnh, rồi từng khối: SCA, S-AdaIN, SSA, phép trộn; mỗi khối có một slide hình và một slide công thức; rồi gộp lại thành thuật toán đầy đủ, cách cắm vào mô hình, quá trình huấn luyện và điểm mới."
-  },
-  {
-   "sceneId": "idea",
-   "fragments": [
-    106.2,
-    107.6,
-    108.8,
-    109.5
-   ],
-   "notes": "Câu cần nhớ: Câu nhớ nhất của paper: chỉ nhìn trong vùng cùng nhãn. Đây là một điểm vách núi của ảnh.\nBấm 1 · SCA: Cách nhìn thứ nhất. Nó nhìn tất cả điểm vách núi của tranh; vùng khác bị gạch chéo, tức bị cấm. Kết quả: tông chung của cả vùng.\nBấm 2 · SSA: Cách nhìn thứ hai. Chỉ một đường nối, tới đúng một điểm vách núi giống nhất, lấy nguyên nét cọ (vệt sơn) của điểm đó.\nBấm 3 · Tên gọi: S là Semantic, dùng nhãn vùng. C là Continuous, nhìn cả vùng, tức SCA. S là Sparse, thưa, một điểm, tức SSA. A là Attention."
+   "notes": "Mở chặng: Câu trả lời của chặng 2: attention chọn style theo “trông giống” và không nhìn nhãn, nên sai vùng, loang lổ, nhạt nhoà. Chặng 3, trọng tâm, hỏi: SCSA sửa thế nào? Đi theo sơ đồ toàn cảnh từ trên xuống: SCA; rồi AdaIN và S-AdaIN; rồi SSA. Sau đó xem ba ma trận, công thức có mặt nạ, phép trộn, thuật toán một trang, cách cắm vào ba mô hình và chuyện huấn luyện. Dẫn: Bắt đầu từ sơ đồ toàn cảnh."
   },
   {
    "sceneId": "pipe",
    "fragments": [
-    111.2,
-    112.0,
-    113.2,
-    114.4,
-    115.4,
-    116.0
+    107.2,
+    108.05,
+    109.35,
+    110.4,
+    111.54,
+    112.2,
+    113.0,
+    113.7
    ],
-   "notes": "Đầu vào: Bốn đầu vào: ảnh, map ảnh, tranh, map tranh. Encoder biến cả bốn thành lưới điểm.\nBấm 1 · SCA: Nhánh trên: hỏi bằng map, lấy tông chung của cả vùng.\nBấm 2 · S-AdaIN và SSA: Nhánh dưới hai bước: S-AdaIN đổi tông ảnh theo từng vùng, rồi SSA tìm một điểm giống nhất trong cùng vùng.\nBấm 3 · Trộn: Trộn tông chung, nét cọ, và cộng bố cục của ảnh, lấy từ sau S-AdaIN (đường đứt nét magenta).\nBấm 4 · Decoder: Decoder vẽ ra ảnh.\nBấm 5 · Chốt: Encoder, decoder giữ nguyên; các khối ở giữa là SCSA."
+   "notes": "Đầu vào: Sơ đồ vẽ theo SANet trước, vì ví dụ xuyên suốt của buổi dùng SANet; cuối slide sẽ đổi sang StyTr2 và StyleID. Bốn đầu vào: ảnh, map ảnh, tranh, map tranh. Encoder VGG của SANet biến cả bốn thành lưới điểm. Trong SANet thật, khối attention chạy ở hai tầng đặc trưng (relu4_1 và relu5_1); sơ đồ vẽ gọn thành một.\nBấm 1 · SCA: Nhánh trên: hỏi bằng map, lấy tông chung của cả vùng.\nBấm 2 · S-AdaIN và SSA: Nhánh dưới hai bước: S-AdaIN đổi tông ảnh theo từng vùng, rồi SSA tìm một điểm giống nhất trong cùng vùng.\nBấm 3 · Trộn: Trộn tông chung, nét cọ, và cộng bố cục của ảnh, lấy từ sau S-AdaIN (đường đứt nét magenta).\nBấm 4 · Decoder: Decoder của SANet vẽ ra ảnh: đây chính là kết quả SANet cộng SCSA.\nBấm 5 · StyTr2: Đổi sang StyTr2, mô hình transformer: hai đầu đổi thành transformer encoder ở trước, transformer decoder và decoder CNN ở sau. Khung magenta là phần đổi theo mô hình. SCSA nằm trong transformer decoder, thay attention giữa ảnh và tranh; phần giữa vẫn y nguyên.\nBấm 6 · StyleID: Đổi sang StyleID, mô hình diffusion: trước là DDIM inversion đưa ảnh và tranh về nhiễu, sau là U-Net khử nhiễu và VAE decoder của Stable Diffusion. SCSA nằm trong self-attention của U-Net. Vẫn phần giữa ấy.\nBấm 7 · Chốt: Hai đầu là của mô hình gốc và giữ nguyên; các khối ở giữa là SCSA. Slide cắm vào ba họ mô hình sẽ chỉ chính xác chỗ cắm trong từng mô hình. Dẫn: Đi từng khối theo sơ đồ, từ trên xuống: SCA trước."
   },
   {
    "sceneId": "sca",
    "fragments": [
+    115.25,
+    116.42,
     117.7,
-    118.9,
-    120.2,
-    121.8,
-    122.5
+    119.3,
+    120.0
    ],
-   "notes": "Câu hỏi từ map: SCA khác UA ở hai chỗ. Chỗ một: câu hỏi không lấy từ ảnh mà từ bản đồ nhãn.\nBấm 1 · Cùng một câu: Map là mảng màu phẳng, nên mọi điểm vách núi hỏi gần như cùng một câu.\nBấm 2 · Luật G1: Chỗ hai: khác nhãn thì cấm. Trọng số chia đều cho mọi điểm vách núi của tranh.\nBấm 3 · Bức ghép: Mỗi điểm vách núi nhận cùng một màu: trung bình của vách núi trong tranh, màu xanh. Làm tương tự các vùng khác, ta được bức ghép bên phải, tính thật trên ảnh mẫu.\nBấm 4 · Ưu và nhược: Liền mạch, đúng vùng, hết loang lổ. Cái giá: phẳng, mất nét cọ. Hỏi nhanh: giữ luật cấm mà hỏi bằng ảnh thì sửa được lỗi nào? Chỉ lỗi sai vùng."
+   "notes": "Câu hỏi từ map: SCA khác UA ở hai chỗ. Chỗ một: câu hỏi không lấy từ ảnh mà từ bản đồ nhãn.\nBấm 1 · Cùng một câu: Map là mảng màu phẳng, nên mọi điểm vách núi hỏi gần như cùng một câu.\nBấm 2 · Luật G1: Chỗ hai: khác nhãn thì cấm. Trọng số chia đều cho mọi điểm vách núi của tranh.\nBấm 3 · Bức ghép: Mỗi điểm vách núi nhận cùng một màu: trung bình của vách núi trong tranh, màu xanh. Làm tương tự các vùng khác, ta được bức ghép bên phải, tính thật trên ảnh mẫu.\nBấm 4 · Ưu và nhược: Liền mạch, đúng vùng, hết loang lổ. Cái giá: phẳng, mất nét cọ. Hỏi nhanh: giữ luật cấm mà hỏi bằng ảnh thì sửa được lỗi nào? Chỉ lỗi sai vùng. Dẫn: Nhánh dưới phải đổi tông trước khi tìm nét; để hiểu S-AdaIN, nhắc lại AdaIN."
+  },
+  {
+   "sceneId": "adain",
+   "fragments": [
+    121.84,
+    122.74,
+    124.1,
+    124.9
+   ],
+   "notes": "Tông của ảnh: Nhánh dưới của sơ đồ bắt đầu bằng S-AdaIN; để hiểu nó, nhắc lại AdaIN, phương pháp 2017 đã thấy ở chặng 1. Tông của một ảnh tóm trong hai số: μ là màu trung bình, σ là độ tương phản (đọc “miu” và “xích-ma”). Ảnh chụp này xám ấm.\nBấm 1 · Tông của tranh: Bức tranh có μ, σ riêng: kem xanh, tương phản thấp hơn.\nBấm 2 · Khoác tông: Bỏ μ, σ của ảnh, khoác μ, σ của tranh. Ảnh bên phải là phép tính thật trên pixel: cả ảnh ngả về tông của tranh. Trong mô hình, phép này làm trên lưới điểm, không phải pixel.\nBấm 3 · Giới hạn: Chỉ một cặp số cho cả ảnh, nên trời, vách núi, rừng bị kéo về cùng một tông. Slide sau, S-AdaIN, sửa đúng chỗ này. Dẫn: S-AdaIN làm đúng phép này, nhưng riêng từng vùng."
   },
   {
    "sceneId": "sadain",
    "fragments": [
-    123.9,
-    125.2,
-    126.8,
-    127.4
+    126.4,
+    127.7,
+    129.3,
+    129.9
    ],
-   "notes": "Ảnh gốc: Nhớ AdaIN: hai số, màu trung bình và độ tương phản. Đây là ảnh gốc.\nBấm 1 · AdaIN cả ảnh: Một cặp số cho mọi vùng, nên cả ảnh ngả một tông.\nBấm 2 · S-AdaIN: Tính riêng cho từng vùng nhãn. Vách núi nhận tông xanh của vách núi trong tranh, dãy xa nhận tông hồng. Ba ảnh này là phép tính thật trên pixel.\nBấm 3 · Để làm gì: Để SSA so “giống” trên cùng thang màu với tranh. Ảnh chụp có vách núi xám, tranh có vách núi xanh; so ngay thì bị lệch. Trong mô hình, phép này làm trên lưới điểm."
+   "notes": "Ảnh gốc: Nhớ AdaIN: hai số, màu trung bình và độ tương phản. Đây là ảnh gốc.\nBấm 1 · AdaIN cả ảnh: Một cặp số cho mọi vùng, nên cả ảnh ngả một tông.\nBấm 2 · S-AdaIN: Tính riêng cho từng vùng nhãn. Vách núi nhận tông xanh của vách núi trong tranh, dãy xa nhận tông hồng. Ba ảnh này là phép tính thật trên pixel.\nBấm 3 · Để làm gì: Để SSA so “giống” trên cùng thang màu với tranh. Ảnh chụp có vách núi xám, tranh có vách núi xanh; so ngay thì bị lệch. Trong mô hình, phép này làm trên lưới điểm. Dẫn: Tông đã đúng vùng; giờ lấy nét cọ bằng SSA."
   },
   {
    "sceneId": "ssa",
    "fragments": [
-    129.6,
-    130.4,
-    131.8,
-    133.6,
-    134.3
+    132.1,
+    132.9,
+    134.3,
+    136.34,
+    136.8
    ],
-   "notes": "Câu hỏi: SSA hỏi bằng ảnh đã qua S-AdaIN. Đây là một điểm vách núi đang hỏi.\nBấm 1 · Luật G2 · cấm: Khác nhãn thì cấm, chỉ còn vùng vách núi của tranh.\nBấm 2 · Giữ một điểm: Trong vùng đó chỉ giữ đúng một điểm giống nhất (khung magenta); bốn khung đen là ứng viên tiếp theo, bị bỏ. Chỉ còn một điểm thì trọng số 100%, tức copy nguyên mảnh đó.\nBấm 3 · Bức ghép: Mảnh bay sang đúng vị trí trong kết quả. Làm cho cả 144 điểm: mỗi ô là một mảnh tranh thật, giữ nguyên nét cọ.\nBấm 4 · Chốt: Hết nhạt nhoà. Ý tưởng giống Style-Swap 2016, nhưng khoá trong vùng ngữ nghĩa và không cần train."
+   "notes": "Câu hỏi: SSA hỏi bằng ảnh đã qua S-AdaIN. Đây là một điểm vách núi đang hỏi.\nBấm 1 · Luật G2 · cấm: Khác nhãn thì cấm, chỉ còn vùng vách núi của tranh.\nBấm 2 · Giữ một điểm: Trong vùng đó chỉ giữ đúng một điểm giống nhất (khung magenta); bốn khung đen là ứng viên tiếp theo, bị bỏ. Chỉ còn một điểm thì trọng số 100%, tức copy nguyên mảnh đó.\nBấm 3 · Bức ghép: Mảnh bay sang đúng vị trí trong kết quả. Làm cho cả 144 điểm: mỗi ô là một mảnh tranh thật, giữ nguyên nét cọ.\nBấm 4 · Chốt: Hết nhạt nhoà. Ý tưởng giống Style-Swap 2016, nhưng khoá trong vùng ngữ nghĩa và không cần train. Dẫn: Đặt UA, SCA, SSA cạnh nhau bằng ma trận attention."
   },
   {
    "sceneId": "matrices",
    "fragments": [
-    136.4,
-    137.6,
-    138.8,
-    139.5
+    138.94,
+    140.14,
+    141.34,
+    142.0
    ],
-   "notes": "UA: Mỗi ma trận: hàng là điểm của ảnh (ba trời, ba vách núi), cột là điểm của tranh; ô càng đậm, trọng số càng lớn. UA dày đặc, mỗi hàng trải khắp nơi; ô magenta là trọng số tràn sang vùng khác. Lỗi 1 nằm ở đó.\nBấm 1 · SCA: Luật G1 gạch bỏ hai khối chéo, phần còn lại đều nhau vì hỏi bằng map phẳng. Hết loang lổ.\nBấm 2 · SSA: Mỗi hàng giữ đúng một ô, luôn trong khối đúng. Hết nhạt nhoà.\nBấm 3 · Chốt: Nếu chỉ nhớ một hình của cả buổi, hãy nhớ hình này. Giá trị trong hình là minh hoạ."
+   "notes": "UA: Mỗi ma trận: hàng là điểm của ảnh (ba trời, ba vách núi), cột là điểm của tranh; ô càng đậm, trọng số càng lớn. UA dày đặc, mỗi hàng trải khắp nơi; ô magenta là trọng số tràn sang vùng khác. Lỗi 1 nằm ở đó.\nBấm 1 · SCA: Luật G1 gạch bỏ hai khối chéo, phần còn lại đều nhau vì hỏi bằng map phẳng. Hết loang lổ.\nBấm 2 · SSA: Mỗi hàng giữ đúng một ô, luôn trong khối đúng. Hết nhạt nhoà.\nBấm 3 · Chốt: Nếu chỉ nhớ một hình của cả buổi, hãy nhớ hình này. Giá trị trong hình là minh hoạ. Dẫn: Ba ma trận khác nhau chỉ nhờ một thứ thêm vào công thức: mặt nạ M."
   },
   {
    "sceneId": "maskf",
    "fragments": [
-    141.0,
-    142.5,
     143.5,
-    144.8,
-    145.8
+    145.0,
+    146.0,
+    147.3,
+    148.3
    ],
-   "notes": "Thêm M: SCSA chỉ thêm một thứ vào công thức: mặt nạ M. M bằng 0 là được lấy, âm vô cực là bị cấm.\nBấm 1 · Độ giống: Vẫn bốn con số cũ.\nBấm 2 · Cộng M: Điểm hỏi là vách núi, nên ba vùng khác bị cộng âm vô cực.\nBấm 3 · softmax: Ô bị cấm còn 0%, vách núi nhận 100%: lấy đúng màu vách núi.\nBấm 4 · SCA và SSA: Hai nhánh của SCSA dùng đúng công thức này, chỉ khác cách đặt M. SCA hỏi bằng bản đồ nhãn nên cả vùng ra một tông. SSA chỉ chừa một ô giống nhất trong vùng nên giữ được nét cọ."
+   "notes": "Thêm M: Nhớ slide softmax ở chặng 2: điểm vách núi bị dãy xa lấy mất 63%. SCSA sửa bằng đúng một thứ thêm vào công thức: mặt nạ M. M bằng 0 là được lấy, âm vô cực là bị cấm.\nBấm 1 · Độ giống: Vẫn bốn con số cũ.\nBấm 2 · Cộng M: Điểm hỏi là vách núi, nên ba vùng khác bị cộng âm vô cực. Luật này xét nhãn, không xét ai cao điểm: dãy xa đang cao nhất vẫn bị cấm, vì nó cao mà sai vùng nên mới có lỗi tô nhầm.\nBấm 3 · softmax: e mũ âm vô cực bằng 0, nên ô bị cấm còn 0%; softmax chia lại 100% cho phần còn lại. Vách núi chỉ có 1% nhưng còn một mình nên nhận trọn 100%: lấy đúng màu vách núi. Không cần train thêm gì.\nBấm 4 · SCA và SSA: Hai nhánh của SCSA dùng đúng công thức này, chỉ khác cách đặt M. SCA hỏi bằng bản đồ nhãn nên cả vùng ra một tông. SSA chỉ chừa một ô giống nhất trong vùng nên giữ được nét cọ. Dẫn: Có hai nhánh rồi; trộn chúng thế nào?"
   },
   {
    "sceneId": "mix",
    "fragments": [
-    147.7,
-    149.5,
-    150.9,
-    151.9,
-    152.5
+    150.2,
+    152.0,
+    153.4,
+    154.44,
+    155.0
    ],
-   "notes": "SSA thuần: Kết quả cuối trộn hai nhánh: tông chung từ SCA và nét cọ từ SSA, rồi cộng bố cục của ảnh. Thanh trượt cho biết trộn bao nhiêu mỗi bên. Nút đang ở SSA thuần: toàn mảnh tranh thật, sắc nét nhưng màu nhảy giữa các ô.\nBấm 1 · SCA thuần: Kéo hết sang SCA: mỗi vùng một màu, đều nhưng phẳng, mất nét cọ.\nBấm 2 · 0,7 / 0,3: SANet đặt nút ở 0,7 phần SCA và 0,3 phần SSA. Nhìn ô hình: màu đã đều theo từng vùng như SCA, nhưng vẫn thấy vệt cọ của SSA ở mép trời và vách núi. Ô hình là minh hoạ trên lưới 12×12: lấy màu từng vùng của SCA, giữ vệt cọ của SSA.\nBấm 3 · Kết quả thật: Bên phải là kết quả thật của SANet cộng SCSA trên cùng cặp ảnh, ở độ phân giải đầy đủ: cũng đều màu theo vùng mà vẫn có nét.\nBấm 4 · Chốt: Viết gọn: kết quả bằng α₁ nhân SCA cộng α₂ nhân SSA cộng bố cục. Thật ra α₁, α₂ là hai hệ số riêng; ở SANet chúng cộng lại bằng 1 nên vẽ được thành một thanh trượt. StyTr2 dùng 1,2 và 0,5; StyleID 0,8 và 0,2."
+   "notes": "SSA thuần: Kết quả cuối trộn hai nhánh: tông chung từ SCA và nét cọ từ SSA, rồi cộng bố cục của ảnh. Thanh trượt cho biết trộn bao nhiêu mỗi bên. Nút đang ở SSA thuần: toàn mảnh tranh thật, sắc nét nhưng màu nhảy giữa các ô.\nBấm 1 · SCA thuần: Kéo hết sang SCA: mỗi vùng một màu, đều nhưng phẳng, mất nét cọ.\nBấm 2 · 0,7 / 0,3: SANet đặt nút ở 0,7 phần SCA và 0,3 phần SSA. Nhìn ô hình: màu đã đều theo từng vùng như SCA, nhưng vẫn thấy vệt cọ của SSA ở mép trời và vách núi. Ô hình là minh hoạ trên lưới 12×12: lấy màu từng vùng của SCA, giữ vệt cọ của SSA.\nBấm 3 · Kết quả thật: Bên phải là kết quả thật của SANet cộng SCSA trên cùng cặp ảnh, ở độ phân giải đầy đủ: cũng đều màu theo vùng mà vẫn có nét.\nBấm 4 · Chốt: Viết gọn: kết quả bằng α₁ nhân SCA cộng α₂ nhân SSA cộng bố cục. Thật ra α₁, α₂ là hai hệ số riêng; ở SANet chúng cộng lại bằng 1 nên vẽ được thành một thanh trượt. StyTr2 dùng 1,2 và 0,5; StyleID 0,8 và 0,2. Dẫn: Gom tất cả thành thuật toán một trang."
   },
   {
    "sceneId": "algo",
    "fragments": [
-    154.6,
-    156.2,
-    157.5,
-    158.4,
-    159.0
+    157.1,
+    158.7,
+    160.0,
+    160.9,
+    161.5
    ],
-   "notes": "Chuẩn bị: Toàn bộ thuật toán trên một trang. Vào: ảnh, map ảnh, tranh, map tranh và hai hệ số trộn. Bước 1: encoder biến tất cả thành lưới điểm. Bước 2: K-Means trên hai map ra mặt nạ nhãn; bước này làm sẵn một lần bằng sem.py.\nBấm 1 · Ba khối: Bước 3: SCA với mặt nạ cùng nhãn, cho tông chung. Bước 4: S-AdaIN đổi tông ảnh riêng từng vùng. Bước 5: SSA với mặt nạ top-1 cùng nhãn, cho nét cọ.\nBấm 2 · Trộn và giải mã: Bước 6: trộn theo α₁, α₂, cộng lưới điểm của ảnh. Dòng Ra: decoder vẽ thành ảnh. Không vòng lặp, không bước train: một lượt chạy.\nBấm 3 · Chi phí: Với lưới 64 nhân 64, mỗi bảng điểm có khoảng 16,8 triệu ô; SCA và SSA mỗi nhánh một bảng, và SCSA tính đủ bảng rồi mới cấm, nên tốn hơn mô hình gốc.\nBấm 4 · Chốt: Bước 2 đến 6 là phần SCSA thêm vào; encoder và decoder giữ nguyên."
+   "notes": "Chuẩn bị: Toàn bộ thuật toán trên một trang. Vào: ảnh, map ảnh, tranh, map tranh và hai hệ số trộn. Bước 1: encoder biến tất cả thành lưới điểm. Bước 2: K-Means trên hai map ra mặt nạ nhãn; bước này làm sẵn một lần bằng sem.py.\nBấm 1 · Ba khối: Bước 3: SCA với mặt nạ cùng nhãn, cho tông chung. Bước 4: S-AdaIN đổi tông ảnh riêng từng vùng. Bước 5: SSA với mặt nạ top-1 cùng nhãn, cho nét cọ.\nBấm 2 · Trộn và giải mã: Bước 6: trộn theo α₁, α₂, cộng lưới điểm của ảnh. Dòng Ra: decoder vẽ thành ảnh. Không vòng lặp, không bước train: một lượt chạy.\nBấm 3 · Chi phí: Với lưới 64 nhân 64, mỗi bảng điểm có khoảng 16,8 triệu ô; SCA và SSA mỗi nhánh một bảng, và SCSA tính đủ bảng rồi mới cấm, nên tốn hơn mô hình gốc.\nBấm 4 · Chốt: Bước 2 đến 6 là phần SCSA thêm vào; encoder và decoder giữ nguyên. Dẫn: Thuật toán này cắm được vào ba mô hình; xem chỗ cắm cụ thể."
   },
   {
    "sceneId": "plug",
    "fragments": [
-    160.7,
-    161.7,
-    162.5,
-    163.3,
-    164.0
+    163.34,
+    164.25,
+    166.0,
+    167.7,
+    168.2
    ],
-   "notes": "SANet: Mỗi mô hình có một khối attention giữa encoder và decoder. Đây là SANet, một mạng CNN, tỉ lệ trộn 0,7 và 0,3.\nBấm 1 · SCSA thay khối: SCSA thay đúng khối đó; encoder, decoder và trọng số gốc giữ nguyên.\nBấm 2 · StyTr2: Một transformer, tỉ lệ 1,2 và 0,5.\nBấm 3 · StyleID: Một mô hình diffusion, tỉ lệ 0,8 và 0,2. Hỏi thuần bằng map làm mất chi tiết nên tác giả pha thêm feature của ảnh (Appendix C).\nBấm 4 · Chốt: Không train lại, dùng ngay với mô hình có sẵn."
+   "notes": "SANet: Slide mười năm nói SCSA cắm vào ba mô hình; đây là chỗ cắm cụ thể. SANet là mạng CNN: encoder VGG, ở giữa là khối attention SANet (ô xám), cuối là decoder CNN. Đây chính là sơ đồ ở slide toàn cảnh.\nBấm 1 · SCSA thay khối: SCSA thay đúng khối SANet đó, ở cả hai tầng đặc trưng; encoder, decoder và trọng số gốc giữ nguyên. Tỉ lệ trộn tông và nét 0,7 và 0,3.\nBấm 2 · StyTr2: StyTr2 là transformer: hai transformer encoder cho ảnh và tranh, rồi transformer decoder, trong đó có attention giữa ảnh và tranh, cuối là decoder CNN. SCSA thay attention ảnh–tranh đó ở các lớp chẵn của transformer decoder. Tỉ lệ 1,2 và 0,5; riêng lớp đầu cộng thêm bố cục sau S-AdaIN với hệ số 0,7.\nBấm 3 · StyleID: StyleID là diffusion, dùng Stable Diffusion có sẵn: đảo ảnh và tranh về nhiễu bằng DDIM inversion, rồi khi khử nhiễu ảnh, self-attention của U-Net lấy K, V của tranh. SCSA thay self-attention đó. Tỉ lệ 0,8 và 0,2. Hỏi thuần bằng map làm mất chi tiết nên tác giả pha thêm feature của ảnh (Appendix C); S-AdaIN chỉ dùng ở bước đầu.\nBấm 4 · Chốt: Ba kiến trúc rất khác nhau, nhưng đều có một khối attention ảnh–tranh. Mỗi lần SCSA cắm vào một mô hình, thay đúng khối đó; paper làm ba lần, ra ba phiên bản, và so từng phiên bản với mô hình gốc của nó. Không train lại, dùng ngay với mô hình có sẵn. Dẫn: Không train lại thì huấn luyện nằm ở đâu, và điểm mới là gì?"
   },
   {
    "sceneId": "train",
    "fragments": [
-    166.5,
-    168.5,
-    169.1
+    171.0,
+    173.0,
+    173.6
    ],
-   "notes": "Huấn luyện: Câu hỏi hay gặp: SCSA train thế nào? Câu trả lời: không train. Backbone đã được tác giả gốc train sẵn: SANet và StyTr2 train trên ảnh MS-COCO làm nội dung và tranh WikiArt làm phong cách, với loss nội dung và loss style; StyleID dùng Stable Diffusion có sẵn. SCSA không thêm tham số nào, không có loss mới. Lúc chạy chỉ làm ba việc: tạo mặt nạ nhãn từ bản đồ màu bằng K-Means, thay khối attention, và trộn theo α1, α2.\nBấm 1 · Điểm mới: Năm điểm mới. SCA: hỏi bằng bản đồ nhãn nên cả vùng chung một tông. SSA: chỉ giữ top-1 trong cùng vùng nên giữ nguyên nét cọ. S-AdaIN: đổi tông theo từng vùng trước khi so. Cắm được: một khối dùng cho cả CNN, Transformer và Diffusion. Và SSL: một thước đo style theo từng vùng.\nBấm 2 · Chốt: Cái mới nằm ở luật cấm theo nhãn, không nằm ở trọng số. Vì vậy nó rẻ để thử trên mô hình có sẵn."
+   "notes": "Huấn luyện: Câu hỏi hay gặp: SCSA train thế nào? Câu trả lời: không train. Backbone đã được tác giả gốc train sẵn: SANet và StyTr2 train trên ảnh MS-COCO làm nội dung và tranh WikiArt làm phong cách, với loss nội dung và loss style; StyleID dùng Stable Diffusion có sẵn. SCSA không thêm tham số nào, không có loss mới. Lúc chạy chỉ làm ba việc: tạo mặt nạ nhãn từ bản đồ màu bằng K-Means, thay khối attention, và trộn theo α1, α2.\nBấm 1 · Điểm mới: Năm điểm mới. SCA: hỏi bằng bản đồ nhãn nên cả vùng chung một tông. SSA: chỉ giữ top-1 trong cùng vùng nên giữ nguyên nét cọ. S-AdaIN: đổi tông theo từng vùng trước khi so. Cắm được: một khối dùng cho cả CNN, Transformer và Diffusion. Và SSL: một thước đo style theo từng vùng.\nBấm 2 · Chốt: Cái mới nằm ở luật cấm theo nhãn, không nằm ở trọng số. Vì vậy nó rẻ để thử trên mô hình có sẵn. Dẫn: Chặng 4: sửa được bao nhiêu."
   },
   {
    "sceneId": "ch4",
    "fragments": [
-    171.1
+    175.65
    ],
-   "notes": "Mở chặng: Chặng 4, so sánh và thảo luận. Câu hỏi: hơn ai, kém ở đâu? Đi theo thứ tự của một bài thực nghiệm: thiết lập và bốn thước đo, kết quả định tính, kết quả định lượng so với mô hình gốc và với năm phương pháp chuyên biệt, ablation, rồi thảo luận điểm mạnh và hạn chế."
+   "notes": "Mở chặng: Câu trả lời của chặng 3: SCSA cấm vùng khác nhãn; SCA lấy tông chung, SSA lấy nét cọ. Chặng 4 hỏi: sửa được bao nhiêu, kém ở đâu? Theo thứ tự một bài thực nghiệm: thước đo, ảnh kết quả, số so với mô hình gốc và với năm phương pháp chuyên biệt, ablation, rồi điểm mạnh và hạn chế. Dẫn: Trước khi xem số, cần biết đo bằng gì."
   },
   {
    "sceneId": "metrics",
    "fragments": [
-    172.2,
-    173.0,
-    173.8,
-    174.6,
-    175.3
+    176.73,
+    177.5,
+    178.3,
+    179.1,
+    179.8
    ],
-   "notes": "SSL: Bốn thước đo, mỗi lần bấm một cái. SSL (Semantic Style Loss): cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi. Thấp là tốt.\nBấm 1 · FID: Cả tập kết quả có trông như tranh không, xét tổng thể. Thấp là tốt.\nBấm 2 · CFSD: Kết quả còn giữ bố cục của ảnh gốc không. Thấp là tốt.\nBấm 3 · Người xem: 40 người, mỗi người 30 câu, tổng 1.200 phiếu: một nửa so bản có và không có SCSA, một nửa so với năm phương pháp khác. Cao là tốt.\nBấm 4 · Lưu ý: SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD."
+   "notes": "SSL: Bốn thước đo, mỗi lần bấm một cái. SSL (Semantic Style Loss): cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi. Thấp là tốt.\nBấm 1 · FID: Cả tập kết quả có trông như tranh không, xét tổng thể. Thấp là tốt.\nBấm 2 · CFSD: Kết quả còn giữ bố cục của ảnh gốc không. Thấp là tốt.\nBấm 3 · Người xem: 40 người, mỗi người 30 câu, tổng 1.200 phiếu: một nửa so bản có và không có SCSA, một nửa so với năm phương pháp khác. Cao là tốt.\nBấm 4 · Lưu ý: SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD. Dẫn: Xem ảnh trước, số sau."
   },
   {
    "sceneId": "results",
    "fragments": [
-    177.2,
-    178.6,
-    180.0
+    181.7,
+    183.1,
+    184.5
    ],
-   "notes": "SANet: Ba ví dụ lấy nguyên từ hình kết quả của paper. Mỗi hàng: ảnh nội dung, ảnh phong cách, mô hình gốc, mô hình cộng SCSA. Hàng đầu là cặp ảnh ta theo dõi cả buổi: vách núi từ màu trời sang màu núi.\nBấm 1 · StyTr2: Ví dụ thác nước: bản gốc màu loang lổ, bản SCSA giữ dòng thác trắng và đá tối.\nBấm 2 · StyleID: Ví dụ chân dung: áo, mặt, nền lấy nét từ đúng vùng tương ứng trong tranh. Mình chỉ mô tả những gì thấy trên ba ảnh; số tổng quát ở slide sau."
+   "notes": "SANet: Ba ví dụ lấy nguyên từ hình kết quả của paper. Mỗi hàng: ảnh nội dung, ảnh phong cách, mô hình gốc, mô hình cộng SCSA. Hàng đầu là cặp ảnh ta theo dõi cả buổi: vách núi từ màu trời sang màu núi.\nBấm 1 · StyTr2: Ví dụ thác nước: bản gốc màu loang lổ, bản SCSA giữ dòng thác trắng và đá tối.\nBấm 2 · StyleID: Ví dụ chân dung: áo, mặt, nền lấy nét từ đúng vùng tương ứng trong tranh. Mình chỉ mô tả những gì thấy trên ba ảnh; số tổng quát ở slide sau. Dẫn: Giờ đến số."
   },
   {
    "sceneId": "ssl",
    "fragments": [
-    182.4,
-    184.0,
-    185.4
+    187.04,
+    188.5,
+    189.9
    ],
-   "notes": "Mô hình gốc: Thước đo SSL, thấp là tốt. Cột xám là mô hình gốc: SANet 1,66; StyTr2 1,98; StyleID 1,75.\nBấm 1 · Cộng SCSA: Cột đen là cộng SCSA: 0,88; 1,22; 1,24. Lỗi style theo vùng giảm 47, 38 và 29%. SANet cộng SCSA còn tốt hơn cả năm phương pháp semantic chuyên biệt.\nBấm 2 · Thước đo khác: FID tốt hơn nhẹ ở cả ba. CFSD: riêng StyleID cộng SCSA giữ bố cục kém hơn, 0,092 lên 0,118; đó là cái giá. Với SANet và StyTr2, CFSD còn tốt hơn: 0,110 xuống 0,087 và 0,075 xuống 0,071. Người xem chọn bản SCSA 83, 84 và 78%. Số từ Table 1, trên 91 bộ do tác giả tự tuyển."
+   "notes": "Mô hình gốc: Thước đo SSL, thấp là tốt. Cột xám là mô hình gốc: SANet 1,66; StyTr2 1,98; StyleID 1,75.\nBấm 1 · Cộng SCSA: Cột đen là cộng SCSA: 0,88; 1,22; 1,24. Lỗi style theo vùng giảm 47, 38 và 29%. SANet cộng SCSA còn tốt hơn cả năm phương pháp semantic chuyên biệt.\nBấm 2 · Thước đo khác: FID tốt hơn nhẹ ở cả ba. CFSD: riêng StyleID cộng SCSA giữ bố cục kém hơn, 0,092 lên 0,118; đó là cái giá. Với SANet và StyTr2, CFSD còn tốt hơn: 0,110 xuống 0,087 và 0,075 xuống 0,071. Người xem chọn bản SCSA 83, 84 và 78%. Số từ Table 1, trên 91 bộ do tác giả tự tuyển. Dẫn: So với các phương pháp semantic chuyên biệt thì sao?"
   },
   {
    "sceneId": "compare",
    "fragments": [
-    188.1,
-    188.9,
-    189.6,
-    190.3
+    192.6,
+    193.4,
+    194.1,
+    194.8
    ],
-   "notes": "Tám phương pháp: Không chỉ so với mô hình gốc: Table 1 còn có năm phương pháp làm riêng cho semantic style transfer: STROTSS, MAST, TR, DIA, GLStyleNet. Xếp theo SSL, thấp là tốt. Cột đen là mô hình cộng SCSA, cột xám là phương pháp chuyên biệt. SANet cộng SCSA đứng đầu, 0,88. StyTr2 và StyleID cộng SCSA ở giữa nhóm, sau GLStyleNet và STROTSS.\nBấm 1 · FID và CFSD: Ở hai thước đo còn lại, StyTr2 cộng SCSA tốt nhất cả bảng: FID 12,40 và CFSD 0,071.\nBấm 2 · GLStyleNet: GLStyleNet có SSL thứ hai, nhưng CFSD 0,399, gấp khoảng bốn lần các phương pháp khác: style đúng vùng nhưng bố cục bị vỡ. Vì vậy phải đọc nhiều thước đo cùng lúc.\nBấm 3 · STROTSS: STROTSS tối ưu lại cho từng ảnh nên chậm; SANet cộng SCSA chỉ chạy một lượt qua mạng mà vẫn đứng đầu SSL. Lưu ý: phần chọn của người xem trong Table 1 đến từ hai thí nghiệm khác nhau, nên mình không so chéo số đó ở đây."
+   "notes": "Tám phương pháp: Không chỉ so với mô hình gốc: Table 1 còn có năm phương pháp làm riêng cho semantic style transfer: STROTSS, MAST, TR, DIA, GLStyleNet. Xếp theo SSL, thấp là tốt. Cột đen là mô hình cộng SCSA, cột xám là phương pháp chuyên biệt. SANet cộng SCSA đứng đầu, 0,88. StyTr2 và StyleID cộng SCSA ở giữa nhóm, sau GLStyleNet và STROTSS.\nBấm 1 · FID và CFSD: Ở hai thước đo còn lại, StyTr2 cộng SCSA tốt nhất cả bảng: FID 12,40 và CFSD 0,071.\nBấm 2 · GLStyleNet: GLStyleNet có SSL thứ hai, nhưng CFSD 0,399, gấp khoảng bốn lần các phương pháp khác: style đúng vùng nhưng bố cục bị vỡ. Vì vậy phải đọc nhiều thước đo cùng lúc.\nBấm 3 · STROTSS: STROTSS tối ưu lại cho từng ảnh nên chậm; SANet cộng SCSA chỉ chạy một lượt qua mạng mà vẫn đứng đầu SSL. Lưu ý: phần chọn của người xem trong Table 1 đến từ hai thí nghiệm khác nhau, nên mình không so chéo số đó ở đây. Dẫn: Mỗi khối góp bao nhiêu? Bỏ từng khối ra thử."
   },
   {
    "sceneId": "ablation",
    "fragments": [
-    192.0,
-    192.8,
-    193.6,
-    194.4,
-    195.2
+    196.54,
+    197.34,
+    198.14,
+    198.94,
+    199.7
    ],
-   "notes": "Đủ cả ba: Bỏ từng khối, trên StyleID, số từ Fig. 6. Đủ cả ba khối: 1,245, làm mốc.\nBấm 1 · Bỏ SSA: 1,33: mất texture.\nBấm 2 · Bỏ S-AdaIN: 1,76: tông của từng vùng kém chính xác.\nBấm 3 · Bỏ SCA: 2,30, gần gấp đôi: lệch màu giữa các vùng.\nBấm 4 · Chốt: SCA lo tông chung, SSA lo nét cọ; thiếu khối nào, SSL cũng tăng. Nhưng có đánh đổi: bỏ SSA hoặc S-AdaIN lại giữ bố cục (CFSD) tốt hơn chút, và trên SANet, bỏ S-AdaIN gần như không đổi SSL (0,876 so với 0,877)."
+   "notes": "Đủ cả ba: Bỏ từng khối, trên StyleID, số từ Fig. 6. Đủ cả ba khối: 1,245, làm mốc.\nBấm 1 · Bỏ SSA: 1,33: mất texture.\nBấm 2 · Bỏ S-AdaIN: 1,76: tông của từng vùng kém chính xác.\nBấm 3 · Bỏ SCA: 2,30, gần gấp đôi: lệch màu giữa các vùng.\nBấm 4 · Chốt: SCA lo tông chung, SSA lo nét cọ; thiếu khối nào, SSL cũng tăng. Nhưng có đánh đổi: bỏ SSA hoặc S-AdaIN lại giữ bố cục (CFSD) tốt hơn chút, và trên SANet, bỏ S-AdaIN gần như không đổi SSL (0,876 so với 0,877). Dẫn: Gom lại thành điểm mạnh."
   },
   {
    "sceneId": "strengths",
    "fragments": [
-    197.0,
-    198.4,
-    199.2,
-    200.0,
-    200.7
+    201.5,
+    202.9,
+    203.7,
+    204.5,
+    205.2
    ],
-   "notes": "Không train: Tổng hợp điểm mạnh. Một: không train, cắm là chạy. Không tham số mới, dùng lại trọng số gốc.\nBấm 1 · Ba họ mô hình: Hai: tổng quát. Cùng một khối giúp cả CNN, Transformer và Diffusion; SSL giảm 29 đến 47%. Bên phải là kết quả của ba mô hình.\nBấm 2 · Hai nhánh: Ba: hai nhánh bổ trợ và có nút chỉnh. α₁ chỉnh tông, α₂ chỉnh nét; ablation cho thấy bỏ khối nào thì lỗi theo vùng (SSL) cũng tăng.\nBấm 3 · Người xem: Bốn: người xem đồng ý, chọn bản có SCSA trong 78 đến 84% số cặp.\nBấm 4 · Dễ giải thích: Năm: dễ giải thích. Nhìn ma trận attention là biết mỗi điểm lấy style từ đâu, như ba ma trận ở chặng 3. Slide sau là mặt còn lại: hạn chế."
+   "notes": "Không train: Tổng hợp điểm mạnh. Một: không train, cắm là chạy. Không tham số mới, dùng lại trọng số gốc.\nBấm 1 · Ba họ mô hình: Hai: tổng quát. Cùng một khối giúp cả CNN, Transformer và Diffusion; SSL giảm 29 đến 47%. Bên phải là kết quả của ba mô hình.\nBấm 2 · Hai nhánh: Ba: hai nhánh bổ trợ và có nút chỉnh. α₁ chỉnh tông, α₂ chỉnh nét; ablation cho thấy bỏ khối nào thì lỗi theo vùng (SSL) cũng tăng.\nBấm 3 · Người xem: Bốn: người xem đồng ý, chọn bản có SCSA trong 78 đến 84% số cặp.\nBấm 4 · Dễ giải thích: Năm: dễ giải thích. Nhìn ma trận attention là biết mỗi điểm lấy style từ đâu, như ba ma trận ở chặng 3. Slide sau là mặt còn lại: hạn chế. Dẫn: Và những gì SCSA chưa làm được."
   },
   {
    "sceneId": "limits",
    "fragments": [
-    202.5,
-    204.5,
-    205.7
+    207.0,
+    209.03,
+    210.22
    ],
-   "notes": "Cần map nhãn: Sáu điều chưa giải quyết. Một: phải tự có bản đồ nhãn, và nhãn hai bên phải khớp; tác giả tự nêu điều này.\nBấm 1 · Dùng lại mảnh: Hai: SSA chỉ lấy một điểm nên một mảnh tranh có thể bị dùng lại nhiều lần. Lưới ở giữa là kết quả SSA trên lưới minh hoạ, mỗi ô một mảnh tranh; một mảnh bị dùng 19 lần (khung magenta). Ở độ phân giải thật, điều này có thể gây lặp texture; paper chưa đo.\nBấm 2 · Bốn điều thảo luận: Chỉ 91 bộ tự tuyển. SSL do tác giả tự đặt. Chậm và tốn bộ nhớ hơn. Vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng bị cấm, paper không nói xử lý thế nào. Thêm một cái giá thấy trong số liệu: StyleID cộng SCSA giữ bố cục kém hơn, CFSD 0,092 lên 0,118. Mỗi điều là một hướng phát triển, mình quay lại ở chặng cuối."
+   "notes": "Cần map nhãn: Sáu điều chưa giải quyết. Một: phải tự có bản đồ nhãn, và nhãn hai bên phải khớp; tác giả tự nêu điều này.\nBấm 1 · Dùng lại mảnh: Hai: SSA chỉ lấy một điểm nên một mảnh tranh có thể bị dùng lại nhiều lần. Lưới ở giữa là kết quả SSA trên lưới minh hoạ, mỗi ô một mảnh tranh; một mảnh bị dùng 19 lần (khung magenta). Ở độ phân giải thật, điều này có thể gây lặp texture; paper chưa đo.\nBấm 2 · Bốn điều thảo luận: Chỉ 91 bộ tự tuyển. SSL do tác giả tự đặt. Chậm và tốn bộ nhớ hơn. Vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng bị cấm, paper không nói xử lý thế nào. Thêm một cái giá thấy trong số liệu: StyleID cộng SCSA giữ bố cục kém hơn, CFSD 0,092 lên 0,118. Mỗi điều là một hướng phát triển, mình quay lại ở chặng cuối. Dẫn: Chặng 5: mang về gì."
   },
   {
    "sceneId": "ch5",
    "fragments": [
-    208.1
+    212.6
    ],
-   "notes": "Mở chặng: Chặng 5, kết luận. Câu hỏi: mang về điều gì? Một câu cần nhớ, và những hướng phát triển tiếp theo."
+   "notes": "Mở chặng: Câu trả lời của chặng 4: lỗi theo vùng giảm 29 đến 47 phần trăm, không train lại; đổi lại cần bản đồ nhãn và chạy chậm hơn. Chặng 5: mang về gì, và đi tiếp đâu. Dẫn: Một câu cần nhớ."
   },
   {
    "sceneId": "summary",
    "fragments": [
-    209.4,
-    210.5,
-    211.9
+    213.9,
+    215.0,
+    216.4
    ],
-   "notes": "Một câu: Mang về một câu: chỉ lấy style từ vùng cùng nhãn.\nBấm 1 · Trước và sau: Đây là câu trả lời cho câu hỏi đầu buổi: SANet tô vách núi bằng màu vùng khác vì attention không biết nhãn vùng; SCSA cấm điều đó.\nBấm 2 · Bên trong: SCA lấy tông chung của cả vùng, SSA giữ nét cọ của một điểm. Không train lại; lỗi style theo vùng giảm 29–47%. Nếu chỉ nhớ một hình: ba ma trận ở slide 27."
+   "notes": "Một câu: Mang về một câu: chỉ lấy style từ vùng cùng nhãn.\nBấm 1 · Trước và sau: Đây là câu trả lời cho câu hỏi đầu buổi: SANet tô vách núi bằng màu vùng khác vì attention không biết nhãn vùng; SCSA cấm điều đó.\nBấm 2 · Bên trong: SCA lấy tông chung của cả vùng, SSA giữ nét cọ của một điểm. Không train lại; lỗi style theo vùng giảm 29–47%. Nếu chỉ nhớ một hình: ba ma trận attention ở chặng 3. Dẫn: Từ các hạn chế, mở ra hướng đi tiếp."
   },
   {
    "sceneId": "future",
    "fragments": [
-    213.8,
-    214.8,
-    215.8,
-    216.8,
-    217.8,
-    218.4
+    218.3,
+    219.3,
+    220.3,
+    221.3,
+    222.3,
+    222.9
    ],
-   "notes": "Map tự động: Hướng phát triển, mỗi hạn chế một lối mở. Một: bản đồ nhãn đang vẽ tay. Hướng: sinh map tự động bằng mô hình phân đoạn như Grounded-SAM, hoặc SAM 2 cộng CLIP, rồi ghép nhãn hai bên bằng embedding văn bản, ví dụ cỏ với cánh đồng.\nBấm 1 · Vùng không cặp: Hai: vùng của ảnh không có cặp bên tranh. Hướng: phương án dự phòng, lùi về attention thường cho vùng đó, hoặc mượn vùng gần nghĩa nhất.\nBấm 2 · Chi phí: Ba: tốn thời gian và bộ nhớ, vì vẫn tính bảng N nhân M rồi mới cấm. Hướng: tính riêng từng vùng, chi phí còn tổng Nᵢ nhân Mᵢ; SSA thực chất là tìm láng giềng gần nhất nên dùng được thư viện tìm kiếm nhanh.\nBấm 3 · Top-k: Bốn: SSA top-1 cứng, dễ lặp texture. Hướng: top-k có nhiệt độ, giữ nét cọ mà mượt hơn ở biên vùng.\nBấm 4 · Đánh giá: Năm: mới đánh giá trên 91 bộ với thước đo tự đặt. Hướng: benchmark lớn MS-COCO nhân WikiArt, đo bằng thước độc lập như ArtFID, LPIPS, CLIP.\nBấm 5 · Proposal: Bốn hướng đầu chính là bốn module trong proposal của nhóm."
+   "notes": "Map tự động: Hướng phát triển, mỗi hạn chế một lối mở. Một: bản đồ nhãn đang vẽ tay. Hướng: sinh map tự động bằng mô hình phân đoạn như Grounded-SAM, hoặc SAM 2 cộng CLIP, rồi ghép nhãn hai bên bằng embedding văn bản, ví dụ cỏ với cánh đồng.\nBấm 1 · Vùng không cặp: Hai: vùng của ảnh không có cặp bên tranh. Hướng: phương án dự phòng, lùi về attention thường cho vùng đó, hoặc mượn vùng gần nghĩa nhất.\nBấm 2 · Chi phí: Ba: tốn thời gian và bộ nhớ, vì vẫn tính bảng N nhân M rồi mới cấm. Hướng: tính riêng từng vùng, chi phí còn tổng Nᵢ nhân Mᵢ; SSA thực chất là tìm láng giềng gần nhất nên dùng được thư viện tìm kiếm nhanh.\nBấm 3 · Top-k: Bốn: SSA top-1 cứng, dễ lặp texture. Hướng: top-k có nhiệt độ, giữ nét cọ mà mượt hơn ở biên vùng.\nBấm 4 · Đánh giá: Năm: mới đánh giá trên 91 bộ với thước đo tự đặt. Hướng: benchmark lớn MS-COCO nhân WikiArt, đo bằng thước độc lập như ArtFID, LPIPS, CLIP.\nBấm 5 · Proposal: Bốn hướng đầu chính là bốn module trong proposal của nhóm. Dẫn: Hướng thứ nhất đã có người làm: StyleGallery."
+  },
+  {
+   "sceneId": "next",
+   "fragments": [
+    225.3,
+    226.8,
+    228.04,
+    228.7
+   ],
+   "notes": "SCSA cần map: Hướng thứ nhất đã có người làm. Nhắc lại: SCSA cần bộ bốn, ảnh, tranh và hai bản đồ nhãn do người dùng vẽ hoặc lấy từ mô hình phân đoạn ngoài. Không có map thì không chạy được; đây là hạn chế lớn nhất khi đem ra dùng thật.\nBấm 1 · StyleGallery: StyleGallery, CVPR 2026, của He và cộng sự. Đầu vào chỉ còn ảnh và một hoặc nhiều tranh, không cần map. Chính paper ghi rõ ba hạn chế của các phương pháp trước, trong đó có việc phụ thuộc ràng buộc thêm như semantic mask, và gọi tên SCSA là phương pháp dựa trên mask. Hình bên phải là Fig. 1(b) của paper: ảnh được tự gom cụm, mỗi cụm ghép với cụm hợp nhất trong các tranh, rồi tối ưu ra kết quả.\nBấm 2 · Ba bước: Một: tự chia vùng, gom cụm K-means trên đặc trưng của Stable Diffusion 1.5, sau đó gộp và tách cụm cho gọn. Hai: ghép vùng, so độ giống từng cặp cụm bằng thống kê đặc trưng, đặc trưng ngữ nghĩa DINOv2 và vị trí, với nhiều tranh cùng lúc. Ba: tô theo vùng, dùng một loss style theo từng cặp cụm và một loss giữ bố cục để dẫn quá trình lấy mẫu của diffusion. Không train gì cả, giống SCSA. Có thể nói: luật “chỉ lấy style từ vùng cùng nhãn” vẫn còn, chỉ là nhãn giờ do máy tự tìm.\nBấm 3 · Cái giá: Đổi lại: khoảng 30 giây mỗi ảnh trên RTX 4090 vì phải tối ưu 150 bước, paper nói ghép thêm mô hình lấy mẫu nhanh thì còn khoảng 8 giây, 28 bước. Và chính tác giả ghi hạn chế: cụm sai thì ảnh bị tô vỡ từng phần; khi đó có thể đưa map tay hoặc SAM vào làm map ban đầu. Paper chỉ so với SCSA bằng hình (Fig. 7, dùng kết quả có sẵn trong repo SCSA), không có bảng số, nên mình không kết luận bên nào tốt hơn về số liệu. Dẫn: Hết phần trình bày."
   },
   {
    "sceneId": "end",
    "fragments": [
-    221.0
+    231.5
    ],
    "notes": "Kết thúc: Cảm ơn mọi người đã lắng nghe, mình xin nhận câu hỏi."
   }
  ]
 }
 </script>
-<div id="root" data-composition-id="main" data-start="0" data-duration="223" data-width="1920" data-height="1080">
+<div id="root" data-composition-id="main" data-start="0" data-duration="233.5" data-width="1920" data-height="1080">
 <div id="cover" data-composition-id="cover" data-composition-src="compositions/cover.html" data-start="0" data-duration="3" data-label="Bìa" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
 <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="3" data-duration="4" data-label="Câu hỏi mở màn" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
 <div id="roadmap" data-composition-id="roadmap" data-composition-src="compositions/roadmap.html" data-start="7" data-duration="3.5" data-label="Lộ trình" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
@@ -458,43 +471,44 @@ html, body { width:1920px; height:1080px; overflow:hidden; background:#EDEFF1; }
 <div id="st" data-composition-id="st" data-composition-src="compositions/st.html" data-start="12.5" data-duration="5" data-label="Style transfer là gì" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
 <div id="apps" data-composition-id="apps" data-composition-src="compositions/apps.html" data-start="17.5" data-duration="5" data-label="Vì sao quan trọng" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
 <div id="history" data-composition-id="history" data-composition-src="compositions/history.html" data-start="22.5" data-duration="7" data-label="Mười năm" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ch2" data-composition-id="ch2" data-composition-src="compositions/ch2.html" data-start="29.5" data-duration="2" data-label="Chặng 2: Bài toán và tổng quan" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="maps" data-composition-id="maps" data-composition-src="compositions/maps.html" data-start="31.5" data-duration="5.5" data-label="Bản đồ nhãn" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="task" data-composition-id="task" data-composition-src="compositions/task.html" data-start="37" data-duration="5" data-label="Phát biểu bài toán" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="grid" data-composition-id="grid" data-composition-src="compositions/grid.html" data-start="42" data-duration="5.5" data-label="Lưới điểm" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="attn" data-composition-id="attn" data-composition-src="compositions/attn.html" data-start="47.5" data-duration="6" data-label="Attention" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="softmax" data-composition-id="softmax" data-composition-src="compositions/softmax.html" data-start="53.5" data-duration="6" data-label="Softmax và luật cấm" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="adain" data-composition-id="adain" data-composition-src="compositions/adain.html" data-start="59.5" data-duration="5" data-label="AdaIN" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ua" data-composition-id="ua" data-composition-src="compositions/ua.html" data-start="64.5" data-duration="11" data-label="Universal Attention" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="uaf" data-composition-id="uaf" data-composition-src="compositions/uaf.html" data-start="75.5" data-duration="7" data-label="Công thức attention" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="err1" data-composition-id="err1" data-composition-src="compositions/err1.html" data-start="82.5" data-duration="5.5" data-label="Lỗi 1: sai vùng" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="err23" data-composition-id="err23" data-composition-src="compositions/err23.html" data-start="88" data-duration="5.5" data-label="Lỗi 2 và 3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="fixmap" data-composition-id="fixmap" data-composition-src="compositions/fixmap.html" data-start="93.5" data-duration="4.5" data-label="Ba lỗi, ba cách sửa" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="minute" data-composition-id="minute" data-composition-src="compositions/minute.html" data-start="98" data-duration="5" data-label="SCSA trong một phút" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ch3" data-composition-id="ch3" data-composition-src="compositions/ch3.html" data-start="103" data-duration="2" data-label="Chặng 3: Chi tiết kỹ thuật" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="idea" data-composition-id="idea" data-composition-src="compositions/idea.html" data-start="105" data-duration="5" data-label="Ý tưởng cốt lõi" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="pipe" data-composition-id="pipe" data-composition-src="compositions/pipe.html" data-start="110" data-duration="6.5" data-label="Sơ đồ toàn cảnh" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="sca" data-composition-id="sca" data-composition-src="compositions/sca.html" data-start="116.5" data-duration="6.5" data-label="SCA" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="sadain" data-composition-id="sadain" data-composition-src="compositions/sadain.html" data-start="123" data-duration="5" data-label="S-AdaIN" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ssa" data-composition-id="ssa" data-composition-src="compositions/ssa.html" data-start="128" data-duration="7" data-label="SSA" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="matrices" data-composition-id="matrices" data-composition-src="compositions/matrices.html" data-start="135" data-duration="5" data-label="Ba ma trận" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="maskf" data-composition-id="maskf" data-composition-src="compositions/maskf.html" data-start="140" data-duration="6.5" data-label="Công thức SCA, SSA" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="mix" data-composition-id="mix" data-composition-src="compositions/mix.html" data-start="146.5" data-duration="6.5" data-label="Trộn hai nhánh" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="algo" data-composition-id="algo" data-composition-src="compositions/algo.html" data-start="153" data-duration="6.5" data-label="Thuật toán" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="plug" data-composition-id="plug" data-composition-src="compositions/plug.html" data-start="159.5" data-duration="5" data-label="Cắm vào backbone" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="train" data-composition-id="train" data-composition-src="compositions/train.html" data-start="164.5" data-duration="5" data-label="Huấn luyện và điểm mới" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ch4" data-composition-id="ch4" data-composition-src="compositions/ch4.html" data-start="169.5" data-duration="2" data-label="Chặng 4: So sánh và thảo luận" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="metrics" data-composition-id="metrics" data-composition-src="compositions/metrics.html" data-start="171.5" data-duration="4.5" data-label="Bốn thước đo" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="results" data-composition-id="results" data-composition-src="compositions/results.html" data-start="176" data-duration="5" data-label="Kết quả thật" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ssl" data-composition-id="ssl" data-composition-src="compositions/ssl.html" data-start="181" data-duration="5" data-label="Số liệu SSL" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="compare" data-composition-id="compare" data-composition-src="compositions/compare.html" data-start="186" data-duration="5" data-label="So với phương pháp khác" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ablation" data-composition-id="ablation" data-composition-src="compositions/ablation.html" data-start="191" data-duration="5" data-label="Ablation" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="strengths" data-composition-id="strengths" data-composition-src="compositions/strengths.html" data-start="196" data-duration="5.5" data-label="Điểm mạnh" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="limits" data-composition-id="limits" data-composition-src="compositions/limits.html" data-start="201.5" data-duration="5" data-label="Hạn chế" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="ch5" data-composition-id="ch5" data-composition-src="compositions/ch5.html" data-start="206.5" data-duration="2" data-label="Chặng 5: Kết luận" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="summary" data-composition-id="summary" data-composition-src="compositions/summary.html" data-start="208.5" data-duration="4" data-label="Tóm tắt" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="future" data-composition-id="future" data-composition-src="compositions/future.html" data-start="212.5" data-duration="6.5" data-label="Hướng phát triển" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
-<div id="end" data-composition-id="end" data-composition-src="compositions/end.html" data-start="219" data-duration="4" data-label="Kết thúc" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="gens" data-composition-id="gens" data-composition-src="compositions/gens.html" data-start="29.5" data-duration="7.5" data-label="Bốn phương pháp, một cặp ảnh" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ch2" data-composition-id="ch2" data-composition-src="compositions/ch2.html" data-start="37" data-duration="2" data-label="Chặng 2: Bài toán và tổng quan" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="maps" data-composition-id="maps" data-composition-src="compositions/maps.html" data-start="39" data-duration="5.5" data-label="Bản đồ nhãn" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="task" data-composition-id="task" data-composition-src="compositions/task.html" data-start="44.5" data-duration="5" data-label="Phát biểu bài toán" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="grid" data-composition-id="grid" data-composition-src="compositions/grid.html" data-start="49.5" data-duration="5.5" data-label="Lưới điểm" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="attn" data-composition-id="attn" data-composition-src="compositions/attn.html" data-start="55" data-duration="6" data-label="Attention" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="softmax" data-composition-id="softmax" data-composition-src="compositions/softmax.html" data-start="61" data-duration="4" data-label="Softmax" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ua" data-composition-id="ua" data-composition-src="compositions/ua.html" data-start="65" data-duration="11" data-label="Universal Attention" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="uaf" data-composition-id="uaf" data-composition-src="compositions/uaf.html" data-start="76" data-duration="7" data-label="Công thức attention" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="err1" data-composition-id="err1" data-composition-src="compositions/err1.html" data-start="83" data-duration="5.5" data-label="Lỗi 1: sai vùng" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="err23" data-composition-id="err23" data-composition-src="compositions/err23.html" data-start="88.5" data-duration="5.5" data-label="Lỗi 2 và 3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="fixmap" data-composition-id="fixmap" data-composition-src="compositions/fixmap.html" data-start="94" data-duration="5" data-label="Ba lỗi, ba cách sửa" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="minute" data-composition-id="minute" data-composition-src="compositions/minute.html" data-start="99" data-duration="5" data-label="SCSA trong một phút" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ch3" data-composition-id="ch3" data-composition-src="compositions/ch3.html" data-start="104" data-duration="2" data-label="Chặng 3: Chi tiết kỹ thuật" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="pipe" data-composition-id="pipe" data-composition-src="compositions/pipe.html" data-start="106" data-duration="8" data-label="Sơ đồ toàn cảnh" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="sca" data-composition-id="sca" data-composition-src="compositions/sca.html" data-start="114" data-duration="6.5" data-label="SCA" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="adain" data-composition-id="adain" data-composition-src="compositions/adain.html" data-start="120.5" data-duration="5" data-label="AdaIN" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="sadain" data-composition-id="sadain" data-composition-src="compositions/sadain.html" data-start="125.5" data-duration="5" data-label="S-AdaIN" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ssa" data-composition-id="ssa" data-composition-src="compositions/ssa.html" data-start="130.5" data-duration="7" data-label="SSA" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="matrices" data-composition-id="matrices" data-composition-src="compositions/matrices.html" data-start="137.5" data-duration="5" data-label="Ba ma trận" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="maskf" data-composition-id="maskf" data-composition-src="compositions/maskf.html" data-start="142.5" data-duration="6.5" data-label="Công thức SCA, SSA" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="mix" data-composition-id="mix" data-composition-src="compositions/mix.html" data-start="149" data-duration="6.5" data-label="Trộn hai nhánh" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="algo" data-composition-id="algo" data-composition-src="compositions/algo.html" data-start="155.5" data-duration="6.5" data-label="Thuật toán" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="plug" data-composition-id="plug" data-composition-src="compositions/plug.html" data-start="162" data-duration="7" data-label="Cắm vào backbone" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="train" data-composition-id="train" data-composition-src="compositions/train.html" data-start="169" data-duration="5" data-label="Huấn luyện và điểm mới" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ch4" data-composition-id="ch4" data-composition-src="compositions/ch4.html" data-start="174" data-duration="2" data-label="Chặng 4: So sánh và thảo luận" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="metrics" data-composition-id="metrics" data-composition-src="compositions/metrics.html" data-start="176" data-duration="4.5" data-label="Bốn thước đo" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="results" data-composition-id="results" data-composition-src="compositions/results.html" data-start="180.5" data-duration="5" data-label="Kết quả thật" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ssl" data-composition-id="ssl" data-composition-src="compositions/ssl.html" data-start="185.5" data-duration="5" data-label="Số liệu SSL" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="compare" data-composition-id="compare" data-composition-src="compositions/compare.html" data-start="190.5" data-duration="5" data-label="So với phương pháp khác" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ablation" data-composition-id="ablation" data-composition-src="compositions/ablation.html" data-start="195.5" data-duration="5" data-label="Ablation" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="strengths" data-composition-id="strengths" data-composition-src="compositions/strengths.html" data-start="200.5" data-duration="5.5" data-label="Điểm mạnh" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="limits" data-composition-id="limits" data-composition-src="compositions/limits.html" data-start="206" data-duration="5" data-label="Hạn chế" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="ch5" data-composition-id="ch5" data-composition-src="compositions/ch5.html" data-start="211" data-duration="2" data-label="Chặng 5: Kết luận" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="summary" data-composition-id="summary" data-composition-src="compositions/summary.html" data-start="213" data-duration="4" data-label="Tóm tắt" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="future" data-composition-id="future" data-composition-src="compositions/future.html" data-start="217" data-duration="6.5" data-label="Hướng phát triển" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="next" data-composition-id="next" data-composition-src="compositions/next.html" data-start="223.5" data-duration="6" data-label="Bước tiếp: StyleGallery" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="end" data-composition-id="end" data-composition-src="compositions/end.html" data-start="229.5" data-duration="4" data-label="Kết thúc" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
 </div>
 <script>
 window.__timelines = window.__timelines || {};
