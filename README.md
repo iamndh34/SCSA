@@ -144,6 +144,65 @@ Với StyleID, Q/K của SCA không lấy thuần từ semantic map mà trộn v
 - Paper không nói rõ cách xử lý vùng content không có nhãn tương ứng bên style. Khi đó cả hàng attention bị mask thành −∞, nên softmax không xác định.
 - Top-1 cứng trong SSA có thể gây lặp texture và nhạy với nhiễu.
 
+## 7. Chạy notebook so sánh
+
+`compare_style_transfer.ipynb` chạy 9 phương pháp trên mẫu 29 (Yosemite): Gatys, AdaIN, SANet, StyTr2, StyleID, và SCSA cắm vào SANet, StyTr2, StyleID.
+
+### Cài đặt
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/jupyter lab compare_style_transfer.ipynb
+```
+
+### Trọng số
+
+Trọng số nhỏ đã có sẵn trong repo. Hai bộ lớn bị `.gitignore` chặn, phải tải về trước khi chạy phần StyTr2 và StyleID.
+
+| Phương pháp | Thư mục | Có trong repo | Nguồn |
+| --- | --- | --- | --- |
+| AdaIN | `weights/vgg_normalised.pth`, `weights/decoder.pth` | có | [pytorch-AdaIN](https://github.com/naoto0804/pytorch-AdaIN/releases/tag/v0.0.0); thiếu thì cell đầu phần AdaIN tự tải |
+| SANet, SANet + SCSA | `weights/sanet/` | có | [GlebSBrykin/SANET](https://github.com/GlebSBrykin/SANET) |
+| StyTr2, StyTr2 + SCSA | `weights/stytr2/` | **không** (~220 MB) | Google Drive của [StyTR-2](https://github.com/diyiiyiii/StyTR-2), xem bên dưới |
+| StyleID, StyleID + SCSA | `weights/sd-v1-4/` | **không** (~2,1 GB) | [CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4), xem bên dưới |
+
+Bản đồ nhãn dùng cho SCSA (`sem_precomputed_feats/yosemite/`) đã có sẵn. Tạo lại bằng `python precompute_sem_maps.py`.
+
+**StyTr2** (4 file, đặt đúng tên như dưới):
+
+```bash
+mkdir -p weights/stytr2 && cd weights/stytr2
+../../.venv/bin/gdown 1BinnwM5AmIcVubr16tPTqxMjUCE8iu5M -O vgg_normalised.pth          # 80 MB
+../../.venv/bin/gdown 1C3xzTOWx8dUXXybxZwmjijZN8SrC3e4B -O embedding_iter_160000.pth   # 0,4 MB
+../../.venv/bin/gdown 1fIIVMTA_tPuaAAFtqizr6sd1XV7CX6F9 -O decoder_iter_160000.pth     # 14 MB
+../../.venv/bin/gdown 1dnobsaLeE889T_LncCkAA2RkqzwsfHYy -O transformer_iter_160000.pth # 127 MB
+cd ../..
+```
+
+**Stable Diffusion v1.4** cho StyleID: chọn một trong hai cách.
+
+- *Tự động:* để trống `weights/sd-v1-4/`. Lần chạy đầu, `styleid_nst.py` tự tải bản fp16 về bộ nhớ đệm của Hugging Face (`~/.cache/huggingface`). Nếu tải đứng ở 0 byte, chạy lại với `HF_HUB_DISABLE_XET=1`.
+- *Tải sẵn vào repo* (chỉ các file cần, bản fp16):
+
+```bash
+B=https://huggingface.co/CompVis/stable-diffusion-v1-4/resolve/main
+for f in unet/config.json unet/diffusion_pytorch_model.fp16.safetensors \
+         text_encoder/config.json text_encoder/model.fp16.safetensors \
+         vae/config.json vae/diffusion_pytorch_model.fp16.safetensors \
+         tokenizer/merges.txt tokenizer/special_tokens_map.json tokenizer/tokenizer_config.json tokenizer/vocab.json \
+         scheduler/scheduler_config.json; do
+  mkdir -p weights/sd-v1-4/$(dirname $f)
+  curl -fL -C - -o weights/sd-v1-4/$f $B/$f
+done
+```
+
+### Ghi chú khi chạy trên Mac
+
+- Các phương pháp chạy trên GPU Apple (MPS). Riêng StyTr2 tự chuyển sang CPU, vì MPS chưa hỗ trợ một phép pooling mà mô hình dùng.
+- Thời gian tham khảo trên mẫu 29: StyleID ~57 s, StyleID + SCSA ~98 s, StyTr2 ~2 s, StyTr2 + SCSA ~5 s.
+- Mã StyTr2 + SCSA là mã của tác giả, chép vào `third_party/stytr2_scsa/` (xem README trong đó). StyleID và StyleID + SCSA được viết lại trên diffusers trong `styleid_nst.py`.
+
 ## Tham khảo
 
 - Shang et al., *SCSA*, CVPR 2025: [arXiv 2503.04119](https://arxiv.org/abs/2503.04119)

@@ -11,3 +11,10 @@ einops
 jupyterlab
 ipykernel
 ipywidgets
+scipy
+scikit-learn
+opencv-python-headless
+diffusers
+transformers
+safetensors
+gdown
