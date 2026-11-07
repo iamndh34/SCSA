@@ -18,14 +18,28 @@ for e, (ex, bb, note) in enumerate(EX):
         g += label(f"rs-c{e}{j}", cap, XS[j], 684, 372, 32, INK if j >= 2 else INK2, "center", 700 if j >= 2 else 500)
     g += line(f"rs-n{e}", note, 760, 40, weight=600) + '</div>'
     m += g
+# step 4: the same pair (sample 29) through all three families, run by the group (compare_style_transfer.ipynb)
+RX3, RY3, RW3 = [380, 680, 980], [246, 556], 240
+g = f'<div id="rs-g3" style="position:absolute;left:0;top:0;width:1920px;height:1080px">'
+for j, (bb, base, sc) in enumerate((("SANet", "cmp_sanet.jpg", "cmp_scsa.jpg"), ("StyTr2", "cmp_stytr2.jpg", "cmp_stytr2_scsa.jpg"),
+                                    ("StyleID", "cmp_styleid.jpg", "cmp_styleid_scsa.jpg"))):
+    g += label(f"rs-h{j}", bb, RX3[j], 200, RW3 + 24, 34, INK, "center", 800)
+    g += print_img(f"rs-q{j}0", IMG + base, RX3[j], RY3[0], RW3) + print_img(f"rs-q{j}1", IMG + sc, RX3[j], RY3[1], RW3)
+g += label("rs-r0", "gốc", 192, RY3[0] + 112, 170, 34, INK2, weight=700)
+g += label("rs-r1", f'+ {acc("SCSA")}', 192, RY3[1] + 112, 170, 34, INK, weight=800)
+g += label("rs-n3", f'Cùng mẫu 29, ba họ mô hình. Bản gốc tô vách núi màu mây; cắm SCSA: trời kem, vách núi {acc("xanh")}, dãy xa hồng.', 1310, 300, 418, 36, INK, weight=600)
+g += '</div>'
+m += g
 m += line("rs-src", "Ảnh: Fig. 2 trong repo của tác giả (github.com/scn-00/SCSA).", 880, 30, weight=500, color=INK2)
-js = [WORDS(f"{sid}-tw", 0.1), HIDE("#rs-g1"), HIDE("#rs-g2")]
+m += line("rs-src3", "Mẫu 29, nhóm chạy lại: compare_style_transfer.ipynb.", 880, 30, weight=500, color=INK2)
+js = [WORDS(f"{sid}-tw", 0.1), HIDE("#rs-g1"), HIDE("#rs-g2"), HIDE("#rs-g3"), HIDE("#rs-src3")]
 js += [f'tl.fromTo("#rs-g0 .print",{{opacity:0,y:28}},{{opacity:1,y:0,duration:0.8,ease:"expo.out",stagger:0.1}},0.3);', BLUR("#rs-n0", 0.9), FADE("#rs-src", 1.0)]
-for e in (1, 2):
+for e in (1, 2, 3):
     t = 1.4 + (e - 1) * 1.4
     js += [T(f"#rs-g{e-1}", t, '{x:0,opacity:1,filter:"blur(0px)"}', '{x:-160,opacity:0,filter:"blur(6px)"}', 0.3, "power3.in"),
            T(f"#rs-g{e}", t + 0.2, '{x:200,opacity:0,filter:"blur(6px)"}', '{x:0,opacity:1,filter:"blur(0px)"}', 0.7, "expo.out")]
-S.append(dict(id=sid, label="Kết quả thật", dur=4.6, frags=[1.2, 2.6, 4.0], html=m, js="\n".join(js), title="Kết quả thật trên ba họ mô hình",
+js += [FADE("#rs-src", 4.2, 0.25, 1, 0), FADE("#rs-src3", 4.5)]
+S.append(dict(id=sid, label="Kết quả thật", dur=6.0, frags=[1.2, 2.6, 4.0, 5.4], html=m, js="\n".join(js), title="Kết quả thật trên ba họ mô hình",
   notes="Ba ví dụ lấy nguyên từ hình kết quả của paper. Mỗi hàng: ảnh nội dung, ảnh phong cách, backbone gốc, và backbone cộng SCSA. SANet: đúng cặp ảnh ta theo dõi cả buổi; vách núi chuyển từ màu trời sang màu núi. Bấm: StyTr2, ví dụ thác nước: bản gốc lấy màu loang lổ, bản SCSA giữ dòng thác trắng và đá tối. Bấm: StyleID, ví dụ chân dung: áo, mặt và nền lấy nét từ đúng vùng tương ứng trong tranh. Lưu ý: mình chỉ mô tả những gì thấy được trên ba ảnh này; con số tổng quát ở slide sau."))
 
 # ---------------- four metrics ----------------
@@ -63,7 +77,62 @@ for j in (1, 2, 3):
            T(f"#mt-g{j}", t + 0.15, '{opacity:0,filter:"blur(8px)"}', '{opacity:1,filter:"blur(0px)"}', 0.25, "power2.out")]
 js.append(BLUR("#mt-end", 3.4, 0.2))
 S.append(dict(id=sid, label="Bốn thước đo", dur=4.2, frags=[0.7, 1.5, 2.3, 3.1, 3.8], html=m, js="\n".join(js), title="Bốn thước đo, đọc trước khi xem số",
-  notes="Mỗi lần bấm một thước đo. SSL, Semantic Style Loss: cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi, bằng chữ ký màu kiểu Gatys. Thấp là tốt. Bấm: FID: cả tập kết quả có trông như tranh không, xét tổng thể, không quan tâm đúng vùng. Bấm: CFSD: kết quả còn giữ bố cục của ảnh gốc không. Bấm: người xem: 40 người, 1.200 phiếu, so từng cặp có và không có SCSA. Bấm: lưu ý quan trọng, SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD."))
+  notes="Mỗi lần bấm một thước đo. SSL, Semantic Style Loss: cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi, bằng μ và σ của đặc trưng, như loss style của AdaIN. Thấp là tốt. Bấm: FID: cả tập kết quả có trông như tranh không, xét tổng thể, không quan tâm đúng vùng. Bấm: CFSD: kết quả còn giữ bố cục của ảnh gốc không. Bấm: người xem: 40 người, 1.200 phiếu, so từng cặp có và không có SCSA. Bấm: lưu ý quan trọng, SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD."))
+
+# ---------------- what SSL measures ----------------
+# Paper §4.3 defines SSL only in words: AdaIN's style loss [19] (μ, σ of VGG features) computed per semantic
+# region, "similar to Eq. 8". The numbers below are an ILLUSTRATION, not the paper's: μ, σ of Lab colour
+# instead of VGG features, on the four outputs of the "gens" slide (cmp_*.jpg) against 29_paint.jpg, cut with
+# 29_sem.png / 29_paint_sem.png. Per region: ‖Δμ‖ + ‖Δσ‖; "cả ảnh" = the same on the whole image.
+sid = "sslx"
+SX = [("Gatys", 1.6, (11.4, 34.2, 8.5, 40.8)), ("AdaIN", 5.1, (16.0, 31.0, 9.0, 32.4)),
+      ("SANet", 5.4, (10.1, 25.1, 9.2, 40.6)), (f'SANet + {acc("SCSA")}', 6.7, (3.0, 5.3, 7.6, 5.1))]
+RY, RH = 652, 48
+LX, LW, RX, RW = 420, 340, 1228, 400
+m = title(sid, "SSL: chấm style theo từng cặp vùng", accent=("từng",))
+for i, (id_, f, x, cap) in enumerate((("sx-o", "cmp_scsa.jpg", 192, "kết quả"), ("sx-om", "29_sem.png", 362, "bản đồ nhãn"),
+                                      ("sx-sm", "29_paint_sem.png", 1316, "bản đồ nhãn"), ("sx-s", "29_paint.jpg", 1486, "tranh"))):
+    m += print_img(id_, IMG + f, x, 236, 130, mat=8) + label(f"{id_}-l", cap, x - 20, 392, 186, 28, INK2, "center", 500)
+for k in range(4):
+    x, y = 584 + (k % 2) * 350, 248 + (k // 2) * 70
+    m += (f'<div id="sx-k{k}" style="position:absolute;left:{x}px;top:{y}px;width:336px;height:54px;background:#FFFFFF;border:3px solid {INK};'
+          f'display:flex;align-items:center;gap:12px;padding:0 14px;white-space:nowrap;font-size:28px;font-weight:700;color:{INK}">'
+          f'<span style="flex:none;width:22px;height:22px;background:{REG[k]}"></span>{REGN[k]} ↔ {REGN[k]}</div>')
+m += label("sx-kl", "mỗi cặp: so μ, σ của đặc trưng", 584, 392, 686, 28, INK2, "center", 500)
+m += eq("sx-f", f'SSL = Σ{v("", "vùng k")} Σ{v("", "lớp VGG")} ( ‖μ({v("O", "k")}) − μ({v("S", "k")})‖ + ‖σ({v("O", "k")}) − σ({v("S", "k")})‖ )', 446,
+        note=f'{v("O", "k")}, {v("S", "k")}: đặc trưng kết quả, tranh trong vùng k. Viết lại từ lời mô tả ở §4.3.', size=40, note_gap=58)
+m += label("sx-lt", "So cả ảnh", 192, 570, 640, 34, INK, weight=800)
+m += label("sx-ls", "μ, σ của cả bức, như loss style thường", 192, 612, 640, 28, INK2, weight=500)
+m += label("sx-rt", "So từng vùng rồi cộng: kiểu SSL", 1000, 570, 728, 34, INK, weight=800)
+m += label("sx-rs", " ".join(f'<span style="color:{REG[k]}">■</span> {REGN[k]}' for k in range(4)), 1000, 612, 728, 28, INK2, weight=500)
+LMAX, RMAX = max(s[1] for s in SX), max(sum(s[2]) for s in SX)
+for i, (n, g, reg) in enumerate(SX):
+    y = RY + i * RH; last = i == 3
+    for side, x0 in (("l", 192), ("r", 1000)):
+        m += label(f"sx-{side}n{i}", n, x0, y + 2, 226, 28, INK, weight=800 if last else 600)
+    wl = g / LMAX * LW
+    m += f'<div id="sx-lb{i}" style="position:absolute;left:{LX}px;top:{y}px;width:{wl:.0f}px;height:32px;background:{ACC if last else "#9AA1AC"}"></div>'
+    m += label(f"sx-lv{i}", vn(g, 1) + (" · tệ nhất" if last else ""), LX + wl + 12, y + 1, 300, 28, ACC if last else INK2, weight=700)
+    segs, tot = "", sum(reg)
+    for k, r in enumerate(reg):
+        segs += f'<div style="flex:none;width:{r / RMAX * RW:.1f}px;height:32px;background:{REG[k]};box-shadow:inset -2px 0 0 #FFFFFF"></div>'
+    m += f'<div id="sx-rb{i}" style="position:absolute;left:{RX}px;top:{y}px;height:32px;display:flex">{segs}</div>'
+    m += label(f"sx-rv{i}", vn(tot, 1) + (" · tốt nhất" if last else ""), RX + tot / RMAX * RW + 12, y + 1, 300, 28, INK if last else INK2, weight=800 if last else 700)
+m += line("sx-end", f'Lỗi tô nhầm vùng chỉ {acc("lộ")} ra khi so theo từng vùng.', 864, 40)
+m += line("sx-src", "Minh hoạ, không phải số của paper: μ, σ của màu Lab thay cho đặc trưng VGG, trên bốn ảnh ở slide 8.", 930, 28, weight=500, color=INK2)
+js = [WORDS(f"{sid}-tw", 0.1), PLACE("#sx-o", 0.3, 0.6), PLACE("#sx-om", 0.4, 0.6), PLACE("#sx-sm", 0.5, 0.6), PLACE("#sx-s", 0.6, 0.6)]
+js += [FADE(f"#sx-{p}-l", 0.8) for p in ("o", "om", "sm", "s")]
+js += [T(f"#sx-k{k}", 0.9 + 0.12 * k, '{opacity:0,y:16}', '{opacity:1,y:0}', 0.4, "expo.out") for k in range(4)] + [FADE("#sx-kl", 1.4)]
+js += [BLUR("#sx-f", 2.0, 0.25), FADE("#sx-f-n", 2.2)]
+js += [BLUR("#sx-lt", 3.0), FADE("#sx-ls", 3.1)]
+for i in range(4):
+    js += [FADE(f"#sx-ln{i}", 3.1 + 0.1 * i), GROW_X(f"#sx-lb{i}", 3.2 + 0.12 * i, 0.5), FADE(f"#sx-lv{i}", 3.5 + 0.12 * i)]
+js += [BLUR("#sx-rt", 4.5), FADE("#sx-rs", 4.6)]
+for i in range(4):
+    js += [FADE(f"#sx-rn{i}", 4.6 + 0.1 * i), WIPE(f"#sx-rb{i}", 4.7 + 0.12 * i, 0.6), FADE(f"#sx-rv{i}", 5.1 + 0.12 * i)]
+js += [BLUR("#sx-end", 6.0, 0.2), FADE("#sx-src", 6.1)]
+S.append(dict(id=sid, label="SSL đo gì", dur=6.8, frags=[1.8, 2.6, 4.2, 5.8, 6.5], html=m, js="\n".join(js), title="SSL: chấm style theo từng cặp vùng",
+  notes="(xem notes.py)"))
 
 # ---------------- SSL chart ----------------
 sid = "ssl"

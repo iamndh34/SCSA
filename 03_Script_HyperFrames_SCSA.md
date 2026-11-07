@@ -1,9 +1,9 @@
 # Script trình bày — bộ slide HyperFrames SCSA (bản 4)
 
-> Bộ slide: thư mục `scsa-deck/`, 45 slide, theme sáng. Thiết kế: `scsa-deck/SPEC.md`.
+> Bộ slide: thư mục `scsa-deck/`, 46 slide, theme sáng. Thiết kế: `scsa-deck/SPEC.md`.
 > Paper: SCSA, CVPR 2025 — arXiv 2503.04119 · Code: github.com/scn-00/SCSA
 > Cập nhật ngày 2026-10-31 theo khung *Seminar Guidelines* của giảng viên: năm chặng Giới thiệu → Bài toán và tổng quan → Chi tiết kỹ thuật → So sánh và thảo luận → Kết luận; thêm công thức (giữ ở mức dễ hiểu: thay số của ví dụ quen thuộc) và thuật toán. Đã rà soát nội dung, logic, hoạt hình toàn deck.
-> Tổng thời lượng gợi ý: **~107 phút** nói + 10–15 phút hỏi đáp. Cần rút ngắn: xem mục “Nếu thiếu thời gian”.
+> Tổng thời lượng gợi ý: **~110 phút** nói + 10–15 phút hỏi đáp. Cần rút ngắn: xem mục “Nếu thiếu thời gian”.
 
 ## Cấu trúc theo khung của giảng viên
 
@@ -15,10 +15,10 @@
 | Problem Statement & Overview | What challenges does it address? | 11 (Phát biểu bài toán), 17 (Lỗi 1: sai vùng), 18 (Lỗi 2 và 3), 19 (Ba lỗi, ba cách sửa) |
 | Technical Details | Model architecture or algorithm | 16 (Công thức attention), 22 (Sơ đồ toàn cảnh), 23 (SCA), 25 (S-AdaIN), 26 (SSA), 28 (Công thức SCA, SSA), 29 (Trộn hai nhánh), 30 (Thuật toán), 31 (Cắm vào backbone) |
 | Technical Details | Training process and innovations | 32 (Huấn luyện và điểm mới) |
-| Comparison & Discussion | Compare with similar models/methods | 8 (Bốn phương pháp, một cặp ảnh), 36 (Số liệu SSL), 37 (So với phương pháp khác), 38 (Ablation) |
-| Comparison & Discussion | Strengths and limitations | 39 (Điểm mạnh), 40 (Hạn chế) |
-| Conclusion | Key takeaways | 42 (Tóm tắt) |
-| Conclusion | Future directions | 43 (Hướng phát triển), 44 (Bước tiếp: StyleGallery) |
+| Comparison & Discussion | Compare with similar models/methods | 8 (Bốn phương pháp, một cặp ảnh), 35 (SSL đo gì), 37 (Số liệu SSL), 38 (So với phương pháp khác), 39 (Ablation) |
+| Comparison & Discussion | Strengths and limitations | 40 (Điểm mạnh), 41 (Hạn chế) |
+| Conclusion | Key takeaways | 43 (Tóm tắt) |
+| Conclusion | Future directions | 44 (Hướng phát triển), 45 (Bước tiếp: StyleGallery) |
 
 Mạch đi theo thứ tự của một bài báo khoa học: **động lực** (vì sao quan trọng) → **định nghĩa bài toán** → **cơ sở** (mô hình hiện nay làm thế nào) → **thách thức** (ba lỗi) → **phương pháp** (hình → công thức → thuật toán) → **thực nghiệm** (thiết lập → định tính → định lượng → so sánh → ablation) → **thảo luận** (mạnh, yếu) → **kết luận** (điều mang về, hướng tiếp).
 
@@ -49,7 +49,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 | 4 | Chặng 1 · Style transfer là gì, đã đi tới đâu? | 1 | 0,5 phút |  |
 | 5 | Style transfer: giữ bố cục, thay lớp áo | 4 | 2,5 phút | ảnh thật |
 | 6 | Vì sao quan trọng: style transfer dùng ở đâu | 4 | 2,5 phút | ví dụ ứng dụng có thật + ảnh thật từ paper |
-| 7 | Mười năm style transfer, năm bước | 6 | 3 phút |  |
+| 7 | Mười năm style transfer, sáu bước | 7 | 3 phút |  |
 | 8 | Cùng một cặp ảnh, bốn phương pháp | 6 | 3 phút | chạy thật: compare_style_transfer.ipynb |
 | 9 | Chặng 2 · Vì sao vách núi bị tô sai? | 1 | 0,5 phút |  |
 | 10 | Semantic: mỗi ảnh có thêm một bản đồ nhãn | 5 | 2,5 phút | bản đồ nhãn thật trong repo |
@@ -77,17 +77,18 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 | 32 | Huấn luyện thế nào, và điểm mới ở đâu | 3 | 2,5 phút | paper + repo |
 | 33 | Chặng 4 · Sửa được bao nhiêu, kém ở đâu? | 1 | 0,5 phút |  |
 | 34 | Bốn thước đo, đọc trước khi xem số | 5 | 2,5 phút |  |
-| 35 | Kết quả thật trên ba họ mô hình | 3 | 3 phút | ảnh thật từ paper |
-| 36 | Lỗi style theo vùng giảm 29–47% | 3 | 3 phút | số từ Table 1 |
-| 37 | So với năm phương pháp semantic chuyên biệt | 4 | 2,5 phút | số từ Table 1 |
-| 38 | Bỏ bớt một mảnh, lỗi tăng bao nhiêu? | 5 | 2,5 phút | số từ Fig. 6 và Appendix F |
-| 39 | Điểm mạnh: đúng vùng mà không phải train | 5 | 2 phút | số từ Table 1, Fig. 6 |
-| 40 | Những điều SCSA chưa giải quyết | 3 | 2,5 phút | tính minh hoạ trên ảnh mẫu |
-| 41 | Chặng 5 · Mang về gì, đi tiếp đâu? | 1 | 0,5 phút |  |
-| 42 | Chỉ lấy style từ vùng cùng nhãn | 3 | 2 phút |  |
-| 43 | Hướng phát triển: mỗi hạn chế một lối mở | 6 | 2,5 phút | proposal của nhóm |
-| 44 | Bước tiếp: StyleGallery bỏ bản đồ nhãn | 4 | 2,5 phút | arXiv 2603.10354 (CVPR 2026), Fig. 1(b) |
-| 45 | SCSA | 1 | 1 phút | kết quả thật từ paper |
+| 35 | SSL: chấm style theo từng cặp vùng | 5 | 3 phút | minh hoạ: tính trên bốn ảnh của slide 8 |
+| 36 | Kết quả thật trên ba họ mô hình | 4 | 3,5 phút | ảnh thật từ paper; mẫu 29 nhóm chạy lại |
+| 37 | Lỗi style theo vùng giảm 29–47% | 3 | 3 phút | số từ Table 1 |
+| 38 | So với năm phương pháp semantic chuyên biệt | 4 | 2,5 phút | số từ Table 1 |
+| 39 | Bỏ bớt một mảnh, lỗi tăng bao nhiêu? | 5 | 2,5 phút | số từ Fig. 6 và Appendix F |
+| 40 | Điểm mạnh: đúng vùng mà không phải train | 5 | 2 phút | số từ Table 1, Fig. 6 |
+| 41 | Những điều SCSA chưa giải quyết | 3 | 2,5 phút | tính minh hoạ trên ảnh mẫu |
+| 42 | Chặng 5 · Mang về gì, đi tiếp đâu? | 1 | 0,5 phút |  |
+| 43 | Chỉ lấy style từ vùng cùng nhãn | 3 | 2 phút |  |
+| 44 | Hướng phát triển: mỗi hạn chế một lối mở | 6 | 2,5 phút | proposal của nhóm |
+| 45 | Bước tiếp: StyleGallery bỏ bản đồ nhãn | 4 | 2,5 phút | arXiv 2603.10354 (CVPR 2026), Fig. 1(b) |
+| 46 | SCSA | 1 | 1 phút | kết quả thật từ paper |
 
 
 ## Mở đầu (slide 1–3, ~4,5 phút)
@@ -153,18 +154,19 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 2 · Lỗi sai vùng:** Và đây là lý do chủ đề quan trọng: kết quả SANet ta vừa thấy, vách núi mang màu trời. Trong bất kỳ sản phẩm nào ở trên, ảnh này không dùng được.
 - **Bấm 3 · Đúng vùng:** Mọi ứng dụng đều cần một điều: trời ra trời, núi ra núi. Đó chính là thứ SCSA giải quyết. Dẫn: Người ta đã làm việc này mười năm; xem họ đi tới đâu.
 
-### Slide 7 · Mười năm style transfer, năm bước
+### Slide 7 · Mười năm style transfer, sáu bước
 
-**Số bước:** 6 · **Thời lượng:** 3 phút
+**Số bước:** 7 · **Thời lượng:** 3 phút
 
 **Nói:**
 
-- **2016 · Gatys:** Chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống màu tranh. Đẹp nhưng chậm, mỗi ảnh vài phút.
-- **Bấm 1 · 2017 · AdaIN:** Một mạng cho mọi tranh, khớp tông cả ảnh. Nhanh nhưng thô. Sẽ gặp lại ở chặng 2.
-- **Bấm 2 · 2019–22 · SANet, StyTr2:** Attention: mỗi điểm của ảnh tự đi tìm style.
-- **Bấm 3 · 2024 · StyleID:** Attention bên trong Stable Diffusion.
-- **Bấm 4 · 2025 · SCSA:** Attention biết nhãn vùng.
-- **Bấm 5 · Khung magenta:** Ba mô hình trong khung là chỗ SCSA cắm vào, nhưng từng cái một: SCSA gắn vào SANet thì ra SANet cộng SCSA, gắn vào StyTr2 thì ra StyTr2 cộng SCSA, tương tự StyleID. Không phải ghép cả ba thành một. SCSA không thay các mô hình này, nó chỉ thay khối attention bên trong. Dẫn: Nói suông khó thấy, nên nhóm chạy thử chính các phương pháp này trên cặp ảnh của ta.
+- **2016 · Gatys:** Chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống màu tranh. Đẹp nhưng chậm, mỗi ảnh vài phút. Dưới mỗi mốc là ảnh nhóm chạy lại bằng chính phương pháp đó trên cặp ảnh của ta. Mốc SCSA là SANet cộng SCSA, ví dụ chính của buổi.
+- **Bấm 1 · 2017 · AdaIN:** Một mạng cho mọi tranh, khớp tông cả ảnh. Nhanh nhưng thô. Sẽ gặp lại ở chặng 3.
+- **Bấm 2 · 2019 · SANet:** Attention: mỗi điểm của ảnh tự đi tìm điểm giống nó trong tranh để lấy style.
+- **Bấm 3 · 2022 · StyTr2:** Cùng ý attention, nhưng làm bằng transformer: ảnh và tranh cắt thành patch, decoder cho mỗi patch của ảnh đi tìm patch giống nó trong tranh.
+- **Bấm 4 · 2024 · StyleID:** Attention bên trong Stable Diffusion.
+- **Bấm 5 · 2025 · SCSA:** Attention biết nhãn vùng.
+- **Bấm 6 · Khung magenta:** Ba mô hình trong khung là chỗ SCSA cắm vào, nhưng từng cái một: SCSA gắn vào SANet thì ra SANet cộng SCSA, gắn vào StyTr2 thì ra StyTr2 cộng SCSA, tương tự StyleID. Không phải ghép cả ba thành một. SCSA không thay các mô hình này, nó chỉ thay khối attention bên trong. Dẫn: Ảnh nhỏ khó thấy; phóng to bốn kết quả trên cùng cặp ảnh để so.
 
 ### Slide 8 · Cùng một cặp ảnh, bốn phương pháp
 
@@ -452,7 +454,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 1 · Điểm mới:** Năm điểm mới. SCA: hỏi bằng bản đồ nhãn nên cả vùng chung một tông. SSA: chỉ giữ top-1 trong cùng vùng nên giữ nguyên nét cọ. S-AdaIN: đổi tông theo từng vùng trước khi so. Cắm được: một khối dùng cho cả CNN, Transformer và Diffusion. Và SSL: một thước đo style theo từng vùng.
 - **Bấm 2 · Chốt:** Cái mới nằm ở luật cấm theo nhãn, không nằm ở trọng số. Vì vậy nó rẻ để thử trên mô hình có sẵn. Dẫn: Chặng 4: sửa được bao nhiêu.
 
-## Chặng 4 · So sánh và thảo luận (slide 33–40, ~18,5 phút)
+## Chặng 4 · So sánh và thảo luận (slide 33–41, ~22 phút)
 
 > Khung giảng viên: *Compare with similar models/methods; strengths and limitations*
 
@@ -470,23 +472,36 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 
 **Nói:**
 
-- **SSL:** Bốn thước đo, mỗi lần bấm một cái. SSL (Semantic Style Loss): cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi. Thấp là tốt.
+- **SSL:** Bốn thước đo, mỗi lần bấm một cái. SSL (Semantic Style Loss): cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi. Thấp là tốt. Slide sau nói kỹ.
 - **Bấm 1 · FID:** Cả tập kết quả có trông như tranh không, xét tổng thể. Thấp là tốt.
 - **Bấm 2 · CFSD:** Kết quả còn giữ bố cục của ảnh gốc không. Thấp là tốt.
 - **Bấm 3 · Người xem:** 40 người, mỗi người 30 câu, tổng 1.200 phiếu: một nửa so bản có và không có SCSA, một nửa so với năm phương pháp khác. Cao là tốt.
-- **Bấm 4 · Lưu ý:** SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD. Dẫn: Xem ảnh trước, số sau.
+- **Bấm 4 · Lưu ý:** SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD. Dẫn: SSL là thước đo chính; xem nó đo cụ thể thế nào.
 
-### Slide 35 · Kết quả thật trên ba họ mô hình
+### Slide 35 · SSL: chấm style theo từng cặp vùng
 
-**Số bước:** 3 · **Thời lượng:** 3 phút · **Nguồn:** ảnh thật từ paper
+**Số bước:** 5 · **Thời lượng:** 3 phút · **Nguồn:** minh hoạ: tính trên bốn ảnh của slide 8
+
+**Nói:**
+
+- **Ý tưởng:** SSL là thước đo chính của paper, nên nói kỹ một chút. Ý tưởng: không so cả bức, mà cắt kết quả và tranh theo bản đồ nhãn, rồi so từng cặp vùng cùng nhãn: trời với trời, vách núi với vách núi, rừng với rừng, dãy xa với dãy xa. Mỗi cặp so hai con số thống kê của đặc trưng: trung bình μ, tức tông, và độ lệch chuẩn σ, tức độ đậm nhạt của nét.
+- **Bấm 1 · Công thức:** Viết thành công thức: cộng qua các vùng, cộng qua các lớp VGG, khoảng cách μ cộng khoảng cách σ. Đây chính là loss style của AdaIN mà ta đã gặp, chỉ khác là tính riêng trong từng vùng. Lưu ý: paper chỉ mô tả SSL bằng lời ở mục 4.3, không ghi lớp VGG nào và cộng thế nào; công thức trên bảng là mình viết lại từ mô tả đó.
+- **Bấm 2 · Cả ảnh:** Vì sao phải theo vùng? Mình thử minh hoạ trên bốn ảnh của slide Bốn phương pháp, dùng màu thay cho đặc trưng VGG, nên đây không phải số của paper. Nếu so cả bức như loss style thường, SANet cộng SCSA lại tệ nhất, 6,7, còn Gatys tốt nhất, 1,6. Lý do: so cả ảnh chỉ hỏi tổng lượng màu có giống tranh không. Tô màu trời lên vách núi vẫn có thể giữ tổng lượng màu đúng. Paper nêu thêm một lý do: vùng to nhỏ khác nhau giữa ảnh và tranh làm lệch phép so toàn cục.
+- **Bấm 3 · Từng vùng:** So từng vùng rồi cộng, thứ hạng đảo ngược: SCSA 21, ba cách kia 85 đến 95. Nhìn màu trong thanh: phần lớn lỗi của ba cách đầu nằm ở vách núi, màu vàng, và dãy xa, màu xanh dương, đúng những chỗ ta thấy tô nhầm.
+- **Bấm 4 · Chốt:** Lỗi tô nhầm vùng chỉ lộ ra khi so theo từng vùng; đó là lý do tác giả đặt ra SSL. Mặt trái: SSL dùng chính bản đồ nhãn mà SCSA dùng, nên nó đo đúng điều SCSA tối ưu. Vì vậy khi đọc số, luôn nhìn kèm FID và CFSD. Dẫn: Hiểu SSL rồi; xem ảnh kết quả trước, số sau.
+
+### Slide 36 · Kết quả thật trên ba họ mô hình
+
+**Số bước:** 4 · **Thời lượng:** 3,5 phút · **Nguồn:** ảnh thật từ paper; mẫu 29 nhóm chạy lại (compare_style_transfer.ipynb)
 
 **Nói:**
 
 - **SANet:** Ba ví dụ lấy nguyên từ hình kết quả của paper. Mỗi hàng: ảnh nội dung, ảnh phong cách, mô hình gốc, mô hình cộng SCSA. Hàng đầu là cặp ảnh ta theo dõi cả buổi: vách núi từ màu trời sang màu núi.
 - **Bấm 1 · StyTr2:** Ví dụ thác nước: bản gốc màu loang lổ, bản SCSA giữ dòng thác trắng và đá tối.
-- **Bấm 2 · StyleID:** Ví dụ chân dung: áo, mặt, nền lấy nét từ đúng vùng tương ứng trong tranh. Mình chỉ mô tả những gì thấy trên ba ảnh; số tổng quát ở slide sau. Dẫn: Giờ đến số.
+- **Bấm 2 · StyleID:** Ví dụ chân dung: áo, mặt, nền lấy nét từ đúng vùng tương ứng trong tranh.
+- **Bấm 3 · Mẫu 29:** Để so cho công bằng, nhóm chạy lại cả ba họ mô hình trên đúng cặp ảnh của ta, bằng notebook so sánh. Hàng trên là mô hình gốc: SANet, StyTr2, StyleID đều tô vách núi màu mây. Hàng dưới là cắm SCSA vào từng mô hình, mỗi lần một: trời kem, vách núi xanh, dãy xa hồng, cả ba giống nhau. Mình chỉ mô tả những gì thấy trên ảnh; số tổng quát ở slide sau. Dẫn: Giờ đến số.
 
-### Slide 36 · Lỗi style theo vùng giảm 29–47%
+### Slide 37 · Lỗi style theo vùng giảm 29–47%
 
 **Số bước:** 3 · **Thời lượng:** 3 phút · **Nguồn:** số từ Table 1
 
@@ -496,7 +511,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 1 · Cộng SCSA:** Cột đen là cộng SCSA: 0,88; 1,22; 1,24. Lỗi style theo vùng giảm 47, 38 và 29%. SANet cộng SCSA còn tốt hơn cả năm phương pháp semantic chuyên biệt.
 - **Bấm 2 · Thước đo khác:** FID tốt hơn nhẹ ở cả ba. CFSD: riêng StyleID cộng SCSA giữ bố cục kém hơn, 0,092 lên 0,118; đó là cái giá. Với SANet và StyTr2, CFSD còn tốt hơn: 0,110 xuống 0,087 và 0,075 xuống 0,071. Người xem chọn bản SCSA 83, 84 và 78%. Số từ Table 1, trên 91 bộ do tác giả tự tuyển. Dẫn: So với các phương pháp semantic chuyên biệt thì sao?
 
-### Slide 37 · So với năm phương pháp semantic chuyên biệt
+### Slide 38 · So với năm phương pháp semantic chuyên biệt
 
 **Số bước:** 4 · **Thời lượng:** 2,5 phút · **Nguồn:** số từ Table 1
 
@@ -507,7 +522,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 2 · GLStyleNet:** GLStyleNet có SSL thứ hai, nhưng CFSD 0,399, gấp khoảng bốn lần các phương pháp khác: style đúng vùng nhưng bố cục bị vỡ. Vì vậy phải đọc nhiều thước đo cùng lúc.
 - **Bấm 3 · STROTSS:** STROTSS tối ưu lại cho từng ảnh nên chậm; SANet cộng SCSA chỉ chạy một lượt qua mạng mà vẫn đứng đầu SSL. Lưu ý: phần chọn của người xem trong Table 1 đến từ hai thí nghiệm khác nhau, nên mình không so chéo số đó ở đây. Dẫn: Mỗi khối góp bao nhiêu? Bỏ từng khối ra thử.
 
-### Slide 38 · Bỏ bớt một mảnh, lỗi tăng bao nhiêu?
+### Slide 39 · Bỏ bớt một mảnh, lỗi tăng bao nhiêu?
 
 **Số bước:** 5 · **Thời lượng:** 2,5 phút · **Nguồn:** số từ Fig. 6 và Appendix F
 
@@ -519,7 +534,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 3 · Bỏ SCA:** 2,30, gần gấp đôi: lệch màu giữa các vùng.
 - **Bấm 4 · Chốt:** SCA lo tông chung, SSA lo nét cọ; thiếu khối nào, SSL cũng tăng. Nhưng có đánh đổi: bỏ SSA hoặc S-AdaIN lại giữ bố cục (CFSD) tốt hơn chút, và trên SANet, bỏ S-AdaIN gần như không đổi SSL (0,876 so với 0,877). Dẫn: Gom lại thành điểm mạnh.
 
-### Slide 39 · Điểm mạnh: đúng vùng mà không phải train
+### Slide 40 · Điểm mạnh: đúng vùng mà không phải train
 
 **Số bước:** 5 · **Thời lượng:** 2 phút · **Nguồn:** số từ Table 1, Fig. 6
 
@@ -531,7 +546,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 3 · Người xem:** Bốn: người xem đồng ý, chọn bản có SCSA trong 78 đến 84% số cặp.
 - **Bấm 4 · Dễ giải thích:** Năm: dễ giải thích. Nhìn ma trận attention là biết mỗi điểm lấy style từ đâu, như ba ma trận ở chặng 3. Slide sau là mặt còn lại: hạn chế. Dẫn: Và những gì SCSA chưa làm được.
 
-### Slide 40 · Những điều SCSA chưa giải quyết
+### Slide 41 · Những điều SCSA chưa giải quyết
 
 **Số bước:** 3 · **Thời lượng:** 2,5 phút · **Nguồn:** tính minh hoạ trên ảnh mẫu
 
@@ -541,11 +556,11 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 1 · Dùng lại mảnh:** Hai: SSA chỉ lấy một điểm nên một mảnh tranh có thể bị dùng lại nhiều lần. Lưới ở giữa là kết quả SSA trên lưới minh hoạ, mỗi ô một mảnh tranh; một mảnh bị dùng 19 lần (khung magenta). Ở độ phân giải thật, điều này có thể gây lặp texture; paper chưa đo.
 - **Bấm 2 · Bốn điều thảo luận:** Chỉ 91 bộ tự tuyển. SSL do tác giả tự đặt. Chậm và tốn bộ nhớ hơn. Vùng của ảnh không có vùng cùng nhãn bên tranh thì cả hàng bị cấm, paper không nói xử lý thế nào. Thêm một cái giá thấy trong số liệu: StyleID cộng SCSA giữ bố cục kém hơn, CFSD 0,092 lên 0,118. Mỗi điều là một hướng phát triển, mình quay lại ở chặng cuối. Dẫn: Chặng 5: mang về gì.
 
-## Chặng 5 · Kết luận (slide 41–45, ~8,5 phút)
+## Chặng 5 · Kết luận (slide 42–46, ~8,5 phút)
 
 > Khung giảng viên: *Key takeaways; future directions*
 
-### Slide 41 · Chặng 5 · Mang về gì, đi tiếp đâu?
+### Slide 42 · Chặng 5 · Mang về gì, đi tiếp đâu?
 
 **Số bước:** 1 · **Thời lượng:** 0,5 phút
 
@@ -553,7 +568,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 
 - **Mở chặng:** Câu trả lời của chặng 4: lỗi theo vùng giảm 29 đến 47 phần trăm, không train lại; đổi lại cần bản đồ nhãn và chạy chậm hơn. Chặng 5: mang về gì, và đi tiếp đâu. Dẫn: Một câu cần nhớ.
 
-### Slide 42 · Chỉ lấy style từ vùng cùng nhãn
+### Slide 43 · Chỉ lấy style từ vùng cùng nhãn
 
 **Số bước:** 3 · **Thời lượng:** 2 phút
 
@@ -563,7 +578,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 1 · Trước và sau:** Đây là câu trả lời cho câu hỏi đầu buổi: SANet tô vách núi bằng màu vùng khác vì attention không biết nhãn vùng; SCSA cấm điều đó.
 - **Bấm 2 · Bên trong:** SCA lấy tông chung của cả vùng, SSA giữ nét cọ của một điểm. Không train lại; lỗi style theo vùng giảm 29–47%. Nếu chỉ nhớ một hình: ba ma trận attention ở chặng 3. Dẫn: Từ các hạn chế, mở ra hướng đi tiếp.
 
-### Slide 43 · Hướng phát triển: mỗi hạn chế một lối mở
+### Slide 44 · Hướng phát triển: mỗi hạn chế một lối mở
 
 **Số bước:** 6 · **Thời lượng:** 2,5 phút · **Nguồn:** proposal của nhóm
 
@@ -576,7 +591,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 4 · Đánh giá:** Năm: mới đánh giá trên 91 bộ với thước đo tự đặt. Hướng: benchmark lớn MS-COCO nhân WikiArt, đo bằng thước độc lập như ArtFID, LPIPS, CLIP.
 - **Bấm 5 · Proposal:** Bốn hướng đầu chính là bốn module trong proposal của nhóm. Dẫn: Hướng thứ nhất đã có người làm: StyleGallery.
 
-### Slide 44 · Bước tiếp: StyleGallery bỏ bản đồ nhãn
+### Slide 45 · Bước tiếp: StyleGallery bỏ bản đồ nhãn
 
 **Số bước:** 4 · **Thời lượng:** 2,5 phút · **Nguồn:** He et al., StyleGallery, CVPR 2026 (arXiv 2603.10354): abstract, mục 3.3–3.5, 4.1, 4.2 (Fig. 7 so với SCSA), 4.4, 5; hình là Fig. 1(b) của paper
 
@@ -587,7 +602,7 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 - **Bấm 2 · Ba bước:** Một: tự chia vùng, gom cụm K-means trên đặc trưng của Stable Diffusion 1.5, sau đó gộp và tách cụm cho gọn. Hai: ghép vùng, so độ giống từng cặp cụm bằng thống kê đặc trưng, đặc trưng ngữ nghĩa DINOv2 và vị trí, với nhiều tranh cùng lúc. Ba: tô theo vùng, dùng một loss style theo từng cặp cụm và một loss giữ bố cục để dẫn quá trình lấy mẫu của diffusion. Không train gì cả, giống SCSA. Có thể nói: luật “chỉ lấy style từ vùng cùng nhãn” vẫn còn, chỉ là nhãn giờ do máy tự tìm.
 - **Bấm 3 · Cái giá:** Đổi lại: khoảng 30 giây mỗi ảnh trên RTX 4090 vì phải tối ưu 150 bước, paper nói ghép thêm mô hình lấy mẫu nhanh thì còn khoảng 8 giây, 28 bước. Và chính tác giả ghi hạn chế: cụm sai thì ảnh bị tô vỡ từng phần; khi đó có thể đưa map tay hoặc SAM vào làm map ban đầu. Paper chỉ so với SCSA bằng hình (Fig. 7, dùng kết quả có sẵn trong repo SCSA), không có bảng số, nên mình không kết luận bên nào tốt hơn về số liệu. Dẫn: Hết phần trình bày.
 
-### Slide 45 · SCSA
+### Slide 46 · SCSA
 
 **Số bước:** 1 · **Thời lượng:** 1 phút · **Nguồn:** kết quả thật từ paper
 
@@ -597,11 +612,11 @@ Cấu trúc: một mạch hỏi → đáp. Câu hỏi mở màn (vì sao vách n
 
 ## Nếu thiếu thời gian
 
-Bản đầy đủ ~107 phút.
+Bản đầy đủ ~110 phút.
 
 - **Bớt ~12 phút:** bỏ 7 (Mười năm), 14 (Softmax), 25 (S-AdaIN), 29 (Trộn hai nhánh).
-- **Bớt thêm ~24 phút:** bỏ 12 (Lưới điểm), 13 (Attention), 15 (Universal Attention), 17 (Lỗi 1: sai vùng), 18 (Lỗi 2 và 3), 27 (Ba ma trận), 35 (Kết quả thật), 38 (Ablation). Khi bỏ slide softmax thì nói lướt ý “softmax không nhìn nhãn” ở slide công thức attention.
-- **Không bỏ** (mục giảng viên yêu cầu): 6 (Vì sao quan trọng), 11 (Phát biểu bài toán), 16 (Công thức attention), 28 (Công thức SCA, SSA), 30 (Thuật toán), 32 (Huấn luyện và điểm mới), 37 (So với phương pháp khác), 39 (Điểm mạnh), 40 (Hạn chế), 42 (Tóm tắt), 43 (Hướng phát triển).
+- **Bớt thêm ~24 phút:** bỏ 12 (Lưới điểm), 13 (Attention), 15 (Universal Attention), 17 (Lỗi 1: sai vùng), 18 (Lỗi 2 và 3), 27 (Ba ma trận), 36 (Kết quả thật), 39 (Ablation). Khi bỏ slide softmax thì nói lướt ý “softmax không nhìn nhãn” ở slide công thức attention.
+- **Không bỏ** (mục giảng viên yêu cầu): 6 (Vì sao quan trọng), 11 (Phát biểu bài toán), 16 (Công thức attention), 28 (Công thức SCA, SSA), 30 (Thuật toán), 32 (Huấn luyện và điểm mới), 38 (So với phương pháp khác), 40 (Điểm mạnh), 41 (Hạn chế), 43 (Tóm tắt), 44 (Hướng phát triển).
 
 ## Câu hỏi thường gặp
 

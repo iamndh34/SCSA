@@ -12,7 +12,7 @@ ORDER = ["cover", "hook", "roadmap",
          "ch1", "st", "apps", "history", "gens",
          "ch2", "maps", "task", "grid", "attn", "softmax", "ua", "uaf", "err1", "err23", "fixmap", "minute",
          "ch3", "pipe", "sca", "adain", "sadain", "ssa", "matrices", "maskf", "mix", "algo", "plug", "train",
-         "ch4", "metrics", "results", "ssl", "compare", "ablation", "strengths", "limits",
+         "ch4", "metrics", "sslx", "results", "ssl", "compare", "ablation", "strengths", "limits",
          "ch5", "summary", "future", "next", "end"]
 SL = [by[i] for i in ORDER]
 from settle import settle

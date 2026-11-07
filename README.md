@@ -110,7 +110,7 @@ Với StyleID, Q/K của SCA không lấy thuần từ semantic map mà trộn v
 
 **Thiết lập:** 91 bộ dữ liệu do tác giả tự tuyển, semantic map dựng tay. Có bốn metric:
 
-- **SSL** (Semantic Style Loss, ↓): style loss Gram tính theo từng vùng, do tác giả đề xuất.
+- **SSL** (Semantic Style Loss, ↓): style loss của AdaIN (so μ, σ của đặc trưng VGG) tính theo từng vùng cùng nhãn, do tác giả đề xuất. Paper (§4.3) chỉ mô tả bằng lời, không ghi công thức.
 - **FID** (↓): mức khớp style tổng thể.
 - **CFSD** (↓): mức giữ nội dung.
 - **Pref.** (↑): user study với 1.200 phiếu.

@@ -72,3 +72,13 @@
 - `pipe`: sơ đồ ghi rõ là SANet, thêm hai bước đổi dòng phụ sang StyTr2, StyleID (khung encoder/decoder chuyển magenta = phần đổi theo mô hình). `plug`: vẽ lại thành ba cột kiến trúc riêng (SANet: encoder VGG / StyTr2: transformer encoder, SCSA ở lớp chẵn của transformer decoder / StyleID: DDIM inversion, SCSA ở self-attention U-Net, VAE decoder), theo README §4 và Appendix C. Câu chữ nói rõ SCSA cắm vào từng mô hình một, không phải cả ba cùng lúc.
 - Hết khựng: trình chiếu dừng đúng tại điểm fragment, nên hoạt hình còn chạy qua điểm đó bị đóng băng (slide lưới điểm dừng khi các hàng dưới đang trượt). `_build/settle.py` (gọi trong build.py) đẩy mỗi điểm dừng ra sau khi mọi tween bắt đầu trước nó đã xong về mặt thị giác (tính theo ease), và báo nếu đụng tween của bước sau. Sửa tay: grid (stagger nhanh hơn), maps, fixmap, chấm chạy trên dây ở pipe (bỏ repeat). Còn một báo động giả ở `results` (bộ đếm stagger), slide thực tế không khựng.
 - Script .md dựng lại theo thứ tự mới (bảng tổng quan, đánh số, khung giảng viên, mục thiếu thời gian). `npm run check` 0 lỗi; export bấm qua 45/45, 0 lỗi JS.
+
+## Bản 5.1 (2026-11-07)
+
+- Slide mới `sslx` "SSL: chấm style theo từng cặp vùng" (sau "Bốn thước đo"). Paper §4.3 chỉ mô tả SSL bằng lời: loss style của AdaIN [19] (μ, σ đặc trưng VGG) tính theo từng vùng, "similar to Eq. 8"; không ghi lớp, cách cộng; repo chính thức không có code đo SSL. Công thức trên slide ghi "viết lại từ lời mô tả ở §4.3".
+- Minh hoạ trên slide: μ, σ màu Lab trên 4 ảnh `cmp_*.jpg` so với tranh, cắt theo 29_sem / 29_paint_sem. Cả ảnh: Gatys 1,6 · AdaIN 5,1 · SANet 5,4 · SCSA 6,7 (SCSA tệ nhất). Từng vùng: 94,9 · 88,4 · 85,1 · 21,0 (SCSA tốt nhất).
+- Slide "Mười năm": thêm ảnh kết quả dưới mỗi mốc (cmp_* mẫu 29; StyleID dùng ex3_styleid.png từ paper vì notebook không chạy StyleID).
+- Sửa: notes metrics "chữ ký màu kiểu Gatys" → μ, σ kiểu AdaIN; README/outline "Gram" → AdaIN μ, σ. Deck 46 slide, ~110 phút.
+- Slide "Mười năm": ảnh StyleID nay là `cmp_styleid.jpg` (chạy thật trên mẫu 29, `styleid_nst.py`). Slide vẫn lấy SANet + SCSA làm ví dụ chính (theo yêu cầu người dùng); StyleID + SCSA chỉ có trong notebook.
+- Slide "Kết quả thật" thêm bước 4: lưới 2 × 3 trên mẫu 29 (gốc / + SCSA × SANet, StyTr2, StyleID), ảnh từ compare_style_transfer.ipynb (`cmp_stytr2*.jpg`, `cmp_styleid*.jpg`). Ba bước đầu vẫn là ví dụ của paper; SANet + SCSA vẫn là ví dụ chính ở các slide khác.
+- Slide "Mười năm" tách mốc "2019–22 SANet, StyTr2" thành hai mốc 2019 SANet và 2022 StyTr2, mỗi mốc một ảnh mẫu 29 (`cmp_stytr2.jpg`); tiêu đề thành "sáu bước", 7 bước bấm.

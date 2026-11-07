@@ -1,0 +1,19 @@
+# ── Trọng số lớn: tải lại được, không commit ─────────────────────────
+# Stable Diffusion v1.4 (~2 GB) cho styleid_nst.py
+weights/sd-v1-4/
+# StyTr2 (transformer 127 MB > giới hạn 100 MB của GitHub)
+weights/stytr2/
+
+# ── Python ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+
+# ── macOS ────────────────────────────────────────────────────────────
+.DS_Store
+
+# ── HyperFrames: báo cáo `npm run check` và khoá tạm, sinh lại mỗi lần chạy
+scsa-deck/.hyperframes/artifacts/
+scsa-deck/.hyperframes/video-state-lock
+node_modules/

@@ -167,7 +167,7 @@ Câu hỏi kiểm tra hiểu bài: vì sao ở StyleID không lấy Q1/K1 thuầ
 - **Lưu ý cho nhóm:** paper **không** dùng một benchmark chuẩn MS-COCO × WikiArt. Định hướng "content MS-COCO, style WikiArt" của nhóm là một mở rộng — xem proposal.
 - **Baseline:** SANet, StyTr2, StyleID (có/không SCSA) + 5 phương pháp semantic style transfer: STROTSS, MAST, TR, DIA, GLStyleNet.
 - **Metric:**
-    - **SSL** (Semantic Style Loss, ↓): style loss Gram tính **theo từng vùng** — do tác giả đề xuất vì style loss toàn cục không phù hợp.
+    - **SSL** (Semantic Style Loss, ↓): style loss của AdaIN (μ, σ của đặc trưng VGG) tính **theo từng vùng** — do tác giả đề xuất vì style loss toàn cục không phù hợp.
     - **FID** (↓): độ trung thành style tổng thể giữa ảnh kết quả và ảnh style (theo cách của StyleID).
     - **CFSD** (Content Feature Structural Distance, ↓): giữ nội dung (theo StyleID).
     - **Pref.** (↑): user study, 40 người × 30 câu = 1.200 phiếu.

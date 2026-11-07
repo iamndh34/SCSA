@@ -24,28 +24,35 @@ S.append(dict(id=sid, label="Style transfer là gì", dur=4.6, frags=[0.9, 1.8, 
 
 # ---------------- ten years ----------------
 sid = "history"
-CX = [345, 652, 960, 1267, 1574]
+CX = [330, 578, 826, 1074, 1322, 1570]
 stops = [("2016", "Gatys", "Tối ưu từng ảnh. Đẹp, nhưng chậm."), ("2017", "AdaIN", "Khớp tông cả ảnh. Nhanh, nhưng thô."),
-         ("2019–22", "SANet, StyTr2", "Attention: mỗi điểm tự đi tìm style."), ("2024", "StyleID", "Attention bên trong Stable Diffusion."),
+         ("2019", "SANet", "Attention: mỗi điểm tự đi tìm style."), ("2022", "StyTr2", "Attention bằng transformer."),
+         ("2024", "StyleID", "Attention trong Stable Diffusion."),
          ("2025", "SCSA", "Attention biết nhãn vùng.")]
-m = title(sid, "Mười năm style transfer, năm bước") + svg(f'<path id="history-rl" d="M240 470 L1680 470" stroke="#C9CDD3" stroke-width="6" stroke-linecap="round" fill="none"/>'
-      + f'<rect id="history-br" x="800" y="352" width="628" height="360" rx="28" fill="none" stroke="{ACC}" stroke-width="5" stroke-dasharray="16 12"/>')
+HIMG = [("cmp_gatys.jpg", "mẫu 29"), ("cmp_adain.jpg", "mẫu 29"), ("cmp_sanet.jpg", "mẫu 29"), ("cmp_stytr2.jpg", "mẫu 29"),
+        ("cmp_styleid.jpg", "mẫu 29"), ("cmp_scsa.jpg", "SANet + SCSA")]
+HY, HW = 548, 192  # result prints under each stop
+m = title(sid, "Mười năm style transfer, sáu bước") + svg(f'<path id="history-rl" d="M240 320 L1680 320" stroke="#C9CDD3" stroke-width="6" stroke-linecap="round" fill="none"/>'
+      + f'<rect id="history-br" x="702" y="208" width="744" height="616" rx="28" fill="none" stroke="{ACC}" stroke-width="5" stroke-dasharray="16 12"/>')
 for i, (x, (y_, n, d)) in enumerate(zip(CX, stops)):
-    last = i == 4
-    m += f'<div id="history-d{i}" style="position:absolute;left:{x-18}px;top:452px;width:36px;height:36px;border-radius:50%;background:{ACC if last else INK}"></div>'
-    m += label(f"history-y{i}", y_, x - 150, 378, 300, 44, ACC if last else INK, "center", 800)
-    m += label(f"history-n{i}", n, x - 150, 510, 300, 36, INK, "center", 700)
-    m += label(f"history-t{i}", d, x - 145, 560, 290, 32, INK2, "center", 500)
-m += f'<div id="history-ring" style="position:absolute;left:{CX[0]-38}px;top:432px;width:76px;height:76px;border-radius:50%;border:6px solid {INK}"></div>'
-m += line("history-end", f'SCSA là {acc("mảnh")} {acc("ghép")} cắm vào từng mô hình trong khung, mỗi lần một.', 790, 40)
+    last = i == 5
+    m += f'<div id="history-d{i}" style="position:absolute;left:{x-18}px;top:302px;width:36px;height:36px;border-radius:50%;background:{ACC if last else INK}"></div>'
+    m += label(f"history-y{i}", y_, x - 124, 228, 248, 44, ACC if last else INK, "center", 800)
+    m += label(f"history-n{i}", n, x - 124, 360, 248, 36, INK, "center", 700)
+    m += label(f"history-t{i}", d, x - 112, 408, 224, 28, INK2, "center", 500)
+    m += print_img(f"history-p{i}", IMG + HIMG[i][0], x - HW // 2 - 10, HY, HW, mat=10)
+    m += label(f"history-c{i}", HIMG[i][1], x - 117, HY + HW + 30, 234, 28, INK2, "center", 500)
+m += f'<div id="history-ring" style="position:absolute;left:{CX[0]-38}px;top:282px;width:76px;height:76px;border-radius:50%;border:6px solid {INK}"></div>'
+m += line("history-end", f'SCSA là {acc("mảnh")} {acc("ghép")} cắm vào từng mô hình trong khung, mỗi lần một.', 864, 40)
 js = [WORDS(f"{sid}-tw", 0.1), DRAW("#history-rl", 0.3, 0.8, 1500), HIDE("#history-br")]
-for i in range(5):
-    t = 0.8 + i * 0.9
+for i in range(6):
+    t = 0.8 + i * 0.85
     if i: js.append(MOVE("#history-ring", t - 0.1, CX[i-1] - CX[0], 0, CX[i] - CX[0], 0, 0.6))
     else: js.append(T("#history-ring", t - 0.1, '{opacity:0,scale:1.5}', '{opacity:1,scale:1}', 0.5, "expo.out"))
-    js += [T(f"#history-d{i}", t, '{scale:0}', '{scale:1}', 0.45, "back.out(1.6)"), BLUR(f"#history-y{i}", t + 0.1), BLUR(f"#history-n{i}", t + 0.2), FADE(f"#history-t{i}", t + 0.3, 0.3)]
-js += [T("#history-br", 5.4, '{opacity:0,scale:1.04,svgOrigin:"1114 532"}', '{opacity:1,scale:1}', 0.6, "expo.out"), BLUR("#history-end", 5.8, 0.2)]
-S.append(dict(id=sid, label="Mười năm", dur=6.6, frags=[1.5, 2.4, 3.3, 4.2, 5.1, 6.2], html=m, js="\n".join(js), title="Mười năm style transfer, năm bước",
+    js += [T(f"#history-d{i}", t, '{scale:0}', '{scale:1}', 0.45, "back.out(1.6)"), BLUR(f"#history-y{i}", t + 0.1), BLUR(f"#history-n{i}", t + 0.2), FADE(f"#history-t{i}", t + 0.3, 0.3),
+           PLACE(f"#history-p{i}", t + 0.15, 0.5), FADE(f"#history-c{i}", t + 0.35, 0.3)]
+js += [T("#history-br", 6.0, '{opacity:0,scale:1.04,svgOrigin:"1074 516"}', '{opacity:1,scale:1}', 0.6, "expo.out"), BLUR("#history-end", 6.4, 0.2)]
+S.append(dict(id=sid, label="Mười năm", dur=7.3, frags=[1.5, 2.35, 3.2, 4.05, 4.9, 5.75, 6.9], html=m, js="\n".join(js), title="Mười năm style transfer, sáu bước",
   notes="Bấm qua từng mốc. 2016, Gatys: chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống chữ ký màu của tranh; đẹp nhưng mỗi ảnh vài phút. 2017, AdaIN: một mạng cho mọi tranh, khớp tông của cả ảnh; nhanh nhưng thô, ta sẽ gặp lại nó ở chặng 2. 2019 đến 2022, SANet và StyTr2: attention, mỗi điểm của ảnh tự đi tìm điểm giống nó trong tranh. 2024, StyleID: attention nằm bên trong Stable Diffusion, không cần train. 2025, SCSA: attention biết nhãn vùng. Bấm cuối: khung cam bao ba mô hình ở giữa, đó là ba backbone SCSA cắm vào; SCSA không thay chúng."))
 
 # ---------------- same pair, four methods (real runs: compare_style_transfer.ipynb) ----------------

@@ -51,9 +51,9 @@
   "n": 7,
   "id": "history",
   "label": "Mười năm",
-  "title": "Mười năm style transfer, năm bước",
-  "notes": "2016 · Gatys: Chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống màu tranh. Đẹp nhưng chậm, mỗi ảnh vài phút.\nBấm 1 · 2017 · AdaIN: Một mạng cho mọi tranh, khớp tông cả ảnh. Nhanh nhưng thô. Sẽ gặp lại ở chặng 2.\nBấm 2 · 2019–22 · SANet, StyTr2: Attention: mỗi điểm của ảnh tự đi tìm style.\nBấm 3 · 2024 · StyleID: Attention bên trong Stable Diffusion.\nBấm 4 · 2025 · SCSA: Attention biết nhãn vùng.\nBấm 5 · Khung magenta: Ba mô hình trong khung là chỗ SCSA cắm vào, nhưng từng cái một: SCSA gắn vào SANet thì ra SANet cộng SCSA, gắn vào StyTr2 thì ra StyTr2 cộng SCSA, tương tự StyleID. Không phải ghép cả ba thành một. SCSA không thay các mô hình này, nó chỉ thay khối attention bên trong. Dẫn: Nói suông khó thấy, nên nhóm chạy thử chính các phương pháp này trên cặp ảnh của ta.",
-  "frags": 6
+  "title": "Mười năm style transfer, sáu bước",
+  "notes": "2016 · Gatys: Chỉnh từng pixel cho tới khi ảnh vừa giống bố cục, vừa giống màu tranh. Đẹp nhưng chậm, mỗi ảnh vài phút. Dưới mỗi mốc là ảnh nhóm chạy lại bằng chính phương pháp đó trên cặp ảnh của ta. Mốc SCSA là SANet cộng SCSA, ví dụ chính của buổi.\nBấm 1 · 2017 · AdaIN: Một mạng cho mọi tranh, khớp tông cả ảnh. Nhanh nhưng thô. Sẽ gặp lại ở chặng 3.\nBấm 2 · 2019 · SANet: Attention: mỗi điểm của ảnh tự đi tìm điểm giống nó trong tranh để lấy style.\nBấm 3 · 2022 · StyTr2: Cùng ý attention, nhưng làm bằng transformer: ảnh và tranh cắt thành patch, decoder cho mỗi patch của ảnh đi tìm patch giống nó trong tranh.\nBấm 4 · 2024 · StyleID: Attention bên trong Stable Diffusion.\nBấm 5 · 2025 · SCSA: Attention biết nhãn vùng.\nBấm 6 · Khung magenta: Ba mô hình trong khung là chỗ SCSA cắm vào, nhưng từng cái một: SCSA gắn vào SANet thì ra SANet cộng SCSA, gắn vào StyTr2 thì ra StyTr2 cộng SCSA, tương tự StyleID. Không phải ghép cả ba thành một. SCSA không thay các mô hình này, nó chỉ thay khối attention bên trong. Dẫn: Ảnh nhỏ khó thấy; phóng to bốn kết quả trên cùng cặp ảnh để so.",
+  "frags": 7
  },
  {
   "n": 8,
@@ -268,19 +268,27 @@
   "id": "metrics",
   "label": "Bốn thước đo",
   "title": "Bốn thước đo, đọc trước khi xem số",
-  "notes": "SSL: Bốn thước đo, mỗi lần bấm một cái. SSL (Semantic Style Loss): cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi. Thấp là tốt.\nBấm 1 · FID: Cả tập kết quả có trông như tranh không, xét tổng thể. Thấp là tốt.\nBấm 2 · CFSD: Kết quả còn giữ bố cục của ảnh gốc không. Thấp là tốt.\nBấm 3 · Người xem: 40 người, mỗi người 30 câu, tổng 1.200 phiếu: một nửa so bản có và không có SCSA, một nửa so với năm phương pháp khác. Cao là tốt.\nBấm 4 · Lưu ý: SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD. Dẫn: Xem ảnh trước, số sau.",
+  "notes": "SSL: Bốn thước đo, mỗi lần bấm một cái. SSL (Semantic Style Loss): cắt kết quả và tranh theo nhãn, so style trời với trời, vách núi với vách núi. Thấp là tốt. Slide sau nói kỹ.\nBấm 1 · FID: Cả tập kết quả có trông như tranh không, xét tổng thể. Thấp là tốt.\nBấm 2 · CFSD: Kết quả còn giữ bố cục của ảnh gốc không. Thấp là tốt.\nBấm 3 · Người xem: 40 người, mỗi người 30 câu, tổng 1.200 phiếu: một nửa so bản có và không có SCSA, một nửa so với năm phương pháp khác. Cao là tốt.\nBấm 4 · Lưu ý: SSL do chính tác giả đề xuất và đo đúng điều SCSA tối ưu, nên SCSA thắng ở SSL gần như chắc chắn. Nhìn thêm FID và CFSD. Dẫn: SSL là thước đo chính; xem nó đo cụ thể thế nào.",
   "frags": 5
  },
  {
   "n": 35,
-  "id": "results",
-  "label": "Kết quả thật",
-  "title": "Kết quả thật trên ba họ mô hình",
-  "notes": "SANet: Ba ví dụ lấy nguyên từ hình kết quả của paper. Mỗi hàng: ảnh nội dung, ảnh phong cách, mô hình gốc, mô hình cộng SCSA. Hàng đầu là cặp ảnh ta theo dõi cả buổi: vách núi từ màu trời sang màu núi.\nBấm 1 · StyTr2: Ví dụ thác nước: bản gốc màu loang lổ, bản SCSA giữ dòng thác trắng và đá tối.\nBấm 2 · StyleID: Ví dụ chân dung: áo, mặt, nền lấy nét từ đúng vùng tương ứng trong tranh. Mình chỉ mô tả những gì thấy trên ba ảnh; số tổng quát ở slide sau. Dẫn: Giờ đến số.",
-  "frags": 3
+  "id": "sslx",
+  "label": "SSL đo gì",
+  "title": "SSL: chấm style theo từng cặp vùng",
+  "notes": "Ý tưởng: SSL là thước đo chính của paper, nên nói kỹ một chút. Ý tưởng: không so cả bức, mà cắt kết quả và tranh theo bản đồ nhãn, rồi so từng cặp vùng cùng nhãn: trời với trời, vách núi với vách núi, rừng với rừng, dãy xa với dãy xa. Mỗi cặp so hai con số thống kê của đặc trưng: trung bình μ, tức tông, và độ lệch chuẩn σ, tức độ đậm nhạt của nét.\nBấm 1 · Công thức: Viết thành công thức: cộng qua các vùng, cộng qua các lớp VGG, khoảng cách μ cộng khoảng cách σ. Đây chính là loss style của AdaIN mà ta đã gặp, chỉ khác là tính riêng trong từng vùng. Lưu ý: paper chỉ mô tả SSL bằng lời ở mục 4.3, không ghi lớp VGG nào và cộng thế nào; công thức trên bảng là mình viết lại từ mô tả đó.\nBấm 2 · Cả ảnh: Vì sao phải theo vùng? Mình thử minh hoạ trên bốn ảnh của slide Bốn phương pháp, dùng màu thay cho đặc trưng VGG, nên đây không phải số của paper. Nếu so cả bức như loss style thường, SANet cộng SCSA lại tệ nhất, 6,7, còn Gatys tốt nhất, 1,6. Lý do: so cả ảnh chỉ hỏi tổng lượng màu có giống tranh không. Tô màu trời lên vách núi vẫn có thể giữ tổng lượng màu đúng. Paper nêu thêm một lý do: vùng to nhỏ khác nhau giữa ảnh và tranh làm lệch phép so toàn cục.\nBấm 3 · Từng vùng: So từng vùng rồi cộng, thứ hạng đảo ngược: SCSA 21, ba cách kia 85 đến 95. Nhìn màu trong thanh: phần lớn lỗi của ba cách đầu nằm ở vách núi, màu vàng, và dãy xa, màu xanh dương, đúng những chỗ ta thấy tô nhầm.\nBấm 4 · Chốt: Lỗi tô nhầm vùng chỉ lộ ra khi so theo từng vùng; đó là lý do tác giả đặt ra SSL. Mặt trái: SSL dùng chính bản đồ nhãn mà SCSA dùng, nên nó đo đúng điều SCSA tối ưu. Vì vậy khi đọc số, luôn nhìn kèm FID và CFSD. Dẫn: Hiểu SSL rồi; xem ảnh kết quả trước, số sau.",
+  "frags": 5
  },
  {
   "n": 36,
+  "id": "results",
+  "label": "Kết quả thật",
+  "title": "Kết quả thật trên ba họ mô hình",
+  "notes": "SANet: Ba ví dụ lấy nguyên từ hình kết quả của paper. Mỗi hàng: ảnh nội dung, ảnh phong cách, mô hình gốc, mô hình cộng SCSA. Hàng đầu là cặp ảnh ta theo dõi cả buổi: vách núi từ màu trời sang màu núi.\nBấm 1 · StyTr2: Ví dụ thác nước: bản gốc màu loang lổ, bản SCSA giữ dòng thác trắng và đá tối.\nBấm 2 · StyleID: Ví dụ chân dung: áo, mặt, nền lấy nét từ đúng vùng tương ứng trong tranh.\nBấm 3 · Mẫu 29: Để so cho công bằng, nhóm chạy lại cả ba họ mô hình trên đúng cặp ảnh của ta, bằng notebook so sánh. Hàng trên là mô hình gốc: SANet, StyTr2, StyleID đều tô vách núi màu mây. Hàng dưới là cắm SCSA vào từng mô hình, mỗi lần một: trời kem, vách núi xanh, dãy xa hồng, cả ba giống nhau. Mình chỉ mô tả những gì thấy trên ảnh; số tổng quát ở slide sau. Dẫn: Giờ đến số.",
+  "frags": 4
+ },
+ {
+  "n": 37,
   "id": "ssl",
   "label": "Số liệu SSL",
   "title": "Lỗi style theo vùng giảm 29–47%",
@@ -288,7 +296,7 @@
   "frags": 3
  },
  {
-  "n": 37,
+  "n": 38,
   "id": "compare",
   "label": "So với phương pháp khác",
   "title": "So với năm phương pháp semantic chuyên biệt",
@@ -296,7 +304,7 @@
   "frags": 4
  },
  {
-  "n": 38,
+  "n": 39,
   "id": "ablation",
   "label": "Ablation",
   "title": "Bỏ bớt một mảnh, lỗi tăng bao nhiêu?",
@@ -304,7 +312,7 @@
   "frags": 5
  },
  {
-  "n": 39,
+  "n": 40,
   "id": "strengths",
   "label": "Điểm mạnh",
   "title": "Điểm mạnh: đúng vùng mà không phải train",
@@ -312,7 +320,7 @@
   "frags": 5
  },
  {
-  "n": 40,
+  "n": 41,
   "id": "limits",
   "label": "Hạn chế",
   "title": "Những điều SCSA chưa giải quyết",
@@ -320,7 +328,7 @@
   "frags": 3
  },
  {
-  "n": 41,
+  "n": 42,
   "id": "ch5",
   "label": "Chặng 5: Kết luận",
   "title": "Chặng 5 · Mang về gì, đi tiếp đâu?",
@@ -328,7 +336,7 @@
   "frags": 1
  },
  {
-  "n": 42,
+  "n": 43,
   "id": "summary",
   "label": "Tóm tắt",
   "title": "Chỉ lấy style từ vùng cùng nhãn",
@@ -336,7 +344,7 @@
   "frags": 3
  },
  {
-  "n": 43,
+  "n": 44,
   "id": "future",
   "label": "Hướng phát triển",
   "title": "Hướng phát triển: mỗi hạn chế một lối mở",
@@ -344,7 +352,7 @@
   "frags": 6
  },
  {
-  "n": 44,
+  "n": 45,
   "id": "next",
   "label": "Bước tiếp: StyleGallery",
   "title": "Bước tiếp: StyleGallery bỏ bản đồ nhãn",
@@ -352,7 +360,7 @@
   "frags": 4
  },
  {
-  "n": 45,
+  "n": 46,
   "id": "end",
   "label": "Kết thúc",
   "title": "SCSA",
